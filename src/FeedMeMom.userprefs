@@ -1,0 +1,48 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhone.6.1" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="FeedMeMom.Common2/Services/TimeStopPair.cs">
+    <Files>
+      <File FileName="FeedMeMom.Common2/Services/TimeStop.cs" Line="1" Column="14" />
+      <File FileName="FeedMeMom.Tests/Services/TimeStopTest.cs" Line="47" Column="71" />
+      <File FileName="FeedMeMom.Common2/Services/Time.cs" Line="17" Column="3" />
+      <File FileName="FeedMeMom.Common2/Services/TimeStopPair.cs" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Node name="FeedMeMom.Common" expanded="True">
+            <Node name="Services" expanded="True">
+              <Node name="TimeStopPair.cs" selected="True" />
+            </Node>
+          </Node>
+          <Node name="FeedMeMom.Tests" expanded="True">
+            <Node name="Services" expanded="True" />
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="ClassPad">
+        <State expanded="True" selected="True" />
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+      <Pad Id="MonoDevelop.NUnit.TestPad">
+        <State expanded="True">
+          <Node name="FeedMeMom.Tests" expanded="True">
+            <Node name="FeedMeMom" expanded="True">
+              <Node name="Tests" expanded="True">
+                <Node name="TimeStopTest" expanded="True">
+                  <Node name="It_should_measure_time_for_multiple_start_stop" selected="True" />
+                </Node>
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

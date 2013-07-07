@@ -1,0 +1,60 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeedMeMom", "FeedMeMom\FeedMeMom.csproj", "{03666129-8642-43B1-91E1-88ED34969091}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeedMeMom.Tests", "FeedMeMom.Tests\FeedMeMom.Tests.csproj", "{CC0BB311-8AC8-42F8-99DA-2FAEC816A081}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeedMeMom.Common", "FeedMeMom.Common\FeedMeMom.Common.csproj", "{3CCAAEAE-E54A-48F6-BE65-3DFB7235B5CF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|iPhoneSimulator = Debug|iPhoneSimulator
+		Release|iPhoneSimulator = Release|iPhoneSimulator
+		Debug|iPhone = Debug|iPhone
+		Release|iPhone = Release|iPhone
+		Ad-Hoc|iPhone = Ad-Hoc|iPhone
+		AppStore|iPhone = AppStore|iPhone
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{03666129-8642-43B1-91E1-88ED34969091}.Ad-Hoc|iPhone.ActiveCfg = Ad-Hoc|iPhone
+		{03666129-8642-43B1-91E1-88ED34969091}.Ad-Hoc|iPhone.Build.0 = Ad-Hoc|iPhone
+		{03666129-8642-43B1-91E1-88ED34969091}.AppStore|iPhone.ActiveCfg = AppStore|iPhone
+		{03666129-8642-43B1-91E1-88ED34969091}.AppStore|iPhone.Build.0 = AppStore|iPhone
+		{03666129-8642-43B1-91E1-88ED34969091}.Debug|iPhone.ActiveCfg = Debug|iPhone
+		{03666129-8642-43B1-91E1-88ED34969091}.Debug|iPhone.Build.0 = Debug|iPhone
+		{03666129-8642-43B1-91E1-88ED34969091}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
+		{03666129-8642-43B1-91E1-88ED34969091}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
+		{03666129-8642-43B1-91E1-88ED34969091}.Release|iPhone.ActiveCfg = Release|iPhone
+		{03666129-8642-43B1-91E1-88ED34969091}.Release|iPhone.Build.0 = Release|iPhone
+		{03666129-8642-43B1-91E1-88ED34969091}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
+		{03666129-8642-43B1-91E1-88ED34969091}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
+		{3CCAAEAE-E54A-48F6-BE65-3DFB7235B5CF}.Ad-Hoc|iPhone.ActiveCfg = Release|Any CPU
+		{3CCAAEAE-E54A-48F6-BE65-3DFB7235B5CF}.Ad-Hoc|iPhone.Build.0 = Release|Any CPU
+		{3CCAAEAE-E54A-48F6-BE65-3DFB7235B5CF}.AppStore|iPhone.ActiveCfg = Release|Any CPU
+		{3CCAAEAE-E54A-48F6-BE65-3DFB7235B5CF}.AppStore|iPhone.Build.0 = Release|Any CPU
+		{3CCAAEAE-E54A-48F6-BE65-3DFB7235B5CF}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{3CCAAEAE-E54A-48F6-BE65-3DFB7235B5CF}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{3CCAAEAE-E54A-48F6-BE65-3DFB7235B5CF}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{3CCAAEAE-E54A-48F6-BE65-3DFB7235B5CF}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{3CCAAEAE-E54A-48F6-BE65-3DFB7235B5CF}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{3CCAAEAE-E54A-48F6-BE65-3DFB7235B5CF}.Release|iPhone.Build.0 = Release|Any CPU
+		{3CCAAEAE-E54A-48F6-BE65-3DFB7235B5CF}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{3CCAAEAE-E54A-48F6-BE65-3DFB7235B5CF}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{CC0BB311-8AC8-42F8-99DA-2FAEC816A081}.Ad-Hoc|iPhone.ActiveCfg = Release|Any CPU
+		{CC0BB311-8AC8-42F8-99DA-2FAEC816A081}.Ad-Hoc|iPhone.Build.0 = Release|Any CPU
+		{CC0BB311-8AC8-42F8-99DA-2FAEC816A081}.AppStore|iPhone.ActiveCfg = Release|Any CPU
+		{CC0BB311-8AC8-42F8-99DA-2FAEC816A081}.AppStore|iPhone.Build.0 = Release|Any CPU
+		{CC0BB311-8AC8-42F8-99DA-2FAEC816A081}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{CC0BB311-8AC8-42F8-99DA-2FAEC816A081}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{CC0BB311-8AC8-42F8-99DA-2FAEC816A081}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{CC0BB311-8AC8-42F8-99DA-2FAEC816A081}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{CC0BB311-8AC8-42F8-99DA-2FAEC816A081}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{CC0BB311-8AC8-42F8-99DA-2FAEC816A081}.Release|iPhone.Build.0 = Release|Any CPU
+		{CC0BB311-8AC8-42F8-99DA-2FAEC816A081}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{CC0BB311-8AC8-42F8-99DA-2FAEC816A081}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = FeedMeMom\FeedMeMom.csproj
+	EndGlobalSection
+EndGlobal
