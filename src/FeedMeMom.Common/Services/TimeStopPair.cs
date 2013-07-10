@@ -8,14 +8,11 @@ namespace FeedMeMom.Common
 	{
 		public TimeStopPair(FeedingEntry entry)
 		{
-			Left = new TimeStop ();
-			Right = new TimeStop ();
+			Left = new TimeStop();
+			Right = new TimeStop();
 
 			_entry = entry;
-			Left.StartTime = entry.LeftStartTime;
-			Left.Length = entry.LeftBreastLength ?? TimeSpan.Zero;
-			Right.StartTime = entry.RightStartTime;
-			Right.Length = entry.RightBreastLength ?? TimeSpan.Zero;
+			LoadFromEntry();
 		}
 
 		private FeedingEntry _entry;
@@ -25,29 +22,37 @@ namespace FeedMeMom.Common
 
 		public TimeSpan GetTotalLength()
 		{
-			return Left.GetTotalLength () + Right.GetTotalLength ();
+			return Left.GetTotalLength() + Right.GetTotalLength();
 		}
 
 		public void Start(bool left) 
 		{
 			if (left) {
-				Right.Stop ();
-				Left.Start ();
+				Right.Stop();
+				Left.Start();
 			} else {
-				Left.Stop ();
-				Right.Start ();
+				Left.Stop();
+				Right.Start();
 			}
-			UpdateEntry ();
+			SaveToEntry();
 		}
 
 		public void Stop()
 		{
-			Left.Stop ();
-			Right.Stop ();
-			UpdateEntry ();
+			Left.Stop();
+			Right.Stop();
+			SaveToEntry();
 		}
 
-		private void UpdateEntry()
+		private void LoadFromEntry()
+		{
+			Left.StartTime = _entry.LeftStartTime;
+			Left.Length = _entry.LeftBreastLength ?? TimeSpan.Zero;
+			Right.StartTime = _entry.RightStartTime;
+			Right.Length = _entry.RightBreastLength ?? TimeSpan.Zero;
+		}
+
+		private void SaveToEntry()
 		{
 			_entry.LeftStartTime = Left.StartTime;
 			_entry.LeftBreastLength = Left.Length;
