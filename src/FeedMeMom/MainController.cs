@@ -84,18 +84,43 @@ namespace FeedMeMom
 			lblMainTimeInfo.Text = "Start on the top";
 		}
 
+		private void SwitchToInfoMode()
+		{
+			lblMainTime.Hidden = false;
+			lblMainTimeInfo.Hidden = false;
+		}
+
+		private void SwitchToFeedingMode(bool left, FeedingEntry entry)
+		{
+			lblSecondTimeInfo.Hidden = false;
+			pnlInfoSmall.Hidden = false;
+			_active = entry;
+			lblMainTime.Hidden = true;
+			lblMainTimeInfo.Hidden = true;
+			SelectRightLeftButton(left);
+			NavigationController.NavigationBarHidden = false;
+			lblSecondTimeInfo.Text = "Tap to Pause";
+			_stopPair = new TimeStopPair (_active);
+		}
 
 		public void ReloadData() 
 		{
 			var repo = ServiceLocator.Get<Repository> ();
-			var last = repo.Query<FeedingEntry> ("SELECT * FROM FeedingEntry ORDER BY Date DESC LIMIT 1").FirstOrDefault();
+			var last = repo.Query<FeedingEntry> ("SELECT * FROM FeedingEntry ORDER BY Id DESC LIMIT 1").FirstOrDefault();
 			if (last == null) 
 			{
-				EmptyView ();
+				EmptyView();
 			} 
 			else 
 			{
-				UpdateView (last);
+				if (last.IsRunning)
+				{
+					SwitchToFeedingMode(last.IsLeftBreastRunning, last);
+				} 
+				else 
+				{
+					UpdateView(last);
+				}
 			}
 		}
 
@@ -145,22 +170,22 @@ namespace FeedMeMom
 
 			NavigationItem.RightBarButtonItem = new UIBarButtonItem("Cancel", UIBarButtonItemStyle.Plain, (s, ea) => {
 				if (_active != null) {
-					SwitchToInfoMode();
 					repo.Delete(_active);
 					_active = null;
 					ReloadData();
+					SwitchToInfoMode();
 				}
 				NavigationController.NavigationBarHidden = true;
 			});
 
 			NavigationItem.LeftBarButtonItem = new UIBarButtonItem("Save", UIBarButtonItemStyle.Plain, (s, ea) => {
 				if (_active != null) {
-					SwitchToInfoMode();
 					_active.Date = DateTime.Now;
 					_stopPair.Stop();
 					repo.Update(_active);
 					_active = null;
 					ReloadData();
+					SwitchToInfoMode();
 				}
 				NavigationController.NavigationBarHidden = true;
 			});
@@ -189,14 +214,7 @@ namespace FeedMeMom
 					SelectRightLeftButton(false);
 				}
 			};
-		}
-
-		private void SwitchToInfoMode()
-		{
-			lblMainTime.Hidden = false;
-			lblMainTimeInfo.Hidden = false;
-		}
-
+		}	
 
 		private void SelectRightLeftButton(bool left)
 		{
@@ -222,17 +240,11 @@ namespace FeedMeMom
 
 		private void StartFeeding(Repository repo, bool left)
 		{
-			lblMainTime.Hidden = true;
-			lblMainTimeInfo.Hidden = true;
-			SelectRightLeftButton(left);
-			NavigationController.NavigationBarHidden = false;
-			lblSecondTimeInfo.Text = "Tap to Pause";
-			_active = new FeedingEntry {
-				IsRunning = true
-			};
-			_stopPair = new TimeStopPair (_active);
+			SwitchToFeedingMode(left, new FeedingEntry{ Date = Time.Now });
 			_stopPair.Start (left);
+
 			repo.Insert(_active);
+			var test = repo.Get<FeedingEntry>(_active.Id);
 		}
 
 	}

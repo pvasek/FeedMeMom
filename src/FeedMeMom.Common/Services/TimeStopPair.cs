@@ -8,11 +8,10 @@ namespace FeedMeMom.Common
 	{
 		public TimeStopPair(FeedingEntry entry)
 		{
-			Left = new TimeStop();
-			Right = new TimeStop();
+			Left =  new TimeStop(entry.LeftBreastLengthSeconds ?? 0, entry.LeftStartTime);
+			Right = new TimeStop(entry.RightBreastLengthSeconds ?? 0, entry.RightStartTime);
 
 			_entry = entry;
-			LoadFromEntry();
 		}
 
 		private FeedingEntry _entry;
@@ -44,13 +43,13 @@ namespace FeedMeMom.Common
 			SaveToEntry();
 		}
 
-		private void LoadFromEntry()
-		{
-			Left.StartTime = _entry.LeftStartTime;
-			Left.Length = _entry.LeftBreastLength ?? TimeSpan.Zero;
-			Right.StartTime = _entry.RightStartTime;
-			Right.Length = _entry.RightBreastLength ?? TimeSpan.Zero;
-		}
+//		private void LoadFromEntry()
+//		{
+//			Left.StartTime = _entry.LeftStartTime;
+//			Left.Length = _entry.LeftBreastLength ?? TimeSpan.Zero;
+//			Right.StartTime = _entry.RightStartTime;
+//			Right.Length = _entry.RightBreastLength ?? TimeSpan.Zero;
+//		}
 
 		private void SaveToEntry()
 		{

@@ -27,13 +27,15 @@ namespace FeedMeMom
 			var navigationController = new UINavigationController (viewController);
 			var backImage = UIImage
 				.FromBundle ("btn_back.png")
-				.CreateResizableImage (new UIEdgeInsets(2, 25, 2, 2));;
+				.CreateResizableImage (new UIEdgeInsets(2, 25, 2, 2));
 			var backPressedImage = UIImage
 				.FromBundle ("btn_back_selected.png")
-					.CreateResizableImage (new UIEdgeInsets(2, 25, 2, 2));;
+					.CreateResizableImage (new UIEdgeInsets(2, 25, 2, 2));
+
 			UINavigationBar.Appearance.SetBackgroundImage (UIImage.FromBundle("background.png"), UIBarMetrics.Default);
 			UIBarButtonItem.Appearance.SetBackButtonBackgroundImage (backImage, UIControlState.Normal, UIBarMetrics.Default);
 			UIBarButtonItem.Appearance.SetBackgroundImage (UIImage.FromBundle("btn.png"), UIControlState.Normal, UIBarMetrics.Default);
+
 			UIBarButtonItem.Appearance.SetTitleTextAttributes (
 				new UITextAttributes(){ 
 					TextShadowColor = UIColor.Clear,
@@ -42,6 +44,7 @@ namespace FeedMeMom
 					Font = UIFont.SystemFontOfSize(12)
 				},		
 				UIControlState.Normal);
+
 			UIBarButtonItem.Appearance.SetTitleTextAttributes (
 				new UITextAttributes(){ 
 					TextShadowColor = UIColor.Clear,

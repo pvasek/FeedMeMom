@@ -10,7 +10,8 @@ namespace FeedMeMom.Common
 	{
 		private Repository (string path) : base (path)
 		{
-			
+
+			//CreateCommand("DROP TABLE " + Table<FeedingEntry>().Table.TableName).ExecuteNonQuery();
 			CreateTable<FeedingEntry> ();
 			//CreateTable<SleepEntry> ();
 			//CreateTable<PooEntry> ();

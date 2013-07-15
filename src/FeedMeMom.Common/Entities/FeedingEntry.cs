@@ -26,6 +26,9 @@ namespace FeedMeMom.Common.Entities
 			get { return TotalBreastLengthSeconds.SecondsAsTimeSpan(0); }
 		}
 
+		public DateTime? LeftStartTime { get; set; }
+		public DateTime? RightStartTime { get; set; }
+
 		[Ignore]
 		public TimeSpan? LeftBreastLength {
 			get { return LeftBreastLengthSeconds.SecondsAsTimeSpan(0); }
@@ -51,17 +54,14 @@ namespace FeedMeMom.Common.Entities
 			}
 		}
 
-		[Ignore]
-		public bool IsRunning { get; set; }
-		[Ignore]
-		public bool IsLeftBreastRunning { get; set; }
 
-		public DateTime? LeftStartTime { get; set; }
-		public DateTime? RightStartTime { get; set; }
-
-		[Ignore]
-		public DateTime? StartTime { get; set; }
-
+		public bool IsLeftBreastRunning { get { return LeftStartTime != null; } }
+		public bool IsRightBreastRunning { get { return RightStartTime != null; } }
+		public bool IsRunning 
+		{ 
+			get { return IsLeftBreastRunning || IsRightBreastRunning; } 
+		}
+			
 		private string FormatBreastFeeding ()
 		{
 			var result = new StringBuilder();

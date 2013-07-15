@@ -42,8 +42,7 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
     <MtouchDebug>true</MtouchDebug>
-    <CodesignKey>iPhone Developer: Pavel Vasek (T44R27AD7Y)</CodesignKey>
-    <CodesignProvision>237EB6E4-FB34-4989-9CC5-C5D751E6E106</CodesignProvision>
+    <CodesignKey>iPhone Developer</CodesignKey>
     <MtouchI18n />
     <MtouchArch>ARMv7</MtouchArch>
     <MtouchSdkVersion>6.1</MtouchSdkVersion>
@@ -97,10 +96,6 @@
     <Compile Include="MainController.designer.cs">
       <DependentUpon>MainController.cs</DependentUpon>
     </Compile>
-    <Compile Include="NewBreastFeeding.cs" />
-    <Compile Include="NewBreastFeeding.designer.cs">
-      <DependentUpon>NewBreastFeeding.cs</DependentUpon>
-    </Compile>
     <Compile Include="Services\AppleSettings.cs" />
     <Compile Include="Services\SynchronizationService.cs" />
     <Compile Include="Helpers\UIColorExtensions.cs" />
@@ -108,7 +103,6 @@
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <InterfaceDefinition Include="MainController.xib" />
-    <InterfaceDefinition Include="NewBreastFeeding.xib" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\background.png" />
@@ -121,7 +115,7 @@
     <BundleResource Include="Resources\btn_primary.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\FeedMeMom.Common2\FeedMeMom.Common.csproj">
+    <ProjectReference Include="..\FeedMeMom.Common\FeedMeMom.Common.csproj">
       <Project>{3CCAAEAE-E54A-48F6-BE65-3DFB7235B5CF}</Project>
       <Name>FeedMeMom.Common</Name>
     </ProjectReference>
