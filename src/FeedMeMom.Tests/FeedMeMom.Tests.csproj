@@ -42,7 +42,7 @@
     <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\FeedMeMom.Common2\FeedMeMom.Common.csproj">
+    <ProjectReference Include="..\FeedMeMom.Common\FeedMeMom.Common.csproj">
       <Project>{3CCAAEAE-E54A-48F6-BE65-3DFB7235B5CF}</Project>
       <Name>FeedMeMom.Common</Name>
     </ProjectReference>

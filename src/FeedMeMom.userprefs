@@ -1,21 +1,19 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhone" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.Pavel Vašek’s iPhone" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="FeedMeMom.Common/Services/TimeStopPair.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhone.6.1" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="FeedMeMom/MainController.cs">
     <Files>
-      <File FileName="FeedMeMom/MainController.cs" Line="245" Column="4" />
+      <File FileName="FeedMeMom/MainController.cs" Line="198" Column="6" />
       <File FileName="FeedMeMom.Common/Services/TimeStopPair.cs" Line="36" Column="18" />
-      <File FileName="FeedMeMom.Common/Services/Repository.cs" Line="29" Column="7" />
+      <File FileName="FeedMeMom.Common/Services/Repository.cs" Line="14" Column="6" />
       <File FileName="FeedMeMom.Common/Services/TimeStop.cs" Line="36" Column="3" />
+      <File FileName="FeedMeMom/AppDelegate.cs" Line="35" Column="51" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
-          <Node name="FeedMeMom" expanded="True" selected="True">
+          <Node name="Feed Me Mom" expanded="True" selected="True">
+            <Node name="Resources" expanded="True" />
             <Node name="Services" expanded="True" />
-          </Node>
-          <Node name="FeedMeMom.Common" expanded="True">
-            <Node name="Services" expanded="True" />
-            <Node name="Sqlite" expanded="True" />
           </Node>
           <Node name="FeedMeMom.Tests" expanded="True">
             <Node name="Services" expanded="True" />

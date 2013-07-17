@@ -67,7 +67,7 @@ namespace FeedMeMom
 			if (entry.TotalBreastLength == null) {
 				//TODO: support for more then 60 m inutes
 			}
-			lblSecondTime.Text = entry.TotalBreastLength == null ? "" : entry.TotalBreastLength.Value.ToString (@"mm\:ss");
+			lblSecondTime.Text = entry.TotalBreastLength == null ? "" : String.Format("{0:#}", entry.TotalBreastLength.Value.TotalMinutes); // (@"mm\:ss");
 		}
 
 		private void EmptyView()
@@ -88,10 +88,14 @@ namespace FeedMeMom
 		{
 			lblMainTime.Hidden = false;
 			lblMainTimeInfo.Hidden = false;
+			indicatorRight.Hidden = true;
+			indicatorLeft.Hidden = true;
 		}
 
 		private void SwitchToFeedingMode(bool left, FeedingEntry entry)
 		{
+			indicatorRight.Hidden = true;
+			indicatorLeft.Hidden = true;
 			lblSecondTimeInfo.Hidden = false;
 			pnlInfoSmall.Hidden = false;
 			_active = entry;
@@ -189,6 +193,9 @@ namespace FeedMeMom
 				}
 				NavigationController.NavigationBarHidden = true;
 			});
+
+			NavigationItem.LeftBarButtonItem.SetBackgroundImage(UIImage.FromBundle("btn_primary.png"), UIControlState.Normal, UIBarMetrics.Default);
+			//NavigationItem.LeftBarButtonItem.
 
 			NavigationController.NavigationBarHidden = true;
 

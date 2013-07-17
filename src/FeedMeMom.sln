@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeedMeMom", "FeedMeMom\FeedMeMom.csproj", "{03666129-8642-43B1-91E1-88ED34969091}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Feed Me Mom", "FeedMeMom\Feed Me Mom.csproj", "{03666129-8642-43B1-91E1-88ED34969091}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeedMeMom.Tests", "FeedMeMom.Tests\FeedMeMom.Tests.csproj", "{CC0BB311-8AC8-42F8-99DA-2FAEC816A081}"
 EndProject
@@ -55,6 +55,6 @@ Global
 		{CC0BB311-8AC8-42F8-99DA-2FAEC816A081}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = FeedMeMom\FeedMeMom.csproj
+		StartupItem = FeedMeMom\Feed Me Mom.csproj
 	EndGlobalSection
 EndGlobal
