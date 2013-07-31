@@ -39,6 +39,12 @@ namespace FeedMeMom
 		MonoTouch.UIKit.UILabel lblMainTimeInfo { get; set; }
 
 		[Outlet]
+		MonoTouch.UIKit.UILabel lblRunningInfo { get; set; }
+
+		[Outlet]
+		MonoTouch.UIKit.UILabel lblRunningTime { get; set; }
+
+		[Outlet]
 		MonoTouch.UIKit.UILabel lblSecondTime { get; set; }
 
 		[Outlet]
@@ -72,6 +78,9 @@ namespace FeedMeMom
 		MonoTouch.UIKit.UIView pnlInfoSmall { get; set; }
 
 		[Outlet]
+		MonoTouch.UIKit.UIView pnlRunningTime { get; set; }
+
+		[Outlet]
 		MonoTouch.UIKit.UIView pnlTime { get; set; }
 
 		[Outlet]
@@ -79,14 +88,19 @@ namespace FeedMeMom
 		
 		void ReleaseDesignerOutlets ()
 		{
-			if (pgbValueLeft != null) {
-				pgbValueLeft.Dispose ();
-				pgbValueLeft = null;
+			if (lblRunningInfo != null) {
+				lblRunningInfo.Dispose ();
+				lblRunningInfo = null;
 			}
 
-			if (pgbValueRight != null) {
-				pgbValueRight.Dispose ();
-				pgbValueRight = null;
+			if (lblRunningTime != null) {
+				lblRunningTime.Dispose ();
+				lblRunningTime = null;
+			}
+
+			if (pnlRunningTime != null) {
+				pnlRunningTime.Dispose ();
+				pnlRunningTime = null;
 			}
 
 			if (btnLeft != null) {
@@ -167,6 +181,16 @@ namespace FeedMeMom
 			if (pgbTextRight != null) {
 				pgbTextRight.Dispose ();
 				pgbTextRight = null;
+			}
+
+			if (pgbValueLeft != null) {
+				pgbValueLeft.Dispose ();
+				pgbValueLeft = null;
+			}
+
+			if (pgbValueRight != null) {
+				pgbValueRight.Dispose ();
+				pgbValueRight = null;
 			}
 
 			if (pnlAgo != null) {

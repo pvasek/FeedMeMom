@@ -25,8 +25,8 @@ namespace FeedMeMom
 
 		//private UITapGestureRecognizer _touchRecondizerSecondaryTime;
 
-		private PointF _defaultTimePanelCenter;
 		private PointF _defaultContainerRightCenter;
+		private PointF _defaultContainerLeftCenter;
 		private RectangleF _defaultTimeFrame;
 
 		public override void ViewDidLoad ()
@@ -40,13 +40,14 @@ namespace FeedMeMom
 			pgbContainerLeft.ClipsToBounds = true;
 			pgbContainerRight.Layer.CornerRadius = 20;
 			pgbContainerRight.ClipsToBounds = true;
+			pnlRunningTime.Hidden = true;
 
 			var repo = ServiceLocator.Get<Repository>();		
 
 			lblSecondTimeInfo.TextColor = UIColor.Gray;
-			_defaultTimePanelCenter = pnlTime.Center;
 			_defaultTimeFrame = pnlTime.Frame;
 			_defaultContainerRightCenter = pgbContainerRight.Center;
+			_defaultContainerLeftCenter = pgbContainerLeft.Center;
 
 			var touchRecondizerSecondaryTime = new UITapGestureRecognizer((e) => {
 				if (_active != null) {
@@ -127,8 +128,9 @@ namespace FeedMeMom
 			base.Dispose (disposing);
 		}
 
-		private void UpdateHieghtInPercent(int? total, int? current, UIView parent, UIView child, UILabel label, string sufix = "")
+		private void UpdateHieghtInPercent(int? total, int? current, UIView parent, UIView child, UILabel label, bool showPercent)
 		{
+			string sufix = showPercent ? "%" : "";
 			var percent =  (float)(current ?? 0) / (total ?? 1);
 			var rect = child.Frame;
 			var height = parent.Frame.Height * percent;
@@ -140,7 +142,7 @@ namespace FeedMeMom
 			// keep it on the top
 			child.Frame = new RectangleF(rect.Left, 0, rect.Size.Width, height);
 
-			label.Text = String.Format("{0:#}{1}", 100 * percent, sufix);
+			label.Text = String.Format("{0:#}{1}", showPercent ? (int)(100 * percent) : (current / 60), sufix);
 		}
 
 		private void UpdateView(FeedingEntry entry)
@@ -169,8 +171,8 @@ namespace FeedMeMom
 			}
 			lblSecondTimeInfo.Text = "minutes";
 
-			UpdateHieghtInPercent(entry.TotalBreastLengthSeconds, entry.LeftBreastLengthSeconds, pgbContainerLeft, pgbValueLeft, pgbTextLeft, "%");
-			UpdateHieghtInPercent(entry.TotalBreastLengthSeconds, entry.RightBreastLengthSeconds, pgbContainerRight, pgbValueRight, pgbTextRight, "%");
+			UpdateHieghtInPercent(entry.TotalBreastLengthSeconds, entry.LeftBreastLengthSeconds, pgbContainerLeft, pgbValueLeft, pgbTextLeft, true);
+			UpdateHieghtInPercent(entry.TotalBreastLengthSeconds, entry.RightBreastLengthSeconds, pgbContainerRight, pgbValueRight, pgbTextRight, true);
 
 			SelectRightLeftButton ((entry.RightBreastLengthSeconds ?? 0) - (entry.LeftBreastLengthSeconds ?? 0)); // if there was more from right, the next should be form left
 			// secondary info
@@ -188,6 +190,7 @@ namespace FeedMeMom
 			pnlInfoSmall.Hidden = true;
 			lblMainTimeInfo.Text = "Start on the top";
 			pnlAgo.Hidden = true;
+			pnlRunningTime.Hidden = true;
 		}
 
 		private void SwitchToInfoMode(Action done = null)
@@ -198,6 +201,7 @@ namespace FeedMeMom
 			lblMainTime.Text = "";
 			lblMainTimeInfo.Text = "";
 			lblButtonsHeader.Text = "start a new feeding";
+			pnlRunningTime.Hidden = true;
 
 
 			Action animFinished = () => {
@@ -210,7 +214,8 @@ namespace FeedMeMom
 				btnLeft.Alpha = 0;
 				btnRight.Alpha = 0;
 				pnlTime.Frame = _defaultTimeFrame;
-				pgbContainerRight.Center = _defaultContainerRightCenter;			
+				pgbContainerRight.Center = _defaultContainerRightCenter;		
+				pgbContainerLeft.Center = _defaultContainerLeftCenter;
 			};
 
 			if (done == null)
@@ -237,7 +242,7 @@ namespace FeedMeMom
 			lblMainTimeInfo.Hidden = true;
 			lblSecondTime.Text = "";
 			lblTitle.Text = "New Feeding";
-			lblSecondTimeInfo.Text = "Tap to Pause";
+			lblRunningInfo.Text = "Tap to Pause";
 			lblButtonsHeader.Text = "switch sides";
 
 			btnLeft.Alpha = 0;
@@ -258,15 +263,22 @@ namespace FeedMeMom
 
 			Action move = () => {
 				pnlTime.Center = pnlTime.Center;
-				pnlTime.Frame = new RectangleF(pnlAgo.Frame.X + 30, pnlAgo.Frame.Y + 30, pnlAgo.Frame.Width - 60, pnlAgo.Frame.Height - 60);
-				pgbContainerRight.Center = new PointF(pgbContainerRight.Center.X - 60, pgbContainerRight.Center.Y);
+				pnlTime.Frame = new RectangleF(30, pnlAgo.Frame.Y + 30, 260, 160);
+				pgbContainerRight.Center = new PointF(155, 130);
+				pgbContainerLeft.Center = new PointF(105, 130);
 				btnLeft.Alpha = 1;
 				btnRight.Alpha = 1;
+				pnlRunningTime.Center = new PointF(pnlTime.Frame.Width / 2, pnlTime.Frame.Height / 2 - 20);
+			};
+
+			Action animFinished = () => {
+				pnlRunningTime.Hidden = false;
 			};
 
 			if (done == null)
 			{
 				move();
+				animFinished();
 				startFeeding();
 			}
 			else 
@@ -277,6 +289,7 @@ namespace FeedMeMom
 					},
 					() => {
 						startFeeding();
+						animFinished();
 						done();
 					});
 			}
@@ -314,12 +327,12 @@ namespace FeedMeMom
 			InvokeOnMainThread(() => {
 				if (_active != null) {
 					var now = _stopPair.GetTotalLength();
-					lblSecondTime.Text = now.ToString (@"mm\:ss");
+					lblRunningTime.Text = now.ToString (@"mm\:ss");
 					const int min30 = 30*60;
 					var rightLength = (int)_stopPair.Right.GetTotalLength().TotalSeconds;
 					var leftLength = (int)_stopPair.Left.GetTotalLength().TotalSeconds;
-					UpdateHieghtInPercent (min30, rightLength > min30 ? min30 : rightLength, pgbContainerLeft, pgbValueLeft, pgbTextLeft);
-					UpdateHieghtInPercent (min30, leftLength > min30 ? min30 : leftLength, pgbContainerRight, pgbValueRight, pgbTextRight);
+					UpdateHieghtInPercent (min30, rightLength > min30 ? min30 : rightLength, pgbContainerLeft, pgbValueLeft, pgbTextLeft, false);
+					UpdateHieghtInPercent (min30, leftLength > min30 ? min30 : leftLength, pgbContainerRight, pgbValueRight, pgbTextRight, false);
 				}
 			});
 		}
