@@ -8,8 +8,6 @@
 	</array>
 	<key>MinimumOSVersion</key>
 	<string>3.2</string>
-	<key>CFBundleDisplayName</key>
-	<string>Feed Me Mom</string>
 	<key>UIPrerenderedIcon</key>
 	<true/>
 	<key>CFBundleIconFiles</key>
@@ -17,5 +15,7 @@
 		<string>Icon</string>
 		<string>Icon@2x</string>
 	</array>
+	<key>CFBundleDisplayName</key>
+	<string>FeedMeMom</string>
 </dict>
 </plist>

@@ -28,6 +28,8 @@ namespace FeedMeMom.Common
 
 		public DateTime? StartTime { get; set; }
 
+		public bool IsRunning { get { return StartTime != null; } }
+
 		public void Start()
 		{
 			StartTime = Time.Now;

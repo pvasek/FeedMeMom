@@ -15,6 +15,7 @@ namespace FeedMeMom.Common
 		}
 
 		private FeedingEntry _entry;
+		private bool _lastLeft;
 
 		public TimeStop Left { get; set; }
 		public TimeStop Right { get; set; }
@@ -26,6 +27,7 @@ namespace FeedMeMom.Common
 
 		public void Start(bool left) 
 		{
+			_lastLeft = left;
 			if (left) {
 				Right.Stop();
 				Left.Start();
@@ -34,6 +36,19 @@ namespace FeedMeMom.Common
 				Right.Start();
 			}
 			SaveToEntry();
+		}
+
+		public bool Toggle()
+		{
+			if (Left.IsRunning || Right.IsRunning)
+			{
+				Stop();
+				return false;
+			} else
+			{
+				Start(_lastLeft);
+				return true;
+			}
 		}
 
 		public void Stop()

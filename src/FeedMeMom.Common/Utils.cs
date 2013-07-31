@@ -61,26 +61,49 @@ namespace FeedMeMom.Common
 			return DayOnly.Add (time).ToShortTimeString();
 		}
 
-		public static Tuple<string, string> AsAgoText(this DateTime time) 
+		public static Tuple<string, string> AsAgoTextTuple(this DateTime time) 
 		{
 			var diff = DateTime.Now - time;
-			return diff.AsAgoText ();
+			return diff.AsAgoTextTuple();
 		}
 
-		public static Tuple<string, string> AsAgoText(this TimeSpan time) 
+		public static Tuple<string, string> AsAgoTextTuple(this TimeSpan time) 
 		{
 			if (((int)time.TotalMinutes) == 1) {
 				return new Tuple<string, string> ("", "");
 			} else if (time.TotalMinutes < 60) {
-				return new Tuple<string, string>(((int)time.TotalMinutes).ToString (), "Minutes Ago");
+				return new Tuple<string, string>(((int)time.TotalMinutes).ToString (), "minutes ago");
 			} else if (time.TotalHours < 24) {
-				return new Tuple<string, string>(time.ToString(@"hh\:mm"), "Hours Ago");
+				return new Tuple<string, string>(time.ToString(@"h\:mm"), "hours ago");
 			}
 			if (((int)time.TotalDays) == 1) {
-				return new Tuple<string, string> ("1", "Day Ago");
+				return new Tuple<string, string> ("1", "day ago");
 			} else {
-				return new Tuple<string, string> (((int)time.TotalDays).ToString(), "Days Ago");
+				return new Tuple<string, string> (((int)time.TotalDays).ToString(), "days ago");
 			}
+		}
+
+		public static string AsAgoText(this DateTime time) 
+		{
+			var diff = DateTime.Now - time;
+			return diff.AsAgoText();
+		}
+
+		public static string AsAgoText(this TimeSpan time)
+		{
+			if (time.TotalMinutes < 5) 
+				return "Now";
+
+			if (time.TotalMinutes < 60)
+			{
+				return String.Format("{0:##} minutes ago", time.TotalMinutes);
+			}
+			if (time.TotalHours > 24) 
+			{
+				return String.Format("{0:##} days ago", time.TotalDays);
+			}
+
+			return String.Format("{0:##}:{1:00} hours ago", time.Hours, time.Minutes);
 		}
 	}
 }
