@@ -24,6 +24,9 @@ namespace FeedMeMom
 		MonoTouch.UIKit.UIButton btnStartRight { get; set; }
 
 		[Outlet]
+		MonoTouch.UIKit.UIImageView imgFirstStartArrow { get; set; }
+
+		[Outlet]
 		MonoTouch.UIKit.UIView indicatorSecondLeft { get; set; }
 
 		[Outlet]
@@ -75,10 +78,16 @@ namespace FeedMeMom
 		MonoTouch.UIKit.UIView pnlAgo { get; set; }
 
 		[Outlet]
+		MonoTouch.UIKit.UIView pnlFirstStart { get; set; }
+
+		[Outlet]
 		MonoTouch.UIKit.UIView pnlInfoSmall { get; set; }
 
 		[Outlet]
 		MonoTouch.UIKit.UIView pnlRunningTime { get; set; }
+
+		[Outlet]
+		MonoTouch.UIKit.UILabel pnlStartNewFeeding { get; set; }
 
 		[Outlet]
 		MonoTouch.UIKit.UIView pnlTime { get; set; }
@@ -88,19 +97,14 @@ namespace FeedMeMom
 		
 		void ReleaseDesignerOutlets ()
 		{
-			if (lblRunningInfo != null) {
-				lblRunningInfo.Dispose ();
-				lblRunningInfo = null;
+			if (imgFirstStartArrow != null) {
+				imgFirstStartArrow.Dispose ();
+				imgFirstStartArrow = null;
 			}
 
-			if (lblRunningTime != null) {
-				lblRunningTime.Dispose ();
-				lblRunningTime = null;
-			}
-
-			if (pnlRunningTime != null) {
-				pnlRunningTime.Dispose ();
-				pnlRunningTime = null;
+			if (pnlFirstStart != null) {
+				pnlFirstStart.Dispose ();
+				pnlFirstStart = null;
 			}
 
 			if (btnLeft != null) {
@@ -146,6 +150,16 @@ namespace FeedMeMom
 			if (lblMainTimeInfo != null) {
 				lblMainTimeInfo.Dispose ();
 				lblMainTimeInfo = null;
+			}
+
+			if (lblRunningInfo != null) {
+				lblRunningInfo.Dispose ();
+				lblRunningInfo = null;
+			}
+
+			if (lblRunningTime != null) {
+				lblRunningTime.Dispose ();
+				lblRunningTime = null;
 			}
 
 			if (lblSecondTime != null) {
@@ -201,6 +215,16 @@ namespace FeedMeMom
 			if (pnlInfoSmall != null) {
 				pnlInfoSmall.Dispose ();
 				pnlInfoSmall = null;
+			}
+
+			if (pnlRunningTime != null) {
+				pnlRunningTime.Dispose ();
+				pnlRunningTime = null;
+			}
+
+			if (pnlStartNewFeeding != null) {
+				pnlStartNewFeeding.Dispose ();
+				pnlStartNewFeeding = null;
 			}
 
 			if (pnlTime != null) {

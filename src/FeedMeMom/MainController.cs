@@ -28,19 +28,28 @@ namespace FeedMeMom
 		private PointF _defaultContainerRightCenter;
 		private PointF _defaultContainerLeftCenter;
 		private RectangleF _defaultTimeFrame;
+		private const int _defaultRadius = 4;
 
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();		
+
+			View.AddSubview(pnlFirstStart);
+			pnlFirstStart.Frame = new RectangleF(pnlAgo.Frame.X, pnlAgo.Frame.Y, pnlFirstStart.Frame.Width, pnlFirstStart.Frame.Height);
+
+			pnlFirstStart.Hidden = false;
 			NavigationController.NavigationBarHidden = true;
 			viewHeader.BackgroundColor = UIColorExtensions.Toolbar;
-			btnStartLeft.Layer.CornerRadius = 6;
-			btnStartRight.Layer.CornerRadius = 6;
+			btnStartLeft.Layer.CornerRadius = _defaultRadius;
+			btnStartRight.Layer.CornerRadius = _defaultRadius;
+			pnlStartNewFeeding.Layer.CornerRadius = _defaultRadius;
 			pgbContainerLeft.Layer.CornerRadius = 20;
 			pgbContainerLeft.ClipsToBounds = true;
 			pgbContainerRight.Layer.CornerRadius = 20;
 			pgbContainerRight.ClipsToBounds = true;
 			pnlRunningTime.Hidden = true;
+			btnLeft.Hidden = true;
+			btnRight.Hidden = true;
 
 			var repo = ServiceLocator.Get<Repository>();		
 
@@ -106,7 +115,7 @@ namespace FeedMeMom
 
 				if (_active == null) {
 					StartFeeding(repo, false);
-				} else {
+				} else if (_active.RightStartTime == null) {
 					_stopPair.Start (false);
 					SelectRightLeftButton(false);
 				}
@@ -142,6 +151,10 @@ namespace FeedMeMom
 			// keep it on the top
 			child.Frame = new RectangleF(rect.Left, 0, rect.Size.Width, height);
 
+			if (percent < 1)
+			{
+				sufix = "";
+			}
 			label.Text = String.Format("{0:#}{1}", showPercent ? (int)(100 * percent) : (current / 60), sufix);
 		}
 
@@ -152,8 +165,10 @@ namespace FeedMeMom
 			lblTitle.Text = "Last Feeding";
 
 			lblMainTime.Hidden = false;
+			lblMainTimeInfo.Hidden = false;
 			lblSecondTimeInfo.Hidden = false;
 			pnlInfoSmall.Hidden = false;
+			pnlFirstStart.Hidden = true;
 
 			// main info
 			if (entry.TotalBreastLength != null) {
@@ -186,15 +201,19 @@ namespace FeedMeMom
 		{
 			lblMainTime.Text = "";
 			lblSecondTimeInfo.Text = "";
-			lblSecondTime.Text = "";
 			pnlInfoSmall.Hidden = true;
-			lblMainTimeInfo.Text = "Start on the top";
-			pnlAgo.Hidden = true;
+			pnlAgo.Hidden = false;
+			pnlTime.Hidden = false;
+			lblMainTime.Hidden = true;
+			lblMainTimeInfo.Hidden = false;
 			pnlRunningTime.Hidden = true;
+			pnlStartNewFeeding.Hidden = false;
+			pnlFirstStart.Hidden = false;
 		}
 
 		private void SwitchToInfoMode(Action done = null)
 		{
+			pnlFirstStart.Hidden = true;
 			lblMainTime.Hidden = false;
 			lblMainTimeInfo.Hidden = false;
 			pnlAgo.Hidden = false;
@@ -238,6 +257,7 @@ namespace FeedMeMom
 
 		private void SwitchToFeedingMode(bool left, FeedingEntry entry, Action done = null)
 		{
+			pnlFirstStart.Hidden = true;
 			lblMainTime.Hidden = true;
 			lblMainTimeInfo.Hidden = true;
 			lblSecondTime.Text = "";
@@ -250,7 +270,7 @@ namespace FeedMeMom
 			btnLeft.Hidden = false;
 			btnRight.Hidden = false;
 			pnlAgo.Hidden = true;
-			pnlTime.Layer.CornerRadius = 6;
+			pnlTime.Layer.CornerRadius = _defaultRadius;
 
 			Action startFeeding = () => {
 				pnlAgo.Hidden = true;

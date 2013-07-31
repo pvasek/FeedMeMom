@@ -13,12 +13,12 @@ namespace FeedMeMom.Common
 
 			//CreateCommand("DROP TABLE " + Table<FeedingEntry>().Table.TableName).ExecuteNonQuery();
 			CreateTable<FeedingEntry> ();
-			Insert(new FeedingEntry
-				{ 
-					Date = DateTime.Now.AddHours(-2.43),
-					LeftBreastLengthSeconds = 23*60,
-					RightBreastLengthSeconds = 6*60,					
-				});
+//			Insert(new FeedingEntry
+//				{ 
+//					Date = DateTime.Now.AddHours(-2.43),
+//					LeftBreastLengthSeconds = 23*60,
+//					RightBreastLengthSeconds = 6*60,					
+//				});
 		}
 		
 		public static Repository CreatePersonalDb(string dbName) 
