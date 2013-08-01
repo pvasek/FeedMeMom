@@ -259,10 +259,10 @@
 									<object class="IBUILabel" id="917906184">
 										<reference key="NSNextResponder" ref="604187236"/>
 										<int key="NSvFlags">292</int>
-										<string key="NSFrame">{{-3, 61}, {196, 17}}</string>
+										<string key="NSFrame">{{-3, 61}, {196, 22}}</string>
 										<reference key="NSSuperview" ref="604187236"/>
 										<reference key="NSWindow"/>
-										<reference key="NSNextKeyView" ref="756028090"/>
+										<reference key="NSNextKeyView" ref="263001401"/>
 										<string key="NSReuseIdentifierKey">_NS:9</string>
 										<reference key="IBUIBackgroundColor" ref="818059473"/>
 										<bool key="IBUIOpaque">NO</bool>
@@ -270,7 +270,7 @@
 										<int key="IBUIContentMode">7</int>
 										<bool key="IBUIUserInteractionEnabled">NO</bool>
 										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-										<string key="IBUIText">hours ago</string>
+										<string key="IBUIText">tap to pause</string>
 										<object class="NSColor" key="IBUITextColor">
 											<int key="NSColorSpace">1</int>
 											<bytes key="NSRGB">MC42ODIzNTI5NDEyIDAuMTQxMTc2NDcwNiAwLjM0NTA5ODAzOTIAA</bytes>
@@ -330,10 +330,10 @@
 							<object class="IBUILabel" id="756028090">
 								<reference key="NSNextResponder" ref="842439490"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{93, 32}, {43, 26}}</string>
+								<string key="NSFrame">{{65, 32}, {69, 26}}</string>
 								<reference key="NSSuperview" ref="842439490"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="263001401"/>
+								<reference key="NSNextKeyView" ref="604187236"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<reference key="IBUIBackgroundColor" ref="818059473"/>
 								<bool key="IBUIOpaque">NO</bool>
@@ -387,7 +387,7 @@
 										<string key="NSFrame">{{0, 9}, {40, 21}}</string>
 										<reference key="NSSuperview" ref="563533100"/>
 										<reference key="NSWindow"/>
-										<reference key="NSNextKeyView" ref="604187236"/>
+										<reference key="NSNextKeyView" ref="756028090"/>
 										<string key="NSReuseIdentifierKey">_NS:9</string>
 										<bool key="IBUIOpaque">NO</bool>
 										<bool key="IBUIClipsSubviews">YES</bool>
@@ -396,8 +396,8 @@
 										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 										<string key="IBUIText">20%</string>
 										<object class="NSColor" key="IBUITextColor">
-											<int key="NSColorSpace">1</int>
-											<bytes key="NSRGB">MC45MTc2NDcwNTg4IDAuOTE3NjQ3MDU4OCAwLjkxNzY0NzA1ODgAA</bytes>
+											<int key="NSColorSpace">3</int>
+											<bytes key="NSWhite">MC41NzA2ODMxNjYxAA</bytes>
 										</object>
 										<nil key="IBUIHighlightedColor"/>
 										<int key="IBUIBaselineAdjustment">0</int>
@@ -461,8 +461,8 @@
 										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 										<string key="IBUIText">20%</string>
 										<object class="NSColor" key="IBUITextColor">
-											<int key="NSColorSpace">1</int>
-											<bytes key="NSRGB">MC45MTc2NDcwNTg4IDAuOTE3NjQ3MDU4OCAwLjkxNzY0NzA1ODgAA</bytes>
+											<int key="NSColorSpace">3</int>
+											<bytes key="NSWhite">MC41NwA</bytes>
 										</object>
 										<nil key="IBUIHighlightedColor"/>
 										<int key="IBUIBaselineAdjustment">0</int>
@@ -651,7 +651,7 @@
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 			</object>
 			<object class="IBUIView" id="1003152979">
-				<reference key="NSNextResponder"/>
+				<nil key="NSNextResponder"/>
 				<int key="NSvFlags">292</int>
 				<array class="NSMutableArray" key="NSSubviews">
 					<object class="IBUIView" id="224092181">
@@ -660,7 +660,7 @@
 						<array class="NSMutableArray" key="NSSubviews"/>
 						<string key="NSFrameSize">{320, 161}</string>
 						<reference key="NSSuperview" ref="1003152979"/>
-						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="749186234"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">1</int>
@@ -677,7 +677,7 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{32, 29}, {257, 22}}</string>
 								<reference key="NSSuperview" ref="155445550"/>
-								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView" ref="793384430"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -699,7 +699,7 @@
 						</array>
 						<string key="NSFrame">{{0, 161}, {320, 82}}</string>
 						<reference key="NSSuperview" ref="1003152979"/>
-						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="285670042"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">1</int>
@@ -712,8 +712,7 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{32, 36}, {257, 57}}</string>
 						<reference key="NSSuperview" ref="1003152979"/>
-						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="793384430"/>
+						<reference key="NSNextKeyView" ref="155445550"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">1</int>
@@ -747,8 +746,6 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{32, 101}, {257, 21}}</string>
 						<reference key="NSSuperview" ref="1003152979"/>
-						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="285670042"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -769,19 +766,20 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{3, 95}, {93, 194}}</string>
 						<reference key="NSSuperview" ref="1003152979"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="760673127"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
+						<int key="IBUIContentMode">4</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
+						<object class="IBUIAccessibilityConfiguration" key="IBUIAccessibilityConfiguration">
+							<integer value="260" key="IBUIAccessibilityTraits"/>
+						</object>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					</object>
 				</array>
 				<string key="NSFrameSize">{320, 289}</string>
-				<reference key="NSSuperview"/>
-				<reference key="NSWindow"/>
-				<reference key="NSNextKeyView" ref="749186234"/>
+				<reference key="NSNextKeyView" ref="224092181"/>
 				<string key="NSReuseIdentifierKey">_NS:9</string>
-				<reference key="IBUIBackgroundColor" ref="818059473"/>
+				<reference key="IBUIBackgroundColor" ref="20539279"/>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 			</object>
 		</array>
@@ -813,27 +811,11 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">lblSecondTime</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="756028090"/>
-					</object>
-					<int key="connectionID">29</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">lblSecondTimeInfo</string>
 						<reference key="source" ref="372490531"/>
 						<reference key="destination" ref="263001401"/>
 					</object>
 					<int key="connectionID">30</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">pnlInfoSmall</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="842439490"/>
-					</object>
-					<int key="connectionID">33</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
@@ -858,14 +840,6 @@
 						<reference key="destination" ref="556017409"/>
 					</object>
 					<int key="connectionID">40</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">viewHeader</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="574316542"/>
-					</object>
-					<int key="connectionID">41</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
@@ -1003,6 +977,22 @@
 					</object>
 					<int key="connectionID">74</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">lblSecondTime</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="756028090"/>
+					</object>
+					<int key="connectionID">29</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">pnlToolbar</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="574316542"/>
+					</object>
+					<int key="connectionID">95</int>
+				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<array key="orderedObjects">
@@ -1054,24 +1044,20 @@
 						<int key="objectID">21</int>
 						<reference key="object" ref="842439490"/>
 						<array class="NSMutableArray" key="children">
-							<reference ref="756028090"/>
 							<reference ref="563533100"/>
 							<reference ref="263001401"/>
 							<reference ref="934376458"/>
 							<reference ref="604187236"/>
+							<reference ref="756028090"/>
 						</array>
 						<reference key="parent" ref="191373211"/>
-						<string key="objectName">pnlAgo</string>
+						<string key="objectName">pnlTime</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">20</int>
 						<reference key="object" ref="263001401"/>
 						<reference key="parent" ref="842439490"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">22</int>
-						<reference key="object" ref="756028090"/>
-						<reference key="parent" ref="842439490"/>
+						<string key="objectName">lblSecondTimeInfo</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">34</int>
@@ -1082,6 +1068,7 @@
 							<reference ref="698374406"/>
 						</array>
 						<reference key="parent" ref="191373211"/>
+						<string key="objectName">pnlToolbar</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">36</int>
@@ -1111,7 +1098,7 @@
 							<reference ref="403190566"/>
 						</array>
 						<reference key="parent" ref="191373211"/>
-						<string key="objectName">pnlMainTime</string>
+						<string key="objectName">pnlAgo</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">15</int>
@@ -1180,16 +1167,19 @@
 							<reference ref="917906184"/>
 						</array>
 						<reference key="parent" ref="842439490"/>
+						<string key="objectName">pnlRunningTime</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">63</int>
 						<reference key="object" ref="917906184"/>
 						<reference key="parent" ref="604187236"/>
+						<string key="objectName">lblRunningInfo</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">62</int>
 						<reference key="object" ref="19366884"/>
 						<reference key="parent" ref="604187236"/>
+						<string key="objectName">lblRunningTime</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">69</int>
@@ -1240,6 +1230,12 @@
 						<reference key="object" ref="285670042"/>
 						<reference key="parent" ref="155445550"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">22</int>
+						<reference key="object" ref="756028090"/>
+						<reference key="parent" ref="842439490"/>
+						<string key="objectName">lblSecondTime</string>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -1289,7 +1285,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">94</int>
+			<int key="maxID">95</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1320,10 +1316,10 @@
 						<string key="pgbValueRight">UIView</string>
 						<string key="pnlAgo">UIView</string>
 						<string key="pnlFirstStart">UIView</string>
-						<string key="pnlInfoSmall">UIView</string>
 						<string key="pnlRunningTime">UIView</string>
 						<string key="pnlStartNewFeeding">UILabel</string>
 						<string key="pnlTime">UIView</string>
+						<string key="pnlToolbar">UIView</string>
 						<string key="viewHeader">UIView</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
@@ -1419,10 +1415,6 @@
 							<string key="name">pnlFirstStart</string>
 							<string key="candidateClassName">UIView</string>
 						</object>
-						<object class="IBToOneOutletInfo" key="pnlInfoSmall">
-							<string key="name">pnlInfoSmall</string>
-							<string key="candidateClassName">UIView</string>
-						</object>
 						<object class="IBToOneOutletInfo" key="pnlRunningTime">
 							<string key="name">pnlRunningTime</string>
 							<string key="candidateClassName">UIView</string>
@@ -1433,6 +1425,10 @@
 						</object>
 						<object class="IBToOneOutletInfo" key="pnlTime">
 							<string key="name">pnlTime</string>
+							<string key="candidateClassName">UIView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="pnlToolbar">
+							<string key="name">pnlToolbar</string>
 							<string key="candidateClassName">UIView</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="viewHeader">

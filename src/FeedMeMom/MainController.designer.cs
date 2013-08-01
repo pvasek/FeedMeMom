@@ -81,9 +81,6 @@ namespace FeedMeMom
 		MonoTouch.UIKit.UIView pnlFirstStart { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIView pnlInfoSmall { get; set; }
-
-		[Outlet]
 		MonoTouch.UIKit.UIView pnlRunningTime { get; set; }
 
 		[Outlet]
@@ -93,20 +90,10 @@ namespace FeedMeMom
 		MonoTouch.UIKit.UIView pnlTime { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UIView viewHeader { get; set; }
+		MonoTouch.UIKit.UIView pnlToolbar { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
-			if (imgFirstStartArrow != null) {
-				imgFirstStartArrow.Dispose ();
-				imgFirstStartArrow = null;
-			}
-
-			if (pnlFirstStart != null) {
-				pnlFirstStart.Dispose ();
-				pnlFirstStart = null;
-			}
-
 			if (btnLeft != null) {
 				btnLeft.Dispose ();
 				btnLeft = null;
@@ -125,6 +112,11 @@ namespace FeedMeMom
 			if (btnStartRight != null) {
 				btnStartRight.Dispose ();
 				btnStartRight = null;
+			}
+
+			if (imgFirstStartArrow != null) {
+				imgFirstStartArrow.Dispose ();
+				imgFirstStartArrow = null;
 			}
 
 			if (indicatorSecondLeft != null) {
@@ -212,9 +204,9 @@ namespace FeedMeMom
 				pnlAgo = null;
 			}
 
-			if (pnlInfoSmall != null) {
-				pnlInfoSmall.Dispose ();
-				pnlInfoSmall = null;
+			if (pnlFirstStart != null) {
+				pnlFirstStart.Dispose ();
+				pnlFirstStart = null;
 			}
 
 			if (pnlRunningTime != null) {
@@ -232,9 +224,9 @@ namespace FeedMeMom
 				pnlTime = null;
 			}
 
-			if (viewHeader != null) {
-				viewHeader.Dispose ();
-				viewHeader = null;
+			if (pnlToolbar != null) {
+				pnlToolbar.Dispose ();
+				pnlToolbar = null;
 			}
 		}
 	}

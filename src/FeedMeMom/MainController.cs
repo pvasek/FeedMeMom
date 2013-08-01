@@ -30,16 +30,45 @@ namespace FeedMeMom
 		private RectangleF _defaultTimeFrame;
 		private const int _defaultRadius = 4;
 
+		public Colors Colors { get; set; }
+
+		public void ApplyColors(Colors colors)
+		{
+			pnlToolbar.BackgroundColor = colors.Toolbar;
+			pnlAgo.BackgroundColor = colors.Ago;
+			pnlTime.BackgroundColor = colors.Time;
+			pnlRunningTime.BackgroundColor = colors.Time;	
+			View.BackgroundColor = colors.Background;
+			lblTitle.TextColor = colors.ToolbarText;
+			lblMainTime.TextColor = colors.AgoText;
+			lblMainTimeInfo.TextColor = colors.AgoInfoText;
+			lblSecondTime.TextColor = colors.TimeText;
+			lblSecondTimeInfo.TextColor = colors.TimeInfoText;
+			lblButtonsHeader.TextColor = colors.ButtonInfoText;
+			lblRunningTime.TextColor = colors.TimeText;
+			lblRunningInfo.TextColor = colors.TimeInfoText;
+			btnLeft.SetTitleColor(colors.ToolbarText, UIControlState.Normal);
+			btnRight.SetTitleColor(colors.ToolbarText, UIControlState.Normal);
+			btnStartLeft.SetTitleColor(colors.ButtonText, UIControlState.Normal);
+			btnStartRight.SetTitleColor(colors.ButtonText, UIControlState.Normal);
+		}
+
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();		
+
+			var lightColors = new LightColors();
+			var darkColors = new DarkColors();
+			var light = true;
+
+			Colors = lightColors;
+			ApplyColors(Colors);
 
 			View.AddSubview(pnlFirstStart);
 			pnlFirstStart.Frame = new RectangleF(pnlAgo.Frame.X, pnlAgo.Frame.Y, pnlFirstStart.Frame.Width, pnlFirstStart.Frame.Height);
 
 			pnlFirstStart.Hidden = false;
 			NavigationController.NavigationBarHidden = true;
-			viewHeader.BackgroundColor = UIColorExtensions.Toolbar;
 			btnStartLeft.Layer.CornerRadius = _defaultRadius;
 			btnStartRight.Layer.CornerRadius = _defaultRadius;
 			pnlStartNewFeeding.Layer.CornerRadius = _defaultRadius;
@@ -50,6 +79,25 @@ namespace FeedMeMom
 			pnlRunningTime.Hidden = true;
 			btnLeft.Hidden = true;
 			btnRight.Hidden = true;
+			imgFirstStartArrow.Image = UIImage.FromBundle("arrow");
+
+			var titleRecognizer = new UITapGestureRecognizer((e) => {
+				if (light) 
+				{
+					Colors = darkColors;
+					ApplyColors(Colors);
+				} 
+				else 
+				{
+					Colors = lightColors;
+					ApplyColors(Colors);
+				}
+				light = !light;
+				ReloadData();
+			});
+
+			lblTitle.UserInteractionEnabled = true;
+			lblTitle.AddGestureRecognizer(titleRecognizer);
 
 			var repo = ServiceLocator.Get<Repository>();		
 
@@ -62,18 +110,20 @@ namespace FeedMeMom
 				if (_active != null) {
 					if (_stopPair.Toggle())
 					{
-						lblSecondTime.TextColor = UIColor.Black;
-						lblSecondTimeInfo.Text = "Tap to Pause";
+						lblRunningTime.TextColor = Colors.RunningTimeText;
+						lblRunningInfo.TextColor = Colors.RunningTimeText;
+						lblRunningInfo.Text = Resources.TapToPause;
 					} 
 					else 
 					{
-						lblSecondTime.TextColor = UIColor.Gray;
-						lblSecondTimeInfo.Text = "Tap to Continue";
+						lblRunningTime.TextColor = Colors.PausedTimeText;
+						lblRunningInfo.TextColor = Colors.PausedTimeText;
+						lblRunningInfo.Text = Resources.TapToContinue;
 					}
 				}
 			});
-			lblSecondTime.UserInteractionEnabled = true;
-			lblSecondTime.AddGestureRecognizer(touchRecondizerSecondaryTime);
+			lblRunningTime.UserInteractionEnabled = true;
+			lblRunningTime.AddGestureRecognizer(touchRecondizerSecondaryTime);
 
 
 			btnRight.TouchUpInside += (sender, e) => {
@@ -151,7 +201,7 @@ namespace FeedMeMom
 			// keep it on the top
 			child.Frame = new RectangleF(rect.Left, 0, rect.Size.Width, height);
 
-			if (percent < 1)
+			if (percent < 0.001)
 			{
 				sufix = "";
 			}
@@ -162,18 +212,18 @@ namespace FeedMeMom
 		{
 			btnLeft.Hidden = true;
 			btnRight.Hidden = true;
-			lblTitle.Text = "Last Feeding";
+			lblTitle.Text = Resources.LastFeeding;
 
 			lblMainTime.Hidden = false;
 			lblMainTimeInfo.Hidden = false;
 			lblSecondTimeInfo.Hidden = false;
-			pnlInfoSmall.Hidden = false;
+			pnlAgo.Hidden = false;
 			pnlFirstStart.Hidden = true;
 
 			// main info
 			if (entry.TotalBreastLength != null) {
 				if ((DateTime.Now - entry.Date) < TimeSpan.FromMinutes (5)) {
-					lblMainTime.Text = "now";
+					lblMainTime.Text = Resources.Now;
 					lblMainTimeInfo.Text = "";
 				} else {
 					var touple = entry.Date.AsAgoTextTuple();
@@ -184,7 +234,7 @@ namespace FeedMeMom
 				lblMainTime.Text = "";
 				lblMainTimeInfo.Text = "";
 			}
-			lblSecondTimeInfo.Text = "minutes";
+			lblSecondTimeInfo.Text = Resources.Minutes;
 
 			UpdateHieghtInPercent(entry.TotalBreastLengthSeconds, entry.LeftBreastLengthSeconds, pgbContainerLeft, pgbValueLeft, pgbTextLeft, true);
 			UpdateHieghtInPercent(entry.TotalBreastLengthSeconds, entry.RightBreastLengthSeconds, pgbContainerRight, pgbValueRight, pgbTextRight, true);
@@ -194,14 +244,13 @@ namespace FeedMeMom
 			if (entry.TotalBreastLength == null) {
 				//TODO: support for more then 60 m inutes
 			}
-			lblSecondTime.Text = entry.TotalBreastLength == null ? "" : String.Format("{0:#}", entry.TotalBreastLength.Value.TotalMinutes); // (@"mm\:ss");
+			lblSecondTime.Text = entry.TotalBreastLength == null ? "" : String.Format("{0:0}", entry.TotalBreastLength.Value.TotalMinutes); // (@"mm\:ss");
 		}
 
 		private void EmptyView()
 		{
 			lblMainTime.Text = "";
 			lblSecondTimeInfo.Text = "";
-			pnlInfoSmall.Hidden = true;
 			pnlAgo.Hidden = false;
 			pnlTime.Hidden = false;
 			lblMainTime.Hidden = true;
@@ -216,10 +265,11 @@ namespace FeedMeMom
 			pnlFirstStart.Hidden = true;
 			lblMainTime.Hidden = false;
 			lblMainTimeInfo.Hidden = false;
+			lblSecondTimeInfo.Hidden = false;
 			pnlAgo.Hidden = false;
 			lblMainTime.Text = "";
 			lblMainTimeInfo.Text = "";
-			lblButtonsHeader.Text = "start a new feeding";
+			lblButtonsHeader.Text = Resources.StartNewFeeding;
 			pnlRunningTime.Hidden = true;
 
 
@@ -260,10 +310,11 @@ namespace FeedMeMom
 			pnlFirstStart.Hidden = true;
 			lblMainTime.Hidden = true;
 			lblMainTimeInfo.Hidden = true;
+			lblSecondTimeInfo.Hidden = true;
 			lblSecondTime.Text = "";
-			lblTitle.Text = "New Feeding";
-			lblRunningInfo.Text = "Tap to Pause";
-			lblButtonsHeader.Text = "switch sides";
+			lblTitle.Text = Resources.NewFeeding;
+			lblRunningInfo.Text = Resources.TapToPause;
+			lblButtonsHeader.Text = Resources.SwitchSides;
 
 			btnLeft.Alpha = 0;
 			btnRight.Alpha = 0;
@@ -274,8 +325,6 @@ namespace FeedMeMom
 
 			Action startFeeding = () => {
 				pnlAgo.Hidden = true;
-				lblSecondTimeInfo.Hidden = false;
-				pnlInfoSmall.Hidden = false;
 				_active = entry;
 				SelectRightLeftButton(left);
 				_stopPair = new TimeStopPair (_active);
@@ -351,8 +400,10 @@ namespace FeedMeMom
 					const int min30 = 30*60;
 					var rightLength = (int)_stopPair.Right.GetTotalLength().TotalSeconds;
 					var leftLength = (int)_stopPair.Left.GetTotalLength().TotalSeconds;
-					UpdateHieghtInPercent (min30, rightLength > min30 ? min30 : rightLength, pgbContainerLeft, pgbValueLeft, pgbTextLeft, false);
-					UpdateHieghtInPercent (min30, leftLength > min30 ? min30 : leftLength, pgbContainerRight, pgbValueRight, pgbTextRight, false);
+					var percentRight100 = rightLength < min30 ? min30 : rightLength;
+					var percentLeft100 = leftLength < min30 ? min30 : leftLength;
+					UpdateHieghtInPercent (percentRight100, rightLength, pgbContainerRight, pgbValueRight, pgbTextRight, false);
+					UpdateHieghtInPercent (percentLeft100, leftLength, pgbContainerLeft, pgbValueLeft, pgbTextLeft, false);
 				}
 			});
 		}
@@ -366,15 +417,15 @@ namespace FeedMeMom
 		private void SelectRightLeftButton(int left)
 		{
 			if (left == 0) {
-				btnStartLeft.BackgroundColor = UIColorExtensions.ButtonActive;
-				btnStartRight.BackgroundColor = UIColorExtensions.ButtonActive;
+				btnStartLeft.BackgroundColor = Colors.ButtonActive;
+				btnStartRight.BackgroundColor = Colors.ButtonActive;
 			}
 			else if (left > 0) {
-				btnStartLeft.BackgroundColor = UIColorExtensions.ButtonActive;
-				btnStartRight.BackgroundColor = UIColorExtensions.ButtonInactive;
+				btnStartLeft.BackgroundColor = Colors.ButtonActive;
+				btnStartRight.BackgroundColor = Colors.ButtonInactive;
 			} else {
-				btnStartLeft.BackgroundColor = UIColorExtensions.ButtonInactive;
-				btnStartRight.BackgroundColor = UIColorExtensions.ButtonActive;
+				btnStartLeft.BackgroundColor = Colors.ButtonInactive;
+				btnStartRight.BackgroundColor = Colors.ButtonActive;
 			}
 		}
 

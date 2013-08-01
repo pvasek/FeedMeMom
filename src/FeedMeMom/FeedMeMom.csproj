@@ -103,7 +103,8 @@
     </Compile>
     <Compile Include="Services\AppleSettings.cs" />
     <Compile Include="Services\SynchronizationService.cs" />
-    <Compile Include="Helpers\UIColorExtensions.cs" />
+    <Compile Include="Resources.cs" />
+    <Compile Include="Helpers\Colors.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -120,6 +121,8 @@
     <BundleResource Include="Resources\btn_primary.png" />
     <BundleResource Include="Resources\Icon.png" />
     <BundleResource Include="Resources\Icon%402x.png" />
+    <BundleResource Include="Resources\arrow.png" />
+    <BundleResource Include="Resources\arrow%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FeedMeMom.Common\FeedMeMom.Common.csproj">
