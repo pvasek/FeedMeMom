@@ -9,6 +9,7 @@ namespace FeedMeMom
 	{
 		private UIView _mainView;
 		private UIView _sideView;
+		private UIView _touchCover;
 
 		private SideMenuHub(UIView mainView, UIView sideView)
 		{
@@ -32,6 +33,15 @@ namespace FeedMeMom
 
 			var topWindow = app.Windows.First();
 			topWindow.InsertSubview(_sideView, 0);
+
+			_touchCover = new UIView();
+			_touchCover.Hidden = true;
+			_touchCover.Frame = _mainView.Frame;
+			_touchCover.UserInteractionEnabled = true;
+			_touchCover.AddGestureRecognizer(new UITapGestureRecognizer((e) => {
+				Toggle();
+			}));
+			topWindow.AddSubview(_touchCover);
 		}
 
 		private static UIView GetTopView(UIView view)
@@ -61,6 +71,8 @@ namespace FeedMeMom
 					var frame = topView.Frame;
 					topView.Frame = new RectangleF(frame.Width - 80, 0, frame.Width, frame.Height);
 				}, () => {
+					_touchCover.Frame = topView.Frame;
+					_touchCover.Hidden = false;
 				});
 
 			}
@@ -71,6 +83,7 @@ namespace FeedMeMom
 					topView.Frame = new RectangleF(0, 0, frame.Width, frame.Height);
 				}, () => {
 					_sideView.Hidden = true;
+					_touchCover.Hidden = true;
 				});
 			}
 		}	
