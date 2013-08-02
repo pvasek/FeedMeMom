@@ -29,10 +29,11 @@ namespace FeedMeMom
 		private PointF _defaultContainerLeftCenter;
 		private RectangleF _defaultTimeFrame;
 		private const int _defaultRadius = 4;
-		private UIViewController _sideMenu;
+		private SideMenu _sideMenu;
 
-		public void ApplyColors(Colors colors)
+		public void ApplyColors()
 		{
+			var colors = Colors.Active;
 			pnlToolbar.BackgroundColor = colors.Toolbar;
 			pnlAgo.BackgroundColor = colors.Ago;
 			pnlTime.BackgroundColor = colors.Time;
@@ -51,7 +52,7 @@ namespace FeedMeMom
 			btnStartLeft.SetTitleColor(colors.ButtonText, UIControlState.Normal);
 			btnStartRight.SetTitleColor(colors.ButtonText, UIControlState.Normal);
 
-			btnSideMenu.Layer.Opacity = colors.IsDark ? 0.5f : 1f;
+			btnSideMenu.Layer.Opacity = Colors.IsDark ? 0.5f : 1f;
 
 		}
 
@@ -71,17 +72,16 @@ namespace FeedMeMom
 		{
 			base.ViewDidLoad ();		
 
-			var lightColors = new LightColors();
-			var darkColors = new DarkColors();
-			var light = true;
-
-			Colors.Active = lightColors;
-			ApplyColors(Colors.Active);
+			ApplyColors();
+			Colors.ColorsChanged += (sender, e) => {
+				ApplyColors();
+				ReloadData();
+			};
 
 			View.AddSubview(pnlFirstStart);
 			pnlFirstStart.Frame = new RectangleF(pnlAgo.Frame.X, pnlAgo.Frame.Y, pnlFirstStart.Frame.Width, pnlFirstStart.Frame.Height);
 
-			CreateSideMenu();
+			_sideMenu = SideMenu.CreateAndHookup(View);
 
 			pnlFirstStart.Hidden = false;
 			NavigationController.NavigationBarHidden = true;
@@ -98,28 +98,6 @@ namespace FeedMeMom
 			imgFirstStartArrow.Image = UIImage.FromBundle("arrow");
 
 			StyleSideMenuButton();
-
-			View.Layer.ShadowColor = UIColor.Black.CGColor;
-			View.Layer.ShadowOpacity = 0.7f;
-			View.Layer.ShadowRadius = 9;
-
-			var titleRecognizer = new UITapGestureRecognizer((e) => {
-				if (light) 
-				{
-					Colors.Active = darkColors;
-					ApplyColors(Colors.Active);
-				} 
-				else 
-				{
-					Colors.Active = lightColors;
-					ApplyColors(Colors.Active);
-				}
-				light = !light;
-				ReloadData();
-			});
-
-			lblTitle.UserInteractionEnabled = true;
-			lblTitle.AddGestureRecognizer(titleRecognizer);
 
 			var repo = ServiceLocator.Get<Repository>();		
 
@@ -197,46 +175,9 @@ namespace FeedMeMom
 
 
 			btnSideMenu.TouchUpInside += (sender, e) => {
-				ShowSideMenu();
+				_sideMenu.Toggle();
 			};
 		}	
-
-
-		private void ShowSideMenu()
-		{
-			if (_sideMenu.View.Hidden) 
-			{
-				_sideMenu.View.Hidden = false;
-
-				UIView.Animate(0.3, 0, UIViewAnimationOptions.CurveEaseInOut, () => {
-					View.Frame = new RectangleF(View.Frame.Width - 80, 0, View.Frame.Width, View.Frame.Height);
-					//_sideMenu.View.Frame = new RectangleF(0, top, View.Frame.Width - 80, View.Frame.Height);
-				}, () => {});
-
-			}
-			else
-			{
-				UIView.Animate(0.3, 0, UIViewAnimationOptions.CurveEaseInOut, () => {
-					View.Frame = new RectangleF(0, 0, View.Frame.Width, View.Frame.Height);
-					//_sideMenu.View.Frame = new RectangleF(View.Frame.Width * -1, top, View.Frame.Width, View.Frame.Height);
-				}, () => {
-					_sideMenu.View.Hidden = true;
-				});
-			}
-		}
-
-		private void CreateSideMenu()
-		{
-			var app = UIApplication.SharedApplication;
-
-			_sideMenu = new SideMenu();
-			_sideMenu.View.Hidden = true;
-			app.Windows.First().InsertSubview(_sideMenu.View, 0);
-
-
-			var top = app.StatusBarHidden ? 0 : app.StatusBarFrame.Height;
-			_sideMenu.View.Frame = new RectangleF(0, top, View.Frame.Width - 80, View.Frame.Height);
-		}
 
 		public override void ViewWillAppear (bool animated)
 		{

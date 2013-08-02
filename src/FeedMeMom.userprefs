@@ -2,10 +2,9 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|iPhone" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.Pavel Vašek’s iPhone" />
   <MonoDevelop.Ide.Workbench ActiveDocument="FeedMeMom/SideMenu.cs">
     <Files>
-      <File FileName="FeedMeMom/MainController.cs" Line="502" Column="50" />
-      <File FileName="FeedMeMom/Helpers/Colors.cs" Line="98" Column="50" />
-      <File FileName="FeedMeMom/SideMenu.cs" Line="17" Column="21" />
-      <File FileName="FeedMeMom/Helpers/Fonts.cs" Line="10" Column="50" />
+      <File FileName="FeedMeMom/Helpers/Colors.cs" Line="1" Column="1" />
+      <File FileName="FeedMeMom/SideMenu.cs" Line="26" Column="56" />
+      <File FileName="FeedMeMom/Helpers/Fonts.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">

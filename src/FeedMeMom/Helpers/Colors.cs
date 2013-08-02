@@ -40,12 +40,52 @@ namespace FeedMeMom
 		public UIColor TimeInfoText { get; set; }
 		public UIColor ButtonInfoText { get; set; }
 		public UIColor SideMenuRow { get; set; }
+		public UIColor SideMenuRowSelected { get; set; }
 		public UIColor SideMenuRowText { get; set; }
 		public UIColor SideMenuRowBorder { get; set; }
 
-		public bool IsDark { get; set; }
+		private static Colors _dayMode = new LightColors();
+		private static Colors _nightMode = new DarkColors();
+		private static Colors _active;
 
-		public static Colors Active { get; set; }
+		static Colors() 
+		{
+			Active = _dayMode;
+		}
+
+
+		public static Colors Active 
+		{ 
+			get { return _active; }
+			set 
+			{
+				var changed = value != _active;
+				_active = value;
+				if (changed)
+				{
+					if (ColorsChanged != null)
+					{
+						ColorsChanged(null, EventArgs.Empty);
+					}
+				}
+			}
+		}
+
+		public static bool IsDark { get { return Active == _nightMode; } }
+
+		public static void ToggleDayNightMode()
+		{
+			if (Active == _dayMode)
+			{
+				Active = _nightMode;
+			} 
+			else
+			{
+				Active = _dayMode;
+			}
+		}
+
+		public static event EventHandler ColorsChanged;
 	}
 
 	public class LightColors: Colors
@@ -70,13 +110,13 @@ namespace FeedMeMom
 			SideMenuRow = ColorUtil.FromHex("#560928");
 			SideMenuRowText = UIColor.White;
 			SideMenuRowBorder = ColorUtil.FromHex("#770c37");
+			SideMenuRowSelected = SideMenuRowBorder;
 		}
 	}
 
 	public class DarkColors: Colors 
 	{
 		public DarkColors() {
-			IsDark = true;
 			ButtonActive = ColorUtil.FromHex("#4B4B4B");//FromHex ("50AEFF");
 			ButtonInactive = ColorUtil.FromHex ("#2F2F2F");
 			Toolbar = ColorUtil.FromHex("#232323");
@@ -96,6 +136,7 @@ namespace FeedMeMom
 			SideMenuRow = ColorUtil.FromHex("#A8A8A8");
 			SideMenuRowText = ColorUtil.FromHex("#444444");
 			SideMenuRowBorder = ColorUtil.FromHex("#999999");
+			SideMenuRowSelected = SideMenuRowBorder;
 		}
 	}
 }

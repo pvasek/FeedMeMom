@@ -7,7 +7,7 @@ namespace FeedMeMom
 	{
 		static Fonts()
 		{
-			SideMenuFont = UIFont.FromName("Helvetica Neue", 14);
+			SideMenuFont = UIFont.FromName("Helvetica Neue", 16);
 		}
 
 		public static UIFont SideMenuFont { get; set; }
