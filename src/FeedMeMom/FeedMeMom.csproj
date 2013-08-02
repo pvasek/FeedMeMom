@@ -105,10 +105,16 @@
     <Compile Include="Services\SynchronizationService.cs" />
     <Compile Include="Resources.cs" />
     <Compile Include="Helpers\Colors.cs" />
+    <Compile Include="SideMenu.cs" />
+    <Compile Include="SideMenu.designer.cs">
+      <DependentUpon>SideMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\Fonts.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <InterfaceDefinition Include="MainController.xib" />
+    <InterfaceDefinition Include="SideMenu.xib" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\background.png" />
@@ -123,6 +129,8 @@
     <BundleResource Include="Resources\Icon%402x.png" />
     <BundleResource Include="Resources\arrow.png" />
     <BundleResource Include="Resources\arrow%402x.png" />
+    <BundleResource Include="Resources\hamburger_icon.png" />
+    <BundleResource Include="Resources\hamburger_icon%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FeedMeMom.Common\FeedMeMom.Common.csproj">

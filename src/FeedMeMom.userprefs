@@ -1,21 +1,21 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|iPhoneSimulator" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhone.6.1" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="FeedMeMom/MainController.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|iPhone" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.Pavel Vašek’s iPhone" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="FeedMeMom/SideMenu.cs">
     <Files>
-      <File FileName="FeedMeMom/MainController.cs" Line="118" Column="38" />
-      <File FileName="FeedMeMom.Common/Services/TimeStopPair.cs" Line="1" Column="1" />
-      <File FileName="FeedMeMom.Common/Services/Repository.cs" Line="19" Column="40" />
-      <File FileName="FeedMeMom/Helpers/UIColorExtensions.cs" Line="1" Column="1" />
+      <File FileName="FeedMeMom/MainController.cs" Line="502" Column="50" />
+      <File FileName="FeedMeMom/Helpers/Colors.cs" Line="98" Column="50" />
+      <File FileName="FeedMeMom/SideMenu.cs" Line="17" Column="21" />
+      <File FileName="FeedMeMom/Helpers/Fonts.cs" Line="10" Column="50" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="FeedMeMom" expanded="True">
-            <Node name="MainController.xib" selected="True" />
+            <Node name="Helpers" expanded="True" />
+            <Node name="SideMenu.cs" selected="True" />
           </Node>
           <Node name="FeedMeMom.Common" expanded="True">
             <Node name="Services" expanded="True" />
-            <Node name="Sqlite" expanded="True" />
           </Node>
         </State>
       </Pad>
@@ -24,7 +24,12 @@
       </Pad>
       <Pad Id="MonoDevelop.Debugger.WatchPad">
         <State>
-          <Value>last.LeftStartTime</Value>
+          <Value>View.Window</Value>
+          <Value>this.ParentViewController.View</Value>
+          <Value>this.ParentViewController.View.Window</Value>
+          <Value>View.Frame</Value>
+          <Value>View.Superview</Value>
+          <Value>View</Value>
         </State>
       </Pad>
       <Pad Id="MonoDevelop.NUnit.TestPad">

@@ -18,6 +18,9 @@ namespace FeedMeMom
 		MonoTouch.UIKit.UIButton btnRight { get; set; }
 
 		[Outlet]
+		MonoTouch.UIKit.UIButton btnSideMenu { get; set; }
+
+		[Outlet]
 		MonoTouch.UIKit.UIButton btnStartLeft { get; set; }
 
 		[Outlet]
@@ -94,6 +97,11 @@ namespace FeedMeMom
 		
 		void ReleaseDesignerOutlets ()
 		{
+			if (btnSideMenu != null) {
+				btnSideMenu.Dispose ();
+				btnSideMenu = null;
+			}
+
 			if (btnLeft != null) {
 				btnLeft.Dispose ();
 				btnLeft = null;

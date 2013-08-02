@@ -29,8 +29,7 @@ namespace FeedMeMom
 		private PointF _defaultContainerLeftCenter;
 		private RectangleF _defaultTimeFrame;
 		private const int _defaultRadius = 4;
-
-		public Colors Colors { get; set; }
+		private UIViewController _sideMenu;
 
 		public void ApplyColors(Colors colors)
 		{
@@ -51,6 +50,21 @@ namespace FeedMeMom
 			btnRight.SetTitleColor(colors.ToolbarText, UIControlState.Normal);
 			btnStartLeft.SetTitleColor(colors.ButtonText, UIControlState.Normal);
 			btnStartRight.SetTitleColor(colors.ButtonText, UIControlState.Normal);
+
+			btnSideMenu.Layer.Opacity = colors.IsDark ? 0.5f : 1f;
+
+		}
+
+		private void StyleSideMenuButton()
+		{
+			var hamburgerImage = UIImage.FromBundle("hamburger_icon");
+			btnSideMenu.SetImage(hamburgerImage, UIControlState.Normal);
+			btnSideMenu.SetImage(hamburgerImage, UIControlState.Highlighted);
+			btnSideMenu.SetImage(hamburgerImage, UIControlState.Selected);
+			btnSideMenu.SetTitle("", UIControlState.Normal);
+			btnSideMenu.SetTitle("", UIControlState.Selected);
+			btnSideMenu.SetTitle("", UIControlState.Highlighted);
+
 		}
 
 		public override void ViewDidLoad ()
@@ -61,11 +75,13 @@ namespace FeedMeMom
 			var darkColors = new DarkColors();
 			var light = true;
 
-			Colors = lightColors;
-			ApplyColors(Colors);
+			Colors.Active = lightColors;
+			ApplyColors(Colors.Active);
 
 			View.AddSubview(pnlFirstStart);
 			pnlFirstStart.Frame = new RectangleF(pnlAgo.Frame.X, pnlAgo.Frame.Y, pnlFirstStart.Frame.Width, pnlFirstStart.Frame.Height);
+
+			CreateSideMenu();
 
 			pnlFirstStart.Hidden = false;
 			NavigationController.NavigationBarHidden = true;
@@ -81,16 +97,22 @@ namespace FeedMeMom
 			btnRight.Hidden = true;
 			imgFirstStartArrow.Image = UIImage.FromBundle("arrow");
 
+			StyleSideMenuButton();
+
+			View.Layer.ShadowColor = UIColor.Black.CGColor;
+			View.Layer.ShadowOpacity = 0.7f;
+			View.Layer.ShadowRadius = 9;
+
 			var titleRecognizer = new UITapGestureRecognizer((e) => {
 				if (light) 
 				{
-					Colors = darkColors;
-					ApplyColors(Colors);
+					Colors.Active = darkColors;
+					ApplyColors(Colors.Active);
 				} 
 				else 
 				{
-					Colors = lightColors;
-					ApplyColors(Colors);
+					Colors.Active = lightColors;
+					ApplyColors(Colors.Active);
 				}
 				light = !light;
 				ReloadData();
@@ -110,14 +132,14 @@ namespace FeedMeMom
 				if (_active != null) {
 					if (_stopPair.Toggle())
 					{
-						lblRunningTime.TextColor = Colors.RunningTimeText;
-						lblRunningInfo.TextColor = Colors.RunningTimeText;
+						lblRunningTime.TextColor = Colors.Active.RunningTimeText;
+						lblRunningInfo.TextColor = Colors.Active.RunningTimeText;
 						lblRunningInfo.Text = Resources.TapToPause;
 					} 
 					else 
 					{
-						lblRunningTime.TextColor = Colors.PausedTimeText;
-						lblRunningInfo.TextColor = Colors.PausedTimeText;
+						lblRunningTime.TextColor = Colors.Active.PausedTimeText;
+						lblRunningInfo.TextColor = Colors.Active.PausedTimeText;
 						lblRunningInfo.Text = Resources.TapToContinue;
 					}
 				}
@@ -148,9 +170,11 @@ namespace FeedMeMom
 				}
 			};
 
+
+
 			_timer = new Timer (TimerElapsed, null, 200, 200);
 
-			btnStartLeft.TouchUpInside += (object sender, EventArgs e) => {
+			btnStartLeft.TouchUpInside += (sender, e) => {
 
 				if (_active == null) {
 					StartFeeding(repo, true);
@@ -161,7 +185,7 @@ namespace FeedMeMom
 
 			};
 
-			btnStartRight.TouchUpInside += (object sender, EventArgs e) => {
+			btnStartRight.TouchUpInside += (sender, e) => {
 
 				if (_active == null) {
 					StartFeeding(repo, false);
@@ -170,7 +194,49 @@ namespace FeedMeMom
 					SelectRightLeftButton(false);
 				}
 			};
+
+
+			btnSideMenu.TouchUpInside += (sender, e) => {
+				ShowSideMenu();
+			};
 		}	
+
+
+		private void ShowSideMenu()
+		{
+			if (_sideMenu.View.Hidden) 
+			{
+				_sideMenu.View.Hidden = false;
+
+				UIView.Animate(0.3, 0, UIViewAnimationOptions.CurveEaseInOut, () => {
+					View.Frame = new RectangleF(View.Frame.Width - 80, 0, View.Frame.Width, View.Frame.Height);
+					//_sideMenu.View.Frame = new RectangleF(0, top, View.Frame.Width - 80, View.Frame.Height);
+				}, () => {});
+
+			}
+			else
+			{
+				UIView.Animate(0.3, 0, UIViewAnimationOptions.CurveEaseInOut, () => {
+					View.Frame = new RectangleF(0, 0, View.Frame.Width, View.Frame.Height);
+					//_sideMenu.View.Frame = new RectangleF(View.Frame.Width * -1, top, View.Frame.Width, View.Frame.Height);
+				}, () => {
+					_sideMenu.View.Hidden = true;
+				});
+			}
+		}
+
+		private void CreateSideMenu()
+		{
+			var app = UIApplication.SharedApplication;
+
+			_sideMenu = new SideMenu();
+			_sideMenu.View.Hidden = true;
+			app.Windows.First().InsertSubview(_sideMenu.View, 0);
+
+
+			var top = app.StatusBarHidden ? 0 : app.StatusBarFrame.Height;
+			_sideMenu.View.Frame = new RectangleF(0, top, View.Frame.Width - 80, View.Frame.Height);
+		}
 
 		public override void ViewWillAppear (bool animated)
 		{
@@ -190,6 +256,11 @@ namespace FeedMeMom
 		private void UpdateHieghtInPercent(int? total, int? current, UIView parent, UIView child, UILabel label, bool showPercent)
 		{
 			string sufix = showPercent ? "%" : "";
+			if (total == 0)
+			{
+				current = 0;
+				total = 1;
+			}
 			var percent =  (float)(current ?? 0) / (total ?? 1);
 			var rect = child.Frame;
 			var height = parent.Frame.Height * percent;
@@ -258,6 +329,7 @@ namespace FeedMeMom
 			pnlRunningTime.Hidden = true;
 			pnlStartNewFeeding.Hidden = false;
 			pnlFirstStart.Hidden = false;
+			btnSideMenu.Hidden = false;
 		}
 
 		private void SwitchToInfoMode(Action done = null)
@@ -277,6 +349,7 @@ namespace FeedMeMom
 				btnLeft.Hidden = true;
 				btnRight.Hidden = true;
 				pnlAgo.Hidden = false;
+				btnSideMenu.Hidden = false;
 				pnlTime.Layer.CornerRadius = 0;
 			};
 			Action move = () => {
@@ -307,6 +380,7 @@ namespace FeedMeMom
 
 		private void SwitchToFeedingMode(bool left, FeedingEntry entry, Action done = null)
 		{
+			btnSideMenu.Hidden = true;
 			pnlFirstStart.Hidden = true;
 			lblMainTime.Hidden = true;
 			lblMainTimeInfo.Hidden = true;
@@ -417,15 +491,15 @@ namespace FeedMeMom
 		private void SelectRightLeftButton(int left)
 		{
 			if (left == 0) {
-				btnStartLeft.BackgroundColor = Colors.ButtonActive;
-				btnStartRight.BackgroundColor = Colors.ButtonActive;
+				btnStartLeft.BackgroundColor = Colors.Active.ButtonActive;
+				btnStartRight.BackgroundColor = Colors.Active.ButtonActive;
 			}
 			else if (left > 0) {
-				btnStartLeft.BackgroundColor = Colors.ButtonActive;
-				btnStartRight.BackgroundColor = Colors.ButtonInactive;
+				btnStartLeft.BackgroundColor = Colors.Active.ButtonActive;
+				btnStartRight.BackgroundColor = Colors.Active.ButtonInactive;
 			} else {
-				btnStartLeft.BackgroundColor = Colors.ButtonInactive;
-				btnStartRight.BackgroundColor = Colors.ButtonActive;
+				btnStartLeft.BackgroundColor = Colors.Active.ButtonInactive;
+				btnStartRight.BackgroundColor = Colors.Active.ButtonActive;
 			}
 		}
 
