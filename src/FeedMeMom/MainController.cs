@@ -29,6 +29,7 @@ namespace FeedMeMom
 		private PointF _defaultContainerLeftCenter;
 		private RectangleF _defaultTimeFrame;
 		private const int _defaultRadius = 4;
+		private SideMenuHub _sideMenuHub;
 		private SideMenu _sideMenu;
 
 		public void ApplyColors()
@@ -52,8 +53,14 @@ namespace FeedMeMom
 			btnStartLeft.SetTitleColor(colors.ButtonText, UIControlState.Normal);
 			btnStartRight.SetTitleColor(colors.ButtonText, UIControlState.Normal);
 
-			btnSideMenu.Layer.Opacity = Colors.IsDark ? 0.5f : 1f;
-
+			var opacity = Colors.IsDark ? 0.5f : 1f;
+			btnSideMenu.Layer.Opacity = opacity;
+			pgbContainerLeft.Layer.Opacity = opacity;
+			pgbContainerRight.Layer.Opacity = opacity;
+			pgbValueLeft.Layer.Opacity = opacity;
+			pgbValueRight.Layer.Opacity = opacity;
+			pgbTextLeft.TextColor = colors.IndicatorText;
+			pgbTextRight.TextColor = colors.IndicatorText;
 		}
 
 		private void StyleSideMenuButton()
@@ -81,7 +88,8 @@ namespace FeedMeMom
 			View.AddSubview(pnlFirstStart);
 			pnlFirstStart.Frame = new RectangleF(pnlAgo.Frame.X, pnlAgo.Frame.Y, pnlFirstStart.Frame.Width, pnlFirstStart.Frame.Height);
 
-			_sideMenu = SideMenu.CreateAndHookup(View);
+			_sideMenu = new SideMenu();
+			_sideMenuHub = SideMenuHub.CreateAndHookup(View, _sideMenu.View);
 
 			pnlFirstStart.Hidden = false;
 			NavigationController.NavigationBarHidden = true;
@@ -175,7 +183,7 @@ namespace FeedMeMom
 
 
 			btnSideMenu.TouchUpInside += (sender, e) => {
-				_sideMenu.Toggle();
+				_sideMenuHub.Toggle();
 			};
 		}	
 

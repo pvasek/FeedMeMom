@@ -110,6 +110,7 @@
       <DependentUpon>SideMenu.cs</DependentUpon>
     </Compile>
     <Compile Include="Helpers\Fonts.cs" />
+    <Compile Include="SideMenuHub.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

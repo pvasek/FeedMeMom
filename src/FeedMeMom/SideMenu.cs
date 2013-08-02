@@ -7,77 +7,11 @@ using System.Linq;
 
 namespace FeedMeMom
 {
-	public class SideMenuHub
-	{
-
-	}
-
+	
 	public partial class SideMenu : UIViewController
 	{
-		private SideMenu(UIView mainView) : base ("SideMenu", null)
+		public SideMenu() : base ("SideMenu", null)
 		{
-			_mainView = mainView;
-		}
-
-		private UIView _mainView;
-
-		public void HookupToWindow()
-		{
-			var app = UIApplication.SharedApplication;
-			var top = app.StatusBarHidden ? 0 : app.StatusBarFrame.Height;
-			View.Frame = new RectangleF(0, top, View.Frame.Width - 80, View.Frame.Height);
-			View.Hidden = true;
-
-			var topWindow = app.Windows.First();
-			topWindow.InsertSubview(View, 0);
-		}
-
-		private static UIView GetTopView(UIView view)
-		{
-			if (view.Superview == null || view.Superview is UIWindow)
-				return view;
-
-			return GetTopView(view.Superview);
-		}
-
-		public void Toggle()
-		{
-			var app = UIApplication.SharedApplication;
-			//var top = app.StatusBarHidden ? 0 : app.StatusBarFrame.Height;
-
-			var topView = GetTopView(_mainView);
-
-			topView.Layer.ShadowColor = UIColor.Black.CGColor;
-			topView.Layer.ShadowOpacity = 0.7f;
-			topView.Layer.ShadowRadius = 9;
-
-			if (View.Hidden) 
-			{
-				View.Hidden = false;
-
-				UIView.Animate(0.3, 0, UIViewAnimationOptions.CurveEaseInOut, () => {
-					var frame = topView.Frame;
-					topView.Frame = new RectangleF(frame.Width - 80, 0, frame.Width, frame.Height);
-				}, () => {
-				});
-
-			}
-			else
-			{
-				UIView.Animate(0.3, 0, UIViewAnimationOptions.CurveEaseInOut, () => {
-					var frame = topView.Frame;
-					topView.Frame = new RectangleF(0, 0, frame.Width, frame.Height);
-				}, () => {
-					View.Hidden = true;
-				});
-			}
-		}	
-
-		public static SideMenu CreateAndHookup(UIView mainView)
-		{
-			var result = new SideMenu(mainView);
-			result.HookupToWindow();
-			return result;
 		}
 
 		public override void DidReceiveMemoryWarning()

@@ -43,6 +43,7 @@ namespace FeedMeMom
 		public UIColor SideMenuRowSelected { get; set; }
 		public UIColor SideMenuRowText { get; set; }
 		public UIColor SideMenuRowBorder { get; set; }
+		public UIColor IndicatorText { get; set; }
 
 		private static Colors _dayMode = new LightColors();
 		private static Colors _nightMode = new DarkColors();
@@ -111,6 +112,7 @@ namespace FeedMeMom
 			SideMenuRowText = UIColor.White;
 			SideMenuRowBorder = ColorUtil.FromHex("#770c37");
 			SideMenuRowSelected = SideMenuRowBorder;
+			IndicatorText = ColorUtil.FromHex("#999999");
 		}
 	}
 
@@ -137,6 +139,7 @@ namespace FeedMeMom
 			SideMenuRowText = ColorUtil.FromHex("#444444");
 			SideMenuRowBorder = ColorUtil.FromHex("#999999");
 			SideMenuRowSelected = SideMenuRowBorder;
+			IndicatorText = UIColor.Black;
 		}
 	}
 }
