@@ -33,6 +33,7 @@ namespace FeedMeMom
 		public UIColor Time { get; set; }
 		public UIColor Background { get; set; }
 		public UIColor ToolbarText { get; set; }
+		public UIColor ToolbarTextActive { get; set; }
 		public UIColor AgoText { get; set; }
 		public UIColor TimeText { get; set; }
 		public UIColor ButtonText { get; set; }
@@ -105,9 +106,39 @@ namespace FeedMeMom
 			AgoText = UIColor.White;
 			TimeText = ButtonActive;
 			ButtonText = UIColor.White;
+			ToolbarTextActive = ColorUtil.FromHex("#F7A144");
 			AgoInfoText = ColorUtil.FromHex("#F7A144");
 			TimeInfoText = ColorUtil.FromHex("#B92157");
 			ButtonInfoText = ColorUtil.FromHex("#919191");
+			SideMenuRow = ColorUtil.FromHex("#560928");
+			SideMenuRowText = ColorUtil.FromHex("#c26f8e");//UIColor.White;
+			SideMenuRowBorder = ColorUtil.FromHex("#c26f8e");// ColorUtil.FromHex("#770c37");
+			SideMenuRowSelected = ColorUtil.FromHex("#330416");
+			IndicatorText = ColorUtil.FromHex("#999999");
+		}
+	}
+
+
+	public class DarkColors2: Colors
+	{
+		public DarkColors2() 
+		{
+			ButtonActive = ColorUtil.FromHex("#8d1542");//FromHex ("50AEFF");
+			ButtonInactive = ColorUtil.FromHex ("#c04271");
+			ButtonText = ColorUtil.FromHex("#fc9bbe");
+			ButtonInfoText = ColorUtil.FromHex("#a3335d");
+			Toolbar = ColorUtil.FromHex("#2b0514");
+			ToolbarText = ColorUtil.FromHex("#a71f53");
+			ToolbarTextActive = ColorUtil.FromHex("#a65e19");
+			RunningTimeText = ColorUtil.FromHex("#47041e");
+			PausedTimeText = ColorUtil.FromHex("#bbbbbb");
+			Ago = ColorUtil.FromHex("#47041e");
+			AgoText = ColorUtil.FromHex("#c04271");
+			AgoInfoText = ColorUtil.FromHex("#a65e19");
+			Time = ColorUtil.FromHex("#750c33");
+			TimeText = ColorUtil.FromHex("#e280a4");
+			TimeInfoText = ColorUtil.FromHex("#a0315b");
+			Background = ColorUtil.FromHex("#47041e");
 			SideMenuRow = ColorUtil.FromHex("#560928");
 			SideMenuRowText = UIColor.White;
 			SideMenuRowBorder = ColorUtil.FromHex("#770c37");
@@ -129,6 +160,7 @@ namespace FeedMeMom
 			Background = ColorUtil.FromHex("#232323");
 
 			ToolbarText = ColorUtil.FromHex("#555555");
+			ToolbarTextActive = ColorUtil.FromHex("#525252");
 			AgoText = ColorUtil.FromHex("#A8A8A8");
 			AgoInfoText = ColorUtil.FromHex("#525252");
 			TimeText = ColorUtil.FromHex("#595959");

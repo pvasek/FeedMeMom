@@ -6,6 +6,7 @@ using FeedMeMom.Common;
 using FeedMeMom.Common.Entities;
 using System.Linq;
 using System.Threading;
+using MonoTouch.CoreGraphics;
 
 namespace FeedMeMom
 {
@@ -32,15 +33,15 @@ namespace FeedMeMom
 		private SideMenuHub _sideMenuHub;
 		private SideMenu _sideMenu;
 
+		private HistoryController _historyController;
+
 		public void ApplyColors()
 		{
 			var colors = Colors.Active;
-			pnlToolbar.BackgroundColor = colors.Toolbar;
 			pnlAgo.BackgroundColor = colors.Ago;
 			pnlTime.BackgroundColor = colors.Time;
 			pnlRunningTime.BackgroundColor = colors.Time;	
 			View.BackgroundColor = colors.Background;
-			lblTitle.TextColor = colors.ToolbarText;
 			lblMainTime.TextColor = colors.AgoText;
 			lblMainTimeInfo.TextColor = colors.AgoInfoText;
 			lblSecondTime.TextColor = colors.TimeText;
@@ -57,14 +58,11 @@ namespace FeedMeMom
 			pnlFirstStart.BackgroundColor = colors.Background;
 			lblFSTimeInfo.TextColor = colors.TimeInfoText;
 
-			btnLeft.SetTitleColor(colors.ToolbarText, UIControlState.Normal);
-			btnRight.SetTitleColor(colors.ToolbarText, UIControlState.Normal);
 			btnStartLeft.SetTitleColor(colors.ButtonText, UIControlState.Normal);
 			btnStartRight.SetTitleColor(colors.ButtonText, UIControlState.Normal);
 
 
 			var opacity = Colors.IsDark ? 0.5f : 1f;
-			btnSideMenu.Layer.Opacity = opacity;
 			pgbContainerLeft.Layer.Opacity = opacity;
 			pgbContainerRight.Layer.Opacity = opacity;
 			pgbValueLeft.Layer.Opacity = opacity;
@@ -73,34 +71,123 @@ namespace FeedMeMom
 			pgbTextRight.TextColor = colors.IndicatorText;
 		}
 
-		private void StyleSideMenuButton()
+		public void ApplyNavigationBarAppearance()
 		{
-			var hamburgerImage = UIImage.FromBundle("hamburger_icon");
-			btnSideMenu.SetImage(hamburgerImage, UIControlState.Normal);
-			btnSideMenu.SetImage(hamburgerImage, UIControlState.Highlighted);
-			btnSideMenu.SetImage(hamburgerImage, UIControlState.Selected);
-			btnSideMenu.SetTitle("", UIControlState.Normal);
-			btnSideMenu.SetTitle("", UIControlState.Selected);
-			btnSideMenu.SetTitle("", UIControlState.Highlighted);
+			var nb = NavigationController.NavigationBar;
+			nb.SetBackgroundImage(new UIImage(), UIBarMetrics.Default);
+			nb.ShadowImage = new UIImage();
+			nb.BackgroundColor = Colors.Active.Toolbar;
+			nb.TintColor = Colors.Active.Toolbar;
+			nb.SetTitleTextAttributes(new UITextAttributes {
+				TextColor = Colors.Active.ToolbarText,
+				TextShadowColor = UIColor.Clear,
+				Font = Fonts.ToolbarTitle,
+			});
+			//UINavigationBar.Appearance.ShadowImage = new UIImage();
+			//UINavigationBar.Appearance.SetBackgroundImage(new UIImage(), UIBarMetrics.Default);
+			//UINavigationBar.Appearance.BackgroundColor = Colors.Active.Toolbar;
+//			UINavigationBar.Appearance.SetTitleTextAttributes(new UITextAttributes {
+//				TextColor = Colors.Active.ToolbarText,
+//				TextShadowColor = UIColor.Clear,
+//				Font = Fonts.ToolbarTitle,
+//			});
 
+			_btnLeft.TintColor = Colors.Active.Toolbar;
+			_btnRight.TintColor = Colors.Active.Toolbar;
+			_btnSideMenu.TintColor = Colors.Active.Toolbar;
+
+			var normalColor = UIImage.FromBundle("clear_color").CreateResizableImage(new UIEdgeInsets(2, 25, 2, 2));
+
+			UIBarButtonItem.Appearance.SetBackButtonBackgroundImage(normalColor, UIControlState.Normal, UIBarMetrics.Default);
+			UIBarButtonItem.Appearance.SetBackButtonBackgroundImage(normalColor, UIControlState.Highlighted, UIBarMetrics.Default);
+			UIBarButtonItem.Appearance.SetBackButtonBackgroundImage(normalColor, UIControlState.Selected, UIBarMetrics.Default);
+			UIBarButtonItem.Appearance.SetTitleTextAttributes(new UITextAttributes {
+				TextColor = Colors.Active.ToolbarText,
+				TextShadowColor = UIColor.Clear,
+				Font = Fonts.ToolbarButton
+			}, UIControlState.Normal);
+			UIBarButtonItem.Appearance.SetTitleTextAttributes(new UITextAttributes {
+				TextColor = Colors.Active.ToolbarTextActive,
+				TextShadowColor = UIColor.Clear,
+				Font = Fonts.ToolbarButton
+			}, UIControlState.Highlighted);
+			UIBarButtonItem.Appearance.SetBackgroundImage(normalColor, UIControlState.Normal, UIBarMetrics.Default);
+			UIBarButtonItem.Appearance.SetBackgroundImage(normalColor, UIControlState.Highlighted, UIBarMetrics.Default);
+			UIBarButtonItem.Appearance.SetBackgroundImage(normalColor, UIControlState.Selected, UIBarMetrics.Default);
 		}
 
+		private void CancelClick(object sender, EventArgs e)
+		{
+			var repo = ServiceLocator.Get<Repository>();
+			if (_active != null) {
+				repo.Delete(_active);
+				_active = null;
+				SwitchToInfoMode(() => {
+					ReloadData();
+				});
+			}
+		}
+
+		private void SaveClick(object sender, EventArgs e)
+		{
+			var repo = ServiceLocator.Get<Repository>();
+			if (_active != null) {
+				_active.Date = DateTime.Now;
+				_stopPair.Stop();
+				repo.Update(_active);
+				_active = null;
+				SwitchToInfoMode(() => {
+					ReloadData();
+				});
+			}
+		}
+
+		private void ShowSideMenuClick(object sender, EventArgs e)
+		{
+			_sideMenuHub.Show();
+		}
+
+		private UIBarButtonItem _btnSideMenu;
+		private UIBarButtonItem _btnLeft;
+		private UIBarButtonItem _btnRight;
+
+		private void SetFeedingVisible(bool visible)		
+		{
+			if (visible)
+			{
+				NavigationItem.LeftBarButtonItem = _btnLeft;
+				NavigationItem.RightBarButtonItem = _btnRight;
+			} 
+			else
+			{
+				NavigationItem.LeftBarButtonItem = _btnSideMenu;
+				NavigationItem.RightBarButtonItem = null;
+			}
+
+		}
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();		
+			Title = Resources.LastFeeding;
+			_btnSideMenu = new UIBarButtonItem(UIImage.FromBundle("hamburger_icon"), UIBarButtonItemStyle.Plain, ShowSideMenuClick);
+			_btnLeft = new UIBarButtonItem(Resources.Cancel, UIBarButtonItemStyle.Plain, CancelClick);
+			_btnRight = new UIBarButtonItem(Resources.Save, UIBarButtonItemStyle.Plain, SaveClick);
+
 			var repo = ServiceLocator.Get<Repository>();
 
 			ApplyColors();
+			ApplyNavigationBarAppearance();
 			Colors.ColorsChanged += (sender, e) => {
 				ApplyColors();
+				ApplyNavigationBarAppearance();
 				ReloadData();
 			};
 
 			View.AddSubview(pnlFirstStart);
 			pnlFirstStart.Frame = new RectangleF(pnlAgo.Frame.X, pnlAgo.Frame.Y, pnlFirstStart.Frame.Width, pnlFirstStart.Frame.Height);		
 
+			SetFeedingVisible(false);
 			pnlFirstStart.Hidden = false;
-			NavigationController.NavigationBarHidden = true;
 			btnStartLeft.Layer.CornerRadius = _defaultRadius;
 			btnStartRight.Layer.CornerRadius = _defaultRadius;
 			pnlStartNewFeeding.Layer.CornerRadius = _defaultRadius;
@@ -109,29 +196,9 @@ namespace FeedMeMom
 			pgbContainerRight.Layer.CornerRadius = 20;
 			pgbContainerRight.ClipsToBounds = true;
 			pnlRunningTime.Hidden = true;
-			btnLeft.Hidden = true;
-			btnRight.Hidden = true;
 			imgFirstStartArrow.Image = UIImage.FromBundle("arrow");
 
-			StyleSideMenuButton();
-
-			_sideMenu = new SideMenu();
-			_sideMenuHub = SideMenuHub.CreateAndHookup(View, _sideMenu.View);
-
-			_sideMenu.Items.Add(new ActionItem(Resources.History));
-			_sideMenu.Items.Add(new ActionItem(Resources.SwitchDayNightMode, Colors.ToggleDayNightMode));
-			_sideMenu.Items.Add(new ActionItem(Resources.Feedback));
-			_sideMenu.Items.Add(new ActionItem("Delete Data", () => {
-				var feedings = repo.Table<FeedingEntry>();
-				foreach (var item in feedings) {
-					repo.Delete(item);
-					ReloadData();
-				}
-			}));
-
-
-
-
+			CreateSideMenu();
 			lblSecondTimeInfo.TextColor = UIColor.Gray;
 			_defaultTimeFrame = pnlTime.Frame;
 			_defaultContainerRightCenter = pgbContainerRight.Center;
@@ -157,27 +224,27 @@ namespace FeedMeMom
 			lblRunningTime.AddGestureRecognizer(touchRecondizerSecondaryTime);
 
 
-			btnRight.TouchUpInside += (sender, e) => {
-				if (_active != null) {
-					repo.Delete(_active);
-					_active = null;
-					SwitchToInfoMode(() => {
-						ReloadData();
-					});
-				}
-			};
-
-			btnLeft.TouchUpInside += (sender, e) => {
-				if (_active != null) {
-					_active.Date = DateTime.Now;
-					_stopPair.Stop();
-					repo.Update(_active);
-					_active = null;
-					SwitchToInfoMode(() => {
-						ReloadData();
-					});
-				}
-			};
+//			btnRight.TouchUpInside += (sender, e) => {
+//				if (_active != null) {
+//					repo.Delete(_active);
+//					_active = null;
+//					SwitchToInfoMode(() => {
+//						ReloadData();
+//					});
+//				}
+//			};
+//
+//			btnLeft.TouchUpInside += (sender, e) => {
+//				if (_active != null) {
+//					_active.Date = DateTime.Now;
+//					_stopPair.Stop();
+//					repo.Update(_active);
+//					_active = null;
+//					SwitchToInfoMode(() => {
+//						ReloadData();
+//					});
+//				}
+//			};
 
 
 
@@ -205,9 +272,6 @@ namespace FeedMeMom
 			};
 
 
-			btnSideMenu.TouchUpInside += (sender, e) => {
-				_sideMenuHub.Toggle();
-			};
 		}	
 
 		public override void ViewWillAppear (bool animated)
@@ -222,7 +286,50 @@ namespace FeedMeMom
 				_timer.Dispose ();
 				_timer = null;
 			}
+			if (_historyController != null)
+			{
+				_historyController.Dispose();
+				_historyController = null;
+			}
+			if (_sideMenu != null) 
+			{
+				_sideMenu.Dispose();
+				_sideMenu = null;
+			}
 			base.Dispose (disposing);
+		}
+
+		private void CreateSideMenu()
+		{
+			var repo = ServiceLocator.Get<Repository> ();
+
+			_sideMenu = new SideMenu();
+			_sideMenuHub = SideMenuHub.CreateAndHookup(View, _sideMenu.View);
+
+			_sideMenu.Items.Add(new ActionItem(Resources.History, () => {
+				if (_historyController == null) 
+				{
+					_historyController = new HistoryController();
+				}
+				_historyController.ReloadData();
+				_sideMenuHub.Hide();
+				NavigationController.PushViewController(_historyController, false);
+
+			}));
+			_sideMenu.Items.Add(new ActionItem(Resources.SwitchDayNightMode, () => {
+				Colors.ToggleDayNightMode();
+
+				_sideMenuHub.Hide();
+			}));
+			_sideMenu.Items.Add(new ActionItem(Resources.Feedback, () => {}));
+
+			_sideMenu.Items.Add(new ActionItem("Delete Data", () => {
+				var feedings = repo.Table<FeedingEntry>();
+				foreach (var item in feedings) {
+					repo.Delete(item);
+					ReloadData();
+				}
+			}));		
 		}
 
 		private void UpdateHieghtInPercent(int? total, int? current, UIView parent, UIView child, UILabel label, bool showPercent)
@@ -253,9 +360,8 @@ namespace FeedMeMom
 
 		private void UpdateView(FeedingEntry entry)
 		{
-			btnLeft.Hidden = true;
-			btnRight.Hidden = true;
-			lblTitle.Text = Resources.LastFeeding;
+			SetFeedingVisible(false);
+			Title = Resources.LastFeeding;
 
 			lblMainTime.Hidden = false;
 			lblMainTimeInfo.Hidden = false;
@@ -301,7 +407,7 @@ namespace FeedMeMom
 			pnlRunningTime.Hidden = true;
 			pnlStartNewFeeding.Hidden = false;
 			pnlFirstStart.Hidden = false;
-			btnSideMenu.Hidden = false;
+			SetFeedingVisible(false);
 			btnStartLeft.BackgroundColor = Colors.Active.ButtonActive;
 			btnStartRight.BackgroundColor = Colors.Active.ButtonActive;
 		}
@@ -320,15 +426,11 @@ namespace FeedMeMom
 
 
 			Action animFinished = () => {
-				btnLeft.Hidden = true;
-				btnRight.Hidden = true;
+				SetFeedingVisible(false);
 				pnlAgo.Hidden = false;
-				btnSideMenu.Hidden = false;
 				pnlTime.Layer.CornerRadius = 0;
 			};
 			Action move = () => {
-				btnLeft.Alpha = 0;
-				btnRight.Alpha = 0;
 				pnlTime.Frame = _defaultTimeFrame;
 				pgbContainerRight.Center = _defaultContainerRightCenter;		
 				pgbContainerLeft.Center = _defaultContainerLeftCenter;
@@ -354,20 +456,16 @@ namespace FeedMeMom
 
 		private void SwitchToFeedingMode(bool left, FeedingEntry entry, Action done = null)
 		{
-			btnSideMenu.Hidden = true;
 			pnlFirstStart.Hidden = true;
 			lblMainTime.Hidden = true;
 			lblMainTimeInfo.Hidden = true;
 			lblSecondTimeInfo.Hidden = true;
 			lblSecondTime.Text = "";
-			lblTitle.Text = Resources.NewFeeding;
+			Title = Resources.NewFeeding;
 			lblRunningInfo.Text = Resources.TapToPause;
 			lblButtonsHeader.Text = Resources.SwitchSides;
 
-			btnLeft.Alpha = 0;
-			btnRight.Alpha = 0;
-			btnLeft.Hidden = false;
-			btnRight.Hidden = false;
+
 			pnlAgo.Hidden = true;
 			pnlTime.Layer.CornerRadius = _defaultRadius;
 
@@ -383,9 +481,7 @@ namespace FeedMeMom
 				pnlTime.Frame = new RectangleF(30, pnlAgo.Frame.Y + 30, 260, 160);
 				pgbContainerRight.Center = new PointF(155, 130);
 				pgbContainerLeft.Center = new PointF(105, 130);
-				btnLeft.Alpha = 1;
-				btnRight.Alpha = 1;
-				pnlRunningTime.Center = new PointF(pnlTime.Frame.Width / 2, pnlTime.Frame.Height / 2 - 20);
+				SetFeedingVisible(true);				pnlRunningTime.Center = new PointF(pnlTime.Frame.Width / 2, pnlTime.Frame.Height / 2 - 20);
 			};
 
 			Action animFinished = () => {
@@ -487,6 +583,37 @@ namespace FeedMeMom
 			});
 		}
 
+		private void ShowCurrentScreenBrightness()
+		{
+			using (var img = UIApplication.SharedApplication.Windows.First().Screen.Capture())
+			{
+				var cgimg = img.CGImage;
+				var imgData = new byte[cgimg.Width*cgimg.Height*4];
+				var totalPerc = 0f;
+				using (var bc = new CGBitmapContext(imgData, cgimg.Width, cgimg.Height, 8, 4*cgimg.Width,
+				                                    CGColorSpace.CreateDeviceRGB(),
+				                                    CGBitmapFlags.PremultipliedLast | CGBitmapFlags.ByteOrder32Big))
+				{
+					bc.DrawImage(new RectangleF(0, 0, cgimg.Width, cgimg.Height), cgimg);
+					var totalBrightnessPercentage = 0f;
+					var count = 0;
+					for(var i = 0; i < imgData.Length; i=i+4)
+					{
+						var r = imgData[i] / 255f;
+						var g = imgData[i] / 255f;
+						var b = imgData[i] / 255f;
+						totalBrightnessPercentage += (r+g+b) / 3f;
+						count++;
+					}
+					totalPerc = totalBrightnessPercentage*100 / count;
+				}
+				var alert = new UIAlertView();
+				alert.Title = String.Format("Brightness: {0}%", totalPerc);
+				alert.AddButton("Close");
+				alert.CancelButtonIndex = 0;
+				alert.Show();
+			}
+		}
 	}
 }
 

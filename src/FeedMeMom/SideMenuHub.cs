@@ -52,6 +52,34 @@ namespace FeedMeMom
 			return GetTopView(view.Superview);
 		}
 
+		public void Hide(UIView topView = null)
+		{
+			topView = GetTopView(_mainView);
+
+			UIView.Animate(0.3, 0, UIViewAnimationOptions.CurveEaseInOut, () => {
+				var frame = topView.Frame;
+				topView.Frame = new RectangleF(0, 0, frame.Width, frame.Height);
+			}, () => {
+				_sideView.Hidden = true;
+				_touchCover.Hidden = true;
+			});
+
+		}
+
+		public void Show(UIView topView = null)
+		{
+			topView = GetTopView(_mainView);
+
+			_sideView.Hidden = false;
+			UIView.Animate(0.3, 0, UIViewAnimationOptions.CurveEaseInOut, () => {
+				var frame = topView.Frame;
+				topView.Frame = new RectangleF(frame.Width - 80, 0, frame.Width, frame.Height);
+			}, () => {
+				_touchCover.Frame = topView.Frame;
+				_touchCover.Hidden = false;
+			});
+		}
+
 		public void Toggle()
 		{
 			var app = UIApplication.SharedApplication;
@@ -65,26 +93,12 @@ namespace FeedMeMom
 
 			if (_sideView.Hidden) 
 			{
-				_sideView.Hidden = false;
 
-				UIView.Animate(0.3, 0, UIViewAnimationOptions.CurveEaseInOut, () => {
-					var frame = topView.Frame;
-					topView.Frame = new RectangleF(frame.Width - 80, 0, frame.Width, frame.Height);
-				}, () => {
-					_touchCover.Frame = topView.Frame;
-					_touchCover.Hidden = false;
-				});
-
+				Show(topView);
 			}
 			else
 			{
-				UIView.Animate(0.3, 0, UIViewAnimationOptions.CurveEaseInOut, () => {
-					var frame = topView.Frame;
-					topView.Frame = new RectangleF(0, 0, frame.Width, frame.Height);
-				}, () => {
-					_sideView.Hidden = true;
-					_touchCover.Hidden = true;
-				});
+				Hide(topView);
 			}
 		}	
 

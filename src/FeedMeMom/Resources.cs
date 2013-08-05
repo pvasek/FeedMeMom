@@ -15,6 +15,9 @@ namespace FeedMeMom
 		public const string Feedback = "Feedback";
 		public const string SwitchDayNightMode = "Switch Day/Night Mode";
 		public const string History = "History";
+		public const string Back = "Back";
+		public const string Cancel = "Cancel";
+		public const string Save = "Save";
 	}
 }
 

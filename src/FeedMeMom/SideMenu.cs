@@ -97,6 +97,16 @@ namespace FeedMeMom
 			tableView.DeselectRow(indexPath, true);
 		}
 
+		protected override void Dispose(bool disposing)
+		{
+			base.Dispose(disposing);
+			if (_footerView != null)
+			{
+				_footerView.Dispose();
+				_footerView = null;
+			}
+		}
+
 	}
 
 	public class ActionItem

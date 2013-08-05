@@ -12,15 +12,6 @@ namespace FeedMeMom
 	partial class MainController
 	{
 		[Outlet]
-		MonoTouch.UIKit.UIButton btnLeft { get; set; }
-
-		[Outlet]
-		MonoTouch.UIKit.UIButton btnRight { get; set; }
-
-		[Outlet]
-		MonoTouch.UIKit.UIButton btnSideMenu { get; set; }
-
-		[Outlet]
 		MonoTouch.UIKit.UIButton btnStartLeft { get; set; }
 
 		[Outlet]
@@ -66,9 +57,6 @@ namespace FeedMeMom
 		MonoTouch.UIKit.UILabel lblSecondTimeInfo { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UILabel lblTitle { get; set; }
-
-		[Outlet]
 		MonoTouch.UIKit.UIView pgbContainerLeft { get; set; }
 
 		[Outlet]
@@ -109,27 +97,9 @@ namespace FeedMeMom
 
 		[Outlet]
 		MonoTouch.UIKit.UIView pnlTime { get; set; }
-
-		[Outlet]
-		MonoTouch.UIKit.UIView pnlToolbar { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
-			if (btnLeft != null) {
-				btnLeft.Dispose ();
-				btnLeft = null;
-			}
-
-			if (btnRight != null) {
-				btnRight.Dispose ();
-				btnRight = null;
-			}
-
-			if (btnSideMenu != null) {
-				btnSideMenu.Dispose ();
-				btnSideMenu = null;
-			}
-
 			if (btnStartLeft != null) {
 				btnStartLeft.Dispose ();
 				btnStartLeft = null;
@@ -143,16 +113,6 @@ namespace FeedMeMom
 			if (imgFirstStartArrow != null) {
 				imgFirstStartArrow.Dispose ();
 				imgFirstStartArrow = null;
-			}
-
-			if (lblFSAgoInfo != null) {
-				lblFSAgoInfo.Dispose ();
-				lblFSAgoInfo = null;
-			}
-
-			if (lblFSTimeInfo != null) {
-				lblFSTimeInfo.Dispose ();
-				lblFSTimeInfo = null;
 			}
 
 			if (indicatorSecondLeft != null) {
@@ -170,9 +130,19 @@ namespace FeedMeMom
 				lblButtonsHeader = null;
 			}
 
+			if (lblFSAgoInfo != null) {
+				lblFSAgoInfo.Dispose ();
+				lblFSAgoInfo = null;
+			}
+
 			if (lblFSTime != null) {
 				lblFSTime.Dispose ();
 				lblFSTime = null;
+			}
+
+			if (lblFSTimeInfo != null) {
+				lblFSTimeInfo.Dispose ();
+				lblFSTimeInfo = null;
 			}
 
 			if (lblMainTime != null) {
@@ -203,11 +173,6 @@ namespace FeedMeMom
 			if (lblSecondTimeInfo != null) {
 				lblSecondTimeInfo.Dispose ();
 				lblSecondTimeInfo = null;
-			}
-
-			if (lblTitle != null) {
-				lblTitle.Dispose ();
-				lblTitle = null;
 			}
 
 			if (pgbContainerLeft != null) {
@@ -278,11 +243,6 @@ namespace FeedMeMom
 			if (pnlTime != null) {
 				pnlTime.Dispose ();
 				pnlTime = null;
-			}
-
-			if (pnlToolbar != null) {
-				pnlToolbar.Dispose ();
-				pnlToolbar = null;
 			}
 		}
 	}

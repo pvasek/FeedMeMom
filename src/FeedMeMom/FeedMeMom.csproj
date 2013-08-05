@@ -90,6 +90,7 @@
     <Folder Include="Resources\" />
     <Folder Include="Services\" />
     <Folder Include="Helpers\" />
+    <Folder Include="Controls\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -111,6 +112,9 @@
     </Compile>
     <Compile Include="Helpers\Fonts.cs" />
     <Compile Include="SideMenuHub.cs" />
+    <Compile Include="HistoryController.cs" />
+    <Compile Include="Controls\Toolbar.cs" />
+    <Compile Include="Helpers\ControlHelper.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -132,6 +136,9 @@
     <BundleResource Include="Resources\arrow%402x.png" />
     <BundleResource Include="Resources\hamburger_icon.png" />
     <BundleResource Include="Resources\hamburger_icon%402x.png" />
+    <BundleResource Include="Resources\dark_color.png" />
+    <BundleResource Include="Resources\light_color.png" />
+    <BundleResource Include="Resources\clear_color.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FeedMeMom.Common\FeedMeMom.Common.csproj">

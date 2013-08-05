@@ -1,5 +1,6 @@
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
+using MonoTouch.CoreGraphics;
 
 namespace FeedMeMom
 {
@@ -26,39 +27,11 @@ namespace FeedMeMom
 			viewController = new MainController ();
 
 			var navigationController = new UINavigationController (viewController);
-			var backImage = UIImage
-				.FromBundle ("btn_back.png")
-				.CreateResizableImage (new UIEdgeInsets(2, 25, 2, 2));
-			var backPressedImage = UIImage
-				.FromBundle ("btn_back_selected.png")
-					.CreateResizableImage (new UIEdgeInsets(2, 25, 2, 2));
 
-			UINavigationBar.Appearance.SetBackgroundImage (UIImage.FromBundle("background.png"), UIBarMetrics.Default);
-			UIBarButtonItem.Appearance.SetBackButtonBackgroundImage (backImage, UIControlState.Normal, UIBarMetrics.Default);
-			UIBarButtonItem.Appearance.SetBackgroundImage (UIImage.FromBundle("btn.png"), UIControlState.Normal, UIBarMetrics.Default);
-
-			UIBarButtonItem.Appearance.SetTitleTextAttributes (
-				new UITextAttributes(){ 
-					TextShadowColor = UIColor.Clear,
-					TextShadowOffset = new UIOffset(0, 0),
-					TextColor = UIColor.FromRGB(85, 85, 85),
-					Font = UIFont.SystemFontOfSize(12)
-				},		
-				UIControlState.Normal);
-
-			UIBarButtonItem.Appearance.SetTitleTextAttributes (
-				new UITextAttributes(){ 
-					TextShadowColor = UIColor.Clear,
-					TextShadowOffset = new UIOffset(0, 0),
-					TextColor = UIColor.FromRGB(95, 95, 95),
-					Font = UIFont.SystemFontOfSize(12)
-				}, 
-				UIControlState.Highlighted);
-
-
-
-			UIBarButtonItem.Appearance.SetBackButtonBackgroundImage (backPressedImage, UIControlState.Highlighted, UIBarMetrics.Default);
-			UIBarButtonItem.Appearance.SetBackgroundImage (UIImage.FromBundle("btn_selected.png"), UIControlState.Highlighted, UIBarMetrics.Default);
+			UpdateAppearance();
+			Colors.ColorsChanged += (sender, e) => {
+				UpdateAppearance();
+			};
 
 			window.RootViewController = navigationController;
 			//navigationController.NavigationBarHidden = true;
@@ -72,6 +45,35 @@ namespace FeedMeMom
 			if (viewController != null) {
 				viewController.ReloadData ();
 			}
+		}
+
+		static void UpdateAppearance()
+		{
+//			UINavigationBar.Appearance.ShadowImage = new UIImage();
+//			UINavigationBar.Appearance.SetBackgroundImage(new UIImage(), UIBarMetrics.Default);
+//			UINavigationBar.Appearance.BackgroundColor = Colors.Active.Toolbar;
+//			UINavigationBar.Appearance.SetTitleTextAttributes(new UITextAttributes {
+//				TextColor = Colors.Active.ToolbarText,
+//				TextShadowColor = UIColor.Clear,
+//				Font = Fonts.ToolbarTitle,
+//			});
+//			var normalColor = UIImage.FromBundle("default_color").CreateResizableImage(new UIEdgeInsets(2, 25, 2, 2));
+//			UIBarButtonItem.Appearance.SetBackButtonBackgroundImage(normalColor, UIControlState.Normal, UIBarMetrics.Default);
+//			UIBarButtonItem.Appearance.SetBackButtonBackgroundImage(normalColor, UIControlState.Highlighted, UIBarMetrics.Default);
+//			UIBarButtonItem.Appearance.SetBackButtonBackgroundImage(normalColor, UIControlState.Selected, UIBarMetrics.Default);
+//			UIBarButtonItem.Appearance.SetTitleTextAttributes(new UITextAttributes {
+//				TextColor = Colors.Active.ToolbarText,
+//				TextShadowColor = UIColor.Clear,
+//				Font = Fonts.ToolbarButton
+//			}, UIControlState.Normal);
+//			UIBarButtonItem.Appearance.SetTitleTextAttributes(new UITextAttributes {
+//				TextColor = Colors.Active.ToolbarTextActive,
+//				TextShadowColor = UIColor.Clear,
+//				Font = Fonts.ToolbarButton
+//			}, UIControlState.Highlighted);
+//			UIBarButtonItem.Appearance.SetBackgroundImage(normalColor, UIControlState.Normal, UIBarMetrics.Default);
+//			UIBarButtonItem.Appearance.SetBackgroundImage(normalColor, UIControlState.Highlighted, UIBarMetrics.Default);
+//			UIBarButtonItem.Appearance.SetBackgroundImage(normalColor, UIControlState.Selected, UIBarMetrics.Default);
 		}
 	}
 }
