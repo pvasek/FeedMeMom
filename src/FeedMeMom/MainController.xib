@@ -616,15 +616,38 @@
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 			</object>
 			<object class="IBUIView" id="1003152979">
-				<nil key="NSNextResponder"/>
+				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">292</int>
 				<array class="NSMutableArray" key="NSSubviews">
 					<object class="IBUIView" id="224092181">
 						<reference key="NSNextResponder" ref="1003152979"/>
 						<int key="NSvFlags">292</int>
-						<array class="NSMutableArray" key="NSSubviews"/>
+						<array class="NSMutableArray" key="NSSubviews">
+							<object class="IBUILabel" id="760673127">
+								<reference key="NSNextResponder" ref="224092181"/>
+								<int key="NSvFlags">292</int>
+								<string key="NSFrame">{{32, 101}, {257, 21}}</string>
+								<reference key="NSSuperview" ref="224092181"/>
+								<reference key="NSWindow"/>
+								<string key="NSReuseIdentifierKey">_NS:9</string>
+								<bool key="IBUIOpaque">NO</bool>
+								<bool key="IBUIClipsSubviews">YES</bool>
+								<int key="IBUIContentMode">7</int>
+								<bool key="IBUIUserInteractionEnabled">NO</bool>
+								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+								<string key="IBUIText">last feeding time</string>
+								<reference key="IBUITextColor" ref="20539279"/>
+								<nil key="IBUIHighlightedColor"/>
+								<int key="IBUIBaselineAdjustment">0</int>
+								<int key="IBUITextAlignment">1</int>
+								<reference key="IBUIFontDescription" ref="702802499"/>
+								<reference key="IBUIFont" ref="902604740"/>
+								<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
+							</object>
+						</array>
 						<string key="NSFrameSize">{320, 161}</string>
 						<reference key="NSSuperview" ref="1003152979"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="749186234"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<object class="NSColor" key="IBUIBackgroundColor">
@@ -642,6 +665,7 @@
 								<int key="NSvFlags">292</int>
 								<string key="NSFrame">{{32, 29}, {257, 22}}</string>
 								<reference key="NSSuperview" ref="155445550"/>
+								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="793384430"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
@@ -664,6 +688,7 @@
 						</array>
 						<string key="NSFrame">{{0, 161}, {320, 82}}</string>
 						<reference key="NSSuperview" ref="1003152979"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="285670042"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<object class="NSColor" key="IBUIBackgroundColor">
@@ -677,6 +702,7 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{32, 36}, {257, 57}}</string>
 						<reference key="NSSuperview" ref="1003152979"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="155445550"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<object class="NSColor" key="IBUIBackgroundColor">
@@ -706,31 +732,12 @@
 						</object>
 						<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
 					</object>
-					<object class="IBUILabel" id="760673127">
-						<reference key="NSNextResponder" ref="1003152979"/>
-						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{32, 101}, {257, 21}}</string>
-						<reference key="NSSuperview" ref="1003152979"/>
-						<string key="NSReuseIdentifierKey">_NS:9</string>
-						<bool key="IBUIOpaque">NO</bool>
-						<bool key="IBUIClipsSubviews">YES</bool>
-						<int key="IBUIContentMode">7</int>
-						<bool key="IBUIUserInteractionEnabled">NO</bool>
-						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<string key="IBUIText">last feeding time</string>
-						<reference key="IBUITextColor" ref="20539279"/>
-						<nil key="IBUIHighlightedColor"/>
-						<int key="IBUIBaselineAdjustment">0</int>
-						<int key="IBUITextAlignment">1</int>
-						<reference key="IBUIFontDescription" ref="702802499"/>
-						<reference key="IBUIFont" ref="902604740"/>
-						<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
-					</object>
 					<object class="IBUIImageView" id="793384430">
 						<reference key="NSNextResponder" ref="1003152979"/>
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{3, 95}, {93, 194}}</string>
 						<reference key="NSSuperview" ref="1003152979"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="760673127"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<int key="IBUIContentMode">4</int>
@@ -742,6 +749,8 @@
 					</object>
 				</array>
 				<string key="NSFrameSize">{320, 289}</string>
+				<reference key="NSSuperview"/>
+				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="224092181"/>
 				<string key="NSReuseIdentifierKey">_NS:9</string>
 				<reference key="IBUIBackgroundColor" ref="20539279"/>
@@ -966,6 +975,54 @@
 					</object>
 					<int key="connectionID">97</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">lblFSTime</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="285670042"/>
+					</object>
+					<int key="connectionID">103</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">pnlFSAgo</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="224092181"/>
+					</object>
+					<int key="connectionID">104</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">pnlFSMainTime</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="155445550"/>
+					</object>
+					<int key="connectionID">105</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">pnlFSMainAction</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="749186234"/>
+					</object>
+					<int key="connectionID">106</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">lblFSAgoInfo</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="760673127"/>
+					</object>
+					<int key="connectionID">108</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">lblFSTimeInfo</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="285670042"/>
+					</object>
+					<int key="connectionID">109</int>
+				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<array key="orderedObjects">
@@ -1148,7 +1205,6 @@
 						<reference key="object" ref="1003152979"/>
 						<array class="NSMutableArray" key="children">
 							<reference ref="749186234"/>
-							<reference ref="760673127"/>
 							<reference ref="155445550"/>
 							<reference ref="224092181"/>
 							<reference ref="793384430"/>
@@ -1162,16 +1218,13 @@
 						<reference key="parent" ref="1003152979"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">70</int>
-						<reference key="object" ref="760673127"/>
-						<reference key="parent" ref="1003152979"/>
-					</object>
-					<object class="IBObjectRecord">
 						<int key="objectID">80</int>
 						<reference key="object" ref="224092181"/>
-						<array class="NSMutableArray" key="children"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="760673127"/>
+						</array>
 						<reference key="parent" ref="1003152979"/>
-						<string key="objectName">pnlMainTime</string>
+						<string key="objectName">pnlFSAgo</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">83</int>
@@ -1180,7 +1233,7 @@
 							<reference ref="285670042"/>
 						</array>
 						<reference key="parent" ref="1003152979"/>
-						<string key="objectName">pnlAgo</string>
+						<string key="objectName">pnlFSMainTime</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">72</int>
@@ -1203,6 +1256,11 @@
 						<reference key="object" ref="457213185"/>
 						<reference key="parent" ref="574316542"/>
 						<string key="objectName">btnSideMenu</string>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">70</int>
+						<reference key="object" ref="760673127"/>
+						<reference key="parent" ref="224092181"/>
 					</object>
 				</array>
 			</object>
@@ -1254,7 +1312,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">97</int>
+			<int key="maxID">109</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1271,6 +1329,9 @@
 						<string key="indicatorSecondLeft">UIView</string>
 						<string key="indicatorSecondRight">UIView</string>
 						<string key="lblButtonsHeader">UILabel</string>
+						<string key="lblFSAgoInfo">UILabel</string>
+						<string key="lblFSTime">UILabel</string>
+						<string key="lblFSTimeInfo">UILabel</string>
 						<string key="lblMainTime">UILabel</string>
 						<string key="lblMainTimeInfo">UILabel</string>
 						<string key="lblRunningInfo">UILabel</string>
@@ -1285,6 +1346,9 @@
 						<string key="pgbValueLeft">UIView</string>
 						<string key="pgbValueRight">UIView</string>
 						<string key="pnlAgo">UIView</string>
+						<string key="pnlFSAgo">UIView</string>
+						<string key="pnlFSMainAction">UILabel</string>
+						<string key="pnlFSMainTime">UIView</string>
 						<string key="pnlFirstStart">UIView</string>
 						<string key="pnlRunningTime">UIView</string>
 						<string key="pnlStartNewFeeding">UILabel</string>
@@ -1326,6 +1390,18 @@
 						</object>
 						<object class="IBToOneOutletInfo" key="lblButtonsHeader">
 							<string key="name">lblButtonsHeader</string>
+							<string key="candidateClassName">UILabel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="lblFSAgoInfo">
+							<string key="name">lblFSAgoInfo</string>
+							<string key="candidateClassName">UILabel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="lblFSTime">
+							<string key="name">lblFSTime</string>
+							<string key="candidateClassName">UILabel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="lblFSTimeInfo">
+							<string key="name">lblFSTimeInfo</string>
 							<string key="candidateClassName">UILabel</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="lblMainTime">
@@ -1382,6 +1458,18 @@
 						</object>
 						<object class="IBToOneOutletInfo" key="pnlAgo">
 							<string key="name">pnlAgo</string>
+							<string key="candidateClassName">UIView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="pnlFSAgo">
+							<string key="name">pnlFSAgo</string>
+							<string key="candidateClassName">UIView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="pnlFSMainAction">
+							<string key="name">pnlFSMainAction</string>
+							<string key="candidateClassName">UILabel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="pnlFSMainTime">
+							<string key="name">pnlFSMainTime</string>
 							<string key="candidateClassName">UIView</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="pnlFirstStart">

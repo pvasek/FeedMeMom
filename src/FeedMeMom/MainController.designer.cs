@@ -39,6 +39,15 @@ namespace FeedMeMom
 		MonoTouch.UIKit.UILabel lblButtonsHeader { get; set; }
 
 		[Outlet]
+		MonoTouch.UIKit.UILabel lblFSAgoInfo { get; set; }
+
+		[Outlet]
+		MonoTouch.UIKit.UILabel lblFSTime { get; set; }
+
+		[Outlet]
+		MonoTouch.UIKit.UILabel lblFSTimeInfo { get; set; }
+
+		[Outlet]
 		MonoTouch.UIKit.UILabel lblMainTime { get; set; }
 
 		[Outlet]
@@ -84,6 +93,15 @@ namespace FeedMeMom
 		MonoTouch.UIKit.UIView pnlFirstStart { get; set; }
 
 		[Outlet]
+		MonoTouch.UIKit.UIView pnlFSAgo { get; set; }
+
+		[Outlet]
+		MonoTouch.UIKit.UILabel pnlFSMainAction { get; set; }
+
+		[Outlet]
+		MonoTouch.UIKit.UIView pnlFSMainTime { get; set; }
+
+		[Outlet]
 		MonoTouch.UIKit.UIView pnlRunningTime { get; set; }
 
 		[Outlet]
@@ -97,11 +115,6 @@ namespace FeedMeMom
 		
 		void ReleaseDesignerOutlets ()
 		{
-			if (btnSideMenu != null) {
-				btnSideMenu.Dispose ();
-				btnSideMenu = null;
-			}
-
 			if (btnLeft != null) {
 				btnLeft.Dispose ();
 				btnLeft = null;
@@ -110,6 +123,11 @@ namespace FeedMeMom
 			if (btnRight != null) {
 				btnRight.Dispose ();
 				btnRight = null;
+			}
+
+			if (btnSideMenu != null) {
+				btnSideMenu.Dispose ();
+				btnSideMenu = null;
 			}
 
 			if (btnStartLeft != null) {
@@ -127,6 +145,16 @@ namespace FeedMeMom
 				imgFirstStartArrow = null;
 			}
 
+			if (lblFSAgoInfo != null) {
+				lblFSAgoInfo.Dispose ();
+				lblFSAgoInfo = null;
+			}
+
+			if (lblFSTimeInfo != null) {
+				lblFSTimeInfo.Dispose ();
+				lblFSTimeInfo = null;
+			}
+
 			if (indicatorSecondLeft != null) {
 				indicatorSecondLeft.Dispose ();
 				indicatorSecondLeft = null;
@@ -140,6 +168,11 @@ namespace FeedMeMom
 			if (lblButtonsHeader != null) {
 				lblButtonsHeader.Dispose ();
 				lblButtonsHeader = null;
+			}
+
+			if (lblFSTime != null) {
+				lblFSTime.Dispose ();
+				lblFSTime = null;
 			}
 
 			if (lblMainTime != null) {
@@ -215,6 +248,21 @@ namespace FeedMeMom
 			if (pnlFirstStart != null) {
 				pnlFirstStart.Dispose ();
 				pnlFirstStart = null;
+			}
+
+			if (pnlFSAgo != null) {
+				pnlFSAgo.Dispose ();
+				pnlFSAgo = null;
+			}
+
+			if (pnlFSMainAction != null) {
+				pnlFSMainAction.Dispose ();
+				pnlFSMainAction = null;
+			}
+
+			if (pnlFSMainTime != null) {
+				pnlFSMainTime.Dispose ();
+				pnlFSMainTime = null;
 			}
 
 			if (pnlRunningTime != null) {

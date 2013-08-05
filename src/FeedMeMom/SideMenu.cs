@@ -22,17 +22,17 @@ namespace FeedMeMom
 			// Release any cached data, images, etc that aren't in use.
 		}
 
+		private SideMenuDataSource _source;
+		public List<ActionItem> Items { get { return _source.Data; } }
+
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
 			tblList.RowHeight = 50;
 			tblList.BackgroundColor = Colors.Active.SideMenuRow;
 			tblList.SeparatorColor = Colors.Active.SideMenuRowBorder;
-			var source = new SideMenuDataSource();
-			source.Data.Add(new ActionItem(Resources.History));
-			source.Data.Add(new ActionItem(Resources.SwitchDayNightMode, Colors.ToggleDayNightMode));
-			source.Data.Add(new ActionItem(Resources.Feedback));
-			tblList.Source = source;
+			_source = new SideMenuDataSource();
+			tblList.Source = _source;
 		}
 	}
 

@@ -48,10 +48,20 @@ namespace FeedMeMom
 			lblButtonsHeader.TextColor = colors.ButtonInfoText;
 			lblRunningTime.TextColor = colors.TimeText;
 			lblRunningInfo.TextColor = colors.TimeInfoText;
+
+			pnlFSAgo.BackgroundColor = colors.Ago;		
+			pnlFSMainTime.BackgroundColor = colors.Time;
+			//pnlFSMainAction.BackgroundColor = colors.Toolbar;
+			//pnlFSMainAction.TextColor = colors.AgoInfoText;
+			lblFSAgoInfo.TextColor = colors.AgoInfoText;
+			pnlFirstStart.BackgroundColor = colors.Background;
+			lblFSTimeInfo.TextColor = colors.TimeInfoText;
+
 			btnLeft.SetTitleColor(colors.ToolbarText, UIControlState.Normal);
 			btnRight.SetTitleColor(colors.ToolbarText, UIControlState.Normal);
 			btnStartLeft.SetTitleColor(colors.ButtonText, UIControlState.Normal);
 			btnStartRight.SetTitleColor(colors.ButtonText, UIControlState.Normal);
+
 
 			var opacity = Colors.IsDark ? 0.5f : 1f;
 			btnSideMenu.Layer.Opacity = opacity;
@@ -78,6 +88,7 @@ namespace FeedMeMom
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();		
+			var repo = ServiceLocator.Get<Repository>();
 
 			ApplyColors();
 			Colors.ColorsChanged += (sender, e) => {
@@ -86,10 +97,7 @@ namespace FeedMeMom
 			};
 
 			View.AddSubview(pnlFirstStart);
-			pnlFirstStart.Frame = new RectangleF(pnlAgo.Frame.X, pnlAgo.Frame.Y, pnlFirstStart.Frame.Width, pnlFirstStart.Frame.Height);
-
-			_sideMenu = new SideMenu();
-			_sideMenuHub = SideMenuHub.CreateAndHookup(View, _sideMenu.View);
+			pnlFirstStart.Frame = new RectangleF(pnlAgo.Frame.X, pnlAgo.Frame.Y, pnlFirstStart.Frame.Width, pnlFirstStart.Frame.Height);		
 
 			pnlFirstStart.Hidden = false;
 			NavigationController.NavigationBarHidden = true;
@@ -107,7 +115,22 @@ namespace FeedMeMom
 
 			StyleSideMenuButton();
 
-			var repo = ServiceLocator.Get<Repository>();		
+			_sideMenu = new SideMenu();
+			_sideMenuHub = SideMenuHub.CreateAndHookup(View, _sideMenu.View);
+
+			_sideMenu.Items.Add(new ActionItem(Resources.History));
+			_sideMenu.Items.Add(new ActionItem(Resources.SwitchDayNightMode, Colors.ToggleDayNightMode));
+			_sideMenu.Items.Add(new ActionItem(Resources.Feedback));
+			_sideMenu.Items.Add(new ActionItem("Delete Data", () => {
+				var feedings = repo.Table<FeedingEntry>();
+				foreach (var item in feedings) {
+					repo.Delete(item);
+					ReloadData();
+				}
+			}));
+
+
+
 
 			lblSecondTimeInfo.TextColor = UIColor.Gray;
 			_defaultTimeFrame = pnlTime.Frame;
@@ -279,6 +302,8 @@ namespace FeedMeMom
 			pnlStartNewFeeding.Hidden = false;
 			pnlFirstStart.Hidden = false;
 			btnSideMenu.Hidden = false;
+			btnStartLeft.BackgroundColor = Colors.Active.ButtonActive;
+			btnStartRight.BackgroundColor = Colors.Active.ButtonActive;
 		}
 
 		private void SwitchToInfoMode(Action done = null)
@@ -419,7 +444,7 @@ namespace FeedMeMom
 			InvokeOnMainThread(() => {
 				if (_active != null) {
 					var now = _stopPair.GetTotalLength();
-					lblRunningTime.Text = now.ToString (@"mm\:ss");
+					lblRunningTime.Text = String.Format("{0}:{1:00}", (int)now.TotalMinutes, (int)now.Seconds);
 					const int min30 = 30*60;
 					var rightLength = (int)_stopPair.Right.GetTotalLength().TotalSeconds;
 					var leftLength = (int)_stopPair.Left.GetTotalLength().TotalSeconds;
