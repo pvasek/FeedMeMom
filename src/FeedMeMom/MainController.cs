@@ -284,11 +284,10 @@ namespace FeedMeMom
 			_sideMenuHub = SideMenuHub.CreateAndHookup(View, _sideMenu.View);
 
 			_sideMenu.Items.Add(new ActionItem(Resources.History, () => {
-				if (_historyController != null) 
+				if (_historyController == null) 
 				{
-					_historyController = _historyController.SafeDispose();
+					_historyController = new HistoryController();
 				}
-				_historyController = new HistoryController();
 				_historyController.ReloadData();
 				_sideMenuHub.Hide();
 				NavigationController.PushViewController(_historyController, false);

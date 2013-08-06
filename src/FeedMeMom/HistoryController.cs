@@ -23,6 +23,27 @@ namespace FeedMeMom
 			NavigationController.PopViewControllerAnimated(true);
 		}
 
+		public override void ViewDidLoad()
+		{
+			base.ViewDidLoad();
+			ApplyColors();
+
+			Colors.ColorsChanged += HandleColorsChanged;
+		}
+
+		private void HandleColorsChanged (object sender, EventArgs e)
+		{
+			ApplyColors();
+		}
+
+		private void ApplyColors() 
+		{
+			var tblList = ((UITableView)View);
+			tblList.BackgroundColor = Colors.Active.TableRow;
+			tblList.SeparatorColor = Colors.Active.TableRowBorder;
+			tblList.ReloadData();
+		}
+
 		private HistorySource _historySource;
 
 		public void ReloadData()
@@ -31,10 +52,10 @@ namespace FeedMeMom
 			_historySource.Data = repo.Query<FeedingEntry>("select * from FeedingEntry order by date desc");
 		}
 
-		public override void ViewWillAppear (bool animated)
+		protected override void Dispose(bool disposing)
 		{
-			this.NavigationController.NavigationBarHidden = false;
-			NavigationItem.BackBarButtonItem = new UIBarButtonItem { Title = Resources.Back };
+			base.Dispose(disposing);
+			Colors.ColorsChanged -= HandleColorsChanged;
 		}
 
 		public class HistorySource: UITableViewSource
@@ -55,16 +76,17 @@ namespace FeedMeMom
 
 			public override UITableViewCell GetCell(UITableView tableView, MonoTouch.Foundation.NSIndexPath indexPath)
 			{
-				UITableViewCell cell = tableView.DequeueReusableCell (NormalCellId);
+				UITableViewCell cell = tableView.DequeueReusableCell (NormalCellId + Colors.Active.Name);
 				if (cell == null)
 				{
 					cell = new UITableViewCell(UITableViewCellStyle.Default, NormalCellId);
 					cell.TextLabel.Font = Fonts.SideMenuFont;
-					cell.ContentView.BackgroundColor = Colors.Active.SideMenuRow;
-					cell.TextLabel.BackgroundColor = Colors.Active.SideMenuRow;
-					cell.TextLabel.TextColor = Colors.Active.SideMenuRowText;
+					cell.ContentView.BackgroundColor = Colors.Active.TableRow;
+					cell.TextLabel.BackgroundColor = Colors.Active.TableRow;
+					cell.TextLabel.TextColor = Colors.Active.TableRowText;
 					cell.SelectedBackgroundView = new UIView();
-					cell.SelectedBackgroundView.BackgroundColor = Colors.Active.SideMenuRowSelected;
+					cell.SelectedBackgroundView.BackgroundColor = Colors.Active.TableRowSelected;
+					cell.TextLabel.HighlightedTextColor = Colors.Active.TableRowSelectedText;
 				}
 				var item = Data[indexPath.Row];
 				cell.TextLabel.Text = String.Format("{0} - {1:0}", item.Date, item.TotalBreastLength == null ? 0 : item.TotalBreastLength.Value.TotalMinutes);

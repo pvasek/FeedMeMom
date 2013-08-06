@@ -25,14 +25,24 @@ namespace FeedMeMom
 		private SideMenuDataSource _source;
 		public List<ActionItem> Items { get { return _source.Data; } }
 
+		private void ApplyColors() 
+		{
+			tblList.BackgroundColor = Colors.Active.SideMenuRow;
+			tblList.SeparatorColor = Colors.Active.SideMenuRowBorder;
+		}
+
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
 			tblList.RowHeight = 50;
-			tblList.BackgroundColor = Colors.Active.SideMenuRow;
-			tblList.SeparatorColor = Colors.Active.SideMenuRowBorder;
+			ApplyColors();
 			_source = new SideMenuDataSource();
 			tblList.Source = _source;
+
+			Colors.ColorsChanged += (sender, e) => {
+				ApplyColors();
+				tblList.ReloadData();
+			};
 		}
 	}
 
@@ -76,7 +86,7 @@ namespace FeedMeMom
 
 		public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
 		{
-			UITableViewCell cell = tableView.DequeueReusableCell (NormalCellId);
+			UITableViewCell cell = tableView.DequeueReusableCell (NormalCellId + Colors.Active.Name);
 			if (cell == null)
 			{
 				cell = new UITableViewCell(UITableViewCellStyle.Default, NormalCellId);

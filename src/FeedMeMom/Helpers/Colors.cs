@@ -40,11 +40,21 @@ namespace FeedMeMom
 		public UIColor AgoInfoText { get; set; }
 		public UIColor TimeInfoText { get; set; }
 		public UIColor ButtonInfoText { get; set; }
+
 		public UIColor SideMenuRow { get; set; }
 		public UIColor SideMenuRowSelected { get; set; }
 		public UIColor SideMenuRowText { get; set; }
 		public UIColor SideMenuRowBorder { get; set; }
+
+		public UIColor TableRow { get; set; }
+		public UIColor TableRowSelected { get; set; }
+		public UIColor TableRowText { get; set; }
+		public UIColor TableRowSelectedText { get; set; }
+		public UIColor TableRowBorder { get; set; }
+
 		public UIColor IndicatorText { get; set; }
+
+		public string Name { get { return GetType().Name; }}
 
 		private static Colors _dayMode = new LightColors();
 		private static Colors _nightMode = new DarkColors();
@@ -110,11 +120,20 @@ namespace FeedMeMom
 			AgoInfoText = ColorUtil.FromHex("#F7A144");
 			TimeInfoText = ColorUtil.FromHex("#B92157");
 			ButtonInfoText = ColorUtil.FromHex("#919191");
+
 			SideMenuRow = ColorUtil.FromHex("#560928");
 			SideMenuRowText = ColorUtil.FromHex("#c26f8e");//UIColor.White;
 			SideMenuRowBorder = ColorUtil.FromHex("#c26f8e");// ColorUtil.FromHex("#770c37");
 			SideMenuRowSelected = ColorUtil.FromHex("#330416");
+
+			TableRow = ColorUtil.FromHex("#ffffff");
+			TableRowSelected = ColorUtil.FromHex("#b02157");
+			TableRowText = ColorUtil.FromHex("#b02157");
+			TableRowSelectedText = ColorUtil.FromHex("#ffffff");
+			TableRowBorder = ColorUtil.FromHex("#cccccc");
+
 			IndicatorText = ColorUtil.FromHex("#999999");
+
 		}
 	}
 
@@ -167,11 +186,20 @@ namespace FeedMeMom
 			TimeInfoText = ColorUtil.FromHex("#595959");
 			ButtonText = ColorUtil.FromHex("#595959");
 			ButtonInfoText = ColorUtil.FromHex("#3F3E3E");
+
 			SideMenuRow = ColorUtil.FromHex("#A8A8A8");
 			SideMenuRowText = ColorUtil.FromHex("#444444");
 			SideMenuRowBorder = ColorUtil.FromHex("#999999");
 			SideMenuRowSelected = SideMenuRowBorder;
+
+			TableRow = ColorUtil.FromHex("#333333");
+			TableRowSelected = ColorUtil.FromHex("#444444");
+			TableRowText = ColorUtil.FromHex("#aaaaaa");
+			TableRowSelectedText = ColorUtil.FromHex("#cccccc");
+			TableRowBorder = ColorUtil.FromHex("#222222");
+
 			IndicatorText = UIColor.Black;
+
 		}
 	}
 }
