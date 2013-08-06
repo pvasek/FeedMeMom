@@ -115,6 +115,7 @@
     <Compile Include="HistoryController.cs" />
     <Compile Include="Controls\Toolbar.cs" />
     <Compile Include="Helpers\ControlHelper.cs" />
+    <Compile Include="Helpers\Backgrounds.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

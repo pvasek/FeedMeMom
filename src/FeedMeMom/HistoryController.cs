@@ -4,6 +4,8 @@ using FeedMeMom.Common.Entities;
 using System.Collections.Generic;
 using FeedMeMom.Common;
 using FeedMeMom.Helpers;
+using System.Linq;
+using System.Drawing;
 
 namespace FeedMeMom
 {
@@ -26,8 +28,9 @@ namespace FeedMeMom
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
+			var tblList = ((UITableView)View);
+			tblList.SectionHeaderHeight = 20;
 			ApplyColors();
-
 			Colors.ColorsChanged += HandleColorsChanged;
 		}
 
@@ -49,7 +52,11 @@ namespace FeedMeMom
 		public void ReloadData()
 		{
 			var repo = ServiceLocator.Get<Repository>();
-			_historySource.Data = repo.Query<FeedingEntry>("select * from FeedingEntry order by date desc");
+			_historySource.Data = repo
+				.Query<FeedingEntry>("select * from FeedingEntry order by date desc")
+				.GroupBy(i => i.Date.Date)
+				.Select(i => new Tuple<DateTime?, List<FeedingEntry>>(i.Key, i.ToList()))
+				.ToList();				
 		}
 
 		protected override void Dispose(bool disposing)
@@ -60,23 +67,23 @@ namespace FeedMeMom
 
 		public class HistorySource: UITableViewSource
 		{
-			public List<FeedingEntry> Data { get; set; }
+			public List<Tuple<DateTime?, List<FeedingEntry>>> Data { get; set; }
 			private const string NormalCellId = "_historySourceCell";
 			private UIView _footerView;
 
 			public override int NumberOfSections(UITableView tableView)
 			{
-				return 1;
+				return Data.Count;
 			}
 
 			public override int RowsInSection(UITableView tableview, int section)
 			{
-				return Data.Count;
+				return Data[section].Item2.Count;
 			}
 
 			public override UITableViewCell GetCell(UITableView tableView, MonoTouch.Foundation.NSIndexPath indexPath)
 			{
-				UITableViewCell cell = tableView.DequeueReusableCell (NormalCellId + Colors.Active.Name);
+				UITableViewCell cell = tableView.DequeueReusableCell(NormalCellId + Colors.Active.Name);
 				if (cell == null)
 				{
 					cell = new UITableViewCell(UITableViewCellStyle.Default, NormalCellId);
@@ -88,15 +95,33 @@ namespace FeedMeMom
 					cell.SelectedBackgroundView.BackgroundColor = Colors.Active.TableRowSelected;
 					cell.TextLabel.HighlightedTextColor = Colors.Active.TableRowSelectedText;
 				}
-				var item = Data[indexPath.Row];
-				cell.TextLabel.Text = String.Format("{0} - {1:0}", item.Date, item.TotalBreastLength == null ? 0 : item.TotalBreastLength.Value.TotalMinutes);
+				var item = Data[indexPath.Section].Item2[indexPath.Row];
+				cell.TextLabel.Text = String.Format("{0:t} - {1:0} minutes", item.Date, item.TotalBreastLength == null ? 0 : item.TotalBreastLength.Value.TotalMinutes);
 				return cell;
 			}
 
 			public override float GetHeightForHeader(UITableView tableView, int section)
 			{
 				// this hides row separator between empty rows
-				return 0.01f;
+				return 25;
+			}
+
+			public override UIView GetViewForHeader(UITableView tableView, int section)
+			{
+				var view = tableView.DequeueReusableHeaderFooterView(new MonoTouch.Foundation.NSString("tableHeader" + Colors.Active.Name));
+				if (view == null)
+				{
+					view = new UITableViewHeaderFooterView();
+					view.BackgroundView = new UIView();
+					view.BackgroundView.BackgroundColor = Colors.Active.TableHeader;
+					var lbl = new UILabel{ Frame = new RectangleF(10, 0, 300, 25)};
+					view.ContentView.AddSubview(lbl);					
+					lbl.BackgroundColor = Colors.Active.TableHeader;
+					lbl.Font = Fonts.TableHeader;
+					lbl.TextColor = Colors.Active.TableRowSelectedText;
+					lbl.Text = String.Format("{0:d}", Data[section].Item1);
+				}
+				return view;
 			}
 
 			public override UIView GetViewForFooter(UITableView tableView, int section)
