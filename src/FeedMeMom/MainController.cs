@@ -7,6 +7,7 @@ using FeedMeMom.Common.Entities;
 using System.Linq;
 using System.Threading;
 using MonoTouch.CoreGraphics;
+using FeedMeMom.Helpers;
 
 namespace FeedMeMom
 {
@@ -83,37 +84,23 @@ namespace FeedMeMom
 				TextShadowColor = UIColor.Clear,
 				Font = Fonts.ToolbarTitle,
 			});
-			//UINavigationBar.Appearance.ShadowImage = new UIImage();
-			//UINavigationBar.Appearance.SetBackgroundImage(new UIImage(), UIBarMetrics.Default);
-			//UINavigationBar.Appearance.BackgroundColor = Colors.Active.Toolbar;
-//			UINavigationBar.Appearance.SetTitleTextAttributes(new UITextAttributes {
-//				TextColor = Colors.Active.ToolbarText,
-//				TextShadowColor = UIColor.Clear,
-//				Font = Fonts.ToolbarTitle,
-//			});
-
 			_btnLeft.TintColor = Colors.Active.Toolbar;
 			_btnRight.TintColor = Colors.Active.Toolbar;
 			_btnSideMenu.TintColor = Colors.Active.Toolbar;
 
-			var normalColor = UIImage.FromBundle("clear_color").CreateResizableImage(new UIEdgeInsets(2, 25, 2, 2));
-
-			UIBarButtonItem.Appearance.SetBackButtonBackgroundImage(normalColor, UIControlState.Normal, UIBarMetrics.Default);
-			UIBarButtonItem.Appearance.SetBackButtonBackgroundImage(normalColor, UIControlState.Highlighted, UIBarMetrics.Default);
-			UIBarButtonItem.Appearance.SetBackButtonBackgroundImage(normalColor, UIControlState.Selected, UIBarMetrics.Default);
-			UIBarButtonItem.Appearance.SetTitleTextAttributes(new UITextAttributes {
+			var textAttrs = new UITextAttributes {
 				TextColor = Colors.Active.ToolbarText,
 				TextShadowColor = UIColor.Clear,
 				Font = Fonts.ToolbarButton
-			}, UIControlState.Normal);
-			UIBarButtonItem.Appearance.SetTitleTextAttributes(new UITextAttributes {
-				TextColor = Colors.Active.ToolbarTextActive,
-				TextShadowColor = UIColor.Clear,
-				Font = Fonts.ToolbarButton
-			}, UIControlState.Highlighted);
-			UIBarButtonItem.Appearance.SetBackgroundImage(normalColor, UIControlState.Normal, UIBarMetrics.Default);
-			UIBarButtonItem.Appearance.SetBackgroundImage(normalColor, UIControlState.Highlighted, UIBarMetrics.Default);
-			UIBarButtonItem.Appearance.SetBackgroundImage(normalColor, UIControlState.Selected, UIBarMetrics.Default);
+			};
+			_btnLeft.SetTitleTextAttributes(textAttrs, UIControlState.Normal);
+			_btnRight.SetTitleTextAttributes(textAttrs, UIControlState.Normal);
+			_btnSideMenu.SetTitleTextAttributes(textAttrs, UIControlState.Normal);
+
+			// force title redraw
+			var title = Title;
+			Title = "";
+			Title = title;		
 		}
 
 		private void CancelClick(object sender, EventArgs e)
@@ -282,20 +269,10 @@ namespace FeedMeMom
 
 		protected override void Dispose (bool disposing)
 		{
-			if (_timer != null) {
-				_timer.Dispose ();
-				_timer = null;
-			}
-			if (_historyController != null)
-			{
-				_historyController.Dispose();
-				_historyController = null;
-			}
-			if (_sideMenu != null) 
-			{
-				_sideMenu.Dispose();
-				_sideMenu = null;
-			}
+			_timer = _timer.SafeDispose();
+			_historyController = _historyController.SafeDispose();
+			_sideMenu = _sideMenu.SafeDispose();
+
 			base.Dispose (disposing);
 		}
 
@@ -307,10 +284,11 @@ namespace FeedMeMom
 			_sideMenuHub = SideMenuHub.CreateAndHookup(View, _sideMenu.View);
 
 			_sideMenu.Items.Add(new ActionItem(Resources.History, () => {
-				if (_historyController == null) 
+				if (_historyController != null) 
 				{
-					_historyController = new HistoryController();
+					_historyController = _historyController.SafeDispose();
 				}
+				_historyController = new HistoryController();
 				_historyController.ReloadData();
 				_sideMenuHub.Hide();
 				NavigationController.PushViewController(_historyController, false);

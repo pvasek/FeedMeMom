@@ -49,6 +49,14 @@ namespace FeedMeMom
 
 		static void UpdateAppearance()
 		{
+			var normalColor = UIImage.FromBundle("clear_color").CreateResizableImage(new UIEdgeInsets(2, 25, 2, 2));
+			UIBarButtonItem.Appearance.SetBackButtonBackgroundImage(normalColor, UIControlState.Normal, UIBarMetrics.Default);
+			UIBarButtonItem.Appearance.SetBackButtonBackgroundImage(normalColor, UIControlState.Highlighted, UIBarMetrics.Default);
+			UIBarButtonItem.Appearance.SetBackButtonBackgroundImage(normalColor, UIControlState.Selected, UIBarMetrics.Default);
+			UIBarButtonItem.Appearance.SetBackgroundImage(normalColor, UIControlState.Normal, UIBarMetrics.Default);
+			UIBarButtonItem.Appearance.SetBackgroundImage(normalColor, UIControlState.Highlighted, UIBarMetrics.Default);
+			UIBarButtonItem.Appearance.SetBackgroundImage(normalColor, UIControlState.Selected, UIBarMetrics.Default);
+
 //			UINavigationBar.Appearance.ShadowImage = new UIImage();
 //			UINavigationBar.Appearance.SetBackgroundImage(new UIImage(), UIBarMetrics.Default);
 //			UINavigationBar.Appearance.BackgroundColor = Colors.Active.Toolbar;

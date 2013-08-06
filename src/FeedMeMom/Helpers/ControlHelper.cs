@@ -5,7 +5,7 @@ namespace FeedMeMom.Helpers
 {
 	public static class ControlHelper
 	{
-		public static T SafeDispose<T>(this T view) where T: UIView
+		public static T SafeDispose<T>(this T view) where T: class, IDisposable
 		{
 			if (view != null)
 			{
