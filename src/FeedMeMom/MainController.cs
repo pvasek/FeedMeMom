@@ -38,38 +38,40 @@ namespace FeedMeMom
 
 		public void ApplyColors()
 		{
-			var colors = Colors.Active;
-			pnlAgo.BackgroundColor = colors.Ago;
-			pnlTime.BackgroundColor = colors.Time;
-			pnlRunningTime.BackgroundColor = colors.Time;	
-			View.BackgroundColor = colors.Background;
-			lblMainTime.TextColor = colors.AgoText;
-			lblMainTimeInfo.TextColor = colors.AgoInfoText;
-			lblSecondTime.TextColor = colors.TimeText;
-			lblSecondTimeInfo.TextColor = colors.TimeInfoText;
-			lblButtonsHeader.TextColor = colors.ButtonInfoText;
-			lblRunningTime.TextColor = colors.TimeText;
-			lblRunningInfo.TextColor = colors.TimeInfoText;
+			var skin = Skin.Active;
+			pnlAgo.BackgroundColor = skin.Ago;
+			pnlTime.BackgroundColor = skin.Time;
+			pnlRunningTime.BackgroundColor = skin.Time;	
+			View.BackgroundColor = skin.Background;
+			lblMainTime.TextColor = skin.AgoText;
+			lblMainTimeInfo.TextColor = skin.AgoInfoText;
+			lblSecondTime.TextColor = skin.TimeText;
+			lblSecondTimeInfo.TextColor = skin.TimeInfoText;
+			lblButtonsHeader.TextColor = skin.ButtonInfoText;
+			lblRunningTime.TextColor = skin.TimeText;
+			lblRunningInfo.TextColor = skin.TimeInfoText;
 
-			pnlFSAgo.BackgroundColor = colors.Ago;		
-			pnlFSMainTime.BackgroundColor = colors.Time;
-			//pnlFSMainAction.BackgroundColor = colors.Toolbar;
-			//pnlFSMainAction.TextColor = colors.AgoInfoText;
-			lblFSAgoInfo.TextColor = colors.AgoInfoText;
-			pnlFirstStart.BackgroundColor = colors.Background;
-			lblFSTimeInfo.TextColor = colors.TimeInfoText;
+			pnlFSAgo.BackgroundColor = skin.Ago;		
+			pnlFSMainTime.BackgroundColor = skin.Time;
+			pnlFSMainAction.BackgroundColor = skin.Toolbar;
+			pnlFSMainAction.TextColor = skin.AgoInfoText;
+			lblFSAgoInfo.TextColor = skin.AgoInfoText;
+			pnlFirstStart.BackgroundColor = skin.Background;
+			lblFSTimeInfo.TextColor = skin.TimeInfoText;
 
-			btnStartLeft.SetTitleColor(colors.ButtonText, UIControlState.Normal);
-			btnStartRight.SetTitleColor(colors.ButtonText, UIControlState.Normal);
+			btnStartLeft.SetTitleColor(skin.ButtonText, UIControlState.Normal);
+			btnStartRight.SetTitleColor(skin.ButtonText, UIControlState.Normal);
 
 
-			var opacity = Colors.IsDark ? 0.5f : 1f;
+			var opacity = Skin.IsDark ? 0.5f : 1f;
 			pgbContainerLeft.Layer.Opacity = opacity;
 			pgbContainerRight.Layer.Opacity = opacity;
 			pgbValueLeft.Layer.Opacity = opacity;
 			pgbValueRight.Layer.Opacity = opacity;
-			pgbTextLeft.TextColor = colors.IndicatorText;
-			pgbTextRight.TextColor = colors.IndicatorText;
+			pgbTextLeft.TextColor = skin.IndicatorText;
+			pgbTextRight.TextColor = skin.IndicatorText;
+
+			imgFirstStartArrow.Image = skin.ImageArrow;
 		}
 
 		public void ApplyNavigationBarAppearance()
@@ -77,19 +79,20 @@ namespace FeedMeMom
 			var nb = NavigationController.NavigationBar;
 			nb.SetBackgroundImage(new UIImage(), UIBarMetrics.Default);
 			nb.ShadowImage = new UIImage();
-			nb.BackgroundColor = Colors.Active.Toolbar;
-			nb.TintColor = Colors.Active.Toolbar;
+			nb.BackgroundColor = Skin.Active.Toolbar;
+			nb.TintColor = Skin.Active.Toolbar;
 			nb.SetTitleTextAttributes(new UITextAttributes {
-				TextColor = Colors.Active.ToolbarText,
+				TextColor = Skin.Active.ToolbarText,
 				TextShadowColor = UIColor.Clear,
 				Font = Fonts.ToolbarTitle,
 			});
-			_btnLeft.TintColor = Colors.Active.Toolbar;
-			_btnRight.TintColor = Colors.Active.Toolbar;
-			_btnSideMenu.TintColor = Colors.Active.Toolbar;
+			_btnLeft.TintColor = Skin.Active.Toolbar;
+			_btnRight.TintColor = Skin.Active.Toolbar;
+			_btnSideMenu.TintColor = Skin.Active.Toolbar;
+			_btnSideMenu.Image = Skin.Active.ImageHamburger;
 
 			var textAttrs = new UITextAttributes {
-				TextColor = Colors.Active.ToolbarText,
+				TextColor = Skin.Active.ToolbarText,
 				TextShadowColor = UIColor.Clear,
 				Font = Fonts.ToolbarButton
 			};
@@ -156,7 +159,7 @@ namespace FeedMeMom
 		{
 			base.ViewDidLoad ();		
 			Title = Resources.LastFeeding;
-			_btnSideMenu = new UIBarButtonItem(UIImage.FromBundle("hamburger_icon"), UIBarButtonItemStyle.Plain, ShowSideMenuClick);
+			_btnSideMenu = new UIBarButtonItem(Skin.Active.ImageHamburger, UIBarButtonItemStyle.Plain, ShowSideMenuClick);
 			_btnLeft = new UIBarButtonItem(Resources.Cancel, UIBarButtonItemStyle.Plain, CancelClick);
 			_btnRight = new UIBarButtonItem(Resources.Save, UIBarButtonItemStyle.Plain, SaveClick);
 
@@ -164,7 +167,7 @@ namespace FeedMeMom
 
 			ApplyColors();
 			ApplyNavigationBarAppearance();
-			Colors.ColorsChanged += (sender, e) => {
+			Skin.ColorsChanged += (sender, e) => {
 				ApplyColors();
 				ApplyNavigationBarAppearance();
 				ReloadData();
@@ -183,7 +186,6 @@ namespace FeedMeMom
 			pgbContainerRight.Layer.CornerRadius = 20;
 			pgbContainerRight.ClipsToBounds = true;
 			pnlRunningTime.Hidden = true;
-			imgFirstStartArrow.Image = UIImage.FromBundle("arrow");
 
 			CreateSideMenu();
 			lblSecondTimeInfo.TextColor = UIColor.Gray;
@@ -195,45 +197,20 @@ namespace FeedMeMom
 				if (_active != null) {
 					if (_stopPair.Toggle())
 					{
-						lblRunningTime.TextColor = Colors.Active.RunningTimeText;
-						lblRunningInfo.TextColor = Colors.Active.RunningTimeText;
+						lblRunningTime.TextColor = Skin.Active.RunningTimeText;
+						lblRunningInfo.TextColor = Skin.Active.RunningTimeText;
 						lblRunningInfo.Text = Resources.TapToPause;
 					} 
 					else 
 					{
-						lblRunningTime.TextColor = Colors.Active.PausedTimeText;
-						lblRunningInfo.TextColor = Colors.Active.PausedTimeText;
+						lblRunningTime.TextColor = Skin.Active.PausedTimeText;
+						lblRunningInfo.TextColor = Skin.Active.PausedTimeText;
 						lblRunningInfo.Text = Resources.TapToContinue;
 					}
 				}
 			});
 			lblRunningTime.UserInteractionEnabled = true;
-			lblRunningTime.AddGestureRecognizer(touchRecondizerSecondaryTime);
-
-
-//			btnRight.TouchUpInside += (sender, e) => {
-//				if (_active != null) {
-//					repo.Delete(_active);
-//					_active = null;
-//					SwitchToInfoMode(() => {
-//						ReloadData();
-//					});
-//				}
-//			};
-//
-//			btnLeft.TouchUpInside += (sender, e) => {
-//				if (_active != null) {
-//					_active.Date = DateTime.Now;
-//					_stopPair.Stop();
-//					repo.Update(_active);
-//					_active = null;
-//					SwitchToInfoMode(() => {
-//						ReloadData();
-//					});
-//				}
-//			};
-
-
+			lblRunningTime.AddGestureRecognizer(touchRecondizerSecondaryTime);		
 
 			_timer = new Timer (TimerElapsed, null, 200, 200);
 
@@ -257,8 +234,6 @@ namespace FeedMeMom
 					SelectRightLeftButton(false);
 				}
 			};
-
-
 		}	
 
 		public override void ViewWillAppear (bool animated)
@@ -283,6 +258,7 @@ namespace FeedMeMom
 			_sideMenu = new SideMenu();
 			_sideMenuHub = SideMenuHub.CreateAndHookup(View, _sideMenu.View);
 
+
 			_sideMenu.Items.Add(new ActionItem(Resources.History, () => {
 				if (_historyController == null) 
 				{
@@ -293,11 +269,12 @@ namespace FeedMeMom
 				NavigationController.PushViewController(_historyController, false);
 
 			}));
-			_sideMenu.Items.Add(new ActionItem(Resources.SwitchDayNightMode, () => {
-				Colors.ToggleDayNightMode();
 
+			_sideMenu.Items.Add(new ActionItem(Resources.SwitchDayNightMode, () => {
+				Skin.ToggleDayNightMode();
 				_sideMenuHub.Hide();
 			}));
+
 			_sideMenu.Items.Add(new ActionItem(Resources.Feedback, () => {}));
 
 			_sideMenu.Items.Add(new ActionItem("Delete Data", () => {
@@ -385,8 +362,8 @@ namespace FeedMeMom
 			pnlStartNewFeeding.Hidden = false;
 			pnlFirstStart.Hidden = false;
 			SetFeedingVisible(false);
-			btnStartLeft.BackgroundColor = Colors.Active.ButtonActive;
-			btnStartRight.BackgroundColor = Colors.Active.ButtonActive;
+			btnStartLeft.BackgroundColor = Skin.Active.ButtonActive;
+			btnStartRight.BackgroundColor = Skin.Active.ButtonActive;
 		}
 
 		private void SwitchToInfoMode(Action done = null)
@@ -538,15 +515,15 @@ namespace FeedMeMom
 		private void SelectRightLeftButton(int left)
 		{
 			if (left == 0) {
-				btnStartLeft.BackgroundColor = Colors.Active.ButtonActive;
-				btnStartRight.BackgroundColor = Colors.Active.ButtonActive;
+				btnStartLeft.BackgroundColor = Skin.Active.ButtonActive;
+				btnStartRight.BackgroundColor = Skin.Active.ButtonActive;
 			}
 			else if (left > 0) {
-				btnStartLeft.BackgroundColor = Colors.Active.ButtonActive;
-				btnStartRight.BackgroundColor = Colors.Active.ButtonInactive;
+				btnStartLeft.BackgroundColor = Skin.Active.ButtonActive;
+				btnStartRight.BackgroundColor = Skin.Active.ButtonInactive;
 			} else {
-				btnStartLeft.BackgroundColor = Colors.Active.ButtonInactive;
-				btnStartRight.BackgroundColor = Colors.Active.ButtonActive;
+				btnStartLeft.BackgroundColor = Skin.Active.ButtonInactive;
+				btnStartRight.BackgroundColor = Skin.Active.ButtonActive;
 			}
 		}
 

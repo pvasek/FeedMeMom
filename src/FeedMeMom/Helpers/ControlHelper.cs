@@ -13,6 +13,13 @@ namespace FeedMeMom.Helpers
 			}
 			return null;
 		}
+
+		public static void SetAllBackgrounds(this UIBarButtonItem button, UIImage image)
+		{
+			button.SetBackgroundImage(image, UIControlState.Normal, UIBarMetrics.Default);
+			button.SetBackgroundImage(image, UIControlState.Highlighted, UIBarMetrics.Default);
+			button.SetBackgroundImage(image, UIControlState.Selected, UIBarMetrics.Default);
+		}
 	}
 }
 

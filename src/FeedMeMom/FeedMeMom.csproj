@@ -137,9 +137,11 @@
     <BundleResource Include="Resources\arrow%402x.png" />
     <BundleResource Include="Resources\hamburger_icon.png" />
     <BundleResource Include="Resources\hamburger_icon%402x.png" />
-    <BundleResource Include="Resources\dark_color.png" />
-    <BundleResource Include="Resources\light_color.png" />
     <BundleResource Include="Resources\clear_color.png" />
+    <BundleResource Include="Resources\night_hamburger_icon.png" />
+    <BundleResource Include="Resources\night_hamburger_icon%402x.png" />
+    <BundleResource Include="Resources\night_arrow.png" />
+    <BundleResource Include="Resources\night_arrow%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FeedMeMom.Common\FeedMeMom.Common.csproj">

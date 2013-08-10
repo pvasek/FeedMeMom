@@ -31,7 +31,7 @@ namespace FeedMeMom
 			var tblList = ((UITableView)View);
 			tblList.SectionHeaderHeight = 20;
 			ApplyColors();
-			Colors.ColorsChanged += HandleColorsChanged;
+			Skin.ColorsChanged += HandleColorsChanged;
 		}
 
 		private void HandleColorsChanged (object sender, EventArgs e)
@@ -42,8 +42,8 @@ namespace FeedMeMom
 		private void ApplyColors() 
 		{
 			var tblList = ((UITableView)View);
-			tblList.BackgroundColor = Colors.Active.TableRow;
-			tblList.SeparatorColor = Colors.Active.TableRowBorder;
+			tblList.BackgroundColor = Skin.Active.TableRow;
+			tblList.SeparatorColor = Skin.Active.TableRowBorder;
 			tblList.ReloadData();
 		}
 
@@ -57,12 +57,13 @@ namespace FeedMeMom
 				.GroupBy(i => i.Date.Date)
 				.Select(i => new Tuple<DateTime?, List<FeedingEntry>>(i.Key, i.ToList()))
 				.ToList();				
+			((UITableView)View).ReloadData();
 		}
 
 		protected override void Dispose(bool disposing)
 		{
 			base.Dispose(disposing);
-			Colors.ColorsChanged -= HandleColorsChanged;
+			Skin.ColorsChanged -= HandleColorsChanged;
 		}
 
 		public class HistorySource: UITableViewSource
@@ -83,17 +84,17 @@ namespace FeedMeMom
 
 			public override UITableViewCell GetCell(UITableView tableView, MonoTouch.Foundation.NSIndexPath indexPath)
 			{
-				UITableViewCell cell = tableView.DequeueReusableCell(NormalCellId + Colors.Active.Name);
+				UITableViewCell cell = tableView.DequeueReusableCell(NormalCellId + Skin.Active.Name);
 				if (cell == null)
 				{
 					cell = new UITableViewCell(UITableViewCellStyle.Default, NormalCellId);
 					cell.TextLabel.Font = Fonts.SideMenuFont;
-					cell.ContentView.BackgroundColor = Colors.Active.TableRow;
-					cell.TextLabel.BackgroundColor = Colors.Active.TableRow;
-					cell.TextLabel.TextColor = Colors.Active.TableRowText;
+					cell.ContentView.BackgroundColor = Skin.Active.TableRow;
+					cell.TextLabel.BackgroundColor = Skin.Active.TableRow;
+					cell.TextLabel.TextColor = Skin.Active.TableRowText;
 					cell.SelectedBackgroundView = new UIView();
-					cell.SelectedBackgroundView.BackgroundColor = Colors.Active.TableRowSelected;
-					cell.TextLabel.HighlightedTextColor = Colors.Active.TableRowSelectedText;
+					cell.SelectedBackgroundView.BackgroundColor = Skin.Active.TableRowSelected;
+					cell.TextLabel.HighlightedTextColor = Skin.Active.TableRowSelectedText;
 				}
 				var item = Data[indexPath.Section].Item2[indexPath.Row];
 				cell.TextLabel.Text = String.Format("{0:t} - {1:0} minutes", item.Date, item.TotalBreastLength == null ? 0 : item.TotalBreastLength.Value.TotalMinutes);
@@ -108,17 +109,17 @@ namespace FeedMeMom
 
 			public override UIView GetViewForHeader(UITableView tableView, int section)
 			{
-				var view = tableView.DequeueReusableHeaderFooterView(new MonoTouch.Foundation.NSString("tableHeader" + Colors.Active.Name));
+				var view = tableView.DequeueReusableHeaderFooterView(new MonoTouch.Foundation.NSString("tableHeader" + Skin.Active.Name));
 				if (view == null)
 				{
 					view = new UITableViewHeaderFooterView();
 					view.BackgroundView = new UIView();
-					view.BackgroundView.BackgroundColor = Colors.Active.TableHeader;
+					view.BackgroundView.BackgroundColor = Skin.Active.TableHeader;
 					var lbl = new UILabel{ Frame = new RectangleF(10, 0, 300, 25)};
 					view.ContentView.AddSubview(lbl);					
-					lbl.BackgroundColor = Colors.Active.TableHeader;
+					lbl.BackgroundColor = Skin.Active.TableHeader;
 					lbl.Font = Fonts.TableHeader;
-					lbl.TextColor = Colors.Active.TableRowSelectedText;
+					lbl.TextColor = Skin.Active.TableRowSelectedText;
 					lbl.Text = String.Format("{0:d}", Data[section].Item1);
 				}
 				return view;

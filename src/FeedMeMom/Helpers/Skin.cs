@@ -22,7 +22,7 @@ namespace FeedMeMom
 		}
 	}
 
-	public class Colors
+	public class Skin
 	{
 		public UIColor ButtonActive { get; set; }
 		public UIColor ButtonInactive { get; set; }
@@ -55,19 +55,22 @@ namespace FeedMeMom
 
 		public UIColor IndicatorText { get; set; }
 
+		public UIImage ImageHamburger { get; set; }
+		public UIImage ImageArrow { get; set; }
+
 		public string Name { get { return GetType().Name; }}
 
-		private static Colors _dayMode = new LightColors();
-		private static Colors _nightMode = new DarkColors();
-		private static Colors _active;
+		private static Skin _dayMode = new LightSkin();
+		private static Skin _nightMode = new DarkColors();
+		private static Skin _active;
 
-		static Colors() 
+		static Skin() 
 		{
 			Active = _dayMode;
 		}
 
 
-		public static Colors Active 
+		public static Skin Active 
 		{ 
 			get { return _active; }
 			set 
@@ -101,9 +104,9 @@ namespace FeedMeMom
 		public static event EventHandler ColorsChanged;
 	}
 
-	public class LightColors: Colors
+	public class LightSkin: Skin
 	{
-		public LightColors() 
+		public LightSkin() 
 		{
 			ButtonActive = ColorUtil.FromHex("#b02157");//FromHex ("50AEFF");
 			ButtonInactive = ColorUtil.FromHex ("#fc9bbe");
@@ -135,14 +138,16 @@ namespace FeedMeMom
 			TableHeader = ColorUtil.FromHex("#b02157");
 
 			IndicatorText = ColorUtil.FromHex("#999999");
+			ImageHamburger = Backgrounds.DayHamburger;
+			ImageArrow = Backgrounds.DayArrow;
 
 		}
 	}
 
 
-	public class DarkColors2: Colors
+	public class DarkSkin2: Skin
 	{
-		public DarkColors2() 
+		public DarkSkin2() 
 		{
 			ButtonActive = ColorUtil.FromHex("#8d1542");//FromHex ("50AEFF");
 			ButtonInactive = ColorUtil.FromHex ("#c04271");
@@ -168,7 +173,7 @@ namespace FeedMeMom
 		}
 	}
 
-	public class DarkColors: Colors 
+	public class DarkColors: Skin 
 	{
 		public DarkColors() {
 			ButtonActive = ColorUtil.FromHex("#4B4B4B");//FromHex ("50AEFF");
@@ -183,7 +188,7 @@ namespace FeedMeMom
 			ToolbarText = ColorUtil.FromHex("#555555");
 			ToolbarTextActive = ColorUtil.FromHex("#525252");
 			AgoText = ColorUtil.FromHex("#A8A8A8");
-			AgoInfoText = ColorUtil.FromHex("#525252");
+			AgoInfoText = ColorUtil.FromHex("#727272");
 			TimeText = ColorUtil.FromHex("#595959");
 			TimeInfoText = ColorUtil.FromHex("#595959");
 			ButtonText = ColorUtil.FromHex("#595959");
@@ -202,6 +207,9 @@ namespace FeedMeMom
 			TableHeader = ColorUtil.FromHex("#555555");
 
 			IndicatorText = UIColor.Black;
+
+			ImageHamburger = Backgrounds.NightHamburger;
+			ImageArrow = Backgrounds.NightArrow;
 
 		}
 	}

@@ -18,8 +18,8 @@ namespace FeedMeMom
 			AddSubview(_lblTitle);
 			AddSubview(_btnLeft);
 			AddSubview(_btnRight);
-			_lblTitle.BackgroundColor = Colors.Active.Toolbar;
-			_lblTitle.TextColor = Colors.Active.ToolbarText;
+			_lblTitle.BackgroundColor = Skin.Active.Toolbar;
+			_lblTitle.TextColor = Skin.Active.ToolbarText;
 		}	
 
 		protected override void Dispose(bool disposing)

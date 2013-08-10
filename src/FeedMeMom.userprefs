@@ -1,17 +1,20 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|iPhone" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.Pavel Vašek’s iPhone" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="FeedMeMom/SideMenu.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhone.6.1" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="FeedMeMom/HistoryController.cs">
     <Files>
-      <File FileName="FeedMeMom/Helpers/Colors.cs" Line="1" Column="1" />
-      <File FileName="FeedMeMom/SideMenu.cs" Line="26" Column="56" />
-      <File FileName="FeedMeMom/Helpers/Fonts.cs" Line="1" Column="1" />
+      <File FileName="FeedMeMom/Helpers/Colors.cs" Line="131" Column="49" />
+      <File FileName="FeedMeMom/AppDelegate.cs" Line="51" Column="4" />
+      <File FileName="FeedMeMom/HistoryController.cs" Line="76" Column="23" />
+      <File FileName="FeedMeMom/SideMenu.cs" Line="22" Column="39" />
+      <File FileName="FeedMeMom/MainController.cs" Line="290" Column="6" />
+      <File FileName="FeedMeMom/Helpers/Backgrounds.cs" Line="13" Column="52" />
+      <File FileName="FeedMeMom/Helpers/Fonts.cs" Line="13" Column="54" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
-        <State expanded="True">
+        <State expanded="True" selected="True">
           <Node name="FeedMeMom" expanded="True">
             <Node name="Helpers" expanded="True" />
-            <Node name="SideMenu.cs" selected="True" />
           </Node>
           <Node name="FeedMeMom.Common" expanded="True">
             <Node name="Services" expanded="True" />

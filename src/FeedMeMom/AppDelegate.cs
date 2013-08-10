@@ -29,7 +29,7 @@ namespace FeedMeMom
 			var navigationController = new UINavigationController (viewController);
 
 			UpdateAppearance();
-			Colors.ColorsChanged += (sender, e) => {
+			Skin.ColorsChanged += (sender, e) => {
 				UpdateAppearance();
 			};
 

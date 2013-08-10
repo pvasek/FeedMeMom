@@ -27,8 +27,8 @@ namespace FeedMeMom
 
 		private void ApplyColors() 
 		{
-			tblList.BackgroundColor = Colors.Active.SideMenuRow;
-			tblList.SeparatorColor = Colors.Active.SideMenuRowBorder;
+			tblList.BackgroundColor = Skin.Active.SideMenuRow;
+			tblList.SeparatorColor = Skin.Active.SideMenuRowBorder;
 		}
 
 		public override void ViewDidLoad()
@@ -39,7 +39,7 @@ namespace FeedMeMom
 			_source = new SideMenuDataSource();
 			tblList.Source = _source;
 
-			Colors.ColorsChanged += (sender, e) => {
+			Skin.ColorsChanged += (sender, e) => {
 				ApplyColors();
 				tblList.ReloadData();
 			};
@@ -86,16 +86,16 @@ namespace FeedMeMom
 
 		public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
 		{
-			UITableViewCell cell = tableView.DequeueReusableCell (NormalCellId + Colors.Active.Name);
+			UITableViewCell cell = tableView.DequeueReusableCell (NormalCellId + Skin.Active.Name);
 			if (cell == null)
 			{
 				cell = new UITableViewCell(UITableViewCellStyle.Default, NormalCellId);
 				cell.TextLabel.Font = Fonts.SideMenuFont;
-				cell.ContentView.BackgroundColor = Colors.Active.SideMenuRow;
-				cell.TextLabel.BackgroundColor = Colors.Active.SideMenuRow;
-				cell.TextLabel.TextColor = Colors.Active.SideMenuRowText;
+				cell.ContentView.BackgroundColor = Skin.Active.SideMenuRow;
+				cell.TextLabel.BackgroundColor = Skin.Active.SideMenuRow;
+				cell.TextLabel.TextColor = Skin.Active.SideMenuRowText;
 				cell.SelectedBackgroundView = new UIView();
-				cell.SelectedBackgroundView.BackgroundColor = Colors.Active.SideMenuRowSelected;
+				cell.SelectedBackgroundView.BackgroundColor = Skin.Active.SideMenuRowSelected;
 			}
 			cell.TextLabel.Text = Data[indexPath.Row].Name;
 			return cell;
