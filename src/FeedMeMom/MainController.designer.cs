@@ -1,10 +1,11 @@
 // WARNING
 //
 // This file has been generated automatically by Xamarin Studio to store outlets and
-// actions made in the Xcode designer. If it is removed, they will be lost.
+// actions made in the UI designer. If it is removed, they will be lost.
 // Manual changes to this file may not be handled correctly.
 //
 using MonoTouch.Foundation;
+using System.CodeDom.Compiler;
 
 namespace FeedMeMom
 {
@@ -55,24 +56,6 @@ namespace FeedMeMom
 
 		[Outlet]
 		MonoTouch.UIKit.UILabel lblSecondTimeInfo { get; set; }
-
-		[Outlet]
-		MonoTouch.UIKit.UIView pgbContainerLeft { get; set; }
-
-		[Outlet]
-		MonoTouch.UIKit.UIView pgbContainerRight { get; set; }
-
-		[Outlet]
-		MonoTouch.UIKit.UILabel pgbTextLeft { get; set; }
-
-		[Outlet]
-		MonoTouch.UIKit.UILabel pgbTextRight { get; set; }
-
-		[Outlet]
-		MonoTouch.UIKit.UIView pgbValueLeft { get; set; }
-
-		[Outlet]
-		MonoTouch.UIKit.UIView pgbValueRight { get; set; }
 
 		[Outlet]
 		MonoTouch.UIKit.UIView pnlAgo { get; set; }
@@ -173,36 +156,6 @@ namespace FeedMeMom
 			if (lblSecondTimeInfo != null) {
 				lblSecondTimeInfo.Dispose ();
 				lblSecondTimeInfo = null;
-			}
-
-			if (pgbContainerLeft != null) {
-				pgbContainerLeft.Dispose ();
-				pgbContainerLeft = null;
-			}
-
-			if (pgbContainerRight != null) {
-				pgbContainerRight.Dispose ();
-				pgbContainerRight = null;
-			}
-
-			if (pgbTextLeft != null) {
-				pgbTextLeft.Dispose ();
-				pgbTextLeft = null;
-			}
-
-			if (pgbTextRight != null) {
-				pgbTextRight.Dispose ();
-				pgbTextRight = null;
-			}
-
-			if (pgbValueLeft != null) {
-				pgbValueLeft.Dispose ();
-				pgbValueLeft = null;
-			}
-
-			if (pgbValueRight != null) {
-				pgbValueRight.Dispose ();
-				pgbValueRight = null;
 			}
 
 			if (pnlAgo != null) {

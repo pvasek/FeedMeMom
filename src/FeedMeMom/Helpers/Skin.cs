@@ -43,6 +43,7 @@ namespace FeedMeMom
 
 		public UIColor SideMenuRow { get; set; }
 		public UIColor SideMenuRowSelected { get; set; }
+		public UIColor SideMenuRowSelectedText { get; set; }
 		public UIColor SideMenuRowText { get; set; }
 		public UIColor SideMenuRowBorder { get; set; }
 
@@ -125,10 +126,11 @@ namespace FeedMeMom
 			TimeInfoText = ColorUtil.FromHex("#B92157");
 			ButtonInfoText = ColorUtil.FromHex("#919191");
 
-			SideMenuRow = ColorUtil.FromHex("#560928");
-			SideMenuRowText = ColorUtil.FromHex("#c26f8e");//UIColor.White;
-			SideMenuRowBorder = ColorUtil.FromHex("#c26f8e");// ColorUtil.FromHex("#770c37");
-			SideMenuRowSelected = ColorUtil.FromHex("#330416");
+			SideMenuRow = ColorUtil.FromHex("#560928"); //ColorUtil.FromHex("#560928");
+			SideMenuRowText = ColorUtil.FromHex("#e7b8c4"); //ColorUtil.FromHex("#fc9bbe"); //ColorUtil.FromHex("#c26f8e");//UIColor.White;
+			SideMenuRowBorder = ColorUtil.FromHex("#42071f");//ColorUtil.FromHex("#ec8fb1"); //ColorUtil.FromHex("#c26f8e");// ColorUtil.FromHex("#770c37");
+			SideMenuRowSelected = ColorUtil.FromHex("#330416"); //ColorUtil.FromHex("#330416");
+			SideMenuRowSelectedText = ColorUtil.FromHex("#ffffff"); //ColorUtil.FromHex("#330416");
 
 			TableRow = ColorUtil.FromHex("#ffffff");
 			TableRowSelected = ColorUtil.FromHex("#b02157");
@@ -198,6 +200,7 @@ namespace FeedMeMom
 			SideMenuRowText = ColorUtil.FromHex("#444444");
 			SideMenuRowBorder = ColorUtil.FromHex("#999999");
 			SideMenuRowSelected = SideMenuRowBorder;
+			SideMenuRowSelectedText = ColorUtil.FromHex("#222222");
 
 			TableRow = ColorUtil.FromHex("#333333");
 			TableRowSelected = ColorUtil.FromHex("#444444");

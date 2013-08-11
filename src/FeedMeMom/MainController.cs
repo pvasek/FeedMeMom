@@ -64,12 +64,10 @@ namespace FeedMeMom
 
 
 			var opacity = Skin.IsDark ? 0.5f : 1f;
-			pgbContainerLeft.Layer.Opacity = opacity;
-			pgbContainerRight.Layer.Opacity = opacity;
-			pgbValueLeft.Layer.Opacity = opacity;
-			pgbValueRight.Layer.Opacity = opacity;
-			pgbTextLeft.TextColor = skin.IndicatorText;
-			pgbTextRight.TextColor = skin.IndicatorText;
+			_pgbLeft.Layer.Opacity = opacity;
+			_pgbRight.Layer.Opacity = opacity;
+			_pgbLeft.LabelView.TextColor = skin.IndicatorText;
+			_pgbRight.LabelView.TextColor = skin.IndicatorText;
 
 			imgFirstStartArrow.Image = skin.ImageArrow;
 		}
@@ -140,6 +138,8 @@ namespace FeedMeMom
 		private UIBarButtonItem _btnSideMenu;
 		private UIBarButtonItem _btnLeft;
 		private UIBarButtonItem _btnRight;
+		private ProgressBar _pgbLeft;
+		private ProgressBar _pgbRight;
 
 		private void SetFeedingVisible(bool visible)		
 		{
@@ -155,6 +155,7 @@ namespace FeedMeMom
 			}
 
 		}
+
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();		
@@ -162,6 +163,11 @@ namespace FeedMeMom
 			_btnSideMenu = new UIBarButtonItem(Skin.Active.ImageHamburger, UIBarButtonItemStyle.Plain, ShowSideMenuClick);
 			_btnLeft = new UIBarButtonItem(Resources.Cancel, UIBarButtonItemStyle.Plain, CancelClick);
 			_btnRight = new UIBarButtonItem(Resources.Save, UIBarButtonItemStyle.Plain, SaveClick);
+			_pgbLeft = new ProgressBar { Center = new PointF(34, 44) };
+			_pgbRight = new ProgressBar { Center = new PointF(285, 44) };
+			pnlTime.AddSubview(_pgbLeft);
+			pnlTime.AddSubview(_pgbRight);
+
 
 			var repo = ServiceLocator.Get<Repository>();
 
@@ -181,17 +187,13 @@ namespace FeedMeMom
 			btnStartLeft.Layer.CornerRadius = _defaultRadius;
 			btnStartRight.Layer.CornerRadius = _defaultRadius;
 			pnlStartNewFeeding.Layer.CornerRadius = _defaultRadius;
-			pgbContainerLeft.Layer.CornerRadius = 20;
-			pgbContainerLeft.ClipsToBounds = true;
-			pgbContainerRight.Layer.CornerRadius = 20;
-			pgbContainerRight.ClipsToBounds = true;
 			pnlRunningTime.Hidden = true;
 
 			CreateSideMenu();
 			lblSecondTimeInfo.TextColor = UIColor.Gray;
 			_defaultTimeFrame = pnlTime.Frame;
-			_defaultContainerRightCenter = pgbContainerRight.Center;
-			_defaultContainerLeftCenter = pgbContainerLeft.Center;
+			_defaultContainerRightCenter = _pgbRight.Center;
+			_defaultContainerLeftCenter = _pgbLeft.Center;
 
 			var touchRecondizerSecondaryTime = new UITapGestureRecognizer((e) => {
 				if (_active != null) {
@@ -286,32 +288,6 @@ namespace FeedMeMom
 			}));		
 		}
 
-		private void UpdateHieghtInPercent(int? total, int? current, UIView parent, UIView child, UILabel label, bool showPercent)
-		{
-			string sufix = showPercent ? "%" : "";
-			if (total == 0)
-			{
-				current = 0;
-				total = 1;
-			}
-			var percent =  (float)(current ?? 0) / (total ?? 1);
-			var rect = child.Frame;
-			var height = parent.Frame.Height * percent;
-			if (height > parent.Frame.Height) {
-				height = parent.Frame.Height;
-			}
-			// keep it on the bottom
-			//child.Frame = new RectangleF(rect.Left, parent.Frame.Bottom - height, rect.Size.Width, height);
-			// keep it on the top
-			child.Frame = new RectangleF(rect.Left, 0, rect.Size.Width, height);
-
-			if (percent < 0.001)
-			{
-				sufix = "";
-			}
-			label.Text = String.Format("{0:#}{1}", showPercent ? (int)(100 * percent) : (current / 60), sufix);
-		}
-
 		private void UpdateView(FeedingEntry entry)
 		{
 			SetFeedingVisible(false);
@@ -339,8 +315,8 @@ namespace FeedMeMom
 			}
 			lblSecondTimeInfo.Text = Resources.Minutes;
 
-			UpdateHieghtInPercent(entry.TotalBreastLengthSeconds, entry.LeftBreastLengthSeconds, pgbContainerLeft, pgbValueLeft, pgbTextLeft, true);
-			UpdateHieghtInPercent(entry.TotalBreastLengthSeconds, entry.RightBreastLengthSeconds, pgbContainerRight, pgbValueRight, pgbTextRight, true);
+			_pgbLeft.UpdateValue(entry.TotalBreastLengthSeconds, entry.LeftBreastLengthSeconds, true);
+			_pgbRight.UpdateValue(entry.TotalBreastLengthSeconds, entry.RightBreastLengthSeconds, true);
 
 			SelectRightLeftButton ((entry.RightBreastLengthSeconds ?? 0) - (entry.LeftBreastLengthSeconds ?? 0)); // if there was more from right, the next should be form left
 			// secondary info
@@ -386,8 +362,8 @@ namespace FeedMeMom
 			};
 			Action move = () => {
 				pnlTime.Frame = _defaultTimeFrame;
-				pgbContainerRight.Center = _defaultContainerRightCenter;		
-				pgbContainerLeft.Center = _defaultContainerLeftCenter;
+				_pgbRight.Center = _defaultContainerRightCenter;		
+				_pgbLeft.Center = _defaultContainerLeftCenter;
 			};
 
 			if (done == null)
@@ -433,8 +409,8 @@ namespace FeedMeMom
 			Action move = () => {
 				pnlTime.Center = pnlTime.Center;
 				pnlTime.Frame = new RectangleF(30, pnlAgo.Frame.Y + 30, 260, 160);
-				pgbContainerRight.Center = new PointF(155, 130);
-				pgbContainerLeft.Center = new PointF(105, 130);
+				_pgbRight.Center = new PointF(155, 130);
+				_pgbLeft.Center = new PointF(105, 130);
 				SetFeedingVisible(true);				pnlRunningTime.Center = new PointF(pnlTime.Frame.Width / 2, pnlTime.Frame.Height / 2 - 20);
 			};
 
@@ -500,8 +476,8 @@ namespace FeedMeMom
 					var leftLength = (int)_stopPair.Left.GetTotalLength().TotalSeconds;
 					var percentRight100 = rightLength < min30 ? min30 : rightLength;
 					var percentLeft100 = leftLength < min30 ? min30 : leftLength;
-					UpdateHieghtInPercent (percentRight100, rightLength, pgbContainerRight, pgbValueRight, pgbTextRight, false);
-					UpdateHieghtInPercent (percentLeft100, leftLength, pgbContainerLeft, pgbValueLeft, pgbTextLeft, false);
+					_pgbRight.UpdateValue(percentRight100, rightLength, false);
+					_pgbLeft.UpdateValue(percentLeft100, leftLength, false);
 				}
 			});
 		}

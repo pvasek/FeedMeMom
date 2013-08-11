@@ -95,9 +95,17 @@ namespace FeedMeMom
 					cell.SelectedBackgroundView = new UIView();
 					cell.SelectedBackgroundView.BackgroundColor = Skin.Active.TableRowSelected;
 					cell.TextLabel.HighlightedTextColor = Skin.Active.TableRowSelectedText;
+					var pgbLeft = new ProgressBar { Width = 30 };
+					var pgbRight = new ProgressBar { Width = 30 };
+					pgbLeft.Center = new PointF(230, 20);
+					pgbRight.Center = new PointF(270, 20);
+					cell.ContentView.AddSubview(pgbLeft);
+					cell.ContentView.AddSubview(pgbRight);
 				}
 				var item = Data[indexPath.Section].Item2[indexPath.Row];
 				cell.TextLabel.Text = String.Format("{0:t} - {1:0} minutes", item.Date, item.TotalBreastLength == null ? 0 : item.TotalBreastLength.Value.TotalMinutes);
+				((ProgressBar)cell.ContentView.Subviews[1]).UpdateValue(item.TotalBreastLengthSeconds, item.LeftBreastLengthSeconds, true);
+				((ProgressBar)cell.ContentView.Subviews[2]).UpdateValue(item.TotalBreastLengthSeconds, item.RightBreastLengthSeconds, true);
 				return cell;
 			}
 

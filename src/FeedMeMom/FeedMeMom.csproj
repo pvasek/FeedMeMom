@@ -105,7 +105,6 @@
     <Compile Include="Services\AppleSettings.cs" />
     <Compile Include="Services\SynchronizationService.cs" />
     <Compile Include="Resources.cs" />
-    <Compile Include="Helpers\Colors.cs" />
     <Compile Include="SideMenu.cs" />
     <Compile Include="SideMenu.designer.cs">
       <DependentUpon>SideMenu.cs</DependentUpon>
@@ -116,6 +115,8 @@
     <Compile Include="Controls\Toolbar.cs" />
     <Compile Include="Helpers\ControlHelper.cs" />
     <Compile Include="Helpers\Backgrounds.cs" />
+    <Compile Include="Helpers\Skin.cs" />
+    <Compile Include="Controls\ProgressBar.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

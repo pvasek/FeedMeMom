@@ -94,6 +94,7 @@ namespace FeedMeMom
 				cell.ContentView.BackgroundColor = Skin.Active.SideMenuRow;
 				cell.TextLabel.BackgroundColor = Skin.Active.SideMenuRow;
 				cell.TextLabel.TextColor = Skin.Active.SideMenuRowText;
+				cell.TextLabel.HighlightedTextColor = Skin.Active.SideMenuRowSelectedText;
 				cell.SelectedBackgroundView = new UIView();
 				cell.SelectedBackgroundView.BackgroundColor = Skin.Active.SideMenuRowSelected;
 			}
