@@ -39,7 +39,7 @@ namespace FeedMeMom
 			_source = new SideMenuDataSource();
 			tblList.Source = _source;
 
-			Skin.ColorsChanged += (sender, e) => {
+			Skin.SkinChanged += (sender, e) => {
 				ApplyColors();
 				tblList.ReloadData();
 			};

@@ -173,7 +173,7 @@ namespace FeedMeMom
 
 			ApplyColors();
 			ApplyNavigationBarAppearance();
-			Skin.ColorsChanged += (sender, e) => {
+			Skin.SkinChanged += (sender, e) => {
 				ApplyColors();
 				ApplyNavigationBarAppearance();
 				ReloadData();
@@ -277,7 +277,15 @@ namespace FeedMeMom
 				_sideMenuHub.Hide();
 			}));
 
-			_sideMenu.Items.Add(new ActionItem(Resources.Feedback, () => {}));
+			_sideMenu.Items.Add(new ActionItem(Resources.Feedback, () => {
+				_sideMenuHub.Hide();
+				NavigationController.PushViewController(new FeedbackController(), false);
+			}));
+
+			_sideMenu.Items.Add(new ActionItem(Resources.ShareTheLove, () => {
+				_sideMenuHub.Hide();
+				NavigationController.PushViewController(new ReviewController(), false);
+			}));
 
 			_sideMenu.Items.Add(new ActionItem("Delete Data", () => {
 				var feedings = repo.Table<FeedingEntry>();

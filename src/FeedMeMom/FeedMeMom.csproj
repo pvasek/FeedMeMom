@@ -91,6 +91,7 @@
     <Folder Include="Services\" />
     <Folder Include="Helpers\" />
     <Folder Include="Controls\" />
+    <Folder Include="Controllers\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -117,11 +118,22 @@
     <Compile Include="Helpers\Backgrounds.cs" />
     <Compile Include="Helpers\Skin.cs" />
     <Compile Include="Controls\ProgressBar.cs" />
+    <Compile Include="Controllers\ReviewController.cs" />
+    <Compile Include="Controllers\ReviewController.designer.cs">
+      <DependentUpon>ReviewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\SkinExtensions.cs" />
+    <Compile Include="Controllers\FeedbackController.cs" />
+    <Compile Include="Controllers\FeedbackController.designer.cs">
+      <DependentUpon>FeedbackController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <InterfaceDefinition Include="MainController.xib" />
     <InterfaceDefinition Include="SideMenu.xib" />
+    <InterfaceDefinition Include="Controllers\ReviewController.xib" />
+    <InterfaceDefinition Include="Controllers\FeedbackController.xib" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\background.png" />

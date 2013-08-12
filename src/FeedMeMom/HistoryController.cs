@@ -31,7 +31,7 @@ namespace FeedMeMom
 			var tblList = ((UITableView)View);
 			tblList.SectionHeaderHeight = 20;
 			ApplyColors();
-			Skin.ColorsChanged += HandleColorsChanged;
+			Skin.SkinChanged += HandleColorsChanged;
 		}
 
 		private void HandleColorsChanged (object sender, EventArgs e)
@@ -63,7 +63,7 @@ namespace FeedMeMom
 		protected override void Dispose(bool disposing)
 		{
 			base.Dispose(disposing);
-			Skin.ColorsChanged -= HandleColorsChanged;
+			Skin.SkinChanged -= HandleColorsChanged;
 		}
 
 		public class HistorySource: UITableViewSource

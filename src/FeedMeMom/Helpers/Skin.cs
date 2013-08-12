@@ -37,6 +37,7 @@ namespace FeedMeMom
 		public UIColor AgoText { get; set; }
 		public UIColor TimeText { get; set; }
 		public UIColor ButtonText { get; set; }
+		public UIColor ButtonTextSelected { get; set; }
 		public UIColor AgoInfoText { get; set; }
 		public UIColor TimeInfoText { get; set; }
 		public UIColor ButtonInfoText { get; set; }
@@ -80,9 +81,9 @@ namespace FeedMeMom
 				_active = value;
 				if (changed)
 				{
-					if (ColorsChanged != null)
+					if (SkinChanged != null)
 					{
-						ColorsChanged(null, EventArgs.Empty);
+						SkinChanged(null, EventArgs.Empty);
 					}
 				}
 			}
@@ -102,7 +103,7 @@ namespace FeedMeMom
 			}
 		}
 
-		public static event EventHandler ColorsChanged;
+		public static event EventHandler SkinChanged;
 	}
 
 	public class LightSkin: Skin
@@ -121,6 +122,7 @@ namespace FeedMeMom
 			AgoText = UIColor.White;
 			TimeText = ButtonActive;
 			ButtonText = UIColor.White;
+			ButtonTextSelected = ColorUtil.FromHex("#F7A144");
 			ToolbarTextActive = ColorUtil.FromHex("#F7A144");
 			AgoInfoText = ColorUtil.FromHex("#F7A144");
 			TimeInfoText = ColorUtil.FromHex("#B92157");
@@ -194,6 +196,7 @@ namespace FeedMeMom
 			TimeText = ColorUtil.FromHex("#595959");
 			TimeInfoText = ColorUtil.FromHex("#595959");
 			ButtonText = ColorUtil.FromHex("#595959");
+			ButtonTextSelected = ColorUtil.FromHex("#A8A8A8");
 			ButtonInfoText = ColorUtil.FromHex("#3F3E3E");
 
 			SideMenuRow = ColorUtil.FromHex("#A8A8A8");

@@ -13,6 +13,7 @@ namespace FeedMeMom
 		public const string Now = "now";
 		public const string LastFeeding = "Last Feeding";
 		public const string Feedback = "Feedback";
+		public const string ShareTheLove = "Share the love";
 		public const string SwitchDayNightMode = "Switch Day/Night Mode";
 		public const string History = "History";
 		public const string Back = "Back";
