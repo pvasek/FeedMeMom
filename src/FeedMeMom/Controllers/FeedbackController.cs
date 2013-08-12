@@ -6,6 +6,7 @@ using MonoTouch.MessageUI;
 using System.Text;
 using System.Globalization;
 using FeedMeMom.Common;
+using System.Linq;
 
 namespace FeedMeMom
 {
@@ -28,6 +29,7 @@ namespace FeedMeMom
 		{
 			Skin.Active.SkinButton(btnNewFeature);
 			Skin.Active.SkinButton(btnBug);
+			Skin.Active.SkinButton(btnStayInTouch);
 		}
 
 		public override void ViewDidLoad()
@@ -57,7 +59,7 @@ namespace FeedMeMom
 			msg.AppendLine("");
 			msg.AppendLine("");
 			msg.AppendLine("");
-			msg.Append(UIDevice.CurrentDevice.Name.Replace("'s", ""));
+			msg.AppendLine(UIDevice.CurrentDevice.Name.Split(new []{"’s"}, StringSplitOptions.RemoveEmptyEntries).FirstOrDefault());
 			msg.AppendLine("");
 			msg.AppendLine("");
 			msg.AppendLine("======================================");
