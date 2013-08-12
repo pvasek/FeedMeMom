@@ -17,17 +17,25 @@ namespace FeedMeMom
 
 		[Outlet]
 		MonoTouch.UIKit.UIButton btnNewFeature { get; set; }
+
+		[Outlet]
+		MonoTouch.UIKit.UIButton btnStayInTouch { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
-			if (btnNewFeature != null) {
-				btnNewFeature.Dispose ();
-				btnNewFeature = null;
+			if (btnStayInTouch != null) {
+				btnStayInTouch.Dispose ();
+				btnStayInTouch = null;
 			}
 
 			if (btnBug != null) {
 				btnBug.Dispose ();
 				btnBug = null;
+			}
+
+			if (btnNewFeature != null) {
+				btnNewFeature.Dispose ();
+				btnNewFeature = null;
 			}
 		}
 	}

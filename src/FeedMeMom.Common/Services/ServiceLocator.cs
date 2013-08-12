@@ -15,7 +15,7 @@ namespace FeedMeMom.Common
 			_instances.Add(typeof(AppService), new AppService());
 		}
 
-		private static Dictionary<Type, Func<object>> _factoryMethods = new Dictionary<Type,Func<object>>();
+		//private static Dictionary<Type, Func<object>> _factoryMethods = new Dictionary<Type,Func<object>>();
 		private static Dictionary<Type, object> _instances;
 		
 		public static T Get<T> ()
@@ -26,12 +26,25 @@ namespace FeedMeMom.Common
 		
 		public static void Register<T> (T instance)
 		{
-			_factoryMethods.Add (typeof(T), () => instance);
+			_instances.Add (typeof(T), instance);
 		}
 		
-		public static void Register<T> (Func<T> factoryMethod) where T: class
+//		public static void Register<T> (Func<T> factoryMethod) where T: class
+//		{
+//			_factoryMethods.Add (typeof(T), factoryMethod);
+//		}
+
+		public static void Dispose()
 		{
-			_factoryMethods.Add (typeof(T), factoryMethod);
+			foreach (var instance in _instances.Values)
+			{
+				var disposable = instance as IDisposable;
+				if (disposable != null)
+				{
+					disposable.Dispose();
+				}
+			}
+			_instances = null;
 		}
 	}
 }

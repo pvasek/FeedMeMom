@@ -9,7 +9,7 @@ namespace FeedMeMom
 	{
 		public ReviewController() : base ("ReviewController", null)
 		{
-			Title = Resources.Feedback;
+			Title = Resources.IlikeThisApp;
 			NavigationItem.HidesBackButton = true;
 			NavigationItem.LeftBarButtonItem = new UIBarButtonItem(Resources.Back, UIBarButtonItemStyle.Plain, Close);
 		}

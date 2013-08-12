@@ -75,15 +75,7 @@ namespace FeedMeMom
 		public void ApplyNavigationBarAppearance()
 		{
 			var nb = NavigationController.NavigationBar;
-			nb.SetBackgroundImage(new UIImage(), UIBarMetrics.Default);
-			nb.ShadowImage = new UIImage();
-			nb.BackgroundColor = Skin.Active.Toolbar;
-			nb.TintColor = Skin.Active.Toolbar;
-			nb.SetTitleTextAttributes(new UITextAttributes {
-				TextColor = Skin.Active.ToolbarText,
-				TextShadowColor = UIColor.Clear,
-				Font = Fonts.ToolbarTitle,
-			});
+			Skin.Active.SkinNavigationBar(nb);
 			_btnLeft.TintColor = Skin.Active.Toolbar;
 			_btnRight.TintColor = Skin.Active.Toolbar;
 			_btnSideMenu.TintColor = Skin.Active.Toolbar;
@@ -282,7 +274,7 @@ namespace FeedMeMom
 				NavigationController.PushViewController(new FeedbackController(), false);
 			}));
 
-			_sideMenu.Items.Add(new ActionItem(Resources.ShareTheLove, () => {
+			_sideMenu.Items.Add(new ActionItem(Resources.IlikeThisApp, () => {
 				_sideMenuHub.Hide();
 				NavigationController.PushViewController(new ReviewController(), false);
 			}));

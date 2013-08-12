@@ -127,6 +127,7 @@
     <Compile Include="Controllers\FeedbackController.designer.cs">
       <DependentUpon>FeedbackController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Services\EmailSender.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

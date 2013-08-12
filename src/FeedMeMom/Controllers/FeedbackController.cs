@@ -2,6 +2,10 @@ using System;
 using System.Drawing;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
+using MonoTouch.MessageUI;
+using System.Text;
+using System.Globalization;
+using FeedMeMom.Common;
 
 namespace FeedMeMom
 {
@@ -9,7 +13,7 @@ namespace FeedMeMom
 	{
 		public FeedbackController() : base ("FeedbackController", null)
 		{
-			Title = Resources.ShareTheLove;
+			Title = Resources.Feedback;
 			NavigationItem.HidesBackButton = true;
 			NavigationItem.LeftBarButtonItem = new UIBarButtonItem(Resources.Back, UIBarButtonItemStyle.Plain, Close);
 		}
@@ -30,6 +34,10 @@ namespace FeedMeMom
 		{
 			base.ViewDidLoad();
 
+			btnBug.TouchUpInside += (sender, e) => SendEmail("Bug Report", "Description:");
+			btnNewFeature.TouchUpInside += (sender, e) => SendEmail("Feature request", "What about this feature?");
+			btnStayInTouch.TouchUpInside += (sender, e) => SendEmail("Feedback", "");
+
 			ApplyColors();
 
 			Skin.SkinChanged += ApplyColors;
@@ -40,6 +48,32 @@ namespace FeedMeMom
 			base.Dispose(disposing);
 			Skin.SkinChanged -= ApplyColors;
 		}
+
+		private void SendEmail(string subject, string startOfTheBody)
+		{
+			var msg = new StringBuilder();
+			msg.AppendLine(startOfTheBody);
+			msg.AppendLine("");
+			msg.AppendLine("");
+			msg.AppendLine("");
+			msg.AppendLine("");
+			msg.Append(UIDevice.CurrentDevice.Name.Replace("'s", ""));
+			msg.AppendLine("");
+			msg.AppendLine("");
+			msg.AppendLine("======================================");
+			msg.AppendLine("Device information:");
+			msg.AppendLine(String.Format("IOS Version: {0}", UIDevice.CurrentDevice.SystemVersion));
+			msg.AppendLine(String.Format("Device: {0}", UIDevice.CurrentDevice.Model));
+			msg.AppendLine(String.Format("Localization: {0}", CultureInfo.CurrentCulture.Name));
+			msg.AppendLine(String.Format("System: {0}", UIDevice.CurrentDevice.SystemName));
+
+			ServiceLocator.Get<EmailSender>().SendEmail(subject, msg.ToString(), () => { 
+				//Close(null, null);
+			});
+
+		}
+
+
 	}
 }
 

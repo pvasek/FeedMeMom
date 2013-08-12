@@ -24,7 +24,7 @@ namespace FeedMeMom.UI.Services
 		public override void Load()
 		{
 			var settings = NSUserDefaults.StandardUserDefaults;
-			var dict = settings.AsDictionary();
+			//var dict = settings.AsDictionary();
 			LengthUnit = (LengthUnitType)settings.IntForKey(LengthUnitKey);
 			WeightUnit = (WeightUnitType)settings.IntForKey(WeightUnitKey);
 			TemperatureUnit = (TemperatureUnitType)settings.IntForKey(TemperatureUnitKey);
