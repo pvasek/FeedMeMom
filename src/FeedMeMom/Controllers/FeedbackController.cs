@@ -62,7 +62,7 @@ namespace FeedMeMom
 			msg.AppendLine(UIDevice.CurrentDevice.Name.Split(new []{"’s"}, StringSplitOptions.RemoveEmptyEntries).FirstOrDefault());
 			msg.AppendLine("");
 			msg.AppendLine("");
-			msg.AppendLine("======================================");
+			msg.AppendLine("============================");
 			msg.AppendLine("Device information:");
 			msg.AppendLine(String.Format("IOS Version: {0}", UIDevice.CurrentDevice.SystemVersion));
 			msg.AppendLine(String.Format("Device: {0}", UIDevice.CurrentDevice.Model));

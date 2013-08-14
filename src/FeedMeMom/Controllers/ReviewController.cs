@@ -2,6 +2,7 @@ using System;
 using System.Drawing;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
+using MonoTouch.StoreKit;
 
 namespace FeedMeMom
 {
@@ -42,6 +43,22 @@ namespace FeedMeMom
 			ApplyColors();
 
 			Skin.SkinChanged += ApplyColors;
+
+			btnReview.TouchUpInside += (sender, e) => {
+				var skController = new SKStoreProductViewController();
+				skController.Finished += (sender2, e2) => {
+					NavigationController.DismissViewController(true, () => {
+						skController.Dispose();
+						skController = null;
+					});
+				};
+				skController.LoadProduct(new StoreProductParameters{ITunesItemIdentifier = 496963922}, (ok, error) => {
+					if (ok) 
+					{ 
+						NavigationController.PresentViewController(skController, true, null);
+					}
+				});
+			};
 		}
 
 		protected override void Dispose(bool disposing)
