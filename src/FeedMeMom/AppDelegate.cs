@@ -36,7 +36,7 @@ namespace FeedMeMom
 
 			window.RootViewController = navigationController;
 			window.MakeKeyAndVisible ();
-			ServiceLocator.Register<EmailSender>(new EmailSender("pvasek@gmail.com", navigationController));
+			ServiceLocator.Register<EmailSender>(new EmailSender(Configuration.FeedbackEmail, navigationController));
 			return true;
 		}
 

@@ -3,6 +3,8 @@ using System.Drawing;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 using MonoTouch.StoreKit;
+using FeedMeMom.Common;
+using System.Text;
 
 namespace FeedMeMom
 {
@@ -22,10 +24,7 @@ namespace FeedMeMom
 
 		public override void DidReceiveMemoryWarning()
 		{
-			// Releases the view if it doesn't have a superview.
 			base.DidReceiveMemoryWarning();
-			
-			// Release any cached data, images, etc that aren't in use.
 		}
 
 		private void ApplyColors(object sender = null, EventArgs e = null)
@@ -44,7 +43,23 @@ namespace FeedMeMom
 
 			Skin.SkinChanged += ApplyColors;
 
-			btnReview.TouchUpInside += (sender, e) => {
+			btnShareByTwitter.Hidden = true;
+			btnShareByFacebook.Hidden = true;
+
+			btnReview.TouchUpInside += ReviewClick;
+			btnShareByEmail.TouchUpInside += ShareByEmailClick;
+		}
+
+		protected override void Dispose(bool disposing)
+		{
+			base.Dispose(disposing);
+			Skin.SkinChanged -= ApplyColors;
+		}
+
+		private void ReviewClick(object sender, EventArgs e)
+		{
+			if (UIDevice.CurrentDevice.CheckSystemVersion (6,0)) 
+			{
 				var skController = new SKStoreProductViewController();
 				skController.Finished += (sender2, e2) => {
 					NavigationController.DismissViewController(true, () => {
@@ -52,19 +67,31 @@ namespace FeedMeMom
 						skController = null;
 					});
 				};
-				skController.LoadProduct(new StoreProductParameters{ITunesItemIdentifier = 496963922}, (ok, error) => {
+				skController.LoadProduct(new StoreProductParameters{ITunesItemIdentifier = Configuration.AppId}, (ok, error) => {
 					if (ok) 
 					{ 
 						NavigationController.PresentViewController(skController, true, null);
 					}
 				});
-			};
+			} 
+			else 
+			{
+				var nsurl = new NSUrl(Configuration.AppStoreUrl);
+				UIApplication.SharedApplication.OpenUrl (nsurl);
+			}		
 		}
 
-		protected override void Dispose(bool disposing)
+		private void ShareByEmailClick(object sender, EventArgs e)
 		{
-			base.Dispose(disposing);
-			Skin.SkinChanged -= ApplyColors;
+			var emailSender = ServiceLocator.Get<EmailSender>();
+			var body = new StringBuilder();
+			body.AppendLine("I found a really handy app.");
+			body.AppendLine("You can give it a try.");
+			body.AppendLine();
+			body.AppendLine(Configuration.AppStoreUrl);
+			body.AppendLine();
+			//body.AppendLine(DeviceHelper.GetUserName());
+			emailSender.SendEmail("Good app for you", body.ToString());
 		}
 	}
 }

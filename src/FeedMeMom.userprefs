@@ -1,13 +1,16 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhone.6.1" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="FeedMeMom/Helpers/SkinExtensions.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="FeedMeMom/Controllers/FeedbackController.cs">
     <Files>
-      <File FileName="FeedMeMom/SideMenu.cs" Line="86" Column="3" />
-      <File FileName="FeedMeMom/MainController.cs" Line="78" Column="38" />
-      <File FileName="FeedMeMom/Controls/ProgressBar.cs" Line="44" Column="31" />
-      <File FileName="FeedMeMom/Resources.cs" Line="16" Column="54" />
-      <File FileName="FeedMeMom/Controllers/FeedbackController.cs" Line="78" Column="1" />
-      <File FileName="FeedMeMom/Helpers/SkinExtensions.cs" Line="20" Column="63" />
+      <File FileName="FeedMeMom/SideMenu.cs" Line="1" Column="1" />
+      <File FileName="FeedMeMom/MainController.cs" Line="1" Column="1" />
+      <File FileName="FeedMeMom/Controls/ProgressBar.cs" Line="1" Column="1" />
+      <File FileName="FeedMeMom/Resources.cs" Line="1" Column="1" />
+      <File FileName="FeedMeMom/Controllers/FeedbackController.cs" Line="62" Column="45" />
+      <File FileName="FeedMeMom/Controllers/ReviewController.cs" Line="92" Column="23" />
+      <File FileName="FeedMeMom/Services/Configuration.cs" Line="12" Column="22" />
+      <File FileName="FeedMeMom/Services/EmailSender.cs" Line="24" Column="37" />
+      <File FileName="FeedMeMom/Helpers/DeviceHelper.cs" Line="17" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -17,10 +20,9 @@
               <Node name="FeedbackController.cs" selected="True" />
             </Node>
             <Node name="Helpers" expanded="True" />
-          </Node>
-          <Node name="FeedMeMom.Common" expanded="True">
             <Node name="Services" expanded="True" />
           </Node>
+          <Node name="FeedMeMom.Tests" expanded="True" />
         </State>
       </Pad>
       <Pad Id="ClassPad">
@@ -37,7 +39,17 @@
         </State>
       </Pad>
       <Pad Id="MonoDevelop.NUnit.TestPad">
-        <State expanded="True" selected="True" />
+        <State expanded="True">
+          <Node name="FeedMeMom.Tests" expanded="True">
+            <Node name="FeedMeMom" expanded="True">
+              <Node name="Tests" expanded="True">
+                <Node name="FastTest" expanded="True">
+                  <Node name="Test" selected="True" />
+                </Node>
+              </Node>
+            </Node>
+          </Node>
+        </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>

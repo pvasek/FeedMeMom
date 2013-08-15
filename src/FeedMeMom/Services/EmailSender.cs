@@ -18,9 +18,9 @@ namespace FeedMeMom
 		private UINavigationController _navigationController;
 		private Action _done;
 
-		public void SendEmail(string subject, string body, Action done)
+		public void SendEmail(string subject, string body, Action done = null)
 		{
-			_done = done;
+			_done = done ?? (() => {});
 			if (MFMailComposeViewController.CanSendMail)
 			{
 				if (_mail == null)

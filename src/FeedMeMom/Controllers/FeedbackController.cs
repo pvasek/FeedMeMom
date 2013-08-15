@@ -59,19 +59,14 @@ namespace FeedMeMom
 			msg.AppendLine("");
 			msg.AppendLine("");
 			msg.AppendLine("");
-			msg.AppendLine(UIDevice.CurrentDevice.Name.Split(new []{"’s"}, StringSplitOptions.RemoveEmptyEntries).FirstOrDefault());
 			msg.AppendLine("");
-			msg.AppendLine("");
-			msg.AppendLine("============================");
 			msg.AppendLine("Device information:");
-			msg.AppendLine(String.Format("IOS Version: {0}", UIDevice.CurrentDevice.SystemVersion));
 			msg.AppendLine(String.Format("Device: {0}", UIDevice.CurrentDevice.Model));
+			msg.AppendLine(String.Format("Version: {0}", UIDevice.CurrentDevice.SystemVersion));
 			msg.AppendLine(String.Format("Localization: {0}", CultureInfo.CurrentCulture.Name));
 			msg.AppendLine(String.Format("System: {0}", UIDevice.CurrentDevice.SystemName));
 
-			ServiceLocator.Get<EmailSender>().SendEmail(subject, msg.ToString(), () => { 
-				//Close(null, null);
-			});
+			ServiceLocator.Get<EmailSender>().SendEmail(subject, msg.ToString());
 
 		}
 
