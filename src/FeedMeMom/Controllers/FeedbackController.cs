@@ -51,7 +51,7 @@ namespace FeedMeMom
 			Skin.SkinChanged -= ApplyColors;
 		}
 
-		private void SendEmail(string subject, string startOfTheBody)
+		private static void SendEmail(string subject, string startOfTheBody)
 		{
 			var msg = new StringBuilder();
 			msg.AppendLine(startOfTheBody);
@@ -65,9 +65,7 @@ namespace FeedMeMom
 			msg.AppendLine(String.Format("Version: {0}", UIDevice.CurrentDevice.SystemVersion));
 			msg.AppendLine(String.Format("Localization: {0}", CultureInfo.CurrentCulture.Name));
 			msg.AppendLine(String.Format("System: {0}", UIDevice.CurrentDevice.SystemName));
-
 			ServiceLocator.Get<EmailSender>().SendEmail(subject, msg.ToString());
-
 		}
 
 

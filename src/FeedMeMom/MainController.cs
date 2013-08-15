@@ -124,7 +124,7 @@ namespace FeedMeMom
 
 		private void ShowSideMenuClick(object sender, EventArgs e)
 		{
-			_sideMenuHub.Show();
+			_sideMenuHub.Toggle();
 		}
 
 		private UIBarButtonItem _btnSideMenu;

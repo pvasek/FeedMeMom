@@ -2,6 +2,7 @@ using System;
 using MonoTouch.UIKit;
 using System.Drawing;
 using System.Linq;
+using FeedMeMom.Helpers;
 
 namespace FeedMeMom
 {
@@ -10,6 +11,7 @@ namespace FeedMeMom
 		private UIView _mainView;
 		private UIView _sideView;
 		private UIView _touchCover;
+		private bool _visible;
 
 		private SideMenuHub(UIView mainView, UIView sideView)
 		{
@@ -29,7 +31,7 @@ namespace FeedMeMom
 			var app = UIApplication.SharedApplication;
 			var top = app.StatusBarHidden ? 0 : app.StatusBarFrame.Height;
 			_sideView.Frame = new RectangleF(0, top, _sideView.Frame.Width - 80, _sideView.Frame.Height);
-			_sideView.Hidden = true;
+			//_sideView.Hidden = true;
 
 			var topWindow = app.Windows.First();
 			topWindow.InsertSubview(_sideView, 0);
@@ -41,7 +43,78 @@ namespace FeedMeMom
 			_touchCover.AddGestureRecognizer(new UITapGestureRecognizer((e) => {
 				Toggle();
 			}));
-			topWindow.AddSubview(_touchCover);
+			//topWindow.AddSubview(_touchCover);
+
+
+			var recognizer = new UIPanGestureRecognizer(Pan); 
+			recognizer.MinimumNumberOfTouches = 1;
+			recognizer.MaximumNumberOfTouches = 1;
+			_mainView.AddGestureRecognizer(recognizer);
+			_mainView.UserInteractionEnabled = true;
+
+		}
+
+		private float _panStartX;
+		private bool _panStarted;
+
+		private void Pan(UIPanGestureRecognizer recognizer)
+		{
+			var topView = GetTopView(_mainView);
+			if (recognizer.State == UIGestureRecognizerState.Began)
+			{
+				var x = recognizer.LocationOfTouch(0, topView).X;
+				_panStartX = x + topView.Frame.X;
+				if (x < 20)
+				{
+					_panStarted = true;
+				}
+			}
+
+			if (!_panStarted)
+			{
+				return;
+			}
+
+			if (recognizer.State == UIGestureRecognizerState.Changed)
+			{
+				var x = recognizer.TranslationInView(topView).X;
+				var newX = x + _panStartX;
+				newX = newX < 0 ? 0 : newX;
+				newX = newX > _sideView.Frame.Width ? _sideView.Frame.Width : newX;
+				topView.Frame = topView.Frame.Set(x: newX);
+			} 
+
+			if (recognizer.State == UIGestureRecognizerState.Ended)
+			{
+				_panStartX = 0;
+				_panStarted = false;
+
+				var x = recognizer.TranslationInView(topView).X;
+				var newX = x + _panStartX;
+				var half = _sideView.Frame.Width / 2;
+				if (newX < 0)
+				{
+					if (newX*-1 > half)
+					{
+						Hide();
+					} else
+					{
+						Show();
+					}
+				} 
+				else
+				{
+					if (newX > half)
+					{
+						Show();
+					} else
+					{
+						Hide();
+					}
+				}
+			}
+
+			//recognizer.X
 		}
 
 		private static UIView GetTopView(UIView view)
@@ -54,13 +127,15 @@ namespace FeedMeMom
 
 		public void Hide(UIView topView = null)
 		{
+			_visible = false;
+
 			topView = GetTopView(_mainView);
 
 			UIView.Animate(0.3, 0, UIViewAnimationOptions.CurveEaseInOut, () => {
 				var frame = topView.Frame;
 				topView.Frame = new RectangleF(0, 0, frame.Width, frame.Height);
 			}, () => {
-				_sideView.Hidden = true;
+				//_sideView.Hidden = true;
 				_touchCover.Hidden = true;
 			});
 
@@ -68,9 +143,10 @@ namespace FeedMeMom
 
 		public void Show(UIView topView = null)
 		{
-			topView = GetTopView(_mainView);
+			_visible = true;
 
-			_sideView.Hidden = false;
+			topView = GetTopView(_mainView);
+			//_sideView.Hidden = false;
 			UIView.Animate(0.3, 0, UIViewAnimationOptions.CurveEaseInOut, () => {
 				var frame = topView.Frame;
 				topView.Frame = new RectangleF(frame.Width - 80, 0, frame.Width, frame.Height);
@@ -91,14 +167,13 @@ namespace FeedMeMom
 			topView.Layer.ShadowOpacity = 0.7f;
 			topView.Layer.ShadowRadius = 9;
 
-			if (_sideView.Hidden) 
+			if (_visible) 
 			{
-
-				Show(topView);
+				Hide(topView);
 			}
 			else
 			{
-				Hide(topView);
+				Show(topView);
 			}
 		}	
 
