@@ -19,6 +19,8 @@ namespace FeedMeMom
 		public const string Back = "Back";
 		public const string Cancel = "Cancel";
 		public const string Save = "Save";
+		public const string BuyPhrase = "There is just one step to do that";
+		public const string HistoryBuyHeadline = "Do you want to see a complete history of your feeding?";
 	}
 }
 

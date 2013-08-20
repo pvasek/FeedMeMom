@@ -63,11 +63,12 @@ namespace FeedMeMom
 			if (recognizer.State == UIGestureRecognizerState.Began)
 			{
 				var x = recognizer.LocationOfTouch(0, topView).X;
-				_panStartX = x + topView.Frame.X;
-				if (x < 20)
-				{
-					_panStarted = true;
-				}
+				_panStartX = topView.Frame.X - x;
+				_panStarted = true;
+//				if (x < 80)
+//				{
+//					_panStarted = true;
+//				}
 			}
 
 			if (!_panStarted)
@@ -131,7 +132,7 @@ namespace FeedMeMom
 
 			topView = GetTopView(_mainView);
 
-			UIView.Animate(0.3, 0, UIViewAnimationOptions.CurveEaseInOut, () => {
+			UIView.Animate(0.15, 0, UIViewAnimationOptions.CurveEaseInOut, () => {
 				var frame = topView.Frame;
 				topView.Frame = new RectangleF(0, 0, frame.Width, frame.Height);
 			}, () => {
@@ -147,7 +148,7 @@ namespace FeedMeMom
 
 			topView = GetTopView(_mainView);
 			//_sideView.Hidden = false;
-			UIView.Animate(0.3, 0, UIViewAnimationOptions.CurveEaseInOut, () => {
+			UIView.Animate(0.15, 0, UIViewAnimationOptions.CurveEaseInOut, () => {
 				var frame = topView.Frame;
 				topView.Frame = new RectangleF(frame.Width - 80, 0, frame.Width, frame.Height);
 			}, () => {

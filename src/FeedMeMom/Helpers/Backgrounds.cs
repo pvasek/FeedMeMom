@@ -12,6 +12,7 @@ namespace FeedMeMom
 			NightHamburger = UIImage.FromBundle("night_hamburger_icon");
 			DayArrow = UIImage.FromBundle("arrow");
 			NightArrow = UIImage.FromBundle("night_arrow");
+			Preview = UIImage.FromBundle("buy");
 		}
 
 		public static UIImage Clear { get; private set; }
@@ -19,6 +20,7 @@ namespace FeedMeMom
 		public static UIImage NightHamburger { get; private set; }
 		public static UIImage DayArrow { get; private set; }
 		public static UIImage NightArrow { get; private set; }
+		public static UIImage Preview { get; private set; }
 
 	}
 }

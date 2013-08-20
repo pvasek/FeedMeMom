@@ -35,6 +35,7 @@ namespace FeedMeMom
 		private SideMenu _sideMenu;
 
 		private HistoryController _historyController;
+		private BuyController _buyController;
 
 		public void ApplyColors()
 		{
@@ -262,6 +263,16 @@ namespace FeedMeMom
 				_sideMenuHub.Hide();
 				NavigationController.PushViewController(_historyController, false);
 
+			}));
+
+			_sideMenu.Items.Add(new ActionItem("Buy Test", () => {
+				if (_buyController == null) {
+					_buyController = new BuyController();
+				}
+				_sideMenuHub.Hide();
+				_buyController.BuyTitle = Resources.History;
+				_buyController.BuyDescription = Resources.HistoryBuyHeadline;
+				NavigationController.PushViewController(_buyController, false);
 			}));
 
 			_sideMenu.Items.Add(new ActionItem(Resources.SwitchDayNightMode, () => {

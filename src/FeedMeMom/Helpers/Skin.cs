@@ -56,6 +56,7 @@ namespace FeedMeMom
 		public UIColor TableHeader { get; set; }
 
 		public UIColor IndicatorText { get; set; }
+		public UIColor PageText { get; set; }
 
 		public UIImage ImageHamburger { get; set; }
 		public UIImage ImageArrow { get; set; }
@@ -141,6 +142,8 @@ namespace FeedMeMom
 			TableRowBorder = ColorUtil.FromHex("#cccccc");
 			TableHeader = ColorUtil.FromHex("#b02157");
 
+			PageText = ColorUtil.FromHex("#ae2458");
+
 			IndicatorText = ColorUtil.FromHex("#999999");
 			ImageHamburger = Backgrounds.DayHamburger;
 			ImageArrow = Backgrounds.DayArrow;
@@ -211,6 +214,8 @@ namespace FeedMeMom
 			TableRowSelectedText = ColorUtil.FromHex("#cccccc");
 			TableRowBorder = ColorUtil.FromHex("#222222");
 			TableHeader = ColorUtil.FromHex("#555555");
+
+			PageText = ColorUtil.FromHex("#595959");
 
 			IndicatorText = UIColor.Black;
 

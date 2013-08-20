@@ -130,6 +130,10 @@
     <Compile Include="Services\EmailSender.cs" />
     <Compile Include="Services\Configuration.cs" />
     <Compile Include="Helpers\DeviceHelper.cs" />
+    <Compile Include="Controllers\BuyController.cs" />
+    <Compile Include="Controllers\BuyController.designer.cs">
+      <DependentUpon>BuyController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -137,6 +141,7 @@
     <InterfaceDefinition Include="SideMenu.xib" />
     <InterfaceDefinition Include="Controllers\ReviewController.xib" />
     <InterfaceDefinition Include="Controllers\FeedbackController.xib" />
+    <InterfaceDefinition Include="Controllers\BuyController.xib" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\background.png" />
@@ -158,6 +163,12 @@
     <BundleResource Include="Resources\night_hamburger_icon%402x.png" />
     <BundleResource Include="Resources\night_arrow.png" />
     <BundleResource Include="Resources\night_arrow%402x.png" />
+    <BundleResource Include="Resources\buy.png" />
+    <BundleResource Include="Resources\buy%402x.png" />
+    <BundleResource Include="Resources\Default-568h%402x.png" />
+    <BundleResource Include="Resources\buy_history.png" />
+    <BundleResource Include="Resources\buy_history%402x.png" />
+    <BundleResource Include="Resources\buy_history_iphone5%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FeedMeMom.Common\FeedMeMom.Common.csproj">
