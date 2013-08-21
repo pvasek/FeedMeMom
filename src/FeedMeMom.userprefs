@@ -1,23 +1,20 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhone.6.1" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="FeedMeMom/MainController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="FeedMeMom/Controllers/BuyController.cs">
     <Files>
-      <File FileName="FeedMeMom/MainController.cs" Line="155" Column="1" />
-      <File FileName="FeedMeMom/Helpers/ControlHelper.cs" Line="28" Column="4" />
-      <File FileName="FeedMeMom/Helpers/Backgrounds.cs" Line="15" Column="40" />
-      <File FileName="FeedMeMom/Helpers/SkinExtensions.cs" Line="8" Column="32" />
-      <File FileName="FeedMeMom/Helpers/Skin.cs" Line="218" Column="41" />
-      <File FileName="FeedMeMom/Controllers/BuyController.cs" Line="44" Column="3" />
-      <File FileName="FeedMeMom/Controllers/FeedbackController.cs" Line="22" Column="1" />
-      <File FileName="FeedMeMom.Common/Services/Repository.cs" Line="43" Column="14" />
-      <File FileName="FeedMeMom/AppDelegate.cs" Line="39" Column="84" />
+      <File FileName="FeedMeMom/Controllers/BuyController.cs" Line="68" Column="28" />
+      <File FileName="FeedMeMom/Controllers/FeedbackController.cs" Line="1" Column="1" />
+      <File FileName="FeedMeMom.Common/Services/Repository.cs" Line="1" Column="1" />
+      <File FileName="FeedMeMom/AppDelegate.cs" Line="1" Column="1" />
       <File FileName="FeedMeMom/Info.plist" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
-          <Node name="FeedMeMom" expanded="True" selected="True">
-            <Node name="Controllers" expanded="True" />
+          <Node name="FeedMeMom" expanded="True">
+            <Node name="Controllers" expanded="True">
+              <Node name="BuyController.xib" selected="True" />
+            </Node>
           </Node>
         </State>
       </Pad>
@@ -35,17 +32,7 @@
         </State>
       </Pad>
       <Pad Id="MonoDevelop.NUnit.TestPad">
-        <State expanded="True">
-          <Node name="FeedMeMom.Tests" expanded="True">
-            <Node name="FeedMeMom" expanded="True">
-              <Node name="Tests" expanded="True">
-                <Node name="FastTest" expanded="True">
-                  <Node name="Test" selected="True" />
-                </Node>
-              </Node>
-            </Node>
-          </Node>
-        </State>
+        <State expanded="True" selected="True" />
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>

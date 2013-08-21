@@ -121,7 +121,7 @@
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<int key="IBUIContentHorizontalAlignment">0</int>
 						<int key="IBUIContentVerticalAlignment">0</int>
-						<string key="IBUINormalTitle">Buy this app</string>
+						<string key="IBUINormalTitle">Get Full Version</string>
 						<object class="NSColor" key="IBUIHighlightedTitleColor">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MQA</bytes>
@@ -159,7 +159,7 @@
 						<string key="NSFrame">{{0, 89}, {320, 160}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
+						<reference key="NSNextKeyView" ref="170586869"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">3</int>
@@ -320,7 +320,6 @@
 					<string key="superclassName">UIViewController</string>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="btnBuy">UIButton</string>
-						<string key="imgPreview">UIImageView</string>
 						<string key="imgScreen">UIImageView</string>
 						<string key="lblBuyTitle">UILabel</string>
 						<string key="lblDescription">UILabel</string>
@@ -330,10 +329,6 @@
 						<object class="IBToOneOutletInfo" key="btnBuy">
 							<string key="name">btnBuy</string>
 							<string key="candidateClassName">UIButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="imgPreview">
-							<string key="name">imgPreview</string>
-							<string key="candidateClassName">UIImageView</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="imgScreen">
 							<string key="name">imgScreen</string>

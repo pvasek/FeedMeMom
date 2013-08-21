@@ -3,6 +3,8 @@ using System;
 using MonoTouch.CoreGraphics;
 using System.Linq;
 using System.Threading.Tasks;
+using FeedMeMom.Helpers;
+using System.Drawing;
 
 namespace FeedMeMom
 {
@@ -20,8 +22,7 @@ namespace FeedMeMom
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
-
-			Title = Resources.Feedback;
+			NavigationItem.Title = Resources.Buy;
 			NavigationItem.HidesBackButton = true;
 			NavigationItem.LeftBarButtonItem = new UIBarButtonItem(Resources.Back, UIBarButtonItemStyle.Plain, Close);
 
@@ -29,15 +30,25 @@ namespace FeedMeMom
 			ApplyColors();
 
 			Skin.SkinChanged += (sender, e) => ApplyColors();
+
+			PrepareImage(imgScreen);
+			imgScreen.Frame = new System.Drawing.RectangleF(90, -10, 200, 290);
+			imgScreen.Transform = CGAffineTransform.MakeRotation(-0.25f);
+			pnlPreview.ClipsToBounds = true;
 		}
+
+		private UIImageView _topImage;
 
 		public override void ViewWillAppear(bool animated)
 		{
-			base.ViewWillAppear(animated);
-			NavigationItem.Title = BuyTitle;
+			base.ViewWillAppear(animated);		
+
+			var title = NavigationItem.Title;
+			NavigationItem.Title = "";
 			lblDescription.Text = BuyDescription;
 			lblDescription.SizeToFit();
-			if ((568.0f - UIScreen.MainScreen.Bounds.Height) < 0.1)
+
+			if (ControlHelper.IsIPhone5)
 			{
 				imgScreen.Image = UIImage.FromBundle("buy_history_iphone5");
 			} 
@@ -45,35 +56,47 @@ namespace FeedMeMom
 			{
 				imgScreen.Image = UIImage.FromBundle("buy_history");
 			}
-			imgScreen.ContentMode = UIViewContentMode.ScaleAspectFit;
-			imgScreen.Transform = CGAffineTransform.MakeIdentity();
-			var window = UIApplication.SharedApplication.KeyWindow;
-			var topLeft = window.ConvertPointToView(new System.Drawing.PointF(0, 0), pnlPreview);
 
-			imgScreen.Frame = new System.Drawing.RectangleF(0, topLeft.Y+UIApplication.SharedApplication.StatusBarFrame.Height /*pnlPreview.Frame.Top * -1f*/, window.Frame.Width, window.Frame.Height - UIApplication.SharedApplication.StatusBarFrame.Height);
-			imgScreen.ContentMode = UIViewContentMode.ScaleAspectFit;
-			imgScreen.Layer.ShadowColor = UIColor.White.CGColor;
-			imgScreen.Layer.ShadowRadius = 9;
-			imgScreen.Layer.ShadowOpacity = 0.85f;	
-			imgScreen.Layer.ShadowOffset = new System.Drawing.SizeF(0, 4);
+			if (_topImage == null)
+			{
+				_topImage = new UIImageView();
+				PrepareImage(_topImage);
+				NavigationController.View.AddSubview(_topImage);
+			}
 
-			pnlPreview.ClipsToBounds = false;
+			_topImage.Image = imgScreen.Image;
+			imgScreen.Hidden = true;
+			_topImage.Hidden = false;
+			var statusBarHeight = UIApplication.SharedApplication.StatusBarFrame.Height;
+			_topImage.Transform = CGAffineTransform.MakeIdentity();
+			_topImage.Frame = NavigationController.View.Frame.Add(y: statusBarHeight, height: -statusBarHeight);
 
 			UIView.Animate(2, 1, UIViewAnimationOptions.CurveEaseInOut, () => {
-				imgScreen.Frame = new System.Drawing.RectangleF(90, -10, 200, 290);
-
+				_topImage.Frame = new RectangleF(new PointF(90, 143), new SizeF(200, 290)); 
+				NavigationItem.Title = title;
 			}, () => {
 				UIView.Animate(0.7f, 0, UIViewAnimationOptions.CurveEaseIn, () => {
-					imgScreen.Transform = CGAffineTransform.MakeRotation(-0.25f);
+					_topImage.Transform = CGAffineTransform.MakeRotation(-0.25f);
 				}, () => {
 					Task.Delay(1300).ContinueWith((task) => {
 						InvokeOnMainThread(() => {
-							pnlPreview.ClipsToBounds = true;
+							imgScreen.Hidden = false;
+							_topImage.Hidden = true;
 						});
 					});
 				});
 			});
 		}
+
+		private void PrepareImage(UIImageView img)
+		{
+			img.ContentMode = UIViewContentMode.ScaleAspectFit;
+			img.Layer.ShadowColor = UIColor.White.CGColor;
+			img.Layer.ShadowRadius = 9;
+			img.Layer.ShadowOpacity = 0.85f;
+			img.Layer.ShadowOffset = new System.Drawing.SizeF(0, 4);
+		}
+
 		private void ApplyColors()
 		{
 			Skin.Active.SkinButton(btnBuy);

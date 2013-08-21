@@ -6,6 +6,13 @@ namespace FeedMeMom.Helpers
 {
 	public static class ControlHelper
 	{
+		static ControlHelper()
+		{
+			IsIPhone5 = (568.0f - UIScreen.MainScreen.Bounds.Height) < 0.1;
+		}
+
+		public static bool IsIPhone5 { get; private set; }
+
 		public static T SafeDispose<T>(this T view) where T: class, IDisposable
 		{
 			if (view != null)
@@ -31,6 +38,7 @@ namespace FeedMeMom.Helpers
 		{
 			return new RectangleF(x ?? rect.X, y ?? rect.Y, width ?? rect.Width, height ?? rect.Height);
 		}
-}
+
+	}
 }
 
