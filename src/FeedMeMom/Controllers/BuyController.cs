@@ -71,11 +71,11 @@ namespace FeedMeMom
 			_topImage.Transform = CGAffineTransform.MakeIdentity();
 			_topImage.Frame = NavigationController.View.Frame.Add(y: statusBarHeight, height: -statusBarHeight);
 
-			UIView.Animate(2, 1, UIViewAnimationOptions.CurveEaseInOut, () => {
+			UIView.Animate(1.5f, 1, UIViewAnimationOptions.CurveEaseInOut, () => {
 				_topImage.Frame = new RectangleF(new PointF(90, 143), new SizeF(200, 290)); 
 				NavigationItem.Title = title;
 			}, () => {
-				UIView.Animate(0.7f, 0, UIViewAnimationOptions.CurveEaseIn, () => {
+				UIView.Animate(0.3f, 0, UIViewAnimationOptions.CurveEaseIn, () => {
 					_topImage.Transform = CGAffineTransform.MakeRotation(-0.25f);
 				}, () => {
 					Task.Delay(1300).ContinueWith((task) => {

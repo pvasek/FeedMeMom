@@ -165,10 +165,12 @@
     <BundleResource Include="Resources\night_arrow%402x.png" />
     <BundleResource Include="Resources\buy.png" />
     <BundleResource Include="Resources\buy%402x.png" />
-    <BundleResource Include="Resources\Default-568h%402x.png" />
     <BundleResource Include="Resources\buy_history.png" />
     <BundleResource Include="Resources\buy_history%402x.png" />
     <BundleResource Include="Resources\buy_history_iphone5%402x.png" />
+    <BundleResource Include="Resources\Default-568h%402x.png" />
+    <BundleResource Include="Resources\Default.png" />
+    <BundleResource Include="Resources\Default%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FeedMeMom.Common\FeedMeMom.Common.csproj">
