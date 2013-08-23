@@ -29,6 +29,7 @@ namespace FeedMeMom
 
 		private void ApplyColors(object sender = null, EventArgs e = null)
 		{
+			View.BackgroundColor = Skin.Active.Background;
 			Skin.Active.SkinButton(btnReview);
 			Skin.Active.SkinButton(btnShareByEmail);
 			Skin.Active.SkinButton(btnShareByTwitter);

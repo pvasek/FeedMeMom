@@ -214,11 +214,11 @@ namespace FeedMeMom
 			ButtonTextSelected = ColorUtil.FromHex("#A8A8A8");
 			ButtonInfoText = ColorUtil.FromHex("#3F3E3E");
 
-			SideMenuRow = ColorUtil.FromHex("#A8A8A8");
-			SideMenuRowText = ColorUtil.FromHex("#444444");
-			SideMenuRowBorder = ColorUtil.FromHex("#999999");
+			SideMenuRow = ColorUtil.FromHex("#555555");
+			SideMenuRowText = ColorUtil.FromHex("#cccccc");
+			SideMenuRowBorder = ColorUtil.FromHex("#444444");
 			SideMenuRowSelected = SideMenuRowBorder;
-			SideMenuRowSelectedText = ColorUtil.FromHex("#222222");
+			SideMenuRowSelectedText = ColorUtil.FromHex("#eeeeee");
 
 			TableRow = ColorUtil.FromHex("#333333");
 			TableRowSelected = ColorUtil.FromHex("#444444");

@@ -306,7 +306,7 @@ namespace FeedMeMom
 			_sideMenu.Items.Add(new ActionItem(Resources.IlikeThisApp, () => {
 				_sideMenuHub.Hide();
 				NavigationController.PushViewController(new ReviewController(), false);
-			}, UIImage.FromBundle("hearth")));
+			}, UIImage.FromBundle("star")));
 
 			_sideMenu.Items.Add(new ActionItem("Buy Test", () => {
 				if (_buyController == null) {
