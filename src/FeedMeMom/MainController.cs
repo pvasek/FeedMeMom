@@ -149,6 +149,20 @@ namespace FeedMeMom
 
 		}
 
+		private void TimePanelSwitchToRunning()
+		{
+			lblRunningTime.TextColor = Skin.Active.RunningTimeText;
+			lblRunningInfo.TextColor = Skin.Active.RunningTimeText;
+			lblRunningInfo.Text = Resources.TapToPause;
+		}
+
+		private void TimePanelSwitchToPaused()
+		{
+			lblRunningTime.TextColor = Skin.Active.PausedTimeText;
+			lblRunningInfo.TextColor = Skin.Active.PausedTimeText;
+			lblRunningInfo.Text = Resources.TapToContinue;
+		}
+
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();		
@@ -192,15 +206,11 @@ namespace FeedMeMom
 				if (_active != null) {
 					if (_stopPair.Toggle())
 					{
-						lblRunningTime.TextColor = Skin.Active.RunningTimeText;
-						lblRunningInfo.TextColor = Skin.Active.RunningTimeText;
-						lblRunningInfo.Text = Resources.TapToPause;
+						TimePanelSwitchToRunning();
 					} 
 					else 
 					{
-						lblRunningTime.TextColor = Skin.Active.PausedTimeText;
-						lblRunningInfo.TextColor = Skin.Active.PausedTimeText;
-						lblRunningInfo.Text = Resources.TapToContinue;
+						TimePanelSwitchToPaused();
 					}
 				}
 			});
@@ -217,7 +227,7 @@ namespace FeedMeMom
 					_stopPair.Start (true);
 					SelectRightLeftButton(true);
 				}
-
+				TimePanelSwitchToRunning();
 			};
 
 			btnStartRight.TouchUpInside += (sender, e) => {
@@ -228,6 +238,7 @@ namespace FeedMeMom
 					_stopPair.Start (false);
 					SelectRightLeftButton(false);
 				}
+				TimePanelSwitchToRunning();
 			};
 		}	
 
@@ -330,10 +341,6 @@ namespace FeedMeMom
 			_pgbRight.UpdateValue(entry.TotalBreastLengthSeconds, entry.RightBreastLengthSeconds, true);
 
 			SelectRightLeftButton ((entry.RightBreastLengthSeconds ?? 0) - (entry.LeftBreastLengthSeconds ?? 0)); // if there was more from right, the next should be form left
-			// secondary info
-			if (entry.TotalBreastLength == null) {
-				//TODO: support for more then 60 m inutes
-			}
 			lblSecondTime.Text = entry.TotalBreastLength == null ? "" : String.Format("{0:0}", entry.TotalBreastLength.Value.TotalMinutes); // (@"mm\:ss");
 		}
 
@@ -524,29 +531,27 @@ namespace FeedMeMom
 			});
 		}
 
-		private void ShowCurrentScreenBrightness()
+		private static void ShowCurrentScreenBrightness()
 		{
 			using (var img = UIApplication.SharedApplication.Windows.First().Screen.Capture())
 			{
 				var cgimg = img.CGImage;
-				var imgData = new byte[cgimg.Width*cgimg.Height*4];
+				var imgData = new byte[cgimg.Width * cgimg.Height * 4];
 				var totalPerc = 0f;
-				using (var bc = new CGBitmapContext(imgData, cgimg.Width, cgimg.Height, 8, 4*cgimg.Width,
-				                                    CGColorSpace.CreateDeviceRGB(),
-				                                    CGBitmapFlags.PremultipliedLast | CGBitmapFlags.ByteOrder32Big))
+				using (var bc = new CGBitmapContext(imgData, cgimg.Width, cgimg.Height, 8, 4 * cgimg.Width, CGColorSpace.CreateDeviceRGB(), CGBitmapFlags.PremultipliedLast | CGBitmapFlags.ByteOrder32Big))
 				{
 					bc.DrawImage(new RectangleF(0, 0, cgimg.Width, cgimg.Height), cgimg);
 					var totalBrightnessPercentage = 0f;
 					var count = 0;
-					for(var i = 0; i < imgData.Length; i=i+4)
+					for (var i = 0; i < imgData.Length; i = i + 4)
 					{
 						var r = imgData[i] / 255f;
 						var g = imgData[i] / 255f;
 						var b = imgData[i] / 255f;
-						totalBrightnessPercentage += (r+g+b) / 3f;
+						totalBrightnessPercentage += (r + g + b) / 3f;
 						count++;
 					}
-					totalPerc = totalBrightnessPercentage*100 / count;
+					totalPerc = totalBrightnessPercentage * 100 / count;
 				}
 				var alert = new UIAlertView();
 				alert.Title = String.Format("Brightness: {0}%", totalPerc);

@@ -35,6 +35,7 @@ namespace FeedMeMom
 		{
 			base.ViewDidLoad();
 			tblList.RowHeight = 50;
+
 			ApplyColors();
 			_source = new SideMenuDataSource();
 			tblList.Source = _source;
