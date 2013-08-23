@@ -4,9 +4,10 @@ using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 using MonoTouch.StoreKit;
 using FeedMeMom.Common;
+using FeedMeMom.Helpers;
 using System.Text;
 
-namespace FeedMeMom
+namespace FeedMeMom.Controllers
 {
 	public partial class ReviewController : UIViewController
 	{
@@ -49,6 +50,11 @@ namespace FeedMeMom
 			btnShareByTwitter.Hidden = true;
 			btnShareByFacebook.Hidden = true;
 
+			btnReview.SetTitle(Resources.RateReviewThisApp);
+			btnShareByEmail.SetTitle(Resources.ShareByEmail);
+			lblShare.Text = Resources.Share;
+			lblAppstore.Text = Resources.Appstore;
+
 			btnReview.TouchUpInside += ReviewClick;
 			btnShareByEmail.TouchUpInside += ShareByEmailClick;
 		}
@@ -88,13 +94,12 @@ namespace FeedMeMom
 		{
 			var emailSender = ServiceLocator.Get<EmailSender>();
 			var body = new StringBuilder();
-			body.AppendLine("I found a really handy app.");
-			body.AppendLine("You can give it a try.");
+			body.AppendLine(Resources.ShareEmailBody);
 			body.AppendLine();
 			body.AppendLine(Configuration.AppStoreUrl);
 			body.AppendLine();
 			//body.AppendLine(DeviceHelper.GetUserName());
-			emailSender.SendEmail("Good app for you", body.ToString());
+			emailSender.SendEmail(Resources.ShareEmailSubject, body.ToString());
 		}
 	}
 }

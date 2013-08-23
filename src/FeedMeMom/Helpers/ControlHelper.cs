@@ -31,6 +31,13 @@ namespace FeedMeMom.Helpers
 			button.SetBackgroundImage(image, UIControlState.Selected, UIBarMetrics.Default);
 		}
 
+		public static void SetTitle(this UIButton button, string title)
+		{
+			button.SetTitle(title, UIControlState.Normal);
+			button.SetTitle(title, UIControlState.Selected);
+			button.SetTitle(title, UIControlState.Highlighted);
+		}
+
 		public static RectangleF Add(this RectangleF rect, float x = 0, float y = 0, float width = 0, float height = 0)
 		{
 			return new RectangleF(rect.X + x, rect.Y + y, rect.Width + width, rect.Height + height);

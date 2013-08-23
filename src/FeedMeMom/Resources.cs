@@ -1,27 +1,90 @@
-using System;
+﻿
+		
 
-namespace FeedMeMom
-{
+// #####################################################################
+//
+// THIS FILE IS GENERATED
+//
+// #####################################################################
+
+using MonoTouch.Foundation;
+
+namespace FeedMeMom {
+			
 	public static class Resources
 	{
-		public const string TapToPause = "tap to pause";
-		public const string TapToContinue = "tap to continue";
-		public const string SwitchSides = "switch sides";
-		public const string NewFeeding = "New Feeding";
-		public const string StartNewFeeding = "start a new feeding";
-		public const string Minutes = "minutes";
-		public const string Now = "now";
-		public const string LastFeeding = "Last Feeding";
-		public const string Feedback = "Feedback";
-		public const string IlikeThisApp = "I like this app";
-		public const string SwitchDayNightMode = "Switch Day/Night Mode";
-		public const string History = "History";
-		public const string Back = "Back";
-		public const string Cancel = "Cancel";
-		public const string Save = "Save";
-		public const string BuyPhrase = "There is just one step to do that";
-		public const string HistoryBuyHeadline = "Do you want to see a complete history of your feeding?";
-		public const string Buy = "Buy";
-	}
-}
+		private static string GetLocalized(string key)
+		{
+			return NSBundle.MainBundle.LocalizedString(key, key);
+		}
+		
+		static Resources()
+		{
+			TapToPause = GetLocalized("TapToPause");
+			TapToContinue = GetLocalized("TapToContinue");
+			SwitchSides = GetLocalized("SwitchSides");
+			NewFeeding = GetLocalized("NewFeeding");
+			StartNewFeeding = GetLocalized("StartNewFeeding");
+			Minutes = GetLocalized("Minutes");
+			Now = GetLocalized("Now");
+			LastFeeding = GetLocalized("LastFeeding");
+			Feedback = GetLocalized("Feedback");
+			IlikeThisApp = GetLocalized("IlikeThisApp");
+			SwitchDayNightMode = GetLocalized("SwitchDayNightMode");
+			History = GetLocalized("History");
+			Back = GetLocalized("Back");
+			Cancel = GetLocalized("Cancel");
+			Save = GetLocalized("Save");
+			BuyPhrase = GetLocalized("BuyPhrase");
+			HistoryBuyHeadline = GetLocalized("HistoryBuyHeadline");
+			Buy = GetLocalized("Buy");
+			LeftLetter = GetLocalized("LeftLetter");
+			RightLetter = GetLocalized("RightLetter");
+			GetFullVersion = GetLocalized("GetFullVersion");
+			ReportBug = GetLocalized("ReportBug");
+			RequestNewFeature = GetLocalized("RequestNewFeature");
+			JustStayInTouch = GetLocalized("JustStayInTouch");
+			Appstore = GetLocalized("Appstore");
+			Share = GetLocalized("Share");
+			ShareByEmail = GetLocalized("ShareByEmail");
+			RateReviewThisApp = GetLocalized("RateReviewThisApp");
+			ShareEmailSubject = GetLocalized("ShareEmailSubject");
+			ShareEmailBody = GetLocalized("ShareEmailBody");
+	
+		}
+		
+		public static string TapToPause { get; private set; }
+		public static string TapToContinue { get; private set; }
+		public static string SwitchSides { get; private set; }
+		public static string NewFeeding { get; private set; }
+		public static string StartNewFeeding { get; private set; }
+		public static string Minutes { get; private set; }
+		public static string Now { get; private set; }
+		public static string LastFeeding { get; private set; }
+		public static string Feedback { get; private set; }
+		public static string IlikeThisApp { get; private set; }
+		public static string SwitchDayNightMode { get; private set; }
+		public static string History { get; private set; }
+		public static string Back { get; private set; }
+		public static string Cancel { get; private set; }
+		public static string Save { get; private set; }
+		public static string BuyPhrase { get; private set; }
+		public static string HistoryBuyHeadline { get; private set; }
+		public static string Buy { get; private set; }
+		public static string LeftLetter { get; private set; }
+		public static string RightLetter { get; private set; }
+		public static string GetFullVersion { get; private set; }
+		public static string ReportBug { get; private set; }
+		public static string RequestNewFeature { get; private set; }
+		public static string JustStayInTouch { get; private set; }
+		public static string Appstore { get; private set; }
+		public static string Share { get; private set; }
+		public static string ShareByEmail { get; private set; }
+		public static string RateReviewThisApp { get; private set; }
+		public static string ShareEmailSubject { get; private set; }
+		public static string ShareEmailBody { get; private set; }
+	
 
+	}
+	
+}

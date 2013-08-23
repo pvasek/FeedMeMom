@@ -7,7 +7,7 @@
 using MonoTouch.Foundation;
 using System.CodeDom.Compiler;
 
-namespace FeedMeMom
+namespace FeedMeMom.Controllers
 {
 	[Register ("ReviewController")]
 	partial class ReviewController

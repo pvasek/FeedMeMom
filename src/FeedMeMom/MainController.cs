@@ -1,13 +1,12 @@
 using System;
 using System.Drawing;
-using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 using FeedMeMom.Common;
 using FeedMeMom.Common.Entities;
 using System.Linq;
 using System.Threading;
-using MonoTouch.CoreGraphics;
 using FeedMeMom.Helpers;
+using FeedMeMom.Controllers;
 
 namespace FeedMeMom
 {
@@ -194,6 +193,10 @@ namespace FeedMeMom
 			var touchRecondizerSecondaryTime = new UITapGestureRecognizer(PauseRunToggle);
 			lblRunningTime.UserInteractionEnabled = true;
 			lblRunningTime.AddGestureRecognizer(touchRecondizerSecondaryTime);		
+
+			btnStartLeft.SetTitle(Resources.LeftLetter);
+			btnStartRight.SetTitle(Resources.RightLetter);
+			lblButtonsHeader.Text = Resources.StartNewFeeding;
 
 			CreateSideMenu();
 

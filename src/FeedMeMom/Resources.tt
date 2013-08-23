@@ -1,0 +1,46 @@
+﻿<#@ template language="C#v3.5"  hostspecific="true" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Linq" #>
+
+<#
+ var lines = File
+ 	.ReadAllLines(this.Host.ResolvePath("Resources/en.lproj/Localizable.strings"))
+ 	.Select(i => i.Trim())
+ 	.Where(i => i.StartsWith("\"") && i.EndsWith(";"))
+ 	.Select(i => i.Split('=').FirstOrDefault())
+ 	.Where(i => i != null)
+ 	.Select(i => i.Trim().Replace("\"", "")) 	
+ 	.ToList(); 
+#>		
+
+// #####################################################################
+//
+// THIS FILE IS GENERATED
+//
+// #####################################################################
+
+using MonoTouch.Foundation;
+
+namespace FeedMeMom {
+			
+	public static class Resources
+	{
+		private static string GetLocalized(string key)
+		{
+			return NSBundle.MainBundle.LocalizedString(key, key);
+		}
+		
+		static Resources()
+		{
+<# foreach(var key in lines) {#>
+			<#= key #> = GetLocalized("<#= key #>");
+<#}#>	
+		}
+		
+<# foreach(var key in lines) {#>
+		public static string <#= key #> { get; private set; }
+<#}#>	
+
+	}
+	
+}

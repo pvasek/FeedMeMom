@@ -1,14 +1,11 @@
 using System;
-using System.Drawing;
-using MonoTouch.Foundation;
 using MonoTouch.UIKit;
-using MonoTouch.MessageUI;
 using System.Text;
 using System.Globalization;
 using FeedMeMom.Common;
-using System.Linq;
+using FeedMeMom.Helpers;
 
-namespace FeedMeMom
+namespace FeedMeMom.Controllers
 {
 	public partial class FeedbackController : UIViewController
 	{
@@ -42,6 +39,10 @@ namespace FeedMeMom
 			btnStayInTouch.TouchUpInside += (sender, e) => SendEmail("Feedback", "");
 
 			ApplyColors();
+
+			btnBug.SetTitle(Resources.ReportBug);
+			btnNewFeature.SetTitle(Resources.RequestNewFeature);
+			btnStayInTouch.SetTitle(Resources.JustStayInTouch);
 
 			Skin.SkinChanged += ApplyColors;
 		}

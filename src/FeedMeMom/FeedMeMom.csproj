@@ -92,9 +92,15 @@
     <Folder Include="Helpers\" />
     <Folder Include="Controls\" />
     <Folder Include="Controllers\" />
+    <Folder Include="Resources\en.lproj\" />
+    <Folder Include="Resources\cs.lproj\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
+    <None Include="Resources.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Resources.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
@@ -105,14 +111,12 @@
     </Compile>
     <Compile Include="Services\AppleSettings.cs" />
     <Compile Include="Services\SynchronizationService.cs" />
-    <Compile Include="Resources.cs" />
     <Compile Include="SideMenu.cs" />
     <Compile Include="SideMenu.designer.cs">
       <DependentUpon>SideMenu.cs</DependentUpon>
     </Compile>
     <Compile Include="Helpers\Fonts.cs" />
     <Compile Include="SideMenuHub.cs" />
-    <Compile Include="HistoryController.cs" />
     <Compile Include="Controls\Toolbar.cs" />
     <Compile Include="Helpers\ControlHelper.cs" />
     <Compile Include="Helpers\Backgrounds.cs" />
@@ -134,6 +138,10 @@
     <Compile Include="Controllers\BuyController.designer.cs">
       <DependentUpon>BuyController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Resources.cs">
+      <DependentUpon>Resources.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\HistoryController.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -181,6 +189,8 @@
     <BundleResource Include="Resources\list%402x.png" />
     <BundleResource Include="Resources\moon.png" />
     <BundleResource Include="Resources\moon%402x.png" />
+    <BundleResource Include="Resources\en.lproj\Localizable.strings" />
+    <BundleResource Include="Resources\cs.lproj\Localizable.strings" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FeedMeMom.Common\FeedMeMom.Common.csproj">

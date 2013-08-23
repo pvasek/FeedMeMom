@@ -7,7 +7,7 @@ using FeedMeMom.Helpers;
 using System.Linq;
 using System.Drawing;
 
-namespace FeedMeMom
+namespace FeedMeMom.Controllers
 {
 	public class HistoryController: UITableViewController
 	{
@@ -103,7 +103,7 @@ namespace FeedMeMom
 					cell.ContentView.AddSubview(pgbRight);
 				}
 				var item = Data[indexPath.Section].Item2[indexPath.Row];
-				cell.TextLabel.Text = String.Format("{0:t} - {1:0} minutes", item.Date, item.TotalBreastLength == null ? 0 : item.TotalBreastLength.Value.TotalMinutes);
+				cell.TextLabel.Text = String.Format("{0:t} - {1:0} " + Resources.Minutes, item.Date, item.TotalBreastLength == null ? 0 : item.TotalBreastLength.Value.TotalMinutes);
 				((ProgressBar)cell.ContentView.Subviews[1]).UpdateValue(item.TotalBreastLengthSeconds, item.LeftBreastLengthSeconds, true);
 				((ProgressBar)cell.ContentView.Subviews[2]).UpdateValue(item.TotalBreastLengthSeconds, item.RightBreastLengthSeconds, true);
 				return cell;

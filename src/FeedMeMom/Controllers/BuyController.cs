@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using FeedMeMom.Helpers;
 using System.Drawing;
 
-namespace FeedMeMom
+namespace FeedMeMom.Controllers
 {
 	public partial class BuyController : UIViewController
 	{
