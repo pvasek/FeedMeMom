@@ -8,29 +8,30 @@ namespace FeedMeMom
 	{
 		public ProgressBar()
 		{
-			//Layer.CornerRadius = 20;
-			ClipsToBounds = true;
+			ForeColor = ColorUtil.FromHex("#d6d6d6");
+			BackColor = ColorUtil.FromHex("#bfbfbf");
+			TextColor = ColorUtil.FromHex("#919191");
 
-			//Frame = new RectangleF(0,0, 40, 40);
-			BackgroundColor = ColorUtil.FromHex("#bfbfbf");
-			ValueView = new UIView 
-			{ 
-				//Frame = Frame,
-				BackgroundColor = ColorUtil.FromHex("#d6d6d6")
-			};
+			ClipsToBounds = true;
+			ValueView = new UIView();
 			LabelView = new UILabel 
 			{ 
-				//Frame = Frame,
-				BackgroundColor = UIColor.Clear,
 				TextAlignment =   UITextAlignment.Center,
-				//Font =  UIFont.FromName("Helvetica Neue", 12),
-				TextColor = ColorUtil.FromHex("#919191")
+				BackgroundColor = UIColor.Clear
 			};
 
 			AddSubview(ValueView);
 			AddSubview(LabelView);
 			Width = 40;
+			Active = false;
 		}
+
+		public UIColor BackColor { get; set; }
+		public UIColor ForeColor { get; set; }
+		public UIColor TextColor { get; set; }
+		public UIColor ActiveBackColor { get; set; }
+		public UIColor ActiveForeColor { get; set; }
+		public UIColor ActiveTextColor { get; set; }
 
 		public float Width 
 		{
@@ -47,6 +48,30 @@ namespace FeedMeMom
 					fontSize = minFontSize;
 				}
 				LabelView.Font = UIFont.FromName("Helvetica Neue", fontSize);
+			}
+		}
+
+		private bool _active;
+
+		public bool Active 
+		{
+			get { return _active; }
+			set 
+			{
+				_active = value;
+				if (_active)
+				{
+					ValueView.BackgroundColor = ActiveForeColor;
+					BackgroundColor = ActiveBackColor;
+					LabelView.TextColor = ActiveTextColor;
+				} 
+				else
+				{
+					ValueView.BackgroundColor = ForeColor;
+					BackgroundColor = BackColor;
+					LabelView.TextColor = TextColor;
+				}
+				SetNeedsDisplay();
 			}
 		}
 

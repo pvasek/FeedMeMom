@@ -56,6 +56,12 @@ namespace FeedMeMom
 		public UIColor TableHeader { get; set; }
 
 		public UIColor IndicatorText { get; set; }
+		public UIColor IndicatorBackground { get; set; }
+		public UIColor IndicatorForeground { get; set; }
+		public UIColor IndicatorActiveText { get; set; }
+		public UIColor IndicatorActiveBackground { get; set; }
+		public UIColor IndicatorActiveForeground { get; set; }
+
 		public UIColor PageText { get; set; }
 
 		public UIImage ImageHamburger { get; set; }
@@ -145,6 +151,12 @@ namespace FeedMeMom
 			PageText = ColorUtil.FromHex("#ae2458");
 
 			IndicatorText = ColorUtil.FromHex("#999999");
+			IndicatorBackground = ColorUtil.FromHex("#bfbfbf");
+			IndicatorForeground = ColorUtil.FromHex("#d6d6d6");
+			IndicatorActiveText = AgoText;
+			IndicatorActiveBackground = Ago;
+			IndicatorActiveForeground = ButtonInactive;
+
 			ImageHamburger = Backgrounds.DayHamburger;
 			ImageArrow = Backgrounds.DayArrow;
 
@@ -218,6 +230,12 @@ namespace FeedMeMom
 			PageText = ColorUtil.FromHex("#595959");
 
 			IndicatorText = UIColor.Black;
+			IndicatorBackground = ColorUtil.FromHex("#bfbfbf");
+			IndicatorForeground = ColorUtil.FromHex("#d6d6d6");
+			IndicatorActiveText = AgoText;
+			IndicatorActiveBackground = Ago;
+			IndicatorActiveForeground = ButtonInactive;
+
 
 			ImageHamburger = Backgrounds.NightHamburger;
 			ImageArrow = Backgrounds.NightArrow;

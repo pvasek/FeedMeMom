@@ -67,8 +67,16 @@ namespace FeedMeMom
 			var opacity = Skin.IsDark ? 0.5f : 1f;
 			_pgbLeft.Layer.Opacity = opacity;
 			_pgbRight.Layer.Opacity = opacity;
-			_pgbLeft.LabelView.TextColor = skin.IndicatorText;
-			_pgbRight.LabelView.TextColor = skin.IndicatorText;
+			Action<ProgressBar> updateIndicator = (i) => {
+				i.TextColor = skin.IndicatorText;
+				i.BackColor = skin.IndicatorBackground;
+				i.ForeColor = skin.IndicatorForeground;
+				i.ActiveTextColor = skin.IndicatorActiveText;
+				i.ActiveBackColor = skin.IndicatorActiveBackground;
+				i.ActiveForeColor = skin.IndicatorActiveForeground;
+			};
+			updateIndicator(_pgbLeft);
+			updateIndicator(_pgbRight);
 
 			imgFirstStartArrow.Image = skin.ImageArrow;
 		}
@@ -99,6 +107,9 @@ namespace FeedMeMom
 
 		private void CancelClick(object sender, EventArgs e)
 		{
+			_pgbLeft.Active = false;
+			_pgbRight.Active = false;
+
 			var repo = ServiceLocator.Get<Repository>();
 			if (_active != null) {
 				repo.Delete(_active);
@@ -111,6 +122,9 @@ namespace FeedMeMom
 
 		private void SaveClick(object sender, EventArgs e)
 		{
+			_pgbLeft.Active = false;
+			_pgbRight.Active = false;
+
 			var repo = ServiceLocator.Get<Repository>();
 			if (_active != null) {
 				_active.Date = DateTime.Now;
@@ -149,11 +163,16 @@ namespace FeedMeMom
 
 		}
 
-		private void TimePanelSwitchToRunning()
+		private void TimePanelSwitchToRunning(bool? left = null)
 		{
 			lblRunningTime.TextColor = Skin.Active.RunningTimeText;
 			lblRunningInfo.TextColor = Skin.Active.RunningTimeText;
 			lblRunningInfo.Text = Resources.TapToPause;
+			if (left != null)
+			{
+				_pgbLeft.Active = left.Value;
+				_pgbRight.Active = !left.Value;
+			}
 		}
 
 		private void TimePanelSwitchToPaused()
@@ -227,7 +246,7 @@ namespace FeedMeMom
 					_stopPair.Start (true);
 					SelectRightLeftButton(true);
 				}
-				TimePanelSwitchToRunning();
+				TimePanelSwitchToRunning(true);
 			};
 
 			btnStartRight.TouchUpInside += (sender, e) => {
@@ -238,7 +257,7 @@ namespace FeedMeMom
 					_stopPair.Start (false);
 					SelectRightLeftButton(false);
 				}
-				TimePanelSwitchToRunning();
+				TimePanelSwitchToRunning(false);
 			};
 		}	
 
