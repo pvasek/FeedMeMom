@@ -210,7 +210,7 @@ namespace FeedMeMom
 			AgoInfoText = ColorUtil.FromHex("#727272");
 			TimeText = ColorUtil.FromHex("#595959");
 			TimeInfoText = ColorUtil.FromHex("#595959");
-			ButtonText = ColorUtil.FromHex("#595959");
+			ButtonText = ColorUtil.FromHex("#777777");
 			ButtonTextSelected = ColorUtil.FromHex("#A8A8A8");
 			ButtonInfoText = ColorUtil.FromHex("#3F3E3E");
 
@@ -229,12 +229,12 @@ namespace FeedMeMom
 
 			PageText = ColorUtil.FromHex("#595959");
 
-			IndicatorText = UIColor.Black;
-			IndicatorBackground = ColorUtil.FromHex("#bfbfbf");
-			IndicatorForeground = ColorUtil.FromHex("#d6d6d6");
-			IndicatorActiveText = AgoText;
-			IndicatorActiveBackground = Ago;
-			IndicatorActiveForeground = ButtonInactive;
+			IndicatorText = ColorUtil.FromHex("#aaaaaa");
+			IndicatorBackground = ColorUtil.FromHex("#555555");
+			IndicatorForeground = ColorUtil.FromHex("#777777");
+			IndicatorActiveText = UIColor.White;
+			IndicatorActiveBackground = ColorUtil.FromHex("#999999");
+			IndicatorActiveForeground = ColorUtil.FromHex("#bbbbbb");
 
 
 			ImageHamburger = Backgrounds.NightHamburger;

@@ -17,22 +17,18 @@ namespace FeedMeMom
 		{
 		}
 
-		public override void DidReceiveMemoryWarning ()
-		{
-			// Releases the view if it doesn't have a superview.
-			base.DidReceiveMemoryWarning ();
-			
-			// Release any cached data, images, etc that aren't in use.
-		}
-
-		//private UITapGestureRecognizer _touchRecondizerSecondaryTime;
-
 		private PointF _defaultContainerRightCenter;
 		private PointF _defaultContainerLeftCenter;
 		private RectangleF _defaultTimeFrame;
 		private const int _defaultRadius = 4;
 		private SideMenuHub _sideMenuHub;
 		private SideMenu _sideMenu;
+
+		private UIBarButtonItem _btnSideMenu;
+		private UIBarButtonItem _btnLeft;
+		private UIBarButtonItem _btnRight;
+		private ProgressBar _pgbLeft;
+		private ProgressBar _pgbRight;
 
 		private HistoryController _historyController;
 		private BuyController _buyController;
@@ -74,6 +70,7 @@ namespace FeedMeMom
 				i.ActiveTextColor = skin.IndicatorActiveText;
 				i.ActiveBackColor = skin.IndicatorActiveBackground;
 				i.ActiveForeColor = skin.IndicatorActiveForeground;
+				i.ApplyColors();
 			};
 			updateIndicator(_pgbLeft);
 			updateIndicator(_pgbRight);
@@ -142,12 +139,6 @@ namespace FeedMeMom
 			_sideMenuHub.Toggle();
 		}
 
-		private UIBarButtonItem _btnSideMenu;
-		private UIBarButtonItem _btnLeft;
-		private UIBarButtonItem _btnRight;
-		private ProgressBar _pgbLeft;
-		private ProgressBar _pgbRight;
-
 		private void SetFeedingVisible(bool visible)		
 		{
 			if (visible)
@@ -182,9 +173,8 @@ namespace FeedMeMom
 			lblRunningInfo.Text = Resources.TapToContinue;
 		}
 
-		public override void ViewDidLoad ()
+		private void CreateLayout()
 		{
-			base.ViewDidLoad ();		
 			Title = Resources.LastFeeding;
 			_btnSideMenu = new UIBarButtonItem(Skin.Active.ImageHamburger, UIBarButtonItemStyle.Plain, ShowSideMenuClick);
 			_btnLeft = new UIBarButtonItem(Resources.Cancel, UIBarButtonItemStyle.Plain, CancelClick);
@@ -193,7 +183,26 @@ namespace FeedMeMom
 			_pgbRight = new ProgressBar { Center = new PointF(285, 44) };
 			pnlTime.AddSubview(_pgbLeft);
 			pnlTime.AddSubview(_pgbRight);
+			View.AddSubview(pnlFirstStart);
+			pnlFirstStart.Frame = new RectangleF(pnlAgo.Frame.X, pnlAgo.Frame.Y, pnlFirstStart.Frame.Width, pnlFirstStart.Frame.Height);		
+			pnlFirstStart.Hidden = false;
+			btnStartLeft.Layer.CornerRadius = _defaultRadius;
+			btnStartRight.Layer.CornerRadius = _defaultRadius;
+			pnlStartNewFeeding.Layer.CornerRadius = _defaultRadius;
+			pnlRunningTime.Hidden = true;
 
+			var touchRecondizerSecondaryTime = new UITapGestureRecognizer(PauseRunToggle);
+			lblRunningTime.UserInteractionEnabled = true;
+			lblRunningTime.AddGestureRecognizer(touchRecondizerSecondaryTime);		
+
+			CreateSideMenu();
+
+		}
+
+		public override void ViewDidLoad ()
+		{
+			base.ViewDidLoad ();		
+			CreateLayout();
 
 			var repo = ServiceLocator.Get<Repository>();
 
@@ -205,36 +214,11 @@ namespace FeedMeMom
 				ReloadData();
 			};
 
-			View.AddSubview(pnlFirstStart);
-			pnlFirstStart.Frame = new RectangleF(pnlAgo.Frame.X, pnlAgo.Frame.Y, pnlFirstStart.Frame.Width, pnlFirstStart.Frame.Height);		
-
 			SetFeedingVisible(false);
-			pnlFirstStart.Hidden = false;
-			btnStartLeft.Layer.CornerRadius = _defaultRadius;
-			btnStartRight.Layer.CornerRadius = _defaultRadius;
-			pnlStartNewFeeding.Layer.CornerRadius = _defaultRadius;
-			pnlRunningTime.Hidden = true;
 
-			CreateSideMenu();
-			lblSecondTimeInfo.TextColor = UIColor.Gray;
 			_defaultTimeFrame = pnlTime.Frame;
 			_defaultContainerRightCenter = _pgbRight.Center;
 			_defaultContainerLeftCenter = _pgbLeft.Center;
-
-			var touchRecondizerSecondaryTime = new UITapGestureRecognizer((e) => {
-				if (_active != null) {
-					if (_stopPair.Toggle())
-					{
-						TimePanelSwitchToRunning();
-					} 
-					else 
-					{
-						TimePanelSwitchToPaused();
-					}
-				}
-			});
-			lblRunningTime.UserInteractionEnabled = true;
-			lblRunningTime.AddGestureRecognizer(touchRecondizerSecondaryTime);		
 
 			_timer = new Timer (TimerElapsed, null, 200, 200);
 
@@ -245,8 +229,8 @@ namespace FeedMeMom
 				} else if (_active.LeftStartTime == null) {
 					_stopPair.Start (true);
 					SelectRightLeftButton(true);
+					TimePanelSwitchToRunning(true);
 				}
-				TimePanelSwitchToRunning(true);
 			};
 
 			btnStartRight.TouchUpInside += (sender, e) => {
@@ -256,15 +240,29 @@ namespace FeedMeMom
 				} else if (_active.RightStartTime == null) {
 					_stopPair.Start (false);
 					SelectRightLeftButton(false);
+					TimePanelSwitchToRunning(false);
 				}
-				TimePanelSwitchToRunning(false);
 			};
 		}	
+
+		public void PauseRunToggle(UITapGestureRecognizer e)
+		{
+			if (_active != null) {
+				if (_stopPair.Toggle())
+				{
+					TimePanelSwitchToRunning();
+				} 
+				else 
+				{
+					TimePanelSwitchToPaused();
+				}
+			}
+		}
 
 		public override void ViewWillAppear (bool animated)
 		{
 			base.ViewWillAppear (animated);
-			ReloadData ();
+			ReloadData();
 		}
 
 		protected override void Dispose (bool disposing)
@@ -453,6 +451,7 @@ namespace FeedMeMom
 
 			Action animFinished = () => {
 				pnlRunningTime.Hidden = false;
+				TimePanelSwitchToRunning(left);
 			};
 
 			if (done == null)
@@ -547,38 +546,12 @@ namespace FeedMeMom
 			SwitchToFeedingMode(left, new FeedingEntry{ Date = Time.Now }, () => {
 				_stopPair.Start (left);
 				repo.Insert(_active);
+				_pgbLeft.UpdateValue(0,0, false);
+				_pgbRight.UpdateValue(0,0, false);
+				TimePanelSwitchToRunning(left);
 			});
 		}
 
-		private static void ShowCurrentScreenBrightness()
-		{
-			using (var img = UIApplication.SharedApplication.Windows.First().Screen.Capture())
-			{
-				var cgimg = img.CGImage;
-				var imgData = new byte[cgimg.Width * cgimg.Height * 4];
-				var totalPerc = 0f;
-				using (var bc = new CGBitmapContext(imgData, cgimg.Width, cgimg.Height, 8, 4 * cgimg.Width, CGColorSpace.CreateDeviceRGB(), CGBitmapFlags.PremultipliedLast | CGBitmapFlags.ByteOrder32Big))
-				{
-					bc.DrawImage(new RectangleF(0, 0, cgimg.Width, cgimg.Height), cgimg);
-					var totalBrightnessPercentage = 0f;
-					var count = 0;
-					for (var i = 0; i < imgData.Length; i = i + 4)
-					{
-						var r = imgData[i] / 255f;
-						var g = imgData[i] / 255f;
-						var b = imgData[i] / 255f;
-						totalBrightnessPercentage += (r + g + b) / 3f;
-						count++;
-					}
-					totalPerc = totalBrightnessPercentage * 100 / count;
-				}
-				var alert = new UIAlertView();
-				alert.Title = String.Format("Brightness: {0}%", totalPerc);
-				alert.AddButton("Close");
-				alert.CancelButtonIndex = 0;
-				alert.Show();
-			}
-		}
 	}
 }
 

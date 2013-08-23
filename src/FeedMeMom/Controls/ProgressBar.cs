@@ -53,25 +53,29 @@ namespace FeedMeMom
 
 		private bool _active;
 
+		public void ApplyColors()
+		{
+			if (_active)
+			{
+				ValueView.BackgroundColor = ActiveForeColor;
+				BackgroundColor = ActiveBackColor;
+				LabelView.TextColor = ActiveTextColor;
+			} 
+			else
+			{
+				ValueView.BackgroundColor = ForeColor;
+				BackgroundColor = BackColor;
+				LabelView.TextColor = TextColor;
+			}
+		}
+
 		public bool Active 
 		{
 			get { return _active; }
 			set 
 			{
 				_active = value;
-				if (_active)
-				{
-					ValueView.BackgroundColor = ActiveForeColor;
-					BackgroundColor = ActiveBackColor;
-					LabelView.TextColor = ActiveTextColor;
-				} 
-				else
-				{
-					ValueView.BackgroundColor = ForeColor;
-					BackgroundColor = BackColor;
-					LabelView.TextColor = TextColor;
-				}
-				SetNeedsDisplay();
+				ApplyColors();
 			}
 		}
 
