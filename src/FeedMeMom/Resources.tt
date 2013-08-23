@@ -19,6 +19,7 @@
 //
 // #####################################################################
 
+using System;
 using MonoTouch.Foundation;
 
 namespace FeedMeMom {
@@ -27,7 +28,12 @@ namespace FeedMeMom {
 	{
 		private static string GetLocalized(string key)
 		{
-			return NSBundle.MainBundle.LocalizedString(key, key);
+			var result = NSBundle.MainBundle.LocalizedString(key, key);
+			if (result != null)
+			{
+				result = result.Replace("|", Environment.NewLine);
+			}
+			return result;
 		}
 		
 		static Resources()

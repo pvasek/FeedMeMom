@@ -20,12 +20,15 @@ namespace FeedMeMom.Controllers
 
 		[Outlet]
 		MonoTouch.UIKit.UIButton btnStayInTouch { get; set; }
+
+		[Outlet]
+		MonoTouch.UIKit.UILabel lblHelp { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
-			if (btnStayInTouch != null) {
-				btnStayInTouch.Dispose ();
-				btnStayInTouch = null;
+			if (lblHelp != null) {
+				lblHelp.Dispose ();
+				lblHelp = null;
 			}
 
 			if (btnBug != null) {
@@ -36,6 +39,11 @@ namespace FeedMeMom.Controllers
 			if (btnNewFeature != null) {
 				btnNewFeature.Dispose ();
 				btnNewFeature = null;
+			}
+
+			if (btnStayInTouch != null) {
+				btnStayInTouch.Dispose ();
+				btnStayInTouch = null;
 			}
 		}
 	}

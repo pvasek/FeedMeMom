@@ -653,14 +653,6 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">pnlStartNewFeeding</string>
-						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="749186234"/>
-					</object>
-					<int key="connectionID">68</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">imgFirstStartArrow</string>
 						<reference key="source" ref="372490531"/>
 						<reference key="destination" ref="793384430"/>

@@ -28,6 +28,7 @@ namespace FeedMeMom.Controllers
 			Skin.Active.SkinButton(btnNewFeature);
 			Skin.Active.SkinButton(btnBug);
 			Skin.Active.SkinButton(btnStayInTouch);
+			lblHelp.Text = Resources.FeedbackHelpText;
 		}
 
 		public override void ViewDidLoad()

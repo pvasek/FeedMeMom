@@ -7,6 +7,7 @@
 //
 // #####################################################################
 
+using System;
 using MonoTouch.Foundation;
 
 namespace FeedMeMom {
@@ -15,7 +16,12 @@ namespace FeedMeMom {
 	{
 		private static string GetLocalized(string key)
 		{
-			return NSBundle.MainBundle.LocalizedString(key, key);
+			var result = NSBundle.MainBundle.LocalizedString(key, key);
+			if (result != null)
+			{
+				result = result.Replace("|", Environment.NewLine);
+			}
+			return result;
 		}
 		
 		static Resources()
@@ -50,6 +56,9 @@ namespace FeedMeMom {
 			RateReviewThisApp = GetLocalized("RateReviewThisApp");
 			ShareEmailSubject = GetLocalized("ShareEmailSubject");
 			ShareEmailBody = GetLocalized("ShareEmailBody");
+			FeedbackHelpText = GetLocalized("FeedbackHelpText");
+			FirstStartAgoText = GetLocalized("FirstStartAgoText");
+			FirstStartTimeText = GetLocalized("FirstStartTimeText");
 	
 		}
 		
@@ -83,6 +92,9 @@ namespace FeedMeMom {
 		public static string RateReviewThisApp { get; private set; }
 		public static string ShareEmailSubject { get; private set; }
 		public static string ShareEmailBody { get; private set; }
+		public static string FeedbackHelpText { get; private set; }
+		public static string FirstStartAgoText { get; private set; }
+		public static string FirstStartTimeText { get; private set; }
 	
 
 	}

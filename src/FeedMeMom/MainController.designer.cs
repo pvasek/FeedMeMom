@@ -76,9 +76,6 @@ namespace FeedMeMom
 		MonoTouch.UIKit.UIView pnlRunningTime { get; set; }
 
 		[Outlet]
-		MonoTouch.UIKit.UILabel pnlStartNewFeeding { get; set; }
-
-		[Outlet]
 		MonoTouch.UIKit.UIView pnlTime { get; set; }
 		
 		void ReleaseDesignerOutlets ()
@@ -186,11 +183,6 @@ namespace FeedMeMom
 			if (pnlRunningTime != null) {
 				pnlRunningTime.Dispose ();
 				pnlRunningTime = null;
-			}
-
-			if (pnlStartNewFeeding != null) {
-				pnlStartNewFeeding.Dispose ();
-				pnlStartNewFeeding = null;
 			}
 
 			if (pnlTime != null) {

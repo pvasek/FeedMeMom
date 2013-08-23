@@ -187,7 +187,7 @@ namespace FeedMeMom
 			pnlFirstStart.Hidden = false;
 			btnStartLeft.Layer.CornerRadius = _defaultRadius;
 			btnStartRight.Layer.CornerRadius = _defaultRadius;
-			pnlStartNewFeeding.Layer.CornerRadius = _defaultRadius;
+			pnlFSMainAction.Layer.CornerRadius = _defaultRadius;
 			pnlRunningTime.Hidden = true;
 
 			var touchRecondizerSecondaryTime = new UITapGestureRecognizer(PauseRunToggle);
@@ -197,6 +197,10 @@ namespace FeedMeMom
 			btnStartLeft.SetTitle(Resources.LeftLetter);
 			btnStartRight.SetTitle(Resources.RightLetter);
 			lblButtonsHeader.Text = Resources.StartNewFeeding;
+
+			pnlFSMainAction.Text = Resources.StartNewFeeding;
+			lblFSAgoInfo.Text = Resources.FirstStartAgoText;
+			lblFSTimeInfo.Text = Resources.FirstStartTimeText;
 
 			CreateSideMenu();
 
@@ -301,15 +305,15 @@ namespace FeedMeMom
 				_sideMenuHub.Hide();
 			}, UIImage.FromBundle("moon")));
 
-			_sideMenu.Items.Add(new ActionItem(Resources.Feedback, () => {
-				_sideMenuHub.Hide();
-				NavigationController.PushViewController(new FeedbackController(), false);
-			}, UIImage.FromBundle("envelope")));
-
 			_sideMenu.Items.Add(new ActionItem(Resources.IlikeThisApp, () => {
 				_sideMenuHub.Hide();
 				NavigationController.PushViewController(new ReviewController(), false);
 			}, UIImage.FromBundle("star")));
+
+			_sideMenu.Items.Add(new ActionItem(Resources.Feedback, () => {
+				_sideMenuHub.Hide();
+				NavigationController.PushViewController(new FeedbackController(), false);
+			}, UIImage.FromBundle("envelope")));
 
 			_sideMenu.Items.Add(new ActionItem("Buy Test", () => {
 				if (_buyController == null) {
@@ -373,7 +377,7 @@ namespace FeedMeMom
 			lblMainTime.Hidden = true;
 			lblMainTimeInfo.Hidden = false;
 			pnlRunningTime.Hidden = true;
-			pnlStartNewFeeding.Hidden = false;
+			pnlFSMainAction.Hidden = false;
 			pnlFirstStart.Hidden = false;
 			SetFeedingVisible(false);
 			btnStartLeft.BackgroundColor = Skin.Active.ButtonActive;
