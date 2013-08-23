@@ -51,7 +51,7 @@ namespace FeedMeMom
 			pnlFSAgo.BackgroundColor = skin.Ago;		
 			pnlFSMainTime.BackgroundColor = skin.Time;
 			pnlFSMainAction.BackgroundColor = skin.Toolbar;
-			pnlFSMainAction.TextColor = skin.AgoInfoText;
+			pnlFSMainAction.TextColor = skin.AgoText;
 			lblFSAgoInfo.TextColor = skin.AgoInfoText;
 			pnlFirstStart.BackgroundColor = skin.Background;
 			lblFSTimeInfo.TextColor = skin.TimeInfoText;
