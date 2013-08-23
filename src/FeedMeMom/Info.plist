@@ -14,8 +14,35 @@
 	<array>
 		<string>Icon</string>
 		<string>Icon@2x</string>
+		<string>Icon-72</string>
+		<string>Icon-Small</string>
+		<string>Icon-Small@2x</string>
+		<string>Icon-Small-50</string>
 	</array>
 	<key>CFBundleDisplayName</key>
 	<string>FeedMeMom</string>
+	<key>UIStatusBarTintParameters</key>
+	<dict>
+		<key>UINavigationBar</key>
+		<dict>
+			<key>Style</key>
+			<string>UIBarStyleDefault</string>
+			<key>Translucent</key>
+			<false/>
+			<key>TintColor</key>
+			<dict>
+				<key>Red</key>
+				<real>0.513725490196078</real>
+				<key>Green</key>
+				<real>0.0196078431372549</real>
+				<key>Blue</key>
+				<real>0.215686274509804</real>
+			</dict>
+		</dict>
+	</dict>
+	<key>CFBundleVersion</key>
+	<string>1.0.1</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.feedmemom.app</string>
 </dict>
 </plist>

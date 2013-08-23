@@ -61,25 +61,25 @@ namespace FeedMeMom.Common
 			return DayOnly.Add (time).ToShortTimeString();
 		}
 
-		public static Tuple<string, string> AsAgoTextTuple(this DateTime time) 
+		public static Tuple<string, AgoInterval> AsAgoTextTuple(this DateTime time) 
 		{
 			var diff = DateTime.Now - time;
 			return diff.AsAgoTextTuple();
 		}
 
-		public static Tuple<string, string> AsAgoTextTuple(this TimeSpan time) 
+		public static Tuple<string, AgoInterval> AsAgoTextTuple(this TimeSpan time) 
 		{
 			if (((int)time.TotalMinutes) == 1) {
-				return new Tuple<string, string> ("", "");
+				return new Tuple<string, AgoInterval> ("", AgoInterval.None);
 			} else if (time.TotalMinutes < 60) {
-				return new Tuple<string, string>(((int)time.TotalMinutes).ToString (), "minutes ago");
+				return new Tuple<string, AgoInterval>(((int)time.TotalMinutes).ToString (), AgoInterval.Minutes);
 			} else if (time.TotalHours < 24) {
-				return new Tuple<string, string>(time.ToString(@"h\:mm"), "hours ago");
+				return new Tuple<string, AgoInterval>(time.ToString(@"h\:mm"), AgoInterval.Hours);
 			}
 			if (((int)time.TotalDays) == 1) {
-				return new Tuple<string, string> ("1", "day ago");
+				return new Tuple<string, AgoInterval> ("1", AgoInterval.Day);
 			} else {
-				return new Tuple<string, string> (((int)time.TotalDays).ToString(), "days ago");
+				return new Tuple<string, AgoInterval> (((int)time.TotalDays).ToString(), AgoInterval.Days);
 			}
 		}
 
@@ -105,6 +105,15 @@ namespace FeedMeMom.Common
 
 			return String.Format("{0:##}:{1:00} hours ago", time.Hours, time.Minutes);
 		}
+	}
+
+	public enum AgoInterval
+	{
+		None,
+		Minutes,
+		Hours,
+		Day,
+		Days
 	}
 }
 

@@ -28,6 +28,10 @@
 "RateReviewThisApp"="Rate/Review this app";
 "ShareEmailSubject"="Great app";
 "ShareEmailBody"="I use this really handy app. You can give it a try.";
-"FeedbackHelpText"="There is no big company behind this app. Just a single developer. If you want to contact me. Please use English language.||Thank you!";
+"FeedbackHelpText"="There is no big company behind this app. Just a single developer.||If you want to contact me. Please use English language.||Thank you!";
 "FirstStartAgoText"="You will see how long ago was your last feeding";
 "FirstStartTimeText"="the length of the feeding and from which breast it was";
+"MinutesAgo"="minutes ago";
+"HoursAgo"="hours ago";
+"DayAgo"="day ago";
+"DaysAgo"="days ago";

@@ -10,6 +10,7 @@
 using System;
 using MonoTouch.Foundation;
 
+
 namespace FeedMeMom {
 			
 	public static class Resources
@@ -59,6 +60,10 @@ namespace FeedMeMom {
 			FeedbackHelpText = GetLocalized("FeedbackHelpText");
 			FirstStartAgoText = GetLocalized("FirstStartAgoText");
 			FirstStartTimeText = GetLocalized("FirstStartTimeText");
+			MinutesAgo = GetLocalized("MinutesAgo");
+			HoursAgo = GetLocalized("HoursAgo");
+			DayAgo = GetLocalized("DayAgo");
+			DaysAgo = GetLocalized("DaysAgo");
 	
 		}
 		
@@ -95,6 +100,10 @@ namespace FeedMeMom {
 		public static string FeedbackHelpText { get; private set; }
 		public static string FirstStartAgoText { get; private set; }
 		public static string FirstStartTimeText { get; private set; }
+		public static string MinutesAgo { get; private set; }
+		public static string HoursAgo { get; private set; }
+		public static string DayAgo { get; private set; }
+		public static string DaysAgo { get; private set; }
 	
 
 	}

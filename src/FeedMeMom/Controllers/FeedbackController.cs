@@ -28,12 +28,14 @@ namespace FeedMeMom.Controllers
 			Skin.Active.SkinButton(btnNewFeature);
 			Skin.Active.SkinButton(btnBug);
 			Skin.Active.SkinButton(btnStayInTouch);
-			lblHelp.Text = Resources.FeedbackHelpText;
+			lblHelp.TextColor = Skin.Active.PageText;
 		}
 
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
+
+			lblHelp.Text = Resources.FeedbackHelpText;
 
 			btnBug.TouchUpInside += (sender, e) => SendEmail("Bug Report", "Description:");
 			btnNewFeature.TouchUpInside += (sender, e) => SendEmail("Feature request", "What about this feature?");

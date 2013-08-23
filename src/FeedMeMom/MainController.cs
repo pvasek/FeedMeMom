@@ -353,7 +353,22 @@ namespace FeedMeMom
 				} else {
 					var touple = entry.Date.AsAgoTextTuple();
 					lblMainTime.Text = touple.Item1;
-					lblMainTimeInfo.Text = touple.Item2;
+					if (touple.Item2 == AgoInterval.Minutes)
+					{
+						lblMainTimeInfo.Text = Resources.MinutesAgo;
+					} 
+					else if (touple.Item2 == AgoInterval.Hours)
+					{
+						lblMainTimeInfo.Text = Resources.HoursAgo;
+					}
+					else if (touple.Item2 == AgoInterval.Day)
+					{
+						lblMainTimeInfo.Text = Resources.DayAgo;
+					}
+					else if (touple.Item2 == AgoInterval.Days)
+					{
+						lblMainTimeInfo.Text = Resources.DaysAgo;
+					}
 				}
 			} else {
 				lblMainTime.Text = "";

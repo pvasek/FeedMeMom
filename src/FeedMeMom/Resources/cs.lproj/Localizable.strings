@@ -28,6 +28,10 @@
 "RateReviewThisApp"="Ohodnoť tuto aplikaci";
 "ShareEmailSubject"="Skvělá aplikace";
 "ShareEmailBody"="Používám tuhle pěknou aplikaci. Myslím, že by se ti taky mohla hodit.";
-"FeedbackHelpText"="Za touhle aplikací není žádná velká firma. Pouze jeden vývojář. Chcete-li mě kontaktovat, použijte prosím angličnitu.||Děkuji vám!";
+"FeedbackHelpText"="Za touhle aplikací není žádná velká firma. Pouze jeden vývojář.||Chcete-li mě kontaktovat, použijte prosím angličnitu.||Děkuji vám!";
 "FirstStartAgoText"="Uvidíte před jak dlouho jste kojila";
 "FirstStartTimeText"="délku kojení a z jakého prsa to bylo";
+"MinutesAgo"="minut zpět";
+"HoursAgo"="hodin zpět";
+"DayAgo"="den zpět";
+"DaysAgo"="dnů zpět";
