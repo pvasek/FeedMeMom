@@ -228,7 +228,7 @@ namespace FeedMeMom
 					StartFeeding(repo, true);
 				} else if (_active.LeftStartTime == null) {
 					_stopPair.Start (true);
-					SelectRightLeftButton(true);
+					SelectRightLeftButton(false);
 					TimePanelSwitchToRunning(true);
 				}
 			};
@@ -239,7 +239,7 @@ namespace FeedMeMom
 					StartFeeding(repo, false);
 				} else if (_active.RightStartTime == null) {
 					_stopPair.Start (false);
-					SelectRightLeftButton(false);
+					SelectRightLeftButton(true);
 					TimePanelSwitchToRunning(false);
 				}
 			};
@@ -291,7 +291,22 @@ namespace FeedMeMom
 				_sideMenuHub.Hide();
 				NavigationController.PushViewController(_historyController, false);
 
-			}));
+			}, UIImage.FromBundle("list")));
+
+			_sideMenu.Items.Add(new ActionItem(Resources.SwitchDayNightMode, () => {
+				Skin.ToggleDayNightMode();
+				_sideMenuHub.Hide();
+			}, UIImage.FromBundle("moon")));
+
+			_sideMenu.Items.Add(new ActionItem(Resources.Feedback, () => {
+				_sideMenuHub.Hide();
+				NavigationController.PushViewController(new FeedbackController(), false);
+			}, UIImage.FromBundle("envelope")));
+
+			_sideMenu.Items.Add(new ActionItem(Resources.IlikeThisApp, () => {
+				_sideMenuHub.Hide();
+				NavigationController.PushViewController(new ReviewController(), false);
+			}, UIImage.FromBundle("hearth")));
 
 			_sideMenu.Items.Add(new ActionItem("Buy Test", () => {
 				if (_buyController == null) {
@@ -301,21 +316,6 @@ namespace FeedMeMom
 				_buyController.BuyTitle = Resources.History;
 				_buyController.BuyDescription = Resources.HistoryBuyHeadline;
 				NavigationController.PushViewController(_buyController, false);
-			}));
-
-			_sideMenu.Items.Add(new ActionItem(Resources.SwitchDayNightMode, () => {
-				Skin.ToggleDayNightMode();
-				_sideMenuHub.Hide();
-			}));
-
-			_sideMenu.Items.Add(new ActionItem(Resources.Feedback, () => {
-				_sideMenuHub.Hide();
-				NavigationController.PushViewController(new FeedbackController(), false);
-			}));
-
-			_sideMenu.Items.Add(new ActionItem(Resources.IlikeThisApp, () => {
-				_sideMenuHub.Hide();
-				NavigationController.PushViewController(new ReviewController(), false);
 			}));
 
 			_sideMenu.Items.Add(new ActionItem("Delete Data", () => {
@@ -419,7 +419,7 @@ namespace FeedMeMom
 			}
 		}
 
-		private void SwitchToFeedingMode(bool left, FeedingEntry entry, Action done = null)
+		private void SwitchToFeedingMode(bool left, FeedingEntry entry, Action done = null, bool updateButtonsColors = true)
 		{
 			pnlFirstStart.Hidden = true;
 			lblMainTime.Hidden = true;
@@ -437,7 +437,9 @@ namespace FeedMeMom
 			Action startFeeding = () => {
 				pnlAgo.Hidden = true;
 				_active = entry;
-				SelectRightLeftButton(left);
+				if (updateButtonsColors) {
+					SelectRightLeftButton(!left);
+				}
 				_stopPair = new TimeStopPair (_active);
 			};
 
@@ -446,7 +448,8 @@ namespace FeedMeMom
 				pnlTime.Frame = new RectangleF(30, pnlAgo.Frame.Y + 30, 260, 160);
 				_pgbRight.Center = new PointF(155, 130);
 				_pgbLeft.Center = new PointF(105, 130);
-				SetFeedingVisible(true);				pnlRunningTime.Center = new PointF(pnlTime.Frame.Width / 2, pnlTime.Frame.Height / 2 - 20);
+				SetFeedingVisible(true);				
+				pnlRunningTime.Center = new PointF(pnlTime.Frame.Width / 2, pnlTime.Frame.Height / 2 - 20);
 			};
 
 			Action animFinished = () => {
@@ -549,7 +552,11 @@ namespace FeedMeMom
 				_pgbLeft.UpdateValue(0,0, false);
 				_pgbRight.UpdateValue(0,0, false);
 				TimePanelSwitchToRunning(left);
-			});
+
+				UIView.Animate(2, () => {
+					SelectRightLeftButton(!left);
+				});
+			}, false);
 		}
 
 	}

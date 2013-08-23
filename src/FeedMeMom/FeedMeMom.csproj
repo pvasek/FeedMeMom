@@ -171,6 +171,16 @@
     <BundleResource Include="Resources\Default-568h%402x.png" />
     <BundleResource Include="Resources\Default.png" />
     <BundleResource Include="Resources\Default%402x.png" />
+    <BundleResource Include="Resources\hearth.png" />
+    <BundleResource Include="Resources\hearth%402x.png" />
+    <BundleResource Include="Resources\star.png" />
+    <BundleResource Include="Resources\star%402x.png" />
+    <BundleResource Include="Resources\envelope.png" />
+    <BundleResource Include="Resources\envelope%402x.png" />
+    <BundleResource Include="Resources\list.png" />
+    <BundleResource Include="Resources\list%402x.png" />
+    <BundleResource Include="Resources\moon.png" />
+    <BundleResource Include="Resources\moon%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FeedMeMom.Common\FeedMeMom.Common.csproj">

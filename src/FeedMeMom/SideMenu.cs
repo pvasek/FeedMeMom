@@ -98,8 +98,11 @@ namespace FeedMeMom
 				cell.TextLabel.HighlightedTextColor = Skin.Active.SideMenuRowSelectedText;
 				cell.SelectedBackgroundView = new UIView();
 				cell.SelectedBackgroundView.BackgroundColor = Skin.Active.SideMenuRowSelected;
+				cell.ImageView.Layer.Opacity = 0.6f;
 			}
-			cell.TextLabel.Text = Data[indexPath.Row].Name;
+			var item = Data[indexPath.Row];
+			cell.TextLabel.Text = item.Name;
+			cell.ImageView.Image = item.Image;
 			return cell;
 		}	
 
@@ -123,7 +126,7 @@ namespace FeedMeMom
 
 	public class ActionItem
 	{
-		public ActionItem(string name, Action action = null)
+		public ActionItem(string name, Action action = null, UIImage image = null)
 		{
 			Name = name;
 			if (action == null)
@@ -131,10 +134,12 @@ namespace FeedMeMom
 				action = () => {};
 			}
 			Action = action;
+			Image = image;
 		}
 
 		public string Name { get; set; }
 		public Action Action { get; set; }
+		public UIImage Image { get; set; }
 	}
 }
 
