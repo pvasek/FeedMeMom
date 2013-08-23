@@ -63,6 +63,7 @@ namespace FeedMeMom
 		public UIColor IndicatorActiveForeground { get; set; }
 
 		public UIColor PageText { get; set; }
+		public UIColor TitleText { get; set; }
 
 		public UIImage ImageHamburger { get; set; }
 		public UIImage ImageArrow { get; set; }
@@ -149,6 +150,7 @@ namespace FeedMeMom
 			TableHeader = ColorUtil.FromHex("#b02157");
 
 			PageText = ColorUtil.FromHex("#ae2458");
+			TitleText = ColorUtil.FromHex("#830537");
 
 			IndicatorText = ColorUtil.FromHex("#999999");
 			IndicatorBackground = ColorUtil.FromHex("#bfbfbf");
@@ -160,35 +162,6 @@ namespace FeedMeMom
 			ImageHamburger = Backgrounds.DayHamburger;
 			ImageArrow = Backgrounds.DayArrow;
 
-		}
-	}
-
-
-	public class DarkSkin2: Skin
-	{
-		public DarkSkin2() 
-		{
-			ButtonActive = ColorUtil.FromHex("#8d1542");//FromHex ("50AEFF");
-			ButtonInactive = ColorUtil.FromHex ("#c04271");
-			ButtonText = ColorUtil.FromHex("#fc9bbe");
-			ButtonInfoText = ColorUtil.FromHex("#a3335d");
-			Toolbar = ColorUtil.FromHex("#2b0514");
-			ToolbarText = ColorUtil.FromHex("#a71f53");
-			ToolbarTextActive = ColorUtil.FromHex("#a65e19");
-			RunningTimeText = ColorUtil.FromHex("#47041e");
-			PausedTimeText = ColorUtil.FromHex("#bbbbbb");
-			Ago = ColorUtil.FromHex("#47041e");
-			AgoText = ColorUtil.FromHex("#c04271");
-			AgoInfoText = ColorUtil.FromHex("#a65e19");
-			Time = ColorUtil.FromHex("#750c33");
-			TimeText = ColorUtil.FromHex("#e280a4");
-			TimeInfoText = ColorUtil.FromHex("#a0315b");
-			Background = ColorUtil.FromHex("#47041e");
-			SideMenuRow = ColorUtil.FromHex("#560928");
-			SideMenuRowText = UIColor.White;
-			SideMenuRowBorder = ColorUtil.FromHex("#770c37");
-			SideMenuRowSelected = SideMenuRowBorder;
-			IndicatorText = ColorUtil.FromHex("#999999");
 		}
 	}
 
@@ -228,6 +201,7 @@ namespace FeedMeMom
 			TableHeader = ColorUtil.FromHex("#555555");
 
 			PageText = ColorUtil.FromHex("#595959");
+			TitleText = ColorUtil.FromHex("#4B4B4B");
 
 			IndicatorText = ColorUtil.FromHex("#aaaaaa");
 			IndicatorBackground = ColorUtil.FromHex("#555555");

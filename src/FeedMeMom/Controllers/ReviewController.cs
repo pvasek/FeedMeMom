@@ -34,6 +34,8 @@ namespace FeedMeMom
 			Skin.Active.SkinButton(btnShareByEmail);
 			Skin.Active.SkinButton(btnShareByTwitter);
 			Skin.Active.SkinButton(btnShareByFacebook);		
+			lblAppstore.TextColor = Skin.Active.TitleText;
+			lblShare.TextColor = Skin.Active.TitleText;
 		}
 
 		public override void ViewDidLoad()

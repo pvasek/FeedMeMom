@@ -23,9 +23,25 @@ namespace FeedMeMom
 
 		[Outlet]
 		MonoTouch.UIKit.UIButton btnShareByTwitter { get; set; }
+
+		[Outlet]
+		MonoTouch.UIKit.UILabel lblAppstore { get; set; }
+
+		[Outlet]
+		MonoTouch.UIKit.UILabel lblShare { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
+			if (lblAppstore != null) {
+				lblAppstore.Dispose ();
+				lblAppstore = null;
+			}
+
+			if (lblShare != null) {
+				lblShare.Dispose ();
+				lblShare = null;
+			}
+
 			if (btnReview != null) {
 				btnReview.Dispose ();
 				btnReview = null;
@@ -36,14 +52,14 @@ namespace FeedMeMom
 				btnShareByEmail = null;
 			}
 
-			if (btnShareByTwitter != null) {
-				btnShareByTwitter.Dispose ();
-				btnShareByTwitter = null;
-			}
-
 			if (btnShareByFacebook != null) {
 				btnShareByFacebook.Dispose ();
 				btnShareByFacebook = null;
+			}
+
+			if (btnShareByTwitter != null) {
+				btnShareByTwitter.Dispose ();
+				btnShareByTwitter = null;
 			}
 		}
 	}
