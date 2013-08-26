@@ -1,13 +1,18 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="AppStore|iPhone" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="FeedMeMom/Info.plist">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhone.6.1" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="FeedMeMom/Controllers/FeedbackController.cs">
     <Files>
       <File FileName="FeedMeMom/Info.plist" />
+      <File FileName="FeedMeMom/Controllers/FeedbackController.cs" Line="31" Column="34" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
-          <Node name="FeedMeMom" expanded="True" selected="True" />
+          <Node name="FeedMeMom" expanded="True">
+            <Node name="Controllers" expanded="True">
+              <Node name="FeedbackController.cs" selected="True" />
+            </Node>
+          </Node>
           <Node name="FeedMeMom.Common" expanded="True" />
         </State>
       </Pad>
