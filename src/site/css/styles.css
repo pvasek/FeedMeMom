@@ -2535,6 +2535,10 @@ h2.headline {
     font-size: 23px;
 }
 
+.subheadline strong {
+    font-weight: 400;
+}
+
 .box .phone-text p {
     font-family: 'roboto', 'Open Sans', sans-serif;
     line-height: normal;
