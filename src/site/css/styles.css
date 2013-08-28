@@ -1,4 +1,13 @@
 @font-face {
+    font-family: 'roboto';
+    src: url('fonts/Roboto-Light.tts');
+    src: url('fonts/entypo.eot?#iefix') format('embedded-opentype'), url('fonts/entypo.woff') format('woff'), url('fonts/entypo.ttf') format('truetype'), url('fonts/entypo.svg#entypo') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
     font-family: 'entypo';
     src: url('fonts/entypo.eot');
     src: url('fonts/entypo.eot?#iefix') format('embedded-opentype'), url('fonts/entypo.woff') format('woff'), url('fonts/entypo.ttf') format('truetype'), url('fonts/entypo.svg#entypo') format('svg');
@@ -2507,8 +2516,28 @@ h1.headline {
     font-weight: lighter;
 }
 
+.main-c1 {
+    margin-top: 40px;
+}
+
 h2.headline {
     font-style: italic;
     font-weight: lighter;
+    margin-bottom: 40px;
 }
 
+.subheadline {
+    font-family: 'roboto', 'Open Sans', sans-serif;
+    text-align: left;
+    max-width: 400px;
+    line-height: 36px;
+    font-weight: 100;
+    font-size: 23px;
+}
+
+.box .phone-text p {
+    font-family: 'roboto', 'Open Sans', sans-serif;
+    line-height: normal;
+    font-weight: 300;
+    font-size: 23px;
+}
