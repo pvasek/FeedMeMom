@@ -20,7 +20,7 @@ namespace FeedMeMom.Common
 //					LeftBreastLengthSeconds = 23*60,
 //					RightBreastLengthSeconds = 6*60,					
 //				});
-			GenerateFeedings();
+			//GenerateFeedings();
 		}
 
 		private void GenerateFeedings()

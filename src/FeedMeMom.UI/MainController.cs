@@ -51,7 +51,7 @@ namespace FeedMeMom
 			pnlFSMainTime.BackgroundColor = skin.Time;
 			pnlFSMainAction.BackgroundColor = skin.Toolbar;
 			pnlFSMainAction.TextColor = skin.AgoText;
-			lblFSAgoInfo.TextColor = skin.AgoInfoText;
+			lblFSAgoInfo.TextColor = skin.FirstFeedingInfoText;
 			pnlFirstStart.BackgroundColor = skin.Background;
 			lblFSTimeInfo.TextColor = skin.TimeInfoText;
 
@@ -315,23 +315,23 @@ namespace FeedMeMom
 				NavigationController.PushViewController(new FeedbackController(), false);
 			}, UIImage.FromBundle("envelope")));
 
-			_sideMenu.Items.Add(new ActionItem("Buy Test", () => {
-				if (_buyController == null) {
-					_buyController = new BuyController();
-				}
-				_sideMenuHub.Hide();
-				_buyController.BuyTitle = Resources.History;
-				_buyController.BuyDescription = Resources.HistoryBuyHeadline;
-				NavigationController.PushViewController(_buyController, false);
-			}));
-
-			_sideMenu.Items.Add(new ActionItem("Delete Data", () => {
-				var feedings = repo.Table<FeedingEntry>();
-				foreach (var item in feedings) {
-					repo.Delete(item);
-					ReloadData();
-				}
-			}));		
+//			_sideMenu.Items.Add(new ActionItem("Buy Test", () => {
+//				if (_buyController == null) {
+//					_buyController = new BuyController();
+//				}
+//				_sideMenuHub.Hide();
+//				_buyController.BuyTitle = Resources.History;
+//				_buyController.BuyDescription = Resources.HistoryBuyHeadline;
+//				NavigationController.PushViewController(_buyController, false);
+//			}));
+//
+//			_sideMenu.Items.Add(new ActionItem("Delete Data", () => {
+//				var feedings = repo.Table<FeedingEntry>();
+//				foreach (var item in feedings) {
+//					repo.Delete(item);
+//					ReloadData();
+//				}
+//			}));		
 		}
 
 		private void UpdateView(FeedingEntry entry)

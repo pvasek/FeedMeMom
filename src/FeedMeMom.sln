@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeedMeMom", "FeedMeMom\FeedMeMom.csproj", "{03666129-8642-43B1-91E1-88ED34969091}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeedMeMom", "FeedMeMom.App.Full\FeedMeMom.App.Full.csproj", "{03666129-8642-43B1-91E1-88ED34969091}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeedMeMom.Tests", "FeedMeMom.Tests\FeedMeMom.Tests.csproj", "{CC0BB311-8AC8-42F8-99DA-2FAEC816A081}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeedMeMom.Common", "FeedMeMom.Common\FeedMeMom.Common.csproj", "{3CCAAEAE-E54A-48F6-BE65-3DFB7235B5CF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FeedMeMom.UI", "FeedMeMom.UI\FeedMeMom.UI.csproj", "{E6FEB2D0-2D11-4399-982F-2227E9880E1E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,6 +55,18 @@ Global
 		{CC0BB311-8AC8-42F8-99DA-2FAEC816A081}.Release|iPhone.Build.0 = Release|Any CPU
 		{CC0BB311-8AC8-42F8-99DA-2FAEC816A081}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
 		{CC0BB311-8AC8-42F8-99DA-2FAEC816A081}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{E6FEB2D0-2D11-4399-982F-2227E9880E1E}.Ad-Hoc|iPhone.ActiveCfg = Release|Any CPU
+		{E6FEB2D0-2D11-4399-982F-2227E9880E1E}.Ad-Hoc|iPhone.Build.0 = Release|Any CPU
+		{E6FEB2D0-2D11-4399-982F-2227E9880E1E}.AppStore|iPhone.ActiveCfg = Release|Any CPU
+		{E6FEB2D0-2D11-4399-982F-2227E9880E1E}.AppStore|iPhone.Build.0 = Release|Any CPU
+		{E6FEB2D0-2D11-4399-982F-2227E9880E1E}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{E6FEB2D0-2D11-4399-982F-2227E9880E1E}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{E6FEB2D0-2D11-4399-982F-2227E9880E1E}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{E6FEB2D0-2D11-4399-982F-2227E9880E1E}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{E6FEB2D0-2D11-4399-982F-2227E9880E1E}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{E6FEB2D0-2D11-4399-982F-2227E9880E1E}.Release|iPhone.Build.0 = Release|Any CPU
+		{E6FEB2D0-2D11-4399-982F-2227E9880E1E}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{E6FEB2D0-2D11-4399-982F-2227E9880E1E}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = FeedMeMom\FeedMeMom.csproj

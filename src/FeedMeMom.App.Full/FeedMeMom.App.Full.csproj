@@ -90,109 +90,18 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
-    <Folder Include="Services\" />
-    <Folder Include="Helpers\" />
-    <Folder Include="Controls\" />
-    <Folder Include="Controllers\" />
-    <Folder Include="Resources\en.lproj\" />
-    <Folder Include="Resources\cs.lproj\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
-    <None Include="Resources.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Resources.cs</LastGenOutput>
-    </None>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppDelegate.cs" />
-    <Compile Include="MainController.cs" />
-    <Compile Include="MainController.designer.cs">
-      <DependentUpon>MainController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Services\AppleSettings.cs" />
-    <Compile Include="Services\SynchronizationService.cs" />
-    <Compile Include="SideMenu.cs" />
-    <Compile Include="SideMenu.designer.cs">
-      <DependentUpon>SideMenu.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Helpers\Fonts.cs" />
-    <Compile Include="SideMenuHub.cs" />
-    <Compile Include="Controls\Toolbar.cs" />
-    <Compile Include="Helpers\ControlHelper.cs" />
-    <Compile Include="Helpers\Backgrounds.cs" />
-    <Compile Include="Helpers\Skin.cs" />
-    <Compile Include="Controls\ProgressBar.cs" />
-    <Compile Include="Controllers\ReviewController.cs" />
-    <Compile Include="Controllers\ReviewController.designer.cs">
-      <DependentUpon>ReviewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Helpers\SkinExtensions.cs" />
-    <Compile Include="Controllers\FeedbackController.cs" />
-    <Compile Include="Controllers\FeedbackController.designer.cs">
-      <DependentUpon>FeedbackController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Services\EmailSender.cs" />
-    <Compile Include="Services\Configuration.cs" />
-    <Compile Include="Helpers\DeviceHelper.cs" />
-    <Compile Include="Controllers\BuyController.cs" />
-    <Compile Include="Controllers\BuyController.designer.cs">
-      <DependentUpon>BuyController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Resources.cs">
-      <DependentUpon>Resources.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Controllers\HistoryController.cs" />
     <Compile Include="Main.cs" />
+    <Compile Include="AppDelegate.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <InterfaceDefinition Include="MainController.xib" />
-    <InterfaceDefinition Include="SideMenu.xib" />
-    <InterfaceDefinition Include="Controllers\ReviewController.xib" />
-    <InterfaceDefinition Include="Controllers\FeedbackController.xib" />
-    <InterfaceDefinition Include="Controllers\BuyController.xib" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\background.png" />
-    <BundleResource Include="Resources\background%402x.png" />
-    <BundleResource Include="Resources\btn_back.png" />
-    <BundleResource Include="Resources\btn.png" />
-    <BundleResource Include="Resources\btn%402x.png" />
-    <BundleResource Include="Resources\btn_back_selected.png" />
-    <BundleResource Include="Resources\btn_selected.png" />
-    <BundleResource Include="Resources\btn_primary.png" />
     <BundleResource Include="Resources\Icon.png" />
     <BundleResource Include="Resources\Icon%402x.png" />
-    <BundleResource Include="Resources\arrow.png" />
-    <BundleResource Include="Resources\arrow%402x.png" />
-    <BundleResource Include="Resources\hamburger_icon.png" />
-    <BundleResource Include="Resources\hamburger_icon%402x.png" />
-    <BundleResource Include="Resources\clear_color.png" />
-    <BundleResource Include="Resources\night_hamburger_icon.png" />
-    <BundleResource Include="Resources\night_hamburger_icon%402x.png" />
-    <BundleResource Include="Resources\night_arrow.png" />
-    <BundleResource Include="Resources\night_arrow%402x.png" />
-    <BundleResource Include="Resources\buy.png" />
-    <BundleResource Include="Resources\buy%402x.png" />
-    <BundleResource Include="Resources\buy_history.png" />
-    <BundleResource Include="Resources\buy_history%402x.png" />
-    <BundleResource Include="Resources\buy_history_iphone5%402x.png" />
-    <BundleResource Include="Resources\Default-568h%402x.png" />
-    <BundleResource Include="Resources\Default.png" />
-    <BundleResource Include="Resources\Default%402x.png" />
-    <BundleResource Include="Resources\hearth.png" />
-    <BundleResource Include="Resources\hearth%402x.png" />
-    <BundleResource Include="Resources\star.png" />
-    <BundleResource Include="Resources\star%402x.png" />
-    <BundleResource Include="Resources\envelope.png" />
-    <BundleResource Include="Resources\envelope%402x.png" />
-    <BundleResource Include="Resources\list.png" />
-    <BundleResource Include="Resources\list%402x.png" />
-    <BundleResource Include="Resources\moon.png" />
-    <BundleResource Include="Resources\moon%402x.png" />
-    <BundleResource Include="Resources\en.lproj\Localizable.strings" />
-    <BundleResource Include="Resources\cs.lproj\Localizable.strings" />
     <BundleResource Include="Resources\Icon-72.png" />
     <BundleResource Include="Resources\Icon-Small.png" />
     <BundleResource Include="Resources\Icon-Small%402x.png" />
@@ -202,6 +111,10 @@
     <ProjectReference Include="..\FeedMeMom.Common\FeedMeMom.Common.csproj">
       <Project>{3CCAAEAE-E54A-48F6-BE65-3DFB7235B5CF}</Project>
       <Name>FeedMeMom.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FeedMeMom.UI\FeedMeMom.UI.csproj">
+      <Project>{E6FEB2D0-2D11-4399-982F-2227E9880E1E}</Project>
+      <Name>FeedMeMom.UI</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
