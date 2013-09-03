@@ -7,6 +7,7 @@ namespace FeedMeMom
 {
 	public partial class AppDelegateBase : UIApplicationDelegate
 	{
+
 		// class-level declarations
 		UIWindow window;
 		MainController viewController;
