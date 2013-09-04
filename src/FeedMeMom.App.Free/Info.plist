@@ -12,18 +12,12 @@
 	<true/>
 	<key>CFBundleIconFiles</key>
 	<array>
-		<string>Icon</string>
-		<string>Icon@2x</string>
-		<string>Icon-72</string>
-		<string>Icon-Small</string>
-		<string>Icon-Small@2x</string>
-		<string>Icon-Small-50</string>
-		<string>spotlight@2x</string>
-		<string>spotlight_ipad</string>
-		<string>spotlight</string>
 		<string>icon</string>
 		<string>icon@2x</string>
 		<string>icon_ipad@2x</string>
+		<string>spotlight</string>
+		<string>spotlight@2x</string>
+		<string>spotlight_ipad</string>
 	</array>
 	<key>CFBundleDisplayName</key>
 	<string>FeedMeMom</string>
