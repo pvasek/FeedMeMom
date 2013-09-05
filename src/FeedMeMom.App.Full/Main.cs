@@ -11,6 +11,10 @@ namespace FeedMeMom
 		// This is the main entry point of the application.
 		static void Main (string[] args)
 		{
+			Configuration.IsFreeApp = false;
+			Configuration.FeedbackEmail = "appsupport@feedmemom.com";
+			Configuration.AppId = 692782735;
+
 			// if you want to use a different Application Delegate class from "AppDelegate"
 			// you can specify it here.
 			UIApplication.Main (args, null, "AppDelegate");

@@ -12,12 +12,15 @@ namespace FeedMeMom.Controllers
 	{
 		public BuyController() : base ("BuyController", null)
 		{
+
 		}
 
 		public void Close(object sender, EventArgs e)
 		{
 			NavigationController.PopViewControllerAnimated(true);
 		}
+
+		public string ScreenImageName { get; set; }
 
 		public override void ViewDidLoad()
 		{
@@ -50,11 +53,11 @@ namespace FeedMeMom.Controllers
 
 			if (ControlHelper.IsIPhone5)
 			{
-				imgScreen.Image = UIImage.FromBundle("buy_history_iphone5");
+				imgScreen.Image = UIImage.FromBundle(ScreenImageName + "_iphone5");
 			} 
 			else
 			{
-				imgScreen.Image = UIImage.FromBundle("buy_history");
+				imgScreen.Image = UIImage.FromBundle(ScreenImageName);
 			}
 
 			if (_topImage == null)

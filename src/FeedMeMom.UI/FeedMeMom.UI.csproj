@@ -139,5 +139,8 @@
     <BundleResource Include="Resources\star%402x.png" />
     <BundleResource Include="Resources\cs.lproj\Localizable.strings" />
     <BundleResource Include="Resources\en.lproj\Localizable.strings" />
+    <BundleResource Include="Resources\buy_nightmode%402x.png" />
+    <BundleResource Include="Resources\buy_nightmode.png" />
+    <BundleResource Include="Resources\buy_nightmode_iphone5%402x.png" />
   </ItemGroup>
 </Project>

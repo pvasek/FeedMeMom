@@ -283,28 +283,53 @@ namespace FeedMeMom
 
 		private void CreateSideMenu()
 		{
-			var repo = ServiceLocator.Get<Repository> ();
-
 			_sideMenu = new SideMenu();
 			_sideMenuHub = SideMenuHub.CreateAndHookup(View, _sideMenu.View);
 
 
-			_sideMenu.Items.Add(new ActionItem(Resources.History, () => {
-				if (_historyController == null) 
-				{
-					_historyController = new HistoryController();
-				}
-				_historyController.ReloadData();
-				_sideMenuHub.Hide();
-				NavigationController.PushViewController(_historyController, false);
+			if (Configuration.IsFreeApp)
+			{
+				_sideMenu.Items.Add(new ActionItem(Resources.History, () => {
+					if (_buyController == null) {
+						_buyController = new BuyController();
+					}
+					_sideMenuHub.Hide();
+					_buyController.BuyTitle = Resources.History;
+					_buyController.BuyDescription = Resources.HistoryBuyHeadline;
+					_buyController.ScreenImageName = "buy_history";
+					NavigationController.PushViewController(_buyController, false);
+				}, UIImage.FromBundle("list")));
 
-			}, UIImage.FromBundle("list")));
+				_sideMenu.Items.Add(new ActionItem(Resources.SwitchDayNightMode, () => {
+					if (_buyController == null) {
+						_buyController = new BuyController();
+					}
+					_sideMenuHub.Hide();
+					_buyController.BuyTitle = Resources.SwitchDayNightMode;
+					_buyController.BuyDescription = Resources.NightModeBuyHeadline;
+					_buyController.ScreenImageName = "buy_nightmode";
+					NavigationController.PushViewController(_buyController, false);
+				}, UIImage.FromBundle("moon")));
+			} 
+			else
+			{
+			
+				_sideMenu.Items.Add(new ActionItem(Resources.History, () => {
+					if (_historyController == null)
+					{
+						_historyController = new HistoryController();
+					}
+					_historyController.ReloadData();
+					_sideMenuHub.Hide();
+					NavigationController.PushViewController(_historyController, false);
 
-			_sideMenu.Items.Add(new ActionItem(Resources.SwitchDayNightMode, () => {
-				Skin.ToggleDayNightMode();
-				_sideMenuHub.Hide();
-			}, UIImage.FromBundle("moon")));
+				}, UIImage.FromBundle("list")));
 
+				_sideMenu.Items.Add(new ActionItem(Resources.SwitchDayNightMode, () => {
+					Skin.ToggleDayNightMode();
+					_sideMenuHub.Hide();
+				}, UIImage.FromBundle("moon")));
+			}
 			_sideMenu.Items.Add(new ActionItem(Resources.IlikeThisApp, () => {
 				_sideMenuHub.Hide();
 				NavigationController.PushViewController(new ReviewController(), false);
@@ -315,23 +340,20 @@ namespace FeedMeMom
 				NavigationController.PushViewController(new FeedbackController(), false);
 			}, UIImage.FromBundle("envelope")));
 
-//			_sideMenu.Items.Add(new ActionItem("Buy Test", () => {
-//				if (_buyController == null) {
-//					_buyController = new BuyController();
-//				}
-//				_sideMenuHub.Hide();
-//				_buyController.BuyTitle = Resources.History;
-//				_buyController.BuyDescription = Resources.HistoryBuyHeadline;
-//				NavigationController.PushViewController(_buyController, false);
-//			}));
-//
-//			_sideMenu.Items.Add(new ActionItem("Delete Data", () => {
-//				var feedings = repo.Table<FeedingEntry>();
-//				foreach (var item in feedings) {
-//					repo.Delete(item);
-//					ReloadData();
-//				}
-//			}));		
+			if (Configuration.IsTest)
+			{
+				var repo = ServiceLocator.Get<Repository> ();
+				_sideMenu.Items.Add(new ActionItem("Generate Data", () => {
+					repo.GenerateFeedings();
+				}));		
+				_sideMenu.Items.Add(new ActionItem("Delete Data", () => {
+					var feedings = repo.Table<FeedingEntry>();
+					foreach (var item in feedings) {
+						repo.Delete(item);
+						ReloadData();
+					}
+				}));		
+			}
 		}
 
 		private void UpdateView(FeedingEntry entry)

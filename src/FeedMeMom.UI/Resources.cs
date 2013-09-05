@@ -64,6 +64,7 @@ namespace FeedMeMom {
 			HoursAgo = GetLocalized("HoursAgo");
 			DayAgo = GetLocalized("DayAgo");
 			DaysAgo = GetLocalized("DaysAgo");
+			NightModeBuyHeadline = GetLocalized("NightModeBuyHeadline");
 	
 		}
 		
@@ -104,6 +105,7 @@ namespace FeedMeMom {
 		public static string HoursAgo { get; private set; }
 		public static string DayAgo { get; private set; }
 		public static string DaysAgo { get; private set; }
+		public static string NightModeBuyHeadline { get; private set; }
 	
 
 	}

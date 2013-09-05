@@ -106,9 +106,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\default-568%402x.png" />
-    <BundleResource Include="Resources\default.png" />
-    <BundleResource Include="Resources\default%402x.png" />
     <BundleResource Include="Resources\icon_ipad.png" />
     <BundleResource Include="Resources\icon_ipad%402x.png" />
     <BundleResource Include="Resources\icon%402x.png" />
@@ -118,8 +115,11 @@
     <BundleResource Include="Resources\spotlight_ipad.png" />
     <BundleResource Include="Resources\spotlight.png" />
     <BundleResource Include="Resources\spotlight%402x.png" />
-    <BundleResource Include="Resources\Default-568h%402x.png" />
     <BundleResource Include="Resources\icon.png" />
+    <BundleResource Include="Resources\Default-568h%402x.png" />
+    <BundleResource Include="Resources\Default.png" />
+    <BundleResource Include="Resources\Default%402x.png" />
+    <BundleResource Include="Resources\Default-568%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <ITunesArtwork Include="iTunesArtwork" />
