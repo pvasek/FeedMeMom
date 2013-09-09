@@ -46,6 +46,14 @@ namespace FeedMeMom
 				tblList.ReloadData();
 			};
 		}
+
+		public override void ViewWillAppear(bool animated)
+		{
+			base.ViewWillAppear(animated);
+			tblList.Frame = View.Bounds;
+			tblList.Bounces = false;
+			//var height = UIScreen.MainScreen.Bounds.Height - UIApplication.SharedApplication.StatusBarFrame.Height;
+		}
 	}
 
 	public class SideMenuDataSource: UITableViewSource

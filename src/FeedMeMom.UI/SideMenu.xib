@@ -143,20 +143,17 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">SideMenu</string>
 					<string key="superclassName">UIViewController</string>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="btnTest">UIButton</string>
-						<string key="tblList">UITableView</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="btnTest">
-							<string key="name">btnTest</string>
-							<string key="candidateClassName">UIButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="tblList">
+					<object class="NSMutableDictionary" key="outlets">
+						<string key="NS.key.0">tblList</string>
+						<string key="NS.object.0">UITableView</string>
+					</object>
+					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<string key="NS.key.0">tblList</string>
+						<object class="IBToOneOutletInfo" key="NS.object.0">
 							<string key="name">tblList</string>
 							<string key="candidateClassName">UITableView</string>
 						</object>
-					</dictionary>
+					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">./Classes/SideMenu.h</string>

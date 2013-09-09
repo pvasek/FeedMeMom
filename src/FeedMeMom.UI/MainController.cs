@@ -209,6 +209,14 @@ namespace FeedMeMom
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();		
+
+			if (ControlHelper.IsIPhone5)
+			{
+				lblButtonsHeader.Frame = lblButtonsHeader.Frame.Add(y: 60);
+				btnStartLeft.Frame = btnStartLeft.Frame.Add(y: 60);
+				btnStartRight.Frame = btnStartRight.Frame.Add(y: 60);
+			}
+
 			CreateLayout();
 
 			var repo = ServiceLocator.Get<Repository>();

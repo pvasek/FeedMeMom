@@ -67,27 +67,7 @@ namespace FeedMeMom.Controllers
 
 		private void ReviewClick(object sender, EventArgs e)
 		{
-			if (UIDevice.CurrentDevice.CheckSystemVersion (6,0)) 
-			{
-				var skController = new SKStoreProductViewController();
-				skController.Finished += (sender2, e2) => {
-					NavigationController.DismissViewController(true, () => {
-						skController.Dispose();
-						skController = null;
-					});
-				};
-				skController.LoadProduct(new StoreProductParameters{ITunesItemIdentifier = Configuration.AppId}, (ok, error) => {
-					if (ok) 
-					{ 
-						NavigationController.PresentViewController(skController, true, null);
-					}
-				});
-			} 
-			else 
-			{
-				var nsurl = new NSUrl(Configuration.AppStoreUrl);
-				UIApplication.SharedApplication.OpenUrl (nsurl);
-			}		
+			NavigationController.NavigateToAppStore(Configuration.AppId, Configuration.AppStoreUrl);
 		}
 
 		private void ShareByEmailClick(object sender, EventArgs e)

@@ -38,6 +38,17 @@ namespace FeedMeMom.Controllers
 			imgScreen.Frame = new System.Drawing.RectangleF(90, -10, 200, 290);
 			imgScreen.Transform = CGAffineTransform.MakeRotation(-0.25f);
 			pnlPreview.ClipsToBounds = true;
+
+			btnBuy.SetTitle(Resources.GetFullVersion);
+
+			btnBuy.TouchUpInside += (sender, e) => {
+				NavigationController.NavigateToAppStore(Configuration.PaidAppId, Configuration.PaidAppStoreUrl);
+			};
+			if (ControlHelper.IsIPhone5)
+			{
+				lblBuyTitle.Frame = lblBuyTitle.Frame.Set(y: 326);
+				btnBuy.Frame = btnBuy.Frame.Set(y: 410);
+			}
 		}
 
 		private UIImageView _topImage;
@@ -78,10 +89,10 @@ namespace FeedMeMom.Controllers
 				_topImage.Frame = new RectangleF(new PointF(90, 143), new SizeF(200, 290)); 
 				NavigationItem.Title = title;
 			}, () => {
-				UIView.Animate(0.3f, 0, UIViewAnimationOptions.CurveEaseIn, () => {
+				UIView.Animate(0.2f, 0, UIViewAnimationOptions.CurveEaseIn, () => {
 					_topImage.Transform = CGAffineTransform.MakeRotation(-0.25f);
 				}, () => {
-					Task.Delay(1300).ContinueWith((task) => {
+					Task.Delay(600).ContinueWith((task) => {
 						InvokeOnMainThread(() => {
 							imgScreen.Hidden = false;
 							_topImage.Hidden = true;

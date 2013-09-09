@@ -398,7 +398,7 @@
 							<object class="IBUILabel" id="760673127">
 								<reference key="NSNextResponder" ref="224092181"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{58, 94}, {204, 67}}</string>
+								<string key="NSFrame">{{57, 94}, {206, 67}}</string>
 								<reference key="NSSuperview" ref="224092181"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="749186234"/>
@@ -415,19 +415,19 @@
 								<int key="IBUINumberOfLines">0</int>
 								<int key="IBUITextAlignment">1</int>
 								<int key="IBUILineBreakMode">0</int>
-								<object class="IBUIFontDescription" key="IBUIFontDescription" id="837425105">
+								<object class="IBUIFontDescription" key="IBUIFontDescription" id="214356030">
 									<string key="name">HelveticaNeue-LightItalic</string>
 									<string key="family">Helvetica Neue</string>
 									<int key="traits">1</int>
-									<double key="pointSize">14</double>
+									<double key="pointSize">16</double>
 								</object>
-								<object class="NSFont" key="IBUIFont" id="1036336942">
+								<object class="NSFont" key="IBUIFont" id="340088506">
 									<string key="NSName">HelveticaNeue-LightItalic</string>
-									<double key="NSSize">14</double>
+									<double key="NSSize">16</double>
 									<int key="NSfFlags">16</int>
 								</object>
 								<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
-								<double key="preferredMaxLayoutWidth">204</double>
+								<double key="preferredMaxLayoutWidth">206</double>
 							</object>
 						</array>
 						<string key="NSFrameSize">{320, 161}</string>
@@ -448,7 +448,7 @@
 							<object class="IBUILabel" id="285670042">
 								<reference key="NSNextResponder" ref="155445550"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{48, 9}, {224, 63}}</string>
+								<string key="NSFrame">{{57, 0}, {206, 82}}</string>
 								<reference key="NSSuperview" ref="155445550"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="793384430"/>
@@ -468,10 +468,10 @@
 								<int key="IBUINumberOfLines">0</int>
 								<int key="IBUITextAlignment">1</int>
 								<int key="IBUILineBreakMode">0</int>
-								<reference key="IBUIFontDescription" ref="837425105"/>
-								<reference key="IBUIFont" ref="1036336942"/>
+								<reference key="IBUIFontDescription" ref="214356030"/>
+								<reference key="IBUIFont" ref="340088506"/>
 								<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
-								<double key="preferredMaxLayoutWidth">224</double>
+								<double key="preferredMaxLayoutWidth">206</double>
 							</object>
 						</array>
 						<string key="NSFrame">{{0, 161}, {320, 82}}</string>
@@ -941,7 +941,6 @@
 						<string key="pnlFSMainTime">UIView</string>
 						<string key="pnlFirstStart">UIView</string>
 						<string key="pnlRunningTime">UIView</string>
-						<string key="pnlStartNewFeeding">UILabel</string>
 						<string key="pnlTime">UIView</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
@@ -1028,10 +1027,6 @@
 						<object class="IBToOneOutletInfo" key="pnlRunningTime">
 							<string key="name">pnlRunningTime</string>
 							<string key="candidateClassName">UIView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="pnlStartNewFeeding">
-							<string key="name">pnlStartNewFeeding</string>
-							<string key="candidateClassName">UILabel</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="pnlTime">
 							<string key="name">pnlTime</string>

@@ -22,6 +22,7 @@ namespace FeedMeMom
 		public static SideMenuHub CreateAndHookup(UIView mainView, UIView sideView)
 		{
 			var result = new SideMenuHub(mainView, sideView);
+			//sideView.Frame = sideView.Frame.Set(height: mainView.Frame.Height);
 			result.HookupToWindow();
 			return result;
 		}
@@ -29,11 +30,14 @@ namespace FeedMeMom
 		public void HookupToWindow()
 		{
 			var app = UIApplication.SharedApplication;
-			var top = app.StatusBarHidden ? 0 : app.StatusBarFrame.Height;
-			_sideView.Frame = new RectangleF(0, top, _sideView.Frame.Width - 80, _sideView.Frame.Height);
+			//var height = UIScreen.MainScreen.ApplicationFrame.Height - UIApplication.SharedApplication.StatusBarFrame.Height;
 			//_sideView.Hidden = true;
 
 			var topWindow = app.Windows.First();
+
+			var top = app.StatusBarHidden ? 0 : app.StatusBarFrame.Height;
+			var height = UIScreen.MainScreen.Bounds.Height - top;
+			_sideView.Frame = topWindow.Frame.Set(y: topWindow.Frame.Y + top, width: topWindow.Frame.Width-80, height: topWindow.Frame.Height-top);
 			topWindow.InsertSubview(_sideView, 0);
 
 			_touchCover = new UIView();

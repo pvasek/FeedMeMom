@@ -51,7 +51,7 @@
 
 .buy-button a:hover,
 .demo-button a:hover {
-    background-color: #303030 !important;
+    background-color: #303030;
     color: #fff;
 }
 
@@ -99,8 +99,17 @@
     background-color: #fa565a;
 }
 
-.pink-box {
-    background-color: #830537;
+.buy-button .pink-box {
+    /*background-color: #830537;*/
+    background-color: #ffc300;
+    color: #222;
+    min-width: 200px;
+    text-align: center;
+}
+
+.buy-button .pink-box:hover {
+    background-color: #f8b10a;
+    color: #222;
 }
 
 li.span4 {
