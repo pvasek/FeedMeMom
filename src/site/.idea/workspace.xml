@@ -4,8 +4,8 @@
     <list default="true" id="3e9332f8-5673-4907-b662-f1c8a3c99a06" name="Default" comment="" />
     <ignored path="site.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/index.html" changelist="3e9332f8-5673-4907-b662-f1c8a3c99a06" time="1378930685624" ignored="false" />
-    <file path="/styles.css" changelist="3e9332f8-5673-4907-b662-f1c8a3c99a06" time="1378929545020" ignored="false" />
+    <file path="/index.html" changelist="3e9332f8-5673-4907-b662-f1c8a3c99a06" time="1378931267478" ignored="false" />
+    <file path="/styles.css" changelist="3e9332f8-5673-4907-b662-f1c8a3c99a06" time="1378930994181" ignored="false" />
     <file path="/a.dummy" changelist="3e9332f8-5673-4907-b662-f1c8a3c99a06" time="1377548011483" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -70,25 +70,7 @@
       <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="148" column="77" selection-start="6511" selection-end="6511" vertical-scroll-proportion="0.75403225">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="bootstrap-responsive.min.css" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/css/bootstrap-responsive.min.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="12565" selection-start="12804" selection-end="12805" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="bootstrap.min.css" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/css/bootstrap.min.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="0" selection-start="103324" selection-end="103324" vertical-scroll-proportion="0.0">
+            <state line="184" column="61" selection-start="8368" selection-end="8368" vertical-scroll-proportion="0.33366936">
               <folding />
             </state>
           </provider>
@@ -97,7 +79,7 @@
       <file leaf-file-name="styles.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/css/styles.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2517" column="14" selection-start="45255" selection-end="45255" vertical-scroll-proportion="0.0">
+            <state line="684" column="35" selection-start="11700" selection-end="11700" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -451,20 +433,6 @@
         <state line="2" column="6" selection-start="22" selection-end="22" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/bootstrap-responsive.min.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="12565" selection-start="12804" selection-end="12805" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/css/bootstrap.min.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="0" selection-start="103324" selection-end="103324" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/subscript.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="3" column="32" selection-start="69" selection-end="69" vertical-scroll-proportion="0.11186441" />
@@ -475,16 +443,30 @@
         <state line="3" column="10" selection-start="47" selection-end="69" vertical-scroll-proportion="0.10508475" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/css/bootstrap.min.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="0" selection-start="103324" selection-end="103324" vertical-scroll-proportion="0.23655914">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/bootstrap-responsive.min.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="12565" selection-start="12804" selection-end="12805" vertical-scroll-proportion="0.17204301">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/css/styles.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2517" column="14" selection-start="45255" selection-end="45255" vertical-scroll-proportion="0.0">
+        <state line="684" column="35" selection-start="11700" selection-end="11700" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="148" column="77" selection-start="6511" selection-end="6511" vertical-scroll-proportion="0.75403225">
+        <state line="184" column="61" selection-start="8368" selection-end="8368" vertical-scroll-proportion="0.33366936">
           <folding />
         </state>
       </provider>
