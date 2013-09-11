@@ -12,8 +12,8 @@ namespace FeedMeMom
 		static void Main (string[] args)
 		{
 			Configuration.IsFreeApp = true;
-			Configuration.FeedbackEmail = "freesupport@feedmemom.com";
-			Configuration.AppId = 692782735;
+			Configuration.FeedbackEmail = "support@feedmemom.com";
+			Configuration.AppId = 699987636;
 
 			UIApplication.Main (args, null, "AppDelegate");
 		}

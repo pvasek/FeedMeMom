@@ -2455,8 +2455,8 @@ div.phone-box.phone-box-with-shadow {
     background: url('../img/mockup/white_phone.png');
     background-repeat: no-repeat;
     background-position: top left;
-    width: 411px;
-    height: 462px;
+    width: 360px;
+    height: 610px;
     overflow: hidden;
 }
 
@@ -2464,8 +2464,8 @@ div.phone-box.phone-box-with-shadow {
 div.phone-box.phone-box-with-shadow img {
     width: 256px;
     height: 382px;
-    margin-top: 91px;
-    margin-left: 67px;
+    margin-top: 99px;
+    margin-left: 52px;
 
 }
 
@@ -2474,12 +2474,12 @@ div.phone-box {
     background-repeat: no-repeat;
     background-position: top left;
     width: 314px;
-    height: 462px;
+    height: 610px;
 }
 
 div.phone-box img {
     width: 256px;
-    height: 382px;
+    height: 392px;
     margin-top: 91px;
     margin-left: -4px;
 }
@@ -2493,8 +2493,8 @@ div.phone-box img {
         background: url('../img/mockup/white_phone_no_shadow@2x.png');
         background-repeat: no-repeat;
         background-position: top left;
-        width: 314px;
-        height: 462px;
+        width: 304px;
+        height: 492px;
     }
 
     div.phone-box.phone-box-with-shadow img {
@@ -2511,13 +2511,13 @@ div.phone-box img {
 .box div.phone-box {
     background: url('../img/mockup/white_phone_no_shadow.png');
     width: 157px;
-    height: 231px;
+    height: 290px;
 }
 
 .box div.phone-box img {
-    width: 129px;
+    width: 128px;
     height: 192px;
-    margin-top: 44px;
+    margin-top: 49px;
     margin-left: -2px;
 }
 
