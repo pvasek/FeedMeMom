@@ -28,6 +28,7 @@ namespace FeedMeMom.Controllers
 			NavigationItem.Title = Resources.Buy;
 			NavigationItem.HidesBackButton = true;
 			NavigationItem.LeftBarButtonItem = new UIBarButtonItem(Resources.Back, UIBarButtonItemStyle.Plain, Close);
+			NavigationItem.LeftBarButtonItem.SetToolbarStyle();
 
 			lblBuyTitle.Text = Resources.BuyPhrase;
 			ApplyColors();

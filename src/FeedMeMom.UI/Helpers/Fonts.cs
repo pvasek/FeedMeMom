@@ -7,12 +7,12 @@ namespace FeedMeMom
 	{
 		static Fonts()
 		{
-			SideMenuFont = UIFont.FromName("Helvetica Neue", 16);
-			ToolbarButton = UIFont.FromName("Helvetica Neue", 15);
-			ToolbarTitle = UIFont.FromName("Helvetica Neue", 21);
-			TableHeader = UIFont.FromName("Helvetica Neue", 14);
-			Progress = UIFont.FromName("Helvetica Neue", 10);
-			DefaultButton = SideMenuFont = UIFont.FromName("Helvetica Neue", 16);
+			SideMenuFont = UIFont.FromName("HelveticaNeue", 16);
+			ToolbarButton = UIFont.FromName("HelveticaNeue", 15);
+			ToolbarTitle = UIFont.FromName("HelveticaNeue-Medium", 15);
+			TableHeader = UIFont.FromName("HelveticaNeue", 14);
+			Progress = UIFont.FromName("HelveticaNeue", 10);
+			DefaultButton = SideMenuFont = UIFont.FromName("HelveticaNeue", 15);
 		}
 
 		public static UIFont SideMenuFont { get; set; }

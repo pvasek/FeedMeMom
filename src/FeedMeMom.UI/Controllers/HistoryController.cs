@@ -18,6 +18,7 @@ namespace FeedMeMom.Controllers
 			Title = Resources.History;
 			NavigationItem.HidesBackButton = true;
 			NavigationItem.LeftBarButtonItem = new UIBarButtonItem(Resources.Back, UIBarButtonItemStyle.Plain, Close);
+			NavigationItem.LeftBarButtonItem.SetToolbarStyle();
 		}
 
 		public void Close(object sender, EventArgs e)

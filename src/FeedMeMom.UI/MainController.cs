@@ -91,9 +91,9 @@ namespace FeedMeMom
 				TextShadowColor = UIColor.Clear,
 				Font = Fonts.ToolbarButton
 			};
-			_btnLeft.SetTitleTextAttributes(textAttrs, UIControlState.Normal);
-			_btnRight.SetTitleTextAttributes(textAttrs, UIControlState.Normal);
-			_btnSideMenu.SetTitleTextAttributes(textAttrs, UIControlState.Normal);
+			_btnLeft.SetToolbarStyle();
+			_btnRight.SetToolbarStyle();
+			_btnSideMenu.SetToolbarStyle();
 
 			// force title redraw
 			var title = Title;

@@ -34,6 +34,8 @@ namespace FeedMeMom
 		public UIColor Background { get; set; }
 		public UIColor ToolbarText { get; set; }
 		public UIColor ToolbarTextActive { get; set; }
+		public UIColor ToolbarButtonText { get; set; }
+		public UIColor ToolbarButtonTextActive { get; set; }
 		public UIColor AgoText { get; set; }
 		public UIColor TimeText { get; set; }
 		public UIColor ButtonText { get; set; }
@@ -128,11 +130,13 @@ namespace FeedMeMom
 			Time = ColorUtil.FromHex("#eaeaea");
 			Background = UIColor.White;
 			ToolbarText = UIColor.White;
+			ToolbarTextActive = ColorUtil.FromHex("#F7A144");
+			ToolbarButtonText = ColorUtil.FromHex("#F4A958");//UIColor.White;
+			ToolbarButtonTextActive = ColorUtil.FromHex("#E3C8AA");//ColorUtil.FromHex("#F7A144");
 			AgoText = UIColor.White;
 			TimeText = ButtonActive;
 			ButtonText = UIColor.White;
 			ButtonTextSelected = ColorUtil.FromHex("#F7A144");
-			ToolbarTextActive = ColorUtil.FromHex("#F7A144");
 			AgoInfoText = ColorUtil.FromHex("#F7A144");
 			FirstFeedingInfoText = UIColor.White;
 			TimeInfoText = ColorUtil.FromHex("#B92157");
@@ -181,6 +185,8 @@ namespace FeedMeMom
 
 			ToolbarText = ColorUtil.FromHex("#555555");
 			ToolbarTextActive = ColorUtil.FromHex("#525252");
+			ToolbarButtonText = ColorUtil.FromHex("#555555");//UIColor.White;
+			ToolbarButtonTextActive = ColorUtil.FromHex("#525252");//ColorUtil.FromHex("#F7A144");
 			AgoText = ColorUtil.FromHex("#A8A8A8");
 			AgoInfoText = ColorUtil.FromHex("#727272");
 			FirstFeedingInfoText = AgoInfoText;

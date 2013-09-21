@@ -38,6 +38,24 @@ namespace FeedMeMom.Helpers
 			button.SetTitle(title, UIControlState.Highlighted);
 		}
 
+		public static void SetToolbarStyle(this UIBarButtonItem item)
+		{
+			var textAttrsNormal = new UITextAttributes {
+				TextColor = Skin.Active.ToolbarButtonText,
+				TextShadowColor = UIColor.Clear,
+				Font = Fonts.ToolbarButton
+			};
+			var textAttrsActive = new UITextAttributes {
+				TextColor = Skin.Active.ToolbarButtonTextActive,
+				TextShadowColor = UIColor.Clear,
+				Font = Fonts.ToolbarButton
+			};
+
+			item.SetTitleTextAttributes(textAttrsNormal, UIControlState.Normal);
+			item.SetTitleTextAttributes(textAttrsActive, UIControlState.Highlighted);
+			item.SetTitleTextAttributes(textAttrsActive, UIControlState.Selected);
+		}
+
 		public static RectangleF Add(this RectangleF rect, float x = 0, float y = 0, float width = 0, float height = 0)
 		{
 			return new RectangleF(rect.X + x, rect.Y + y, rect.Width + width, rect.Height + height);
