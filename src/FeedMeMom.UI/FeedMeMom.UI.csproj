@@ -39,6 +39,7 @@
   <ItemGroup>
     <Folder Include="Resources\" />
     <Folder Include="Resources\de.lproj\" />
+    <Folder Include="Resources\ja.lproj\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -144,5 +145,6 @@
     <BundleResource Include="Resources\buy_nightmode.png" />
     <BundleResource Include="Resources\buy_nightmode_iphone5%402x.png" />
     <BundleResource Include="Resources\de.lproj\Localizable.strings" />
+    <BundleResource Include="Resources\ja.lproj\Localizable.strings" />
   </ItemGroup>
 </Project>

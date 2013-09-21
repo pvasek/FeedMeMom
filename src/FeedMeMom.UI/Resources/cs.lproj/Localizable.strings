@@ -32,3 +32,7 @@
 "FirstStartAgoText"="Uvidíte, před jak dlouhou dobou jste kojila";
 "FirstStartTimeText"="délku kojení a z jakého prsa to bylo";
 "NightModeBuyHeadline"="Je aplikace příliš světlá během noci? Chtěli by jste ji mít tmavší?";
+"HoursAgo"="před - hodinami";
+"MinutesAgo"="před - minutami";
+"DayAgo"="před - dnem";
+"DaysAgo"="před - dny";
