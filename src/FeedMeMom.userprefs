@@ -1,28 +1,22 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhone.6.1" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="FeedMeMom.UI/Resources/ja.lproj/Localizable.strings">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|iPhone" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.Pavel Vašek’s iPhone" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="FeedMeMom.UI/Controls/ProgressBar.cs">
     <Files>
       <File FileName="FeedMeMom.App.Free/AppDelegate.cs" Line="1" Column="1" />
       <File FileName="FeedMeMom.App.Free/Main.cs" Line="1" Column="1" />
       <File FileName="FeedMeMom.App.Full/Main.cs" Line="16" Column="23" />
-      <File FileName="FeedMeMom.UI/Resources/ja.lproj/Localizable.strings" Line="38" Column="16" />
-      <File FileName="FeedMeMom.UI/MainController.cs" Line="34" Column="3" />
-      <File FileName="FeedMeMom.UI/Resources.tt" Line="1" Column="1" />
-      <File FileName="FeedMeMom.UI/Resources/en.lproj/Localizable.strings" Line="38" Column="22" />
-      <File FileName="FeedMeMom.UI/Resources/cs.lproj/Localizable.strings" Line="38" Column="24" />
+      <File FileName="FeedMeMom.UI/Helpers/ControlHelper.cs" Line="49" Column="52" />
+      <File FileName="FeedMeMom.UI/Helpers/Skin.cs" Line="130" Column="40" />
+      <File FileName="FeedMeMom.UI/Helpers/Fonts.cs" Line="11" Column="50" />
+      <File FileName="FeedMeMom.UI/Controls/ProgressBar.cs" Line="104" Column="22" />
+      <File FileName="FeedMeMom.UI/MainController.cs" Line="570" Column="25" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
+          <Node name="FeedMeMom.App.Full" selected="True" />
           <Node name="FeedMeMom.UI" expanded="True">
-            <Node name="Resources" expanded="True">
-              <Node name="cs.lproj" expanded="True" />
-              <Node name="de.lproj" expanded="True" />
-              <Node name="en.lproj" expanded="True" />
-              <Node name="ja.lproj" expanded="True">
-                <Node name="Localizable.strings" selected="True" />
-              </Node>
-            </Node>
+            <Node name="Controls" expanded="True" />
           </Node>
         </State>
       </Pad>

@@ -1,6 +1,7 @@
 using System;
 using MonoTouch.UIKit;
 using System.Drawing;
+using MonoTouch.CoreAnimation;
 
 namespace FeedMeMom
 {
@@ -76,12 +77,34 @@ namespace FeedMeMom
 			{
 				_active = value;
 				ApplyColors();
+
+				if (_active ^ _running)
+				{
+					_running = _active;
+					if (_running)
+					{
+						StartAnimation();
+					} 
+					else
+					{
+						Layer.RemoveAllAnimations();
+						Layer.Opacity = 1f;
+					}
+				}
 			}
 		}
 
 		public UIView ValueView { get; private set; }
 		public UILabel LabelView { get; private set; }
 
+		private bool _running;
+		private void StartAnimation()
+		{
+			Layer.Opacity = 1f;
+			UIView.Animate(0.7, 0, UIViewAnimationOptions.Autoreverse | UIViewAnimationOptions.CurveEaseInOut | UIViewAnimationOptions.Repeat, () => {
+				Layer.Opacity = 0.7f;
+			}, null);
+		}
 
 		public void UpdateValue(int? total, int? value, bool showPercent)
 		{
