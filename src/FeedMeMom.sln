@@ -83,6 +83,6 @@ Global
 		{E6FEB2D0-2D11-4399-982F-2227E9880E1E}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = FeedMeMom.App.Full\FeedMeMom.App.Full.csproj
+		StartupItem = FeedMeMom.App.Free\FeedMeMom.App.Free.csproj
 	EndGlobalSection
 EndGlobal

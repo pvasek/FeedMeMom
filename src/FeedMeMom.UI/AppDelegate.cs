@@ -23,6 +23,7 @@ namespace FeedMeMom
 			app.IdleTimerDisabled = true;
 			window = new UIWindow (UIScreen.MainScreen.Bounds);
 			viewController = new MainController ();
+			app.SetStatusBarHidden(false, true);
 
 			var navigationController = new MyUINavigationController (viewController);
 

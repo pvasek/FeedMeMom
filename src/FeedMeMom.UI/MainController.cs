@@ -171,6 +171,7 @@ namespace FeedMeMom
 
 		private void CreateLayout()
 		{
+			pnlNavigationBarPlaceHolder.SetNavbarPlaceholder();
 			Title = Resources.LastFeeding;
 			_btnSideMenu = new UIBarButtonItem(Skin.Active.ImageHamburger, UIBarButtonItemStyle.Plain, ShowSideMenuClick);
 			_btnLeft = new UIBarButtonItem(Resources.Cancel, UIBarButtonItemStyle.Plain, CancelClick);

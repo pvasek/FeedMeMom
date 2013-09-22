@@ -44,7 +44,7 @@ namespace FeedMeMom.Controllers
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
-			
+			pnlNavigationBarPlaceholder.SetNavbarPlaceholder();
 			ApplyColors();
 
 			Skin.SkinChanged += ApplyColors;

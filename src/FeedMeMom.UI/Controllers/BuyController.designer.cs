@@ -25,10 +25,18 @@ namespace FeedMeMom.Controllers
 		MonoTouch.UIKit.UILabel lblDescription { get; set; }
 
 		[Outlet]
+		MonoTouch.UIKit.UIView pnlNavigationBarPlaceholder { get; set; }
+
+		[Outlet]
 		MonoTouch.UIKit.UIView pnlPreview { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
+			if (pnlNavigationBarPlaceholder != null) {
+				pnlNavigationBarPlaceholder.Dispose ();
+				pnlNavigationBarPlaceholder = null;
+			}
+
 			if (btnBuy != null) {
 				btnBuy.Dispose ();
 				btnBuy = null;

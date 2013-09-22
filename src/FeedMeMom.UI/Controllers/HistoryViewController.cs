@@ -27,6 +27,7 @@ namespace FeedMeMom.UI
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
+			pnlNavigationBarPlaceholder.SetNavbarPlaceholder();
 			tblView.Source = _historySource;
 			tblView.SectionHeaderHeight = 20;
 			

@@ -56,6 +56,19 @@ namespace FeedMeMom.Helpers
 			item.SetTitleTextAttributes(textAttrsActive, UIControlState.Selected);
 		}
 
+		public static void SetNavbarPlaceholder(this UIView placeHolder)
+		{
+			if (DeviceHelper.Version < 7m)
+			{
+				placeHolder.Hidden = true;
+				var parent = placeHolder.Superview;
+				foreach (var childView in parent.Subviews)
+				{
+					childView.Frame = childView.Frame.Add(y: placeHolder.Frame.Height * -1);
+				}
+			}
+		}
+
 		public static RectangleF Add(this RectangleF rect, float x = 0, float y = 0, float width = 0, float height = 0)
 		{
 			return new RectangleF(rect.X + x, rect.Y + y, rect.Width + width, rect.Height + height);

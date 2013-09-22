@@ -25,6 +25,7 @@
     <MtouchI18n />
     <MtouchArch>ARMv7</MtouchArch>
     <MtouchExtraArgs>-gcc_flags "-F/Applications/Reveal.app/Contents/SharedSupport/iOS-Libraries -all_load -ObjC -framework Reveal -framework QuartzCore -framework CFNetwork"</MtouchExtraArgs>
+    <MtouchSdkVersion>7.0</MtouchSdkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <Optimize>true</Optimize>
@@ -48,7 +49,7 @@
     <CodesignKey>iPhone Developer</CodesignKey>
     <MtouchI18n />
     <MtouchArch>ARMv7</MtouchArch>
-    <MtouchSdkVersion>6.1</MtouchSdkVersion>
+    <MtouchSdkVersion>7.0</MtouchSdkVersion>
     <IpaPackageName />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">

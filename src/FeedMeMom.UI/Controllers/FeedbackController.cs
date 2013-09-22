@@ -36,7 +36,7 @@ namespace FeedMeMom.Controllers
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
-
+			pnlNavigationBarPlaceholder.SetNavbarPlaceholder();
 			lblHelp.Text = Resources.FeedbackHelpText;
 
 			btnBug.TouchUpInside += (sender, e) => SendEmail("Bug Report", "Description:");

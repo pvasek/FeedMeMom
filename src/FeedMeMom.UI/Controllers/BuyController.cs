@@ -25,6 +25,8 @@ namespace FeedMeMom.Controllers
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
+			pnlNavigationBarPlaceholder.SetNavbarPlaceholder();
+
 			NavigationItem.Title = Resources.Buy;
 			NavigationItem.HidesBackButton = true;
 			NavigationItem.LeftBarButtonItem = new UIBarButtonItem(Resources.Back, UIBarButtonItemStyle.Plain, Close);
@@ -48,7 +50,7 @@ namespace FeedMeMom.Controllers
 			if (ControlHelper.IsIPhone5)
 			{
 				lblBuyTitle.Frame = lblBuyTitle.Frame.Set(y: 326);
-				btnBuy.Frame = btnBuy.Frame.Set(y: 410);
+				btnBuy.Frame = btnBuy.Frame.Set(y: 444);
 			}
 		}
 
@@ -115,6 +117,7 @@ namespace FeedMeMom.Controllers
 		private void ApplyColors()
 		{
 			Skin.Active.SkinButton(btnBuy);
+			pnlNavigationBarPlaceholder.BackgroundColor = Skin.Active.Toolbar;
 			lblBuyTitle.TextColor = Skin.Active.PageText;
 			lblDescription.TextColor = Skin.Active.PageText;
 			pnlPreview.BackgroundColor = Skin.Active.Toolbar;

@@ -9,6 +9,13 @@ namespace FeedMeMom
 	public static class DeviceHelper
 	{
 
+		static DeviceHelper() 
+		{
+			Version = Decimal.Parse(UIDevice.CurrentDevice.SystemVersion);
+		}
+
+		public static decimal Version { get; private set; }
+
 		public static string GetUserName()
 		{
 			return UIDevice.CurrentDevice.Name.Split(new [] { "’s" }, StringSplitOptions.RemoveEmptyEntries).FirstOrDefault();
