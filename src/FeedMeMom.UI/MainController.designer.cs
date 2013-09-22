@@ -73,6 +73,9 @@ namespace FeedMeMom
 		MonoTouch.UIKit.UIView pnlFSMainTime { get; set; }
 
 		[Outlet]
+		MonoTouch.UIKit.UIView pnlNavigationBarPlaceHolder { get; set; }
+
+		[Outlet]
 		MonoTouch.UIKit.UIView pnlRunningTime { get; set; }
 
 		[Outlet]
@@ -80,6 +83,11 @@ namespace FeedMeMom
 		
 		void ReleaseDesignerOutlets ()
 		{
+			if (pnlNavigationBarPlaceHolder != null) {
+				pnlNavigationBarPlaceHolder.Dispose ();
+				pnlNavigationBarPlaceHolder = null;
+			}
+
 			if (btnStartLeft != null) {
 				btnStartLeft.Dispose ();
 				btnStartLeft = null;

@@ -51,7 +51,6 @@
     <Compile Include="Controllers\FeedbackController.designer.cs">
       <DependentUpon>..\..\FeedMeMom\Controllers\FeedbackController.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controllers\HistoryController.cs" />
     <Compile Include="Controllers\ReviewController.cs" />
     <Compile Include="Controllers\ReviewController.designer.cs">
       <DependentUpon>..\..\FeedMeMom\Controllers\ReviewController.cs</DependentUpon>
@@ -81,6 +80,12 @@
       <DependentUpon>SideMenu.cs</DependentUpon>
     </Compile>
     <Compile Include="AppDelegate.cs" />
+    <Compile Include="Controllers\HistoryController.cs" />
+    <Compile Include="Controllers\HistorySource.cs" />
+    <Compile Include="Controllers\HistoryViewController.cs" />
+    <Compile Include="Controllers\HistoryViewController.designer.cs">
+      <DependentUpon>HistoryViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Controllers\BuyController.xib" />
@@ -88,6 +93,7 @@
     <InterfaceDefinition Include="Controllers\ReviewController.xib" />
     <InterfaceDefinition Include="MainController.xib" />
     <InterfaceDefinition Include="SideMenu.xib" />
+    <InterfaceDefinition Include="Controllers\HistoryViewController.xib" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources.tt">

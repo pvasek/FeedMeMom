@@ -108,7 +108,9 @@ namespace FeedMeMom
 				cell.SelectedBackgroundView = new UIView();
 				cell.SelectedBackgroundView.BackgroundColor = Skin.Active.SideMenuRowSelected;
 				cell.ImageView.Layer.Opacity = 0.6f;
+				cell.SeparatorInset = new UIEdgeInsets(0, 0, 0, 0);
 				//cell.ImageView.Frame = cell.ImageView.Frame.Set(height: 20, width: 30);
+
 			}
 			var item = Data[indexPath.Row];
 			cell.TextLabel.Text = item.Name;

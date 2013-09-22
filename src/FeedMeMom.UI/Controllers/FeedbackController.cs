@@ -30,6 +30,7 @@ namespace FeedMeMom.Controllers
 			Skin.Active.SkinButton(btnBug);
 			Skin.Active.SkinButton(btnStayInTouch);
 			lblHelp.TextColor = Skin.Active.PageText;
+			pnlNavigationBarPlaceholder.BackgroundColor = Skin.Active.Toolbar;
 		}
 
 		public override void ViewDidLoad()

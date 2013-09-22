@@ -1,21 +1,18 @@
 using System;
 using MonoTouch.UIKit;
-using FeedMeMom.Common.Entities;
-using System.Collections.Generic;
-using FeedMeMom.Common;
 using FeedMeMom.Helpers;
+using FeedMeMom.Common;
+using FeedMeMom.Common.Entities;
 using System.Linq;
-using System.Drawing;
-using FeedMeMom.UI;
+using System.Collections.Generic;
 
-namespace FeedMeMom.Controllers
+namespace FeedMeMom.UI
 {
-	public class HistoryController2: UITableViewController
+	public partial class HistoryViewController : UIViewController
 	{
-		public HistoryController2()
+		public HistoryViewController() : base ("HistoryViewController", null)
 		{
 			_historySource = new HistorySource();
-			((UITableView)View).Source = _historySource;
 			Title = Resources.History;
 			NavigationItem.HidesBackButton = true;
 			NavigationItem.LeftBarButtonItem = new UIBarButtonItem(Resources.Back, UIBarButtonItemStyle.Plain, Close);
@@ -30,10 +27,17 @@ namespace FeedMeMom.Controllers
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
-			var tblList = ((UITableView)View);
-			tblList.SectionHeaderHeight = 20;
+			tblView.Source = _historySource;
+			tblView.SectionHeaderHeight = 20;
+			
 			ApplyColors();
 			Skin.SkinChanged += HandleColorsChanged;
+		}
+
+		public override void ViewWillAppear(bool animated)
+		{
+			base.ViewWillAppear(animated);
+			ReloadData();
 		}
 
 		private void HandleColorsChanged (object sender, EventArgs e)
@@ -43,11 +47,10 @@ namespace FeedMeMom.Controllers
 
 		private void ApplyColors() 
 		{
-			View.BackgroundColor = Skin.Active.Toolbar;
-			var tblList = ((UITableView)View);
-			tblList.BackgroundColor = Skin.Active.TableRow;
-			tblList.SeparatorColor = Skin.Active.TableRowBorder;
-			tblList.ReloadData();
+			pnlNavigationBarPlaceholder.BackgroundColor = Skin.Active.Toolbar;
+			tblView.BackgroundColor = Skin.Active.TableRow;
+			tblView.SeparatorColor = Skin.Active.TableRowBorder;
+			ReloadData();
 		}
 
 		private HistorySource _historySource;
@@ -57,10 +60,10 @@ namespace FeedMeMom.Controllers
 			var repo = ServiceLocator.Get<Repository>();
 			_historySource.Data = repo
 				.Query<FeedingEntry>("select * from FeedingEntry order by date desc")
-				.GroupBy(i => i.Date.Date)
-				.Select(i => new Tuple<DateTime?, List<FeedingEntry>>(i.Key, i.ToList()))
-				.ToList();				
-			((UITableView)View).ReloadData();
+					.GroupBy(i => i.Date.Date)
+					.Select(i => new Tuple<DateTime?, List<FeedingEntry>>(i.Key, i.ToList()))
+					.ToList();				
+			tblView.ReloadData();
 		}
 
 		protected override void Dispose(bool disposing)
@@ -68,7 +71,6 @@ namespace FeedMeMom.Controllers
 			base.Dispose(disposing);
 			Skin.SkinChanged -= HandleColorsChanged;
 		}
-
 	}
 }
 

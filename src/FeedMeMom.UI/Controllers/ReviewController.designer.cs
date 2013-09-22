@@ -29,17 +29,15 @@ namespace FeedMeMom.Controllers
 
 		[Outlet]
 		MonoTouch.UIKit.UILabel lblShare { get; set; }
+
+		[Outlet]
+		MonoTouch.UIKit.UIView pnlNavigationBarPlaceholder { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
-			if (lblAppstore != null) {
-				lblAppstore.Dispose ();
-				lblAppstore = null;
-			}
-
-			if (lblShare != null) {
-				lblShare.Dispose ();
-				lblShare = null;
+			if (pnlNavigationBarPlaceholder != null) {
+				pnlNavigationBarPlaceholder.Dispose ();
+				pnlNavigationBarPlaceholder = null;
 			}
 
 			if (btnReview != null) {
@@ -60,6 +58,16 @@ namespace FeedMeMom.Controllers
 			if (btnShareByTwitter != null) {
 				btnShareByTwitter.Dispose ();
 				btnShareByTwitter = null;
+			}
+
+			if (lblAppstore != null) {
+				lblAppstore.Dispose ();
+				lblAppstore = null;
+			}
+
+			if (lblShare != null) {
+				lblShare.Dispose ();
+				lblShare = null;
 			}
 		}
 	}

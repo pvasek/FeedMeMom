@@ -38,6 +38,7 @@ namespace FeedMeMom.Controllers
 			Skin.Active.SkinButton(btnShareByFacebook);		
 			lblAppstore.TextColor = Skin.Active.TitleText;
 			lblShare.TextColor = Skin.Active.TitleText;
+			pnlNavigationBarPlaceholder.BackgroundColor = Skin.Active.Toolbar;
 		}
 
 		public override void ViewDidLoad()

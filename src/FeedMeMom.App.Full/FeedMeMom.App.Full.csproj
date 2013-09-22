@@ -24,6 +24,7 @@
     <MtouchDebug>true</MtouchDebug>
     <MtouchI18n />
     <MtouchArch>ARMv7</MtouchArch>
+    <MtouchExtraArgs>-gcc_flags "-F/Applications/Reveal.app/Contents/SharedSupport/iOS-Libraries -all_load -ObjC -framework Reveal -framework QuartzCore -framework CFNetwork"</MtouchExtraArgs>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <Optimize>true</Optimize>

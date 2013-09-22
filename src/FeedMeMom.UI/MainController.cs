@@ -7,6 +7,7 @@ using System.Linq;
 using System.Threading;
 using FeedMeMom.Helpers;
 using FeedMeMom.Controllers;
+using FeedMeMom.UI;
 
 namespace FeedMeMom
 {
@@ -29,12 +30,13 @@ namespace FeedMeMom
 		private ProgressBar _pgbLeft;
 		private ProgressBar _pgbRight;
 
-		private HistoryController _historyController;
+		private HistoryViewController _historyController;
 		private BuyController _buyController;
 
 		public void ApplyColors()
 		{
 			var skin = Skin.Active;
+			pnlNavigationBarPlaceHolder.BackgroundColor = skin.Toolbar;
 			pnlAgo.BackgroundColor = skin.Ago;
 			pnlTime.BackgroundColor = skin.Time;
 			pnlRunningTime.BackgroundColor = skin.Time;	
@@ -81,16 +83,11 @@ namespace FeedMeMom
 		{
 			var nb = NavigationController.NavigationBar;
 			Skin.Active.SkinNavigationBar(nb);
-			_btnLeft.TintColor = Skin.Active.Toolbar;
-			_btnRight.TintColor = Skin.Active.Toolbar;
-			_btnSideMenu.TintColor = Skin.Active.Toolbar;
+			_btnLeft.TintColor = Skin.Active.ToolbarButtonText;
+			_btnRight.TintColor = Skin.Active.ToolbarButtonText;
+			_btnSideMenu.TintColor = Skin.Active.ToolbarButtonText;
 			_btnSideMenu.Image = Skin.Active.ImageHamburger;
 
-			var textAttrs = new UITextAttributes {
-				TextColor = Skin.Active.ToolbarText,
-				TextShadowColor = UIColor.Clear,
-				Font = Fonts.ToolbarButton
-			};
 			_btnLeft.SetToolbarStyle();
 			_btnRight.SetToolbarStyle();
 			_btnSideMenu.SetToolbarStyle();
@@ -325,9 +322,9 @@ namespace FeedMeMom
 				_sideMenu.Items.Add(new ActionItem(Resources.History, () => {
 					if (_historyController == null)
 					{
-						_historyController = new HistoryController();
+						_historyController = new HistoryViewController();
 					}
-					_historyController.ReloadData();
+					//_historyController.ReloadData();
 					_sideMenuHub.Hide();
 					NavigationController.PushViewController(_historyController, false);
 
@@ -527,6 +524,11 @@ namespace FeedMeMom
 						done();
 					});
 			}
+		}
+
+		public override UIStatusBarStyle PreferredStatusBarStyle()
+		{
+			return UIStatusBarStyle.LightContent;
 		}
 
 		public void ReloadData() 

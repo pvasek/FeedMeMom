@@ -1,22 +1,23 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|iPhone" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.Pavel Vašek’s iPhone" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="FeedMeMom.UI/Controls/ProgressBar.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhone.7.0" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="FeedMeMom.UI/SideMenu.cs">
     <Files>
-      <File FileName="FeedMeMom.App.Free/AppDelegate.cs" Line="1" Column="1" />
-      <File FileName="FeedMeMom.App.Free/Main.cs" Line="1" Column="1" />
-      <File FileName="FeedMeMom.App.Full/Main.cs" Line="16" Column="23" />
-      <File FileName="FeedMeMom.UI/Helpers/ControlHelper.cs" Line="49" Column="52" />
-      <File FileName="FeedMeMom.UI/Helpers/Skin.cs" Line="130" Column="40" />
-      <File FileName="FeedMeMom.UI/Helpers/Fonts.cs" Line="11" Column="50" />
-      <File FileName="FeedMeMom.UI/Controls/ProgressBar.cs" Line="104" Column="22" />
-      <File FileName="FeedMeMom.UI/MainController.cs" Line="570" Column="25" />
+      <File FileName="FeedMeMom.UI/Controllers/HistoryController.cs" Line="51" Column="4" />
+      <File FileName="FeedMeMom.UI/Controllers/HistoryViewController.cs" Line="40" Column="17" />
+      <File FileName="FeedMeMom.UI/MainController.cs" Line="327" Column="8" />
+      <File FileName="FeedMeMom.UI/Controllers/HistorySource.cs" Line="9" Column="2" />
+      <File FileName="FeedMeMom.App.Full/Info.plist" />
+      <File FileName="FeedMeMom.App.Free/Info.plist" />
+      <File FileName="FeedMeMom.UI/SideMenu.cs" Line="112" Column="5" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
-          <Node name="FeedMeMom.App.Full" selected="True" />
+          <Node name="FeedMeMom.App.Free" expanded="True" />
+          <Node name="FeedMeMom.App.Full" expanded="True" />
           <Node name="FeedMeMom.UI" expanded="True">
-            <Node name="Controls" expanded="True" />
+            <Node name="Controllers" expanded="True" />
+            <Node name="SideMenu.xib" selected="True" />
           </Node>
         </State>
       </Pad>

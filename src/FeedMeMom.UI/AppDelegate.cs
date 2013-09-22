@@ -24,7 +24,7 @@ namespace FeedMeMom
 			window = new UIWindow (UIScreen.MainScreen.Bounds);
 			viewController = new MainController ();
 
-			var navigationController = new UINavigationController (viewController);
+			var navigationController = new MyUINavigationController (viewController);
 
 			UpdateAppearance();
 			Skin.SkinChanged += (sender, e) => {
@@ -44,7 +44,7 @@ namespace FeedMeMom
 			}
 		}
 
-		static void UpdateAppearance()
+		private void UpdateAppearance()
 		{
 			var normalColor = Backgrounds.Clear;
 			UIBarButtonItem.Appearance.SetBackButtonBackgroundImage(normalColor, UIControlState.Normal, UIBarMetrics.Default);
@@ -62,12 +62,25 @@ namespace FeedMeMom
 				TextShadowColor = UIColor.Clear,
 				Font = Fonts.ToolbarTitle,
 			});
+			window.BackgroundColor = Skin.Active.Toolbar;
 		}
 
 		protected override void Dispose(bool disposing)
 		{
 			ServiceLocator.Dispose();
 			base.Dispose(disposing);
+		}
+	}
+
+	public class MyUINavigationController : UINavigationController 
+	{
+		public MyUINavigationController(UIViewController controller) : base(controller) 
+		{
+		}
+
+		public override UIStatusBarStyle PreferredStatusBarStyle()
+		{
+			return UIStatusBarStyle.LightContent;
 		}
 	}
 }

@@ -17,6 +17,7 @@ namespace FeedMeMom
 
 		public static void SkinNavigationBar(this Skin skin, UINavigationBar nb) 
 		{
+			nb.SetTitleVerticalPositionAdjustment(2, UIBarMetrics.Default);
 			nb.SetBackgroundImage(new UIImage(), UIBarMetrics.Default);
 			nb.SetBackgroundImage(new UIImage(), UIBarMetrics.LandscapePhone);
 			nb.ShadowImage = new UIImage();

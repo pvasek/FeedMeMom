@@ -23,12 +23,15 @@ namespace FeedMeMom.Controllers
 
 		[Outlet]
 		MonoTouch.UIKit.UILabel lblHelp { get; set; }
+
+		[Outlet]
+		MonoTouch.UIKit.UIView pnlNavigationBarPlaceholder { get; set; }
 		
 		void ReleaseDesignerOutlets ()
 		{
-			if (lblHelp != null) {
-				lblHelp.Dispose ();
-				lblHelp = null;
+			if (pnlNavigationBarPlaceholder != null) {
+				pnlNavigationBarPlaceholder.Dispose ();
+				pnlNavigationBarPlaceholder = null;
 			}
 
 			if (btnBug != null) {
@@ -44,6 +47,11 @@ namespace FeedMeMom.Controllers
 			if (btnStayInTouch != null) {
 				btnStayInTouch.Dispose ();
 				btnStayInTouch = null;
+			}
+
+			if (lblHelp != null) {
+				lblHelp.Dispose ();
+				lblHelp = null;
 			}
 		}
 	}
