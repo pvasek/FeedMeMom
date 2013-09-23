@@ -20,7 +20,7 @@ namespace FeedMeMom {
 			var result = NSBundle.MainBundle.LocalizedString(key, key);
 			if (result != null)
 			{
-				result = result.Replace("|", Environment.NewLine);
+				result = result.Replace("|", Environment.NewLine).Replace("_", " ");
 			}
 			return result;
 		}
@@ -60,11 +60,12 @@ namespace FeedMeMom {
 			FeedbackHelpText = GetLocalized("FeedbackHelpText");
 			FirstStartAgoText = GetLocalized("FirstStartAgoText");
 			FirstStartTimeText = GetLocalized("FirstStartTimeText");
-			MinutesAgo = GetLocalized("MinutesAgo");
+			NightModeBuyHeadline = GetLocalized("NightModeBuyHeadline");
 			HoursAgo = GetLocalized("HoursAgo");
+			MinutesAgo = GetLocalized("MinutesAgo");
 			DayAgo = GetLocalized("DayAgo");
 			DaysAgo = GetLocalized("DaysAgo");
-			NightModeBuyHeadline = GetLocalized("NightModeBuyHeadline");
+			AgoPrefix = GetLocalized("AgoPrefix");
 	
 		}
 		
@@ -101,11 +102,12 @@ namespace FeedMeMom {
 		public static string FeedbackHelpText { get; private set; }
 		public static string FirstStartAgoText { get; private set; }
 		public static string FirstStartTimeText { get; private set; }
-		public static string MinutesAgo { get; private set; }
+		public static string NightModeBuyHeadline { get; private set; }
 		public static string HoursAgo { get; private set; }
+		public static string MinutesAgo { get; private set; }
 		public static string DayAgo { get; private set; }
 		public static string DaysAgo { get; private set; }
-		public static string NightModeBuyHeadline { get; private set; }
+		public static string AgoPrefix { get; private set; }
 	
 
 	}

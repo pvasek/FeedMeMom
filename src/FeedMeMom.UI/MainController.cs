@@ -43,6 +43,7 @@ namespace FeedMeMom
 			View.BackgroundColor = skin.Background;
 			lblMainTime.TextColor = skin.AgoText;
 			lblMainTimeInfo.TextColor = skin.AgoInfoText;
+			lblMainTimeInfoFirstHalf.TextColor = skin.AgoInfoText;
 			lblSecondTime.TextColor = skin.TimeText;
 			lblSecondTimeInfo.TextColor = skin.TimeInfoText;
 			lblButtonsHeader.TextColor = skin.ButtonInfoText;
@@ -368,6 +369,7 @@ namespace FeedMeMom
 			Title = Resources.LastFeeding;
 
 			lblMainTime.Hidden = false;
+			lblMainTimeInfoFirstHalf.Hidden = false;
 			lblMainTimeInfo.Hidden = false;
 			lblSecondTimeInfo.Hidden = false;
 			pnlAgo.Hidden = false;
@@ -377,10 +379,12 @@ namespace FeedMeMom
 			if (entry.TotalBreastLength != null) {
 				if ((DateTime.Now - entry.Date) < TimeSpan.FromMinutes (5)) {
 					lblMainTime.Text = Resources.Now;
+					lblMainTimeInfoFirstHalf.Text = "";
 					lblMainTimeInfo.Text = "";
 				} else {
 					var touple = entry.Date.AsAgoTextTuple();
 					lblMainTime.Text = touple.Item1;
+					lblMainTimeInfoFirstHalf.Text = Resources.AgoPrefix;
 					if (touple.Item2 == AgoInterval.Minutes)
 					{
 						lblMainTimeInfo.Text = Resources.MinutesAgo;
@@ -400,6 +404,7 @@ namespace FeedMeMom
 				}
 			} else {
 				lblMainTime.Text = "";
+				lblMainTimeInfoFirstHalf.Text = "";
 				lblMainTimeInfo.Text = "";
 			}
 			lblSecondTimeInfo.Text = Resources.Minutes;
@@ -418,6 +423,7 @@ namespace FeedMeMom
 			pnlAgo.Hidden = false;
 			pnlTime.Hidden = false;
 			lblMainTime.Hidden = true;
+			lblMainTimeInfoFirstHalf.Hidden = false;
 			lblMainTimeInfo.Hidden = false;
 			pnlRunningTime.Hidden = true;
 			pnlFSMainAction.Hidden = false;
@@ -431,10 +437,12 @@ namespace FeedMeMom
 		{
 			pnlFirstStart.Hidden = true;
 			lblMainTime.Hidden = false;
+			lblMainTimeInfoFirstHalf.Hidden = false;
 			lblMainTimeInfo.Hidden = false;
 			lblSecondTimeInfo.Hidden = false;
 			pnlAgo.Hidden = false;
 			lblMainTime.Text = "";
+			lblMainTimeInfoFirstHalf.Text = "";
 			lblMainTimeInfo.Text = "";
 			lblButtonsHeader.Text = Resources.StartNewFeeding;
 			pnlRunningTime.Hidden = true;
@@ -473,6 +481,7 @@ namespace FeedMeMom
 		{
 			pnlFirstStart.Hidden = true;
 			lblMainTime.Hidden = true;
+			lblMainTimeInfoFirstHalf.Hidden = true;
 			lblMainTimeInfo.Hidden = true;
 			lblSecondTimeInfo.Hidden = true;
 			lblSecondTime.Text = "";

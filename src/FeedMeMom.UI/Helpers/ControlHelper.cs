@@ -51,6 +51,8 @@ namespace FeedMeMom.Helpers
 				Font = Fonts.ToolbarButton
 			};
 
+			item.Style = UIBarButtonItemStyle.Plain;
+
 			item.SetTitleTextAttributes(textAttrsNormal, UIControlState.Normal);
 			item.SetTitleTextAttributes(textAttrsActive, UIControlState.Highlighted);
 			item.SetTitleTextAttributes(textAttrsActive, UIControlState.Selected);

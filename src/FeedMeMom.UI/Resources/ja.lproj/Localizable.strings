@@ -36,3 +36,4 @@
 "MinutesAgo"="分前";
 "DayAgo"="日前";
 "DaysAgo"="日前";
+"AgoPrefix"="";

@@ -11,8 +11,8 @@
 "SwitchDayNightMode"="Tagmodus/Nachtmodus";
 "History"="Geschichte";
 "Back"="Zurück";
-"Cancel"="Stornieren";
-"Save"="Speichern";
+"Cancel"="Abbrechen";
+"Save"="Fertig";
 "BuyPhrase"="Es reicht nur ein Schritt";
 "HistoryBuyHeadline"="Möchten Sie eine vollständige Geschichte Ihres Stillens sehen?";
 "Buy"="Einkaufen";
@@ -32,3 +32,8 @@
 "FirstStartAgoText"="Sie werden sehen, wann Sie letztesmal gestillt haben";
 "FirstStartTimeText"="Stillungsdauer und aus welcher Brust es war";
 "NightModeBuyHeadline"="Ist die Applikation zu hell während der Nacht? Wollen Sie es dunkler zu haben?";
+"HoursAgo"="Studen";
+"MinutesAgo"="Minuten";
+"DayAgo"="Tag";
+"DaysAgo"="Tage";
+"AgoPrefix"="vor";

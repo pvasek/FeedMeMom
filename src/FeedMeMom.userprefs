@@ -1,17 +1,26 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhone.7.0" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="FeedMeMom.UI/SideMenu.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="FeedMeMom.UI/Controllers/BuyController.cs">
     <Files>
       <File FileName="FeedMeMom.UI/Controllers/HistorySource.cs" Line="1" Column="1" />
-      <File FileName="FeedMeMom.UI/SideMenu.cs" Line="101" Column="5" />
+      <File FileName="FeedMeMom.UI/SideMenu.cs" Line="112" Column="36" />
+      <File FileName="FeedMeMom.UI/Helpers/DeviceHelper.cs" Line="18" Column="3" />
+      <File FileName="FeedMeMom.UI/Helpers/ControlHelper.cs" Line="59" Column="42" />
+      <File FileName="FeedMeMom.UI/MainController.cs" Line="72" Column="52" />
+      <File FileName="FeedMeMom.UI/Controllers/BuyController.cs" Line="53" Column="43" />
+      <File FileName="FeedMeMom.UI/Controllers/FeedbackController.cs" Line="39" Column="4" />
+      <File FileName="FeedMeMom.UI/Controllers/HistoryViewController.cs" Line="30" Column="55" />
+      <File FileName="FeedMeMom.UI/Controllers/ReviewController.cs" Line="46" Column="19" />
+      <File FileName="FeedMeMom.UI/AppDelegate.cs" Line="12" Column="11" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
-          <Node name="FeedMeMom.App.Free" expanded="True" />
-          <Node name="FeedMeMom.App.Full" expanded="True" selected="True" />
           <Node name="FeedMeMom.UI" expanded="True">
-            <Node name="Controllers" expanded="True" />
+            <Node name="Controllers" expanded="True">
+              <Node name="BuyController.cs" selected="True" />
+            </Node>
+            <Node name="Helpers" expanded="True" />
           </Node>
         </State>
       </Pad>

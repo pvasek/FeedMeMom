@@ -32,7 +32,8 @@
 "FirstStartAgoText"="You will see how long ago was your last feeding";
 "FirstStartTimeText"="the length of the feeding and from which breast it was";
 "NightModeBuyHeadline"="Is the app to bright during nights? Do you want to make it darker?";
-"HoursAgo"="Hours Ago";
-"MinutesAgo"="Minutes Ago";
-"DayAgo"="Day Ago";
-"DaysAgo"="Days Ago";
+"HoursAgo"="hours ago";
+"MinutesAgo"="minutes ago";
+"DayAgo"="day ago";
+"DaysAgo"="days ago";
+"AgoPrefix"="_";
