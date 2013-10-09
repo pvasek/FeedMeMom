@@ -36,7 +36,6 @@ namespace FeedMeMom
 			var topWindow = app.Windows.First();
 
 			var top = app.StatusBarHidden ? 0 : app.StatusBarFrame.Height;
-			var height = UIScreen.MainScreen.Bounds.Height - top;
 			_sideView.Frame = topWindow.Frame.Set(y: topWindow.Frame.Y + top, width: topWindow.Frame.Width-80, height: topWindow.Frame.Height-top);
 			topWindow.InsertSubview(_sideView, 0);
 

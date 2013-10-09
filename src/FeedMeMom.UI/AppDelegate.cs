@@ -50,10 +50,8 @@ namespace FeedMeMom
 			var normalColor = Backgrounds.Clear;
 			UIBarButtonItem.Appearance.SetBackButtonBackgroundImage(normalColor, UIControlState.Normal, UIBarMetrics.Default);
 			UIBarButtonItem.Appearance.SetBackButtonBackgroundImage(normalColor, UIControlState.Highlighted, UIBarMetrics.Default);
-			UIBarButtonItem.Appearance.SetBackButtonBackgroundImage(normalColor, UIControlState.Selected, UIBarMetrics.Default);
 			UIBarButtonItem.Appearance.SetBackgroundImage(normalColor, UIControlState.Normal, UIBarMetrics.Default);
 			UIBarButtonItem.Appearance.SetBackgroundImage(normalColor, UIControlState.Highlighted, UIBarMetrics.Default);
-			UIBarButtonItem.Appearance.SetBackgroundImage(normalColor, UIControlState.Selected, UIBarMetrics.Default);
 
 			UINavigationBar.Appearance.ShadowImage = new UIImage();
 			UINavigationBar.Appearance.SetBackgroundImage(new UIImage(), UIBarMetrics.Default);

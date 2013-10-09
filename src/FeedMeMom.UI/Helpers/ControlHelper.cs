@@ -28,13 +28,11 @@ namespace FeedMeMom.Helpers
 		{
 			button.SetBackgroundImage(image, UIControlState.Normal, UIBarMetrics.Default);
 			button.SetBackgroundImage(image, UIControlState.Highlighted, UIBarMetrics.Default);
-			button.SetBackgroundImage(image, UIControlState.Selected, UIBarMetrics.Default);
 		}
 
 		public static void SetTitle(this UIButton button, string title)
 		{
 			button.SetTitle(title, UIControlState.Normal);
-			button.SetTitle(title, UIControlState.Selected);
 			button.SetTitle(title, UIControlState.Highlighted);
 		}
 
@@ -55,7 +53,6 @@ namespace FeedMeMom.Helpers
 
 			item.SetTitleTextAttributes(textAttrsNormal, UIControlState.Normal);
 			item.SetTitleTextAttributes(textAttrsActive, UIControlState.Highlighted);
-			item.SetTitleTextAttributes(textAttrsActive, UIControlState.Selected);
 		}
 
 		public static void SetNavbarPlaceholder(this UIView placeHolder)

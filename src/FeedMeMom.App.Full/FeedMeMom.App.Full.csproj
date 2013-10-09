@@ -111,6 +111,8 @@
     <BundleResource Include="Resources\Default.png" />
     <BundleResource Include="Resources\Default%402x.png" />
     <BundleResource Include="Resources\Default-568h%402x.png" />
+    <BundleResource Include="Resources\Icon-120.png" />
+    <BundleResource Include="Resources\Icon-120%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FeedMeMom.Common\FeedMeMom.Common.csproj">

@@ -128,9 +128,6 @@
     <BundleResource Include="Resources\buy_history%402x.png" />
     <BundleResource Include="Resources\buy_history_iphone5%402x.png" />
     <BundleResource Include="Resources\clear_color.png" />
-    <BundleResource Include="Resources\Default.png" />
-    <BundleResource Include="Resources\Default%402x.png" />
-    <BundleResource Include="Resources\Default-568h%402x.png" />
     <BundleResource Include="Resources\envelope.png" />
     <BundleResource Include="Resources\envelope%402x.png" />
     <BundleResource Include="Resources\hearth.png" />

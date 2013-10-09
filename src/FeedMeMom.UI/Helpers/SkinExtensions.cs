@@ -11,7 +11,6 @@ namespace FeedMeMom
 			button.BackgroundColor = skin.ButtonActive;
 			button.Font = Fonts.DefaultButton;
 			button.SetTitleColor(skin.ButtonText, UIControlState.Normal);
-			button.SetTitleColor(skin.ButtonTextSelected, UIControlState.Selected);
 			button.SetTitleColor(skin.ButtonTextSelected, UIControlState.Highlighted);
 		}
 

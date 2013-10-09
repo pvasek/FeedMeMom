@@ -352,6 +352,7 @@ namespace FeedMeMom
 				var repo = ServiceLocator.Get<Repository> ();
 				_sideMenu.Items.Add(new ActionItem("Generate Data", () => {
 					repo.GenerateFeedings();
+					ReloadData();
 				}));		
 				_sideMenu.Items.Add(new ActionItem("Delete Data", () => {
 					var feedings = repo.Table<FeedingEntry>();
@@ -359,6 +360,21 @@ namespace FeedMeMom
 						repo.Delete(item);
 						ReloadData();
 					}
+				}));		
+				_sideMenu.Items.Add(new ActionItem("Generate Running L", () => {
+					var entry = new FeedingEntry();
+					entry.Date = DateTime.Now.AddMinutes(-18);
+					entry.LeftStartTime = entry.Date;
+					repo.Insert(entry);
+					ReloadData();
+				}));		
+				_sideMenu.Items.Add(new ActionItem("Generate Running L + R", () => {
+					var entry = new FeedingEntry();
+					entry.Date = DateTime.Now.AddMinutes(-32);
+					entry.LeftBreastLengthSeconds = (int)TimeSpan.FromMinutes(18).TotalSeconds;
+					entry.RightStartTime = DateTime.Now.AddMinutes(-14);
+					repo.Insert(entry);
+					ReloadData();
 				}));		
 			}
 		}

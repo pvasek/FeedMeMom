@@ -3,6 +3,7 @@ using MonoTouch.UIKit;
 using System.Linq;
 using MonoTouch.StoreKit;
 using MonoTouch.Foundation;
+using System.Globalization;
 
 namespace FeedMeMom
 {
@@ -11,7 +12,9 @@ namespace FeedMeMom
 
 		static DeviceHelper() 
 		{
-			Version = Decimal.Parse(UIDevice.CurrentDevice.SystemVersion);
+			var systemVersion = UIDevice.CurrentDevice.SystemVersion;
+			var version = Decimal.Parse(systemVersion, CultureInfo.InvariantCulture);
+			Version = version;
 		}
 
 		public static decimal Version { get; private set; }
