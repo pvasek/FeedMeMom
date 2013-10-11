@@ -23,11 +23,12 @@ namespace FeedMeMom.Common
 			{
 				Delete(item);
 			}
+			const int numberOfDays = 120;
 			var random = new Random();
-			var date = DateTime.Now.AddDays(-5);
+			var date = DateTime.Now.AddDays(-1*numberOfDays);
 			var startDate = date;
 			var list = new List<FeedingEntry>();
-			for (var i = 0; i < 5; i++) {
+			for (var i = 0; i < numberOfDays; i++) {
 				date = startDate.AddDays(i);
 				for (var j = 0; j < 6 + random.Next(0, 3); j++)
 				{

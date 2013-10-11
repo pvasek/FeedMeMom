@@ -33,6 +33,7 @@ namespace FeedMeMom
 
 		private HistoryViewController _historyController;
 		private BuyController _buyController;
+		private StatisticsController _statisticsController;
 
 		public void ApplyColors()
 		{
@@ -285,6 +286,8 @@ namespace FeedMeMom
 		{
 			_timer = _timer.SafeDispose();
 			_historyController = _historyController.SafeDispose();
+			_buyController = _buyController.SafeDispose();
+			_statisticsController = _statisticsController.SafeDispose();
 			_sideMenu = _sideMenu.SafeDispose();
 
 			base.Dispose (disposing);
@@ -333,6 +336,16 @@ namespace FeedMeMom
 					NavigationController.PushViewController(_historyController, false);
 
 				}, UIImage.FromBundle("list")));
+
+				_sideMenu.Items.Add(new ActionItem(Resources.Statistics, () => {
+					if (_statisticsController == null)
+					{
+						_statisticsController = new StatisticsController();
+					}
+					//_historyController.ReloadData();
+					_sideMenuHub.Hide();
+					NavigationController.PushViewController(_statisticsController, false);
+				}, UIImage.FromBundle("moon")));
 
 				_sideMenu.Items.Add(new ActionItem(Resources.SwitchDayNightMode, () => {
 					Skin.ToggleDayNightMode();

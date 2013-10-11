@@ -89,6 +89,10 @@
     <Compile Include="Controllers\HistoryViewController.designer.cs">
       <DependentUpon>HistoryViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\StatisticsController.cs" />
+    <Compile Include="Controllers\StatisticsController.designer.cs">
+      <DependentUpon>StatisticsController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Controllers\BuyController.xib" />
@@ -97,6 +101,7 @@
     <InterfaceDefinition Include="MainController.xib" />
     <InterfaceDefinition Include="SideMenu.xib" />
     <InterfaceDefinition Include="Controllers\HistoryViewController.xib" />
+    <InterfaceDefinition Include="Controllers\StatisticsController.xib" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources.tt">
@@ -155,7 +160,7 @@
   </ItemGroup>
   <ItemGroup>
     <XamarinComponentReference Include="irate">
-      <InstallationInProgress>True</InstallationInProgress>
+      <InstallationInProgress>False</InstallationInProgress>
       <Version>1.7.2</Version>
       <Visible>False</Visible>
     </XamarinComponentReference>

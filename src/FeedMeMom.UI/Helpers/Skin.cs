@@ -27,6 +27,7 @@ namespace FeedMeMom
 		public UIColor ButtonActive { get; set; }
 		public UIColor ButtonInactive { get; set; }
 		public UIColor Toolbar { get; set; }
+		public UIColor SegmentTint { get; set; }
 		public UIColor RunningTimeText { get; set; }
 		public UIColor PausedTimeText { get; set; }
 		public UIColor Ago { get; set; }
@@ -124,6 +125,7 @@ namespace FeedMeMom
 			ButtonActive = ColorUtil.FromHex("#b02157");//FromHex ("50AEFF");
 			ButtonInactive = ColorUtil.FromHex ("#fc9bbe");
 			Toolbar = ColorUtil.FromHex("#830537");
+			SegmentTint = ColorUtil.FromHex("#830537");
 			RunningTimeText = ButtonActive;
 			PausedTimeText = ColorUtil.FromHex("#bbbbbb");
 			Ago = ColorUtil.FromHex("#b02157");
@@ -182,6 +184,7 @@ namespace FeedMeMom
 			Ago = ColorUtil.FromHex("#2F2F2F");
 			Time = ColorUtil.FromHex("#2A2A2A");
 			Background = ColorUtil.FromHex("#232323");
+			SegmentTint = ColorUtil.FromHex("#cccccc");
 
 			ToolbarText = ColorUtil.FromHex("#555555");
 			ToolbarTextActive = ColorUtil.FromHex("#525252");

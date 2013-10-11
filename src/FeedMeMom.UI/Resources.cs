@@ -1,5 +1,6 @@
 ﻿
-		
+	
+
 
 
 // #####################################################################
@@ -72,6 +73,21 @@ namespace FeedMeMom {
 			RateYesButton = GetLocalized("RateYesButton");
 			RateNoButton = GetLocalized("RateNoButton");
 			RateLaterButton = GetLocalized("RateLaterButton");
+			Statistics = GetLocalized("Statistics");
+			StatisticsNumberOfFeedings = GetLocalized("StatisticsNumberOfFeedings");
+			StatisticsLengthOfFeeding = GetLocalized("StatisticsLengthOfFeeding");
+			StatisticsFeedingsADay = GetLocalized("StatisticsFeedingsADay");
+			StatisticsSides = GetLocalized("StatisticsSides");
+			StatisticsNumberDescription = GetLocalized("StatisticsNumberDescription");
+			StatisticsLengthDescription = GetLocalized("StatisticsLengthDescription");
+			StatisticsCountDescription = GetLocalized("StatisticsCountDescription");
+			StatisticsUsageDescriptions = GetLocalized("StatisticsUsageDescriptions");
+			StatisticsLeft = GetLocalized("StatisticsLeft");
+			StatisticsRight = GetLocalized("StatisticsRight");
+			StatisticsDay = GetLocalized("StatisticsDay");
+			StatisticsWeek = GetLocalized("StatisticsWeek");
+			StatisticsMonth = GetLocalized("StatisticsMonth");
+			StatisticsAll = GetLocalized("StatisticsAll");
 	
 		}
 		
@@ -119,6 +135,21 @@ namespace FeedMeMom {
 		public static string RateYesButton { get; private set; }
 		public static string RateNoButton { get; private set; }
 		public static string RateLaterButton { get; private set; }
+		public static string Statistics { get; private set; }
+		public static string StatisticsNumberOfFeedings { get; private set; }
+		public static string StatisticsLengthOfFeeding { get; private set; }
+		public static string StatisticsFeedingsADay { get; private set; }
+		public static string StatisticsSides { get; private set; }
+		public static string StatisticsNumberDescription { get; private set; }
+		public static string StatisticsLengthDescription { get; private set; }
+		public static string StatisticsCountDescription { get; private set; }
+		public static string StatisticsUsageDescriptions { get; private set; }
+		public static string StatisticsLeft { get; private set; }
+		public static string StatisticsRight { get; private set; }
+		public static string StatisticsDay { get; private set; }
+		public static string StatisticsWeek { get; private set; }
+		public static string StatisticsMonth { get; private set; }
+		public static string StatisticsAll { get; private set; }
 	
 
 	}
