@@ -2,6 +2,7 @@ using MonoTouch.Foundation;
 using MonoTouch.UIKit;
 using MonoTouch.CoreGraphics;
 using FeedMeMom.Common;
+using MTiRate;
 
 namespace FeedMeMom
 {
@@ -35,7 +36,24 @@ namespace FeedMeMom
 			window.RootViewController = navigationController;
 			window.MakeKeyAndVisible ();
 			ServiceLocator.Register<EmailSender>(new EmailSender(Configuration.FeedbackEmail, navigationController));
+			RegisterIRater();
 			return true;
+		}
+
+		private static void RegisterIRater()
+		{
+			//iRate.SharedInstance.PreviewMode = true;
+			iRate.SharedInstance.AppStoreID = (uint)Configuration.AppId;
+			iRate.SharedInstance.DaysUntilPrompt = 3;
+			iRate.SharedInstance.UsesUntilPrompt = 10;
+			iRate.SharedInstance.OnlyPromptIfLatestVersion = true;
+			iRate.SharedInstance.PromptAtLaunch = false;
+			iRate.SharedInstance.EventsUntilPrompt = 15;
+			iRate.SharedInstance.MessageTitle = Resources.RateThisApp;
+			iRate.SharedInstance.Message = Resources.RateMessage;
+			iRate.SharedInstance.CancelButtonLabel = Resources.RateNoButton;
+			iRate.SharedInstance.RemindButtonLabel = Resources.RateLaterButton;
+			iRate.SharedInstance.RateButtonLabel = Resources.RateYesButton;
 		}
 
 		public override void OnActivated (UIApplication application)

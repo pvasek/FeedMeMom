@@ -36,4 +36,9 @@
 "MinutesAgo"="minutes ago";
 "DayAgo"="day ago";
 "DaysAgo"="days ago";
-"AgoPrefix"="_";
+"AgoPrefix"="";
+"RateThisApp"="Rate this app";
+"RateMessage"="Do you want to help other moms to find this app? The simpliest thing is to rate this app.";
+"RateYesButton"="Yes, I will rate it now";
+"RateNoButton"="No, thanks";
+"RateLaterButton"="Remind me later";

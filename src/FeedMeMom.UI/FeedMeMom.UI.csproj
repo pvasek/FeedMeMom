@@ -35,6 +35,9 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="monotouch" />
+    <Reference Include="MTiRate">
+      <HintPath>..\Components\irate-1.7.2\lib\ios\MTiRate.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
@@ -149,5 +152,12 @@
     <BundleResource Include="Resources\buy_nightmode_iphone5%402x.png" />
     <BundleResource Include="Resources\de.lproj\Localizable.strings" />
     <BundleResource Include="Resources\ja.lproj\Localizable.strings" />
+  </ItemGroup>
+  <ItemGroup>
+    <XamarinComponentReference Include="irate">
+      <InstallationInProgress>True</InstallationInProgress>
+      <Version>1.7.2</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
   </ItemGroup>
 </Project>

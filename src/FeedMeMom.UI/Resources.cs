@@ -1,6 +1,7 @@
 ﻿
 		
 
+
 // #####################################################################
 //
 // THIS FILE IS GENERATED
@@ -20,7 +21,7 @@ namespace FeedMeMom {
 			var result = NSBundle.MainBundle.LocalizedString(key, key);
 			if (result != null)
 			{
-				result = result.Replace("|", Environment.NewLine).Replace("_", " ");
+				result = result.Replace("|", Environment.NewLine);
 			}
 			return result;
 		}
@@ -66,6 +67,11 @@ namespace FeedMeMom {
 			DayAgo = GetLocalized("DayAgo");
 			DaysAgo = GetLocalized("DaysAgo");
 			AgoPrefix = GetLocalized("AgoPrefix");
+			RateThisApp = GetLocalized("RateThisApp");
+			RateMessage = GetLocalized("RateMessage");
+			RateYesButton = GetLocalized("RateYesButton");
+			RateNoButton = GetLocalized("RateNoButton");
+			RateLaterButton = GetLocalized("RateLaterButton");
 	
 		}
 		
@@ -108,6 +114,11 @@ namespace FeedMeMom {
 		public static string DayAgo { get; private set; }
 		public static string DaysAgo { get; private set; }
 		public static string AgoPrefix { get; private set; }
+		public static string RateThisApp { get; private set; }
+		public static string RateMessage { get; private set; }
+		public static string RateYesButton { get; private set; }
+		public static string RateNoButton { get; private set; }
+		public static string RateLaterButton { get; private set; }
 	
 
 	}

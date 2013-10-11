@@ -40,7 +40,8 @@ namespace FeedMeMom
 						});
 					};
 				}
-				_skController.LoadProduct(new StoreProductParameters{ITunesItemIdentifier = appId}, (ok, error) => {
+				var storeParams = new StoreProductParameters { ITunesItemIdentifier = appId };
+				_skController.LoadProduct(storeParams, (ok, error) => {
 					if (ok) 
 					{ 
 						navCtrl.PresentViewController(_skController, true, null);
@@ -50,7 +51,7 @@ namespace FeedMeMom
 			else 
 			{
 				var nsurl = new NSUrl(appUrl);
-				UIApplication.SharedApplication.OpenUrl (nsurl);
+				UIApplication.SharedApplication.OpenUrl(nsurl);
 			}
 		}
 	}

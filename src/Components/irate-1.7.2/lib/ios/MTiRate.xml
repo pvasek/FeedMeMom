@@ -1,0 +1,393 @@
+<doc>
+    <assembly>
+        <name>MTiRate</name>
+    </assembly>
+    <members>
+        <member name="T:ApiDefinition.Messaging">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:ApiDefinition.Messaging">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="T:MTiRate.iRate">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:MTiRate.iRate">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:MTiRate.iRate(MonoTouch.Foundation.NSCoder)">
+            <param name="coder">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:MTiRate.iRate(MonoTouch.Foundation.NSObjectFlag)">
+            <param name="t">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:MTiRate.iRate(System.IntPtr)">
+            <param name="handle">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:MTiRate.iRate.ApplicationBundleID">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:MTiRate.iRate.ApplicationName">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:MTiRate.iRate.ApplicationVersion">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:MTiRate.iRate.AppStoreCountry">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:MTiRate.iRate.AppStoreGenreID">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:MTiRate.iRate.AppStoreID">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:MTiRate.iRate.CancelButtonLabel">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:MTiRate.iRate.ClassHandle">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="E:MTiRate.iRate.CouldNotConnectToAppStore">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:MTiRate.iRate.DaysUntilPrompt">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:MTiRate.iRate.DeclinedAnyVersion">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:MTiRate.iRate.DeclinedThisVersion">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:MTiRate.iRate.Delegate">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="E:MTiRate.iRate.DidDetectAppUpdate">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="E:MTiRate.iRate.DidDismissStoreKitModal">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="E:MTiRate.iRate.DidPresentStoreKitModal">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:MTiRate.iRate.DisableAlertViewResizing">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:MTiRate.iRate.DisplayAppUsingStorekitIfAvailable">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:MTiRate.iRate.Dispose(System.Boolean)">
+            <param name="disposing">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:MTiRate.iRate.EventCount">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:MTiRate.iRate.EventsUntilPrompt">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:MTiRate.iRate.FirstUsed">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:MTiRate.iRate.LastReminded">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:MTiRate.iRate.LogEvent(System.Boolean)">
+            <param name="deferPrompt">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:MTiRate.iRate.Message">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:MTiRate.iRate.MessageTitle">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:MTiRate.iRate.OnlyPromptIfLatestVersion">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:MTiRate.iRate.OnlyPromptIfMainWindowIsAvailable">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:MTiRate.iRate.OpenRatingsPageInAppStore">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:MTiRate.iRate.PreviewMode">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:MTiRate.iRate.PromptAgainForEachNewVersion">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:MTiRate.iRate.PromptAtLaunch">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:MTiRate.iRate.PromptForRating">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:MTiRate.iRate.PromptIfNetworkAvailable">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:MTiRate.iRate.RateButtonLabel">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:MTiRate.iRate.RatedAnyVersion">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:MTiRate.iRate.RatedThisVersion">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:MTiRate.iRate.RatingsURL">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:MTiRate.iRate.RemindButtonLabel">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:MTiRate.iRate.RemindPeriod">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:MTiRate.iRate.SharedInstance">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:MTiRate.iRate.ShouldOpenAppStore">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:MTiRate.iRate.ShouldPromptForRating">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:MTiRate.iRate.ShouldPromptForRatingM">
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:MTiRate.iRate.UseAllAvailableLanguages">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="E:MTiRate.iRate.UserDidAttemptToRateApp">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="E:MTiRate.iRate.UserDidDeclineToRateApp">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="E:MTiRate.iRate.UserDidRequestReminderToRateApp">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:MTiRate.iRate.UsesCount">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:MTiRate.iRate.UsesPerWeek">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:MTiRate.iRate.UsesPerWeekForPrompt">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:MTiRate.iRate.UsesUntilPrompt">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:MTiRate.iRate.VerboseLogging">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="P:MTiRate.iRate.WeakDelegate">
+            <summary>To be added.</summary>
+            <value>To be added.</value>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="T:MTiRate.iRateDelegate">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:MTiRate.iRateDelegate">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:MTiRate.iRateDelegate(MonoTouch.Foundation.NSCoder)">
+            <param name="coder">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:MTiRate.iRateDelegate(MonoTouch.Foundation.NSObjectFlag)">
+            <param name="t">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="C:MTiRate.iRateDelegate(System.IntPtr)">
+            <param name="handle">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:MTiRate.iRateDelegate.CouldNotConnectToAppStore(MonoTouch.Foundation.NSError)">
+            <param name="error">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:MTiRate.iRateDelegate.DidDetectAppUpdate(System.Boolean)">
+            <param name="fakeArg">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:MTiRate.iRateDelegate.DidDismissStoreKitModal(System.Boolean)">
+            <param name="fakeArg">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:MTiRate.iRateDelegate.DidPresentStoreKitModal(System.Boolean)">
+            <param name="fakeArg">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:MTiRate.iRateDelegate.ShouldOpenAppStore(System.Boolean)">
+            <param name="fakeArg">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:MTiRate.iRateDelegate.ShouldPromptForRating(System.Boolean)">
+            <param name="fakeArg">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:MTiRate.iRateDelegate.UserDidAttemptToRateApp(System.Boolean)">
+            <param name="fakeArg">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:MTiRate.iRateDelegate.UserDidDeclineToRateApp(System.Boolean)">
+            <param name="fakeArg">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="M:MTiRate.iRateDelegate.UserDidRequestReminderToRateApp(System.Boolean)">
+            <param name="fakeArg">To be added.</param>
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="T:MTiRate.iRateDelegateShouldOpenAppStore">
+            <param name="fakeArg">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="T:MTiRate.iRateDelegateShouldPromptForRating">
+            <param name="fakeArg">To be added.</param>
+            <summary>To be added.</summary>
+            <returns>To be added.</returns>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="T:MTiRate.iRateErrorCode">
+            <summary>To be added.</summary>
+            <remarks>To be added.</remarks>
+        </member>
+        <member name="F:MTiRate.iRateErrorCode.ApplicationIsNotLatestVersion">
+            <summary>To be added.</summary>
+        </member>
+        <member name="F:MTiRate.iRateErrorCode.ApplicationNotFoundOnAppStore">
+            <summary>To be added.</summary>
+        </member>
+        <member name="F:MTiRate.iRateErrorCode.BundleIdDoesNotMatchAppStore">
+            <summary>To be added.</summary>
+        </member>
+    </members>
+</doc>

@@ -8,6 +8,7 @@ using System.Threading;
 using FeedMeMom.Helpers;
 using FeedMeMom.Controllers;
 using FeedMeMom.UI;
+using MTiRate;
 
 namespace FeedMeMom
 {
@@ -127,6 +128,7 @@ namespace FeedMeMom
 				_active = null;
 				SwitchToInfoMode(() => {
 					ReloadData();
+					iRate.SharedInstance.LogEvent(false);
 				});
 			}
 		}
@@ -557,33 +559,36 @@ namespace FeedMeMom
 			return UIStatusBarStyle.LightContent;
 		}
 
+		private FeedingEntry _last;
+
 		public void ReloadData() 
 		{
 			var repo = ServiceLocator.Get<Repository> ();
-			var last = repo.Query<FeedingEntry> ("SELECT * FROM FeedingEntry ORDER BY Id DESC LIMIT 1").FirstOrDefault();
-			if (last == null) 
+			_last = repo.Query<FeedingEntry> ("SELECT * FROM FeedingEntry ORDER BY Id DESC LIMIT 1").FirstOrDefault();
+			if (_last == null) 
 			{
 				EmptyView();
 			} 
 			else 
 			{
-				if (last.IsRunning)
+				if (_last.IsRunning)
 				{
-					SwitchToFeedingMode(last.IsLeftBreastRunning, last);
+					SwitchToFeedingMode(_last.IsLeftBreastRunning, _last);
 				} 
 				else 
 				{
-					UpdateView(last);
+					UpdateView(_last);
 				}
 			}
 		}
 
 		private Timer _timer;
 		private FeedingEntry _active;
+		private DateTime? _lastUpdate;
 
 		private void TimerElapsed (object state)
 		{
-			if (_active == null) {
+			if (_active == null && _lastUpdate > DateTime.Now.AddSeconds(-10)) {
 				return;
 			}
 			InvokeOnMainThread(() => {
@@ -597,6 +602,9 @@ namespace FeedMeMom
 					var percentLeft100 = leftLength < min30 ? min30 : leftLength;
 					_pgbRight.UpdateValue(percentRight100, rightLength, false);
 					_pgbLeft.UpdateValue(percentLeft100, leftLength, false);
+				} else if (_last != null){
+					UpdateView(_last);
+					_lastUpdate = DateTime.Now;
 				}
 			});
 		}
