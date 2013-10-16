@@ -2,7 +2,6 @@
 	
 
 
-
 // #####################################################################
 //
 // THIS FILE IS GENERATED
@@ -88,6 +87,7 @@ namespace FeedMeMom {
 			StatisticsWeek = GetLocalized("StatisticsWeek");
 			StatisticsMonth = GetLocalized("StatisticsMonth");
 			StatisticsAll = GetLocalized("StatisticsAll");
+			StatisticsBuyHeadline = GetLocalized("StatisticsBuyHeadline");
 	
 		}
 		
@@ -150,6 +150,7 @@ namespace FeedMeMom {
 		public static string StatisticsWeek { get; private set; }
 		public static string StatisticsMonth { get; private set; }
 		public static string StatisticsAll { get; private set; }
+		public static string StatisticsBuyHeadline { get; private set; }
 	
 
 	}

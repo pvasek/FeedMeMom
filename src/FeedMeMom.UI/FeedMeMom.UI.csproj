@@ -157,10 +157,14 @@
     <BundleResource Include="Resources\buy_nightmode_iphone5%402x.png" />
     <BundleResource Include="Resources\de.lproj\Localizable.strings" />
     <BundleResource Include="Resources\ja.lproj\Localizable.strings" />
+    <BundleResource Include="Resources\chart.png" />
+    <BundleResource Include="Resources\chart%402x.png" />
+    <BundleResource Include="Resources\buy_statistics_iphone%402x.png" />
+    <BundleResource Include="Resources\buy_statistics.png" />
+    <BundleResource Include="Resources\buy_statistics%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <XamarinComponentReference Include="irate">
-      <InstallationInProgress>False</InstallationInProgress>
       <Version>1.7.2</Version>
       <Visible>False</Visible>
     </XamarinComponentReference>

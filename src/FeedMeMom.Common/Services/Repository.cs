@@ -23,7 +23,7 @@ namespace FeedMeMom.Common
 			{
 				Delete(item);
 			}
-			const int numberOfDays = 120;
+			const int numberOfDays = 360;
 			var random = new Random();
 			var date = DateTime.Now.AddDays(-1*numberOfDays);
 			var startDate = date;

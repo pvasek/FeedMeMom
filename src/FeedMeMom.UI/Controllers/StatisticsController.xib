@@ -37,12 +37,12 @@
                     <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="8Tz-RL-hjp">
-                    <rect key="frame" x="20" y="77" width="257" height="29"/>
+                    <rect key="frame" x="20" y="77" width="280" height="29"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <segments>
                         <segment title="Day"/>
                         <segment title="Week"/>
-                        <segment title="Month"/>
+                        <segment title="_"/>
                         <segment title="All"/>
                     </segments>
                 </segmentedControl>

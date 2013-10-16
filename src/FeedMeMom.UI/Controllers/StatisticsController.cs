@@ -38,6 +38,11 @@ namespace FeedMeMom.UI
 				UpdateCounts();
 			};
 			UpdateCounts();
+			if (ControlHelper.IsIPhone5)
+			{
+				periodSelector.Frame = periodSelector.Frame.Add(y: 20);
+				pnlData.Frame = pnlData.Frame.Add(y: 50);
+			}
 		}
 
 		private void LoadResources()

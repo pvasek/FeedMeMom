@@ -12,9 +12,17 @@ namespace FeedMeMom
 
 		static DeviceHelper() 
 		{
-			var systemVersion = UIDevice.CurrentDevice.SystemVersion;
-			var version = Decimal.Parse(systemVersion, CultureInfo.InvariantCulture);
-			Version = version;
+			try 
+			{
+				var systemVersion = UIDevice.CurrentDevice.SystemVersion.Split(new [] {'.'});
+				var version = (decimal)Int32.Parse(systemVersion[0]);
+				version += 0.1m * Int32.Parse(systemVersion[1]);
+				Version = version;
+			}
+			catch
+			{
+				Version = 6m;
+			}
 		}
 
 		public static decimal Version { get; private set; }

@@ -312,6 +312,17 @@ namespace FeedMeMom
 					NavigationController.PushViewController(_buyController, false);
 				}, UIImage.FromBundle("list")));
 
+				_sideMenu.Items.Add(new ActionItem(Resources.Statistics, () => {
+					if (_buyController == null) {
+						_buyController = new BuyController();
+					}
+					_sideMenuHub.Hide();
+					_buyController.BuyTitle = Resources.Statistics;
+					_buyController.BuyDescription = Resources.StatisticsBuyHeadline;
+					_buyController.ScreenImageName = "buy_statistics";
+					NavigationController.PushViewController(_buyController, false);
+				}, UIImage.FromBundle("chart")));
+
 				_sideMenu.Items.Add(new ActionItem(Resources.SwitchDayNightMode, () => {
 					if (_buyController == null) {
 						_buyController = new BuyController();
@@ -342,10 +353,9 @@ namespace FeedMeMom
 					{
 						_statisticsController = new StatisticsController();
 					}
-					//_historyController.ReloadData();
 					_sideMenuHub.Hide();
 					NavigationController.PushViewController(_statisticsController, false);
-				}, UIImage.FromBundle("moon")));
+				}, UIImage.FromBundle("chart")));
 
 				_sideMenu.Items.Add(new ActionItem(Resources.SwitchDayNightMode, () => {
 					Skin.ToggleDayNightMode();

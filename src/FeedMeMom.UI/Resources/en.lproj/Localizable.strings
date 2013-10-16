@@ -14,7 +14,7 @@
 "Cancel"="Cancel";
 "Save"="Save";
 "BuyPhrase"="There is just one step to do that";
-"HistoryBuyHeadline"="Do you want to see a complete history of your feeding?";
+"HistoryBuyHeadline"="Do you want to see a complete history of your feedings?";
 "Buy"="Buy";
 "LeftLetter"="L";
 "RightLetter"="R";
@@ -57,3 +57,4 @@
 "StatisticsWeek"="Week";
 "StatisticsMonth"="Month";
 "StatisticsAll"="All";
+"StatisticsBuyHeadline"="Do you want to see statistics for your feedings?";
