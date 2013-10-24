@@ -29,6 +29,9 @@ namespace FeedMeMom.Common.Entities
 		public DateTime? LeftStartTime { get; set; }
 		public DateTime? RightStartTime { get; set; }
 
+		public DateTime? PausedAt { get; set; }
+		public bool? IsLeft { get; set; }
+
 		[Ignore]
 		public TimeSpan? LeftBreastLength {
 			get { return LeftBreastLengthSeconds.SecondsAsTimeSpan(0); }
@@ -57,9 +60,15 @@ namespace FeedMeMom.Common.Entities
 
 		public bool IsLeftBreastRunning { get { return LeftStartTime != null; } }
 		public bool IsRightBreastRunning { get { return RightStartTime != null; } }
+
 		public bool IsRunning 
 		{ 
 			get { return IsLeftBreastRunning || IsRightBreastRunning; } 
+		}
+
+		public bool IsPaused 
+		{
+			get { return PausedAt != null; }
 		}
 			
 		private string FormatBreastFeeding ()

@@ -10,10 +10,13 @@ namespace FeedMeMom.Common
 		{
 		}
 
-		public TimeStop(int lengthSeconds, DateTime? startTime)
+		public TimeStop(int lengthSeconds, DateTime? startTime, bool isPaused)
 		{
 			Length = TimeSpan.FromSeconds (lengthSeconds);
-			StartTime = startTime;
+			if (!isPaused)
+			{
+				StartTime = startTime;
+			}
 		}
 
 		public TimeSpan Length { get; set; }

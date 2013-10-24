@@ -35,6 +35,10 @@ namespace FeedMeMom
 		private BuyController _buyController;
 		private StatisticsController _statisticsController;
 
+		private RectangleF _leftFrame;
+		private RectangleF _rightFrame;
+		private RectangleF _buttonHeaderFrame;
+
 		public void ApplyColors()
 		{
 			var skin = Skin.Active;
@@ -123,8 +127,9 @@ namespace FeedMeMom
 
 			var repo = ServiceLocator.Get<Repository>();
 			if (_active != null) {
-				_active.Date = DateTime.Now;
+				_active.Date = _active.PausedAt ?? DateTime.Now;
 				_stopPair.Stop();
+				_active.PausedAt = null;
 				repo.Update(_active);
 				_active = null;
 				SwitchToInfoMode(() => {
@@ -239,6 +244,9 @@ namespace FeedMeMom
 
 			_timer = new Timer (TimerElapsed, null, 200, 200);
 
+			_leftFrame = btnStartLeft.Frame;
+			_rightFrame = btnStartRight.Frame;
+			_buttonHeaderFrame = lblButtonsHeader.Frame;
 			btnStartLeft.TouchUpInside += (sender, e) => {
 
 				if (_active == null) {
@@ -247,6 +255,8 @@ namespace FeedMeMom
 					_stopPair.Start (true);
 					SelectRightLeftButton(false);
 					TimePanelSwitchToRunning(true);
+					_active.PausedAt = null;
+					repo.Update(_active);
 				}
 			};
 
@@ -258,6 +268,8 @@ namespace FeedMeMom
 					_stopPair.Start (false);
 					SelectRightLeftButton(true);
 					TimePanelSwitchToRunning(false);
+					_active.PausedAt = null;
+					repo.Update(_active);
 				}
 			};
 		}	
@@ -268,11 +280,15 @@ namespace FeedMeMom
 				if (_stopPair.Toggle())
 				{
 					TimePanelSwitchToRunning();
+					_active.PausedAt = null;
 				} 
 				else 
 				{
 					TimePanelSwitchToPaused();
+					_active.PausedAt = Time.Now;
 				}
+				var repo = ServiceLocator.Get<Repository>();
+				repo.Update(_active);
 			}
 		}
 
@@ -280,6 +296,11 @@ namespace FeedMeMom
 		{
 			base.ViewWillAppear (animated);
 			ReloadData();
+		}
+
+		public override void ViewWillDisappear(bool animated)
+		{
+			base.ViewWillDisappear(animated);
 		}
 
 		protected override void Dispose (bool disposing)
@@ -400,6 +421,19 @@ namespace FeedMeMom
 					entry.RightStartTime = DateTime.Now.AddMinutes(-14);
 					repo.Insert(entry);
 					ReloadData();
+				}));		
+				_sideMenu.Items.Add(new ActionItem("Crash", () => {
+					if (Crashlytics.Crashlytics.SharedInstance != null) {
+						Crashlytics.Crashlytics.SharedInstance.Crash();
+					} else {
+						UIAlertView alert = new UIAlertView ();
+						alert.Title = "Error";
+						alert.AddButton ("OK");
+						alert.AddButton ("Cancel");
+						alert.Message = "SharedInstance is null";
+						//alert.AlertViewStyle = UIAlertViewStyle.SecureTextInput;
+						alert.Show ();
+					}
 				}));		
 			}
 		}
@@ -554,7 +588,13 @@ namespace FeedMeMom
 
 			Action animFinished = () => {
 				pnlRunningTime.Hidden = false;
-				TimePanelSwitchToRunning(left);
+				if (entry.IsPaused == true) {
+					TimePanelSwitchToPaused();
+				} 
+				else 
+				{
+					TimePanelSwitchToRunning(left);
+				}
 			};
 
 			if (done == null)
@@ -594,9 +634,9 @@ namespace FeedMeMom
 			} 
 			else 
 			{
-				if (_last.IsRunning)
+				if (_last.IsRunning || _last.IsPaused)
 				{
-					SwitchToFeedingMode(_last.IsLeftBreastRunning, _last);
+					SwitchToFeedingMode(_last.IsLeft == true, _last);
 				} 
 				else 
 				{
@@ -640,16 +680,44 @@ namespace FeedMeMom
 
 		private void SelectRightLeftButton(int left)
 		{
+			const int buttonOffset = 8;
+			const int headerOffset = 50;
+
+			lblButtonsHeader.TextAlignment = UITextAlignment.Center;
+			if (_active != null)
+			{
+				left *= -1;
+			} 
+			else
+			{
+				if (left > 0)
+				{
+					lblButtonsHeader.TextAlignment = UITextAlignment.Left;
+				}
+				else if (left < 0)
+				{
+					lblButtonsHeader.TextAlignment = UITextAlignment.Right;
+				}
+			}
+
 			if (left == 0) {
 				btnStartLeft.BackgroundColor = Skin.Active.ButtonActive;
 				btnStartRight.BackgroundColor = Skin.Active.ButtonActive;
+				btnStartLeft.Frame = _leftFrame;
+				btnStartRight.Frame = _rightFrame;
 			}
 			else if (left > 0) {
 				btnStartLeft.BackgroundColor = Skin.Active.ButtonActive;
 				btnStartRight.BackgroundColor = Skin.Active.ButtonInactive;
+
+				btnStartLeft.Frame = _leftFrame;
+				btnStartRight.Frame = _rightFrame.Add(buttonOffset, buttonOffset, -2*buttonOffset, -2*buttonOffset);
 			} else {
 				btnStartLeft.BackgroundColor = Skin.Active.ButtonInactive;
 				btnStartRight.BackgroundColor = Skin.Active.ButtonActive;
+
+				btnStartLeft.Frame = _leftFrame.Add(buttonOffset, buttonOffset, -2*buttonOffset, -2*buttonOffset);
+				btnStartRight.Frame = _rightFrame;
 			}
 		}
 

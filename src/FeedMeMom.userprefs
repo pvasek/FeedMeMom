@@ -1,19 +1,16 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="AppStore|iPhone" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.Pavel Vašek’s iPhone" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="FeedMeMom.Common/Utils.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhone.7.0" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="FeedMeMom.UI/AppDelegate.cs">
     <Files>
-      <File FileName="FeedMeMom.UI/Helpers/DeviceHelper.cs" Line="3" Column="19" />
-      <File FileName="FeedMeMom.UI/Helpers/ControlHelper.cs" Line="1" Column="1" />
+      <File FileName="FeedMeMom.App.Full/AppDelegate.cs" Line="1" Column="1" />
       <File FileName="FeedMeMom.UI/MainController.cs" Line="1" Column="1" />
-      <File FileName="FeedMeMom.UI/Controllers/StatisticsController.cs" Line="1" Column="1" />
-      <File FileName="FeedMeMom.Common/Settings.cs" Line="1" Column="1" />
-      <File FileName="FeedMeMom.Common/Utils.cs" Line="1" Column="1" />
+      <File FileName="FeedMeMom.UI/AppDelegate.cs" Line="88" Column="4" />
+      <File FileName="FeedMeMom.App.Full/Main.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="FeedMeMom.App.Free" expanded="True" selected="True" />
-          <Node name="FeedMeMom.Common" expanded="True" />
         </State>
       </Pad>
       <Pad Id="ClassPad">

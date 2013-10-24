@@ -38,6 +38,9 @@
     <Reference Include="MTiRate">
       <HintPath>..\Components\irate-1.7.2\lib\ios\MTiRate.dll</HintPath>
     </Reference>
+    <Reference Include="Crashlytics">
+      <HintPath>..\..\comp\Crashlytics\Crashlytics.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
@@ -82,7 +85,6 @@
     <Compile Include="SideMenu.designer.cs">
       <DependentUpon>SideMenu.cs</DependentUpon>
     </Compile>
-    <Compile Include="AppDelegate.cs" />
     <Compile Include="Controllers\HistoryController.cs" />
     <Compile Include="Controllers\HistorySource.cs" />
     <Compile Include="Controllers\HistoryViewController.cs" />
@@ -93,6 +95,7 @@
     <Compile Include="Controllers\StatisticsController.designer.cs">
       <DependentUpon>StatisticsController.cs</DependentUpon>
     </Compile>
+    <Compile Include="AppDelegate.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Controllers\BuyController.xib" />
