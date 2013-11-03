@@ -112,11 +112,20 @@ namespace FeedMeMom
 
 			var repo = ServiceLocator.Get<Repository>();
 			if (_active != null) {
-				repo.Delete(_active);
-				_active = null;
-				SwitchToInfoMode(() => {
-					ReloadData();
-				});
+
+				var alert = new UIAlertView();
+				alert.Message = Resources.DoYouReallyWantToThisCancelFeeding;
+				alert.AddButton(Resources.Yes);
+				alert.AddButton(Resources.No);
+				alert.Show();
+				alert.Clicked += (bs, be) => {
+					if (be.ButtonIndex == 0) 
+					{
+						repo.Delete(_active);
+						_active = null;
+						SwitchToInfoMode(ReloadData);
+					}
+				};
 			}
 		}
 

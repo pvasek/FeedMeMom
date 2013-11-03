@@ -88,6 +88,12 @@ namespace FeedMeMom {
 			StatisticsMonth = GetLocalized("StatisticsMonth");
 			StatisticsAll = GetLocalized("StatisticsAll");
 			StatisticsBuyHeadline = GetLocalized("StatisticsBuyHeadline");
+			DoYouReallyWantToThisCancelFeeding = GetLocalized("DoYouReallyWantToThisCancelFeeding");
+			Yes = GetLocalized("Yes");
+			No = GetLocalized("No");
+			StatisticsForTheLastDay = GetLocalized("StatisticsForTheLastDay");
+			StatisticsForTheLastWeek = GetLocalized("StatisticsForTheLastWeek");
+			StatisticsForTheLastMonth = GetLocalized("StatisticsForTheLastMonth");
 	
 		}
 		
@@ -151,6 +157,12 @@ namespace FeedMeMom {
 		public static string StatisticsMonth { get; private set; }
 		public static string StatisticsAll { get; private set; }
 		public static string StatisticsBuyHeadline { get; private set; }
+		public static string DoYouReallyWantToThisCancelFeeding { get; private set; }
+		public static string Yes { get; private set; }
+		public static string No { get; private set; }
+		public static string StatisticsForTheLastDay { get; private set; }
+		public static string StatisticsForTheLastWeek { get; private set; }
+		public static string StatisticsForTheLastMonth { get; private set; }
 	
 
 	}

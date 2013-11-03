@@ -37,12 +37,17 @@ namespace FeedMeMom.UI
 			periodSelector.ValueChanged += (sender, e) => {
 				UpdateCounts();
 			};
-			UpdateCounts();
 			if (ControlHelper.IsIPhone5)
 			{
 				periodSelector.Frame = periodSelector.Frame.Add(y: 20);
 				pnlData.Frame = pnlData.Frame.Add(y: 50);
 			}
+		}
+
+		public override void ViewWillAppear(bool animated)
+		{
+			base.ViewWillAppear(animated);
+			UpdateCounts();
 		}
 
 		private void LoadResources()
@@ -68,7 +73,25 @@ namespace FeedMeMom.UI
 
 		private void UpdateCounts()
 		{
-			var days = _days[periodSelector.SelectedSegment];
+			var dayIndex = periodSelector.SelectedSegment;
+			var days = _days[dayIndex];
+			if (dayIndex == 0)
+			{
+				lblStatisticsTitle.Text = Resources.StatisticsForTheLastDay;
+			}
+			else if (dayIndex == 1)
+			{
+				lblStatisticsTitle.Text = Resources.StatisticsForTheLastWeek;
+			}
+			else if (dayIndex == 2)
+			{
+				lblStatisticsTitle.Text = Resources.StatisticsForTheLastMonth;
+			}
+			else
+			{
+				lblStatisticsTitle.Text = "";
+			}
+
 			var repo = ServiceLocator.Get<Repository>();
 			var fromDate = DateTime.Now.AddDays(days*-1);
 			var entries = repo
@@ -94,10 +117,24 @@ namespace FeedMeMom.UI
 			}
 
 			pnlData.Hidden = true;
-			lblLengthValue.Text = String.Format("{0:0}", totalTime.TotalMinutes / entries.Count);
+			if (entries.Count != 0)
+			{
+				lblLengthValue.Text = String.Format("{0:0}", totalTime.TotalMinutes / entries.Count);
+			} 
+			else
+			{
+				lblLengthValue.Text = "";
+			}
 			lblNumberValue.Text = entries.Count.ToString();
-			lblCountValue.Text = ((int)(entries.Count / feedingDays)).ToString();
-			lblUsageValue.Text = String.Format("{0:###}%  {1:###}%", left, right);
+			if (feedingDays != 0)
+			{
+				lblCountValue.Text = ((int)(entries.Count / feedingDays)).ToString();
+			} 
+			else
+			{
+				lblCountValue.Text = "";
+			}
+			lblUsageValue.Text = String.Format("{0:##0}%  {1:##0}%", left, right);
 
 			pnlData.Layer.Opacity = 0;
 			pnlData.Hidden = false;

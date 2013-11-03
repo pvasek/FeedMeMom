@@ -73,10 +73,6 @@
     <Compile Include="Services\Configuration.cs" />
     <Compile Include="Services\EmailSender.cs" />
     <Compile Include="Services\SynchronizationService.cs" />
-    <Compile Include="MainController.cs" />
-    <Compile Include="MainController.designer.cs">
-      <DependentUpon>MainController.cs</DependentUpon>
-    </Compile>
     <Compile Include="Resources.cs">
       <DependentUpon>Resources.tt</DependentUpon>
     </Compile>
@@ -96,6 +92,10 @@
       <DependentUpon>StatisticsController.cs</DependentUpon>
     </Compile>
     <Compile Include="AppDelegate.cs" />
+    <Compile Include="MainController.cs" />
+    <Compile Include="MainController.designer.cs">
+      <DependentUpon>MainController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Controllers\BuyController.xib" />

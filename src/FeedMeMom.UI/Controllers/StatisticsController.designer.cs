@@ -40,6 +40,9 @@ namespace FeedMeMom.UI
 		MonoTouch.UIKit.UILabel lblNumberValue { get; set; }
 
 		[Outlet]
+		MonoTouch.UIKit.UILabel lblStatisticsTitle { get; set; }
+
+		[Outlet]
 		MonoTouch.UIKit.UILabel lblUsageDescription { get; set; }
 
 		[Outlet]
@@ -68,14 +71,9 @@ namespace FeedMeMom.UI
 		
 		void ReleaseDesignerOutlets ()
 		{
-			if (lblUsageLeftHint != null) {
-				lblUsageLeftHint.Dispose ();
-				lblUsageLeftHint = null;
-			}
-
-			if (lblUsageRightHint != null) {
-				lblUsageRightHint.Dispose ();
-				lblUsageRightHint = null;
+			if (lblStatisticsTitle != null) {
+				lblStatisticsTitle.Dispose ();
+				lblStatisticsTitle = null;
 			}
 
 			if (lblCountDescription != null) {
@@ -126,6 +124,16 @@ namespace FeedMeMom.UI
 			if (lblUsageDescription != null) {
 				lblUsageDescription.Dispose ();
 				lblUsageDescription = null;
+			}
+
+			if (lblUsageLeftHint != null) {
+				lblUsageLeftHint.Dispose ();
+				lblUsageLeftHint = null;
+			}
+
+			if (lblUsageRightHint != null) {
+				lblUsageRightHint.Dispose ();
+				lblUsageRightHint = null;
 			}
 
 			if (lblUsageTitle != null) {

@@ -1,16 +1,10 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhone.7.0" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="FeedMeMom.UI/AppDelegate.cs">
-    <Files>
-      <File FileName="FeedMeMom.App.Full/AppDelegate.cs" Line="1" Column="1" />
-      <File FileName="FeedMeMom.UI/MainController.cs" Line="1" Column="1" />
-      <File FileName="FeedMeMom.UI/AppDelegate.cs" Line="88" Column="4" />
-      <File FileName="FeedMeMom.App.Full/Main.cs" Line="1" Column="1" />
-    </Files>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Ad-Hoc|iPhone" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget" />
+  <MonoDevelop.Ide.Workbench>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
-          <Node name="FeedMeMom.App.Free" expanded="True" selected="True" />
+          <Node name="FeedMeMom.App.Full" selected="True" />
         </State>
       </Pad>
       <Pad Id="ClassPad">
@@ -34,4 +28,11 @@
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.FeedMeMom.App.Free>
+    <IPhoneTestFlightSettings_27CAd-Hoc ApiToken="299b6327c84e6ed83c3d8326d5a0b9d9_MTM3OTUwNTIwMTMtMTAtMTYgMTQ6MTc6MzIuMDg2NjQ1" TeamToken="8be6bbd79f74e5ad7023b2d7f6c3402f_Mjg2OTAyMjAxMy0xMC0yNSAxMjoxMToyMC42NTAyOTU" ReleaseNotes="first release" NotifyTeamMembers="False" ReplaceBinaries="False" DistributionLists="" UploadDSYMs="False" />
+    <IPhoneTestFlightSettings_27CRelease ApiToken="299b6327c84e6ed83c3d8326d5a0b9d9_MTM3OTUwNTIwMTMtMTAtMTYgMTQ6MTc6MzIuMDg2NjQ1" TeamToken="8be6bbd79f74e5ad7023b2d7f6c3402f_Mjg2OTAyMjAxMy0xMC0yNSAxMjoxMToyMC42NTAyOTU" ReleaseNotes="test" NotifyTeamMembers="False" ReplaceBinaries="False" DistributionLists="" UploadDSYMs="False" />
+  </MonoDevelop.Ide.ItemProperties.FeedMeMom.App.Free>
+  <MonoDevelop.Ide.ItemProperties.FeedMeMom.App.Full>
+    <IPhoneTestFlightSettings_27CRelease ApiToken="299b6327c84e6ed83c3d8326d5a0b9d9_MTM3OTUwNTIwMTMtMTAtMTYgMTQ6MTc6MzIuMDg2NjQ1" TeamToken="758847b7-b292-488d-8e88-b27ca7189800" ReleaseNotes="test" NotifyTeamMembers="False" ReplaceBinaries="False" DistributionLists="" UploadDSYMs="False" />
+  </MonoDevelop.Ide.ItemProperties.FeedMeMom.App.Full>
 </Properties>
