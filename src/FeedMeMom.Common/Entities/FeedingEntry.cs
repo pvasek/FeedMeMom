@@ -107,6 +107,15 @@ namespace FeedMeMom.Common.Entities
 			return "";
 		}
 
+		public void AddLeft(int minutes) 
+		{
+			LeftBreastLengthSeconds = (LeftBreastLengthSeconds ?? 0) + minutes*60;
+		}
+
+		public void AddRight(int minutes) 
+		{
+			RightBreastLengthSeconds = (RightBreastLengthSeconds ?? 0) + minutes*60;
+		}
 	}
 }
 

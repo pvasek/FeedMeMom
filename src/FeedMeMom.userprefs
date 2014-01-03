@@ -1,38 +1,22 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Ad-Hoc|iPhone" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget" />
-  <MonoDevelop.Ide.Workbench>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State expanded="True">
-          <Node name="FeedMeMom.App.Full" selected="True" />
-        </State>
-      </Pad>
-      <Pad Id="ClassPad">
-        <State expanded="True" selected="True" />
-      </Pad>
-      <Pad Id="MonoDevelop.Debugger.WatchPad">
-        <State>
-          <Value>image</Value>
-          <Value>topWindow.Layer.Opacity</Value>
-        </State>
-      </Pad>
-      <Pad Id="ConnectionManagerPad">
-        <State selected="True" />
-      </Pad>
-      <Pad Id="MonoDevelop.NUnit.TestPad">
-        <State expanded="True" selected="True" />
-      </Pad>
-    </Pads>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.IPhoneRetina4.7.0" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="FeedMeMom.UI/Controllers/FeedingEditor.cs">
+    <Files>
+      <File FileName="FeedMeMom.UI/Controllers/FeedbackController.cs" Line="68" Column="2" />
+      <File FileName="FeedMeMom.UI/Controllers/HistoryViewController.cs" Line="17" Column="72" />
+      <File FileName="FeedMeMom.UI/Controllers/HistorySource.cs" Line="96" Column="4" />
+      <File FileName="FeedMeMom.UI/Controllers/FeedingEditor.cs" Line="10" Column="3" />
+    </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.FeedMeMom.App.Full>
+    <IPhoneTestFlightSettings_27CRelease ApiToken="299b6327c84e6ed83c3d8326d5a0b9d9_MTM3OTUwNTIwMTMtMTAtMTYgMTQ6MTc6MzIuMDg2NjQ1" TeamToken="758847b7-b292-488d-8e88-b27ca7189800" ReleaseNotes="test" NotifyTeamMembers="False" ReplaceBinaries="False" DistributionLists="" UploadDSYMs="False" />
+  </MonoDevelop.Ide.ItemProperties.FeedMeMom.App.Full>
   <MonoDevelop.Ide.ItemProperties.FeedMeMom.App.Free>
     <IPhoneTestFlightSettings_27CAd-Hoc ApiToken="299b6327c84e6ed83c3d8326d5a0b9d9_MTM3OTUwNTIwMTMtMTAtMTYgMTQ6MTc6MzIuMDg2NjQ1" TeamToken="8be6bbd79f74e5ad7023b2d7f6c3402f_Mjg2OTAyMjAxMy0xMC0yNSAxMjoxMToyMC42NTAyOTU" ReleaseNotes="first release" NotifyTeamMembers="False" ReplaceBinaries="False" DistributionLists="" UploadDSYMs="False" />
     <IPhoneTestFlightSettings_27CRelease ApiToken="299b6327c84e6ed83c3d8326d5a0b9d9_MTM3OTUwNTIwMTMtMTAtMTYgMTQ6MTc6MzIuMDg2NjQ1" TeamToken="8be6bbd79f74e5ad7023b2d7f6c3402f_Mjg2OTAyMjAxMy0xMC0yNSAxMjoxMToyMC42NTAyOTU" ReleaseNotes="test" NotifyTeamMembers="False" ReplaceBinaries="False" DistributionLists="" UploadDSYMs="False" />
   </MonoDevelop.Ide.ItemProperties.FeedMeMom.App.Free>
-  <MonoDevelop.Ide.ItemProperties.FeedMeMom.App.Full>
-    <IPhoneTestFlightSettings_27CRelease ApiToken="299b6327c84e6ed83c3d8326d5a0b9d9_MTM3OTUwNTIwMTMtMTAtMTYgMTQ6MTc6MzIuMDg2NjQ1" TeamToken="758847b7-b292-488d-8e88-b27ca7189800" ReleaseNotes="test" NotifyTeamMembers="False" ReplaceBinaries="False" DistributionLists="" UploadDSYMs="False" />
-  </MonoDevelop.Ide.ItemProperties.FeedMeMom.App.Full>
 </Properties>

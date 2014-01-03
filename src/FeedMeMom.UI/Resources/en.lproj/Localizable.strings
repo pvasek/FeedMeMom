@@ -60,6 +60,7 @@
 "StatisticsBuyHeadline"="Do you want to see statistics for your feedings?";
 "DoYouReallyWantToThisCancelFeeding"="Do you really want to cancel this feeding?";
 "DoYouReallyWantToThisCancelAction"="Do you really want to cancel this action?";
+"DoYouReallyWantToDeleteThisFeeding"="Do you really want to delete this feeding?";
 "Yes"="Yes";
 "No"="No";
 "StatisticsForTheLastDay"="Statistics for the last day";
@@ -72,5 +73,7 @@
 "Left"="Left";
 "Right"="Right";
 "Length"="Length";
+"Total"="Total";
+"Feeding"="Feeding";
 "StartNewFeedingFromLeftBreast"="start a new feeding from right breast";
 "StartNewFeedingFromRightBreast"="start a new feeding from left breast";

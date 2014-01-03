@@ -41,6 +41,7 @@
     <Reference Include="Crashlytics">
       <HintPath>..\..\comp\Crashlytics\Crashlytics.dll</HintPath>
     </Reference>
+    <Reference Include="MonoTouch.Dialog-1" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
@@ -96,6 +97,10 @@
     <Compile Include="MainController.designer.cs">
       <DependentUpon>MainController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\FeedingEditor.cs" />
+    <Compile Include="Controllers\FeedingEditor.designer.cs">
+      <DependentUpon>FeedingEditor.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Controllers\BuyController.xib" />
@@ -105,6 +110,7 @@
     <InterfaceDefinition Include="SideMenu.xib" />
     <InterfaceDefinition Include="Controllers\HistoryViewController.xib" />
     <InterfaceDefinition Include="Controllers\StatisticsController.xib" />
+    <InterfaceDefinition Include="Controllers\FeedingEditor.xib" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources.tt">

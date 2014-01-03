@@ -10,7 +10,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>FeedMeMom.Common</RootNamespace>
     <AssemblyName>FeedMeMom.Common</AssemblyName>
-    <TargetFrameworkProfile>Profile1</TargetFrameworkProfile>
+    <TargetFrameworkProfile>Profile147</TargetFrameworkProfile>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">

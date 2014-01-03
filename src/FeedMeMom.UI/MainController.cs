@@ -37,7 +37,6 @@ namespace FeedMeMom
 
 		private RectangleF _leftFrame;
 		private RectangleF _rightFrame;
-		private RectangleF _buttonHeaderFrame;
 
 		public void ApplyColors()
 		{
@@ -230,7 +229,7 @@ namespace FeedMeMom
 			{
 				lblButtonsHeader.Frame = lblButtonsHeader.Frame.Add(y: 60);
 				btnStartLeft.Frame = btnStartLeft.Frame.Add(y: 60);
-				btnStartRight.Frame = btnStartRight.Frame.Add(y: 60);
+				btnStartRight.Frame = btnStartRight.Frame.Add(y: 60);				
 			}
 
 			CreateLayout();
@@ -255,7 +254,6 @@ namespace FeedMeMom
 
 			_leftFrame = btnStartLeft.Frame;
 			_rightFrame = btnStartRight.Frame;
-			_buttonHeaderFrame = lblButtonsHeader.Frame;
 			btnStartLeft.TouchUpInside += (sender, e) => {
 
 				if (_active == null) {
@@ -281,6 +279,15 @@ namespace FeedMeMom
 					repo.Update(_active);
 				}
 			};
+
+			var tapRecognizer = new UITapGestureRecognizer(() => {
+				if (_active == null && _last != null) 
+				{
+					NavigationController.PushViewController(new FeedingEditor { Feeding = _last }, true);
+				}
+			});
+
+			pnlTime.AddGestureRecognizer(tapRecognizer);
 		}	
 
 		public void PauseRunToggle(UITapGestureRecognizer e)
@@ -305,11 +312,6 @@ namespace FeedMeMom
 		{
 			base.ViewWillAppear (animated);
 			ReloadData();
-		}
-
-		public override void ViewWillDisappear(bool animated)
-		{
-			base.ViewWillDisappear(animated);
 		}
 
 		protected override void Dispose (bool disposing)

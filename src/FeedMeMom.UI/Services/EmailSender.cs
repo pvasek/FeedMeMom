@@ -27,12 +27,14 @@ namespace FeedMeMom
 				{
 					_mail = new MFMailComposeViewController();
 					_mail.Finished += MailSendFinished;
-					Skin.Active.SkinNavigationBar(_mail.NavigationBar);
+
 				}
 				_mail.SetToRecipients(new [] { _recepient });
 				_mail.SetSubject(subject);
 				_mail.SetMessageBody(body, false);
-				_navigationController.PresentViewController(_mail, true, null);
+
+				_navigationController.PresentViewController(_mail, true, () => {
+				});
 			}
 		}
 

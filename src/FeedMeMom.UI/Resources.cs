@@ -2,6 +2,7 @@
 	
 
 
+
 // #####################################################################
 //
 // THIS FILE IS GENERATED
@@ -89,11 +90,24 @@ namespace FeedMeMom {
 			StatisticsAll = GetLocalized("StatisticsAll");
 			StatisticsBuyHeadline = GetLocalized("StatisticsBuyHeadline");
 			DoYouReallyWantToThisCancelFeeding = GetLocalized("DoYouReallyWantToThisCancelFeeding");
+			DoYouReallyWantToThisCancelAction = GetLocalized("DoYouReallyWantToThisCancelAction");
+			DoYouReallyWantToDeleteThisFeeding = GetLocalized("DoYouReallyWantToDeleteThisFeeding");
 			Yes = GetLocalized("Yes");
 			No = GetLocalized("No");
 			StatisticsForTheLastDay = GetLocalized("StatisticsForTheLastDay");
 			StatisticsForTheLastWeek = GetLocalized("StatisticsForTheLastWeek");
 			StatisticsForTheLastMonth = GetLocalized("StatisticsForTheLastMonth");
+			Delete = GetLocalized("Delete");
+			Edit = GetLocalized("Edit");
+			Date = GetLocalized("Date");
+			Time = GetLocalized("Time");
+			Left = GetLocalized("Left");
+			Right = GetLocalized("Right");
+			Length = GetLocalized("Length");
+			Total = GetLocalized("Total");
+			Feeding = GetLocalized("Feeding");
+			StartNewFeedingFromLeftBreast = GetLocalized("StartNewFeedingFromLeftBreast");
+			StartNewFeedingFromRightBreast = GetLocalized("StartNewFeedingFromRightBreast");
 	
 		}
 		
@@ -158,11 +172,24 @@ namespace FeedMeMom {
 		public static string StatisticsAll { get; private set; }
 		public static string StatisticsBuyHeadline { get; private set; }
 		public static string DoYouReallyWantToThisCancelFeeding { get; private set; }
+		public static string DoYouReallyWantToThisCancelAction { get; private set; }
+		public static string DoYouReallyWantToDeleteThisFeeding { get; private set; }
 		public static string Yes { get; private set; }
 		public static string No { get; private set; }
 		public static string StatisticsForTheLastDay { get; private set; }
 		public static string StatisticsForTheLastWeek { get; private set; }
 		public static string StatisticsForTheLastMonth { get; private set; }
+		public static string Delete { get; private set; }
+		public static string Edit { get; private set; }
+		public static string Date { get; private set; }
+		public static string Time { get; private set; }
+		public static string Left { get; private set; }
+		public static string Right { get; private set; }
+		public static string Length { get; private set; }
+		public static string Total { get; private set; }
+		public static string Feeding { get; private set; }
+		public static string StartNewFeedingFromLeftBreast { get; private set; }
+		public static string StartNewFeedingFromRightBreast { get; private set; }
 	
 
 	}

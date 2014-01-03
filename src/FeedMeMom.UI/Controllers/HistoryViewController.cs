@@ -13,6 +13,9 @@ namespace FeedMeMom.UI
 		public HistoryViewController() : base ("HistoryViewController", null)
 		{
 			_historySource = new HistorySource();
+			_historySource.ItemSelected += (sender, e) => {
+				NavigationController.PushViewController(new FeedingEditor { Feeding = e }, true);
+			};
 			Title = Resources.History;
 			NavigationItem.HidesBackButton = true;
 			NavigationItem.LeftBarButtonItem = new UIBarButtonItem(Resources.Back, UIBarButtonItemStyle.Plain, Close);

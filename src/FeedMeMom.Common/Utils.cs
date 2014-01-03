@@ -105,6 +105,14 @@ namespace FeedMeMom.Common
 
 			return String.Format("{0:##}:{1:00} hours ago", time.Hours, time.Minutes);
 		}
+
+		public static int AsInt(this string value) 
+		{
+			int result;
+			if (Int32.TryParse(value, out result))
+				return result;
+			return 0;
+		}
 	}
 
 	public enum AgoInterval

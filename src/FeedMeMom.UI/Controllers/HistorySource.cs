@@ -89,6 +89,17 @@ namespace FeedMeMom.UI
 			base.Dispose(disposing);
 			_footerView = _footerView.SafeDispose();
 		}
+
+		public event EventHandler<FeedingEntry> ItemSelected;
+
+		public override void RowSelected(UITableView tableView, MonoTouch.Foundation.NSIndexPath indexPath)
+		{
+			if (ItemSelected != null)
+			{
+				var item = this.Data[(int)indexPath.IndexAtPosition(0)].Item2[(int)indexPath.IndexAtPosition(1)];
+				ItemSelected(this, item);
+			}
+		}
 	}
 }
 

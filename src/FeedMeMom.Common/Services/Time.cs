@@ -16,6 +16,14 @@ namespace FeedMeMom.Common
 				return _overwritedNow != null ? _overwritedNow.Value : DateTime.Now;
 			}
 		}
+
+		public static string AsMinutesText(this TimeSpan? time) 
+		{
+			if (time == null)
+				return "";		
+
+			return Math.Round(time.Value.TotalMinutes).ToString();
+		}
 	}
 }
 

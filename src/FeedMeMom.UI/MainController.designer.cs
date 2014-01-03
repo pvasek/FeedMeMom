@@ -61,6 +61,9 @@ namespace FeedMeMom
 		MonoTouch.UIKit.UILabel lblSecondTimeInfo { get; set; }
 
 		[Outlet]
+		MonoTouch.UIKit.UILabel lblTapToEdit { get; set; }
+
+		[Outlet]
 		MonoTouch.UIKit.UIView pnlAgo { get; set; }
 
 		[Outlet]
@@ -141,6 +144,11 @@ namespace FeedMeMom
 				lblMainTimeInfo = null;
 			}
 
+			if (lblMainTimeInfoFirstHalf != null) {
+				lblMainTimeInfoFirstHalf.Dispose ();
+				lblMainTimeInfoFirstHalf = null;
+			}
+
 			if (lblRunningInfo != null) {
 				lblRunningInfo.Dispose ();
 				lblRunningInfo = null;
@@ -196,14 +204,14 @@ namespace FeedMeMom
 				pnlRunningTime = null;
 			}
 
-			if (lblMainTimeInfoFirstHalf != null) {
-				lblMainTimeInfoFirstHalf.Dispose ();
-				lblMainTimeInfoFirstHalf = null;
-			}
-
 			if (pnlTime != null) {
 				pnlTime.Dispose ();
 				pnlTime = null;
+			}
+
+			if (lblTapToEdit != null) {
+				lblTapToEdit.Dispose ();
+				lblTapToEdit = null;
 			}
 		}
 	}
